@@ -1,0 +1,60 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "title": "Id",
+      "type": "string"
+    },
+    "task_id": {
+      "title": "Task Id",
+      "type": "string"
+    },
+    "execution_id": {
+      "title": "Execution Id",
+      "type": "string"
+    },
+    "purpose": {
+      "enum": [
+        "CHARACTER_REFERENCE",
+        "SCENE_REFERENCE",
+        "SHOT_FIRST_FRAME"
+      ],
+      "title": "Purpose",
+      "type": "string"
+    },
+    "path": {
+      "title": "Path",
+      "type": "string"
+    },
+    "sha256": {
+      "title": "Sha256",
+      "type": "string"
+    },
+    "width": {
+      "title": "Width",
+      "type": "integer"
+    },
+    "height": {
+      "title": "Height",
+      "type": "integer"
+    },
+    "simulation_only": {
+      "const": true,
+      "default": true,
+      "title": "Simulation Only",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "id",
+    "task_id",
+    "execution_id",
+    "purpose",
+    "path",
+    "sha256",
+    "width",
+    "height"
+  ],
+  "title": "ImageResult",
+  "type": "object"
+}

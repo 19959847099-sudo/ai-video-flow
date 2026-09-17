@@ -1,0 +1,478 @@
+{
+  "$defs": {
+    "Character": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "0.1",
+          "default": "0.1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "description": {
+          "default": "",
+          "title": "Description",
+          "type": "string"
+        },
+        "identity": {
+          "minLength": 1,
+          "title": "Identity",
+          "type": "string"
+        },
+        "is_example": {
+          "default": false,
+          "title": "Is Example",
+          "type": "boolean"
+        },
+        "references": {
+          "items": {
+            "$ref": "#/$defs/Reference"
+          },
+          "title": "References",
+          "type": "array"
+        },
+        "identity_reference_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Identity Reference Ids",
+          "type": "array"
+        },
+        "looks": {
+          "items": {
+            "$ref": "#/$defs/Look"
+          },
+          "title": "Looks",
+          "type": "array"
+        }
+      },
+      "required": [
+        "name",
+        "identity"
+      ],
+      "title": "Character",
+      "type": "object"
+    },
+    "Look": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "description": {
+          "default": "",
+          "title": "Description",
+          "type": "string"
+        },
+        "appearance": {
+          "default": "",
+          "title": "Appearance",
+          "type": "string"
+        },
+        "reference_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Reference Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "title": "Look",
+      "type": "object"
+    },
+    "Reference": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "path": {
+          "title": "Path",
+          "type": "string"
+        },
+        "sha256": {
+          "title": "Sha256",
+          "type": "string"
+        },
+        "source_image_result_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Image Result Id"
+        }
+      },
+      "required": [
+        "name",
+        "path",
+        "sha256"
+      ],
+      "title": "Reference",
+      "type": "object"
+    },
+    "Scene": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "0.2",
+          "default": "0.2",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "description": {
+          "default": "",
+          "title": "Description",
+          "type": "string"
+        },
+        "identity": {
+          "minLength": 1,
+          "title": "Identity",
+          "type": "string"
+        },
+        "is_example": {
+          "default": false,
+          "title": "Is Example",
+          "type": "boolean"
+        },
+        "references": {
+          "items": {
+            "$ref": "#/$defs/Reference"
+          },
+          "title": "References",
+          "type": "array"
+        },
+        "identity_reference_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Identity Reference Ids",
+          "type": "array"
+        },
+        "states": {
+          "items": {
+            "$ref": "#/$defs/SceneState"
+          },
+          "title": "States",
+          "type": "array"
+        }
+      },
+      "required": [
+        "name",
+        "identity"
+      ],
+      "title": "Scene",
+      "type": "object"
+    },
+    "SceneState": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "description": {
+          "default": "",
+          "title": "Description",
+          "type": "string"
+        },
+        "environment": {
+          "default": "",
+          "title": "Environment",
+          "type": "string"
+        },
+        "reference_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Reference Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "title": "SceneState",
+      "type": "object"
+    },
+    "Shot": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "default": "0.1",
+          "enum": [
+            "0.1",
+            "0.2"
+          ],
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "description": {
+          "minLength": 1,
+          "title": "Description",
+          "type": "string"
+        },
+        "character_id": {
+          "title": "Character Id",
+          "type": "string"
+        },
+        "look_id": {
+          "title": "Look Id",
+          "type": "string"
+        },
+        "scene_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Scene Id"
+        },
+        "scene_state_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Scene State Id"
+        },
+        "requirements": {
+          "minLength": 1,
+          "title": "Requirements",
+          "type": "string"
+        },
+        "generation_description": {
+          "minLength": 1,
+          "title": "Generation Description",
+          "type": "string"
+        },
+        "is_example": {
+          "default": false,
+          "title": "Is Example",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "description",
+        "character_id",
+        "look_id",
+        "requirements",
+        "generation_description"
+      ],
+      "title": "Shot",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "0.1",
+      "default": "0.1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "id": {
+      "title": "Id",
+      "type": "string"
+    },
+    "created_at": {
+      "title": "Created At",
+      "type": "string"
+    },
+    "kind": {
+      "const": "image",
+      "default": "image",
+      "title": "Kind",
+      "type": "string"
+    },
+    "purpose": {
+      "enum": [
+        "CHARACTER_REFERENCE",
+        "SCENE_REFERENCE",
+        "SHOT_FIRST_FRAME"
+      ],
+      "title": "Purpose",
+      "type": "string"
+    },
+    "character": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Character"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "look": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Look"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "references": {
+      "items": {
+        "$ref": "#/$defs/Reference"
+      },
+      "title": "References",
+      "type": "array"
+    },
+    "scene": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Scene"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "scene_state": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/SceneState"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "scene_references": {
+      "items": {
+        "$ref": "#/$defs/Reference"
+      },
+      "title": "Scene References",
+      "type": "array"
+    },
+    "shot": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Shot"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "description": {
+      "minLength": 1,
+      "title": "Description",
+      "type": "string"
+    },
+    "final_prompt": {
+      "minLength": 1,
+      "title": "Final Prompt",
+      "type": "string"
+    },
+    "width": {
+      "default": 768,
+      "maximum": 2048,
+      "minimum": 256,
+      "multipleOf": 8,
+      "title": "Width",
+      "type": "integer"
+    },
+    "height": {
+      "default": 512,
+      "maximum": 2048,
+      "minimum": 256,
+      "multipleOf": 8,
+      "title": "Height",
+      "type": "integer"
+    },
+    "seed": {
+      "default": 1,
+      "maximum": 9007199254740991,
+      "minimum": 0,
+      "title": "Seed",
+      "type": "integer"
+    },
+    "is_example": {
+      "default": true,
+      "title": "Is Example",
+      "type": "boolean"
+    },
+    "retry_of": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Retry Of"
+    }
+  },
+  "required": [
+    "purpose",
+    "description",
+    "final_prompt"
+  ],
+  "title": "ImageTask",
+  "type": "object"
+}

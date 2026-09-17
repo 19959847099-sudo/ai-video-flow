@@ -1,0 +1,61 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "title": "Id",
+      "type": "string"
+    },
+    "task_id": {
+      "title": "Task Id",
+      "type": "string"
+    },
+    "dialogue_id": {
+      "title": "Dialogue Id",
+      "type": "string"
+    },
+    "character_id": {
+      "title": "Character Id",
+      "type": "string"
+    },
+    "shot_id": {
+      "title": "Shot Id",
+      "type": "string"
+    },
+    "voice_id": {
+      "title": "Voice Id",
+      "type": "string"
+    },
+    "path": {
+      "title": "Path",
+      "type": "string"
+    },
+    "sha256": {
+      "title": "Sha256",
+      "type": "string"
+    },
+    "metadata": {
+      "additionalProperties": true,
+      "title": "Metadata",
+      "type": "object"
+    },
+    "simulation_only": {
+      "const": true,
+      "default": true,
+      "title": "Simulation Only",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "id",
+    "task_id",
+    "dialogue_id",
+    "character_id",
+    "shot_id",
+    "voice_id",
+    "path",
+    "sha256",
+    "metadata"
+  ],
+  "title": "AudioResult",
+  "type": "object"
+}

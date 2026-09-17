@@ -1,0 +1,25 @@
+[
+  {
+    "insert": [
+      {
+        "id": "system-prompt",
+        "name": "@deepseek-ai/dsh-system-prompt"
+      },
+      {
+        "id": "tools",
+        "name": "@deepseek-ai/dsh-tools"
+      },
+      {
+        "id": "production",
+        "name": "E:\\codex\\AIGC流\\integrations\\dsh\\production-plugin.mjs",
+        "config": {
+          "projectRoot": "E:\\codex\\AIGC流",
+          "python": "F:\\python\\python.exe",
+          "dataDir": "E:\\codex\\AIGC流\\evidence\\A-04\\smoke-data",
+          "evidenceDir": "E:\\codex\\AIGC流\\evidence\\A-04\\smoke-run-2",
+          "shotId": "da107ac03bf949c0a099b4159fea8701"
+        }
+      }
+    ]
+  }
+]

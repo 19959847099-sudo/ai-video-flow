@@ -1,0 +1,34 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "result_id": {
+      "title": "Result Id",
+      "type": "string"
+    },
+    "task_id": {
+      "title": "Task Id",
+      "type": "string"
+    },
+    "shot_id": {
+      "title": "Shot Id",
+      "type": "string"
+    },
+    "path": {
+      "title": "Path",
+      "type": "string"
+    },
+    "sha256": {
+      "title": "Sha256",
+      "type": "string"
+    }
+  },
+  "required": [
+    "result_id",
+    "task_id",
+    "shot_id",
+    "path",
+    "sha256"
+  ],
+  "title": "FirstFrame",
+  "type": "object"
+}

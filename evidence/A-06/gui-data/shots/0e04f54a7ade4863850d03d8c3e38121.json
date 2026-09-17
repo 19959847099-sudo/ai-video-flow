@@ -1,0 +1,10 @@
+{
+  "schema_version": "0.1",
+  "id": "0e04f54a7ade4863850d03d8c3e38121",
+  "description": "示例 Shot A 日常街边",
+  "character_id": "915567cdda674e0286aaab1db7a1cbde",
+  "look_id": "022b217ff1714ee99bf8f25ff09b41a0",
+  "requirements": "便利店门口，中近景，望向街对面",
+  "generation_description": "日光，角色缓慢转头，固定机位",
+  "is_example": true
+}

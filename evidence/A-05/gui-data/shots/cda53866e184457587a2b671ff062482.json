@@ -1,0 +1,12 @@
+{
+  "schema_version": "0.2",
+  "id": "cda53866e184457587a2b671ff062482",
+  "description": "A-02 示例镜头 白天门口",
+  "character_id": "915567cdda674e0286aaab1db7a1cbde",
+  "look_id": "022b217ff1714ee99bf8f25ff09b41a0",
+  "scene_id": "8ebe68f860004bff9c383ef3ff643764",
+  "scene_state_id": "b3ac1413b0bf4c9bafe035b7b32ad08e",
+  "requirements": "便利店门口，中近景，角色看向街对面",
+  "generation_description": "白天自然光，固定机位，角色缓慢转头",
+  "is_example": true
+}

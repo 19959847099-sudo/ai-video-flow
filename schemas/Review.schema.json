@@ -1,0 +1,33 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "shot_id": {
+      "title": "Shot Id",
+      "type": "string"
+    },
+    "selected_result_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Selected Result Id"
+    },
+    "rejected": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "title": "Rejected",
+      "type": "object"
+    }
+  },
+  "required": [
+    "shot_id"
+  ],
+  "title": "Review",
+  "type": "object"
+}

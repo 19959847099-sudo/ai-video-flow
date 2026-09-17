@@ -1,0 +1,14 @@
+{
+  "id": "3a87ea36c7b64e3b977e4aa4e58a5cfd",
+  "execution_id": "3a87ea36c7b64e3b977e4aa4e58a5cfd",
+  "shot_id": "da107ac03bf949c0a099b4159fea8701",
+  "task_id": "bff20f52090e458abe58ef91b93e3773",
+  "take_number": 1,
+  "provider": "local-mock",
+  "model": "mock-card-video-v0",
+  "simulation_only": true,
+  "path": "results/3a87ea36c7b64e3b977e4aa4e58a5cfd/video.mp4",
+  "poster_path": "results/3a87ea36c7b64e3b977e4aa4e58a5cfd/poster.png",
+  "sha256": "634da4bc6488e6b9a77f4c3deadc24204bae27a6bf3f56af04a0f0b5b835ac66",
+  "duration": 3.0
+}

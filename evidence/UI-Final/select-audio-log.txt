@@ -1,0 +1,15 @@
+02:04:00 ['resize', 1920, 1080]
+02:04:02 ['click', 'button:��ƵѡƬ']
+02:04:03 ['combo', 'review.shot_choice', 3]
+02:04:04 ['row', 'review.list', 3]
+02:04:06 ['click', 'review.select_button']
+02:04:07 ['shot', 'after-review.png']
+02:04:08 ['click', 'button:�ּ� / ����']
+02:04:09 ['combo', 'rough.saved', 0]
+02:04:11 ['wait', 5]
+02:04:17 ['audit', 'stale-audit.json']
+Traceback (most recent call last):
+  File "E:\codex\AIGC��\tools\drive_ui_final.py", line 50, in <module>
+    record={'time':datetime.now().isoformat(),'window':list(w.rectangle()),'widgets':json.loads((root/'evidence/UI-Final/widget-map.json').read_text(encoding='utf-8'))}
+                                                       ~~~~^^^^^^^^^^^^^^^
+TypeError: 'RECT' object is not iterable

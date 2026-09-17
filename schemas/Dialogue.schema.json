@@ -1,0 +1,46 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "title": "Id",
+      "type": "string"
+    },
+    "character_id": {
+      "title": "Character Id",
+      "type": "string"
+    },
+    "shot_id": {
+      "title": "Shot Id",
+      "type": "string"
+    },
+    "order": {
+      "default": 1,
+      "minimum": 1,
+      "title": "Order",
+      "type": "integer"
+    },
+    "text": {
+      "maxLength": 3000,
+      "minLength": 1,
+      "title": "Text",
+      "type": "string"
+    },
+    "delivery": {
+      "default": "calm",
+      "title": "Delivery",
+      "type": "string"
+    },
+    "is_example": {
+      "default": true,
+      "title": "Is Example",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "character_id",
+    "shot_id",
+    "text"
+  ],
+  "title": "Dialogue",
+  "type": "object"
+}

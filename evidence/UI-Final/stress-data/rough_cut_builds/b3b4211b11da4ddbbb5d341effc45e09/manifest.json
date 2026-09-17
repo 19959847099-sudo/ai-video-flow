@@ -1,0 +1,121 @@
+{
+  "timeline": {
+    "id": "3bb952d7018548bcbd60b7e8ae9e5297",
+    "name": "A-08 示例 · 白天双镜头粗剪",
+    "shot_ids": [
+      "d8094901e03441f1bb9ad8696bb427c0",
+      "cda53866e184457587a2b671ff062482"
+    ],
+    "allow_missing_audio": true,
+    "allow_missing_subtitles": true,
+    "policy": "video-driven-trim; source-muted; dialogue-sequential; sidecar-srt",
+    "is_example": true
+  },
+  "status": "Ready",
+  "errors": [],
+  "warnings": [
+    "5c235da8: video-driven trim 4.000s → 3.000s",
+    "098290db: audio missing / pending human selection",
+    "cda53866: 无 Dialogue，需人工允许无音频 Shot"
+  ],
+  "rate": "24",
+  "duration_frames": 144,
+  "duration": 6.0,
+  "clips": [
+    {
+      "shot_id": "d8094901e03441f1bb9ad8696bb427c0",
+      "name": "A-03 示例镜头 fal 白天门口",
+      "result_id": "2cb8df46592b47f5a7284946e73ed280",
+      "task_id": "813a944ec8174926ab0eeb3a3b3d16ae",
+      "take_number": 2,
+      "path": "results/2cb8df46592b47f5a7284946e73ed280/video.mp4",
+      "sha256": "a35e8211231ed28a436de9fd5244101dcda6faf9420f05078a3a7fa543786ae2",
+      "metadata": {
+        "codec_name": "h264",
+        "width": 640,
+        "height": 360,
+        "avg_frame_rate": "24/1",
+        "r_frame_rate": "24/1",
+        "time_base": "1/12288",
+        "duration": 3.0,
+        "rate": "24"
+      },
+      "source_in": 0,
+      "source_out": 3.0,
+      "timeline_in": 0,
+      "timeline_out": 72,
+      "frames": 72,
+      "audios": [
+        {
+          "dialogue_id": "5c235da8a53240a789836abacaa80d11",
+          "result_id": "758fb7ebbde74f18a222afdbe1cb3196",
+          "task_id": "cea70d5a7cdd4804b2e90244a6ca1177",
+          "voice_id": "567804636c7440eab7210e6d882730e3",
+          "path": "audio_results/758fb7ebbde74f18a222afdbe1cb3196/fixture.wav",
+          "sha256": "1ed4a5861cf6c4ab6f86c945be3e521098b7f38532322e70033838c925e58662",
+          "metadata": {
+            "codec_name": "pcm_s16le",
+            "avg_frame_rate": "0/0",
+            "r_frame_rate": "0/0",
+            "time_base": "1/32000",
+            "sample_rate": "32000",
+            "channels": 1,
+            "duration": 4.0
+          },
+          "source_in": 0,
+          "source_out": 3.0,
+          "offset": 0.0,
+          "duration": 3.0,
+          "alignment_id": "758fb7ebbde74f18a222afdbe1cb3196",
+          "subtitle_path": "subtitles/758fb7ebbde74f18a222afdbe1cb3196.srt",
+          "subtitle_sha256": "5995cba3c47f04ad124b64616dd1625de490d76e022763e5fd4bff4e5b7b474b"
+        }
+      ],
+      "subtitles": [
+        {
+          "start": 0.1,
+          "end": 1.7,
+          "text": "[FIXTURE] 这是音频测试。",
+          "audio_result_id": "758fb7ebbde74f18a222afdbe1cb3196",
+          "alignment_id": "758fb7ebbde74f18a222afdbe1cb3196"
+        },
+        {
+          "start": 2.1,
+          "end": 3.0,
+          "text": "[FIXTURE] 等待人工确认。",
+          "audio_result_id": "758fb7ebbde74f18a222afdbe1cb3196",
+          "alignment_id": "758fb7ebbde74f18a222afdbe1cb3196"
+        }
+      ]
+    },
+    {
+      "shot_id": "cda53866e184457587a2b671ff062482",
+      "name": "A-02 示例镜头 白天门口",
+      "result_id": "8320f36f12254dbb81ec91dd89c7701e",
+      "task_id": "338db3258eac41c8a0d57e81736c335d",
+      "take_number": 2,
+      "path": "results/8320f36f12254dbb81ec91dd89c7701e/video.mp4",
+      "sha256": "bbc899aa1d2850c80bf35bef5b1f5c6a5c657d5699d10ef83c053db30f5a5d4f",
+      "metadata": {
+        "codec_name": "h264",
+        "width": 640,
+        "height": 360,
+        "avg_frame_rate": "24/1",
+        "r_frame_rate": "24/1",
+        "time_base": "1/12288",
+        "duration": 3.0,
+        "rate": "24"
+      },
+      "source_in": 0,
+      "source_out": 3.0,
+      "timeline_in": 72,
+      "timeline_out": 144,
+      "frames": 72,
+      "audios": [],
+      "subtitles": []
+    }
+  ],
+  "label": "ROUGH CUT / FIXTURE SOURCE MEDIA / NOT FINAL MASTER",
+  "build_id": "b3b4211b11da4ddbbb5d341effc45e09",
+  "source_fingerprint": "46168c3c245abd22bb92b3cee6e9b417822d761db723e743b1e471925a548564"
+}

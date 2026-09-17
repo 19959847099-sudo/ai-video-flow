@@ -1,0 +1,20 @@
+{
+  "baseline_files": 376,
+  "changed": [
+    "app/audio_gui.py",
+    "app/gui.py",
+    "app/image_gui.py",
+    "app/review_gui.py",
+    "app/rough_cut_gui.py",
+    "app/ui_presenters.py",
+    "app/ui_widgets.py",
+    "app/workspace_ui.py"
+  ],
+  "unexpected_changes": [],
+  "frozen_documents_unchanged": true,
+  "original_data_unchanged": true,
+  "a08_evidence_unchanged": true,
+  "old_tests_unchanged": true,
+  "requirements_and_start_unchanged": true,
+  "production_modules_unchanged": true
+}

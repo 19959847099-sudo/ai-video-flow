@@ -1,0 +1,1 @@
+[["wait",2],["shot","timeline-preview-completed.png"],["click","button:Open Preview"],["rough_player","preview-playback.png"],["wait",6],["click","button:Export Handoff"],["wait",6],["shot","handoff-created.png"],["close"]]

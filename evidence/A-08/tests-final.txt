@@ -1,0 +1,115 @@
+test_alignment_expected_actual_separation_srt_and_handoff (test_audio.AudioTests.test_alignment_expected_actual_separation_srt_and_handoff) ... ok
+test_audio_gui_review_and_empty_state (test_audio.AudioTests.test_audio_gui_review_and_empty_state) ... ok
+test_official_dsh_audio_execution (test_audio.AudioTests.test_official_dsh_audio_execution) ... ok
+test_official_errors_and_bad_timing_rejected (test_audio.AudioTests.test_official_errors_and_bad_timing_rejected) ... ok
+test_ordered_multiple_dialogues_and_harness_gate (test_audio.AudioTests.test_ordered_multiple_dialogues_and_harness_gate) ... ok
+test_retry_selection_snapshot_restart_and_relocation (test_audio.AudioTests.test_retry_selection_snapshot_restart_and_relocation) ... ok
+test_task_and_real_request_keep_provider_at_edge (test_audio.AudioTests.test_task_and_real_request_keep_provider_at_edge) ... ok
+test_task_tamper_and_failed_generation_never_select (test_audio.AudioTests.test_task_tamper_and_failed_generation_never_select) ... ok
+test_voice_default_dialogue_persistence_and_invalid_relations (test_audio.AudioTests.test_voice_default_dialogue_persistence_and_invalid_relations) ... ok
+test_zero_network_audio_media_trace_and_reference_import (test_audio.AudioTests.test_zero_network_audio_media_trace_and_reference_import) ... ok
+test_dedup (test_core.MainChainTests.test_dedup) ... ok
+test_invalid_relations_and_input (test_core.MainChainTests.test_invalid_relations_and_input) ... ok
+test_missing_or_changed_media_blocks_task (test_core.MainChainTests.test_missing_or_changed_media_blocks_task) ... ok
+test_no_reference_blocks_task (test_core.MainChainTests.test_no_reference_blocks_task) ... ok
+test_restart_and_relocation_without_originals (test_core.MainChainTests.test_restart_and_relocation_without_originals) ... ok
+test_reuse_and_look_reference_isolation (test_core.MainChainTests.test_reuse_and_look_reference_isolation) ... ok
+test_task_snapshot_survives_character_edits_and_ref_removal (test_core.MainChainTests.test_task_snapshot_survives_character_edits_and_ref_removal) ... ok
+test_failure_fixtures_never_create_results_or_select (test_fal.FalTests.test_failure_fixtures_never_create_results_or_select) ... ok
+test_limits_and_changed_reference_are_explicit_errors (test_fal.FalTests.test_limits_and_changed_reference_are_explicit_errors) ... ok
+test_malformed_status_result_and_cross_request_rejected (test_fal.FalTests.test_malformed_status_result_and_cross_request_rejected) ... ok
+test_request_preserves_all_inputs_and_reference_bytes (test_fal.FalTests.test_request_preserves_all_inputs_and_reference_bytes) ... ok
+test_submitted_request_change_stops_execution (test_fal.FalTests.test_submitted_request_change_stops_execution) ... ok
+test_zero_network_full_chain_restart_retry_and_relocation (test_fal.FalTests.test_zero_network_full_chain_restart_retry_and_relocation) ... ok
+test_context_snapshot_result_media_and_human_gate (test_harness.HarnessToolsTests.test_context_snapshot_result_media_and_human_gate) ... ok
+test_missing_reference_and_wrong_execution_are_rejected (test_harness.HarnessToolsTests.test_missing_reference_and_wrong_execution_are_rejected) ... ok
+test_official_dsh_cli_tool_events_network_lock_and_independence (test_harness.HarnessToolsTests.test_official_dsh_cli_tool_events_network_lock_and_independence) ... ok
+test_provider_failure_stops_chain_without_selection (test_harness.HarnessToolsTests.test_provider_failure_stops_chain_without_selection) ... ok
+test_safety_allowlist_rejects_human_gate_live_mode_and_paths (test_harness.HarnessToolsTests.test_safety_allowlist_rejects_human_gate_live_mode_and_paths) ... ok
+test_stdio_rejects_unknown_request_and_returns_structured_error (test_harness.HarnessToolsTests.test_stdio_rejects_unknown_request_and_returns_structured_error) ... ok
+test_actual_dsh_image_tool (test_images.ImageTests.test_actual_dsh_image_tool) ... ok
+test_adapter_failures_and_illegal_workflow (test_images.ImageTests.test_adapter_failures_and_illegal_workflow) ... ok
+test_dsh_tool_keeps_human_gate (test_images.ImageTests.test_dsh_tool_keeps_human_gate) ... ok
+test_first_frame_video_handoff_and_independent_selected_take (test_images.ImageTests.test_first_frame_video_handoff_and_independent_selected_take) ... ok
+test_human_reference_promotion_restart (test_images.ImageTests.test_human_reference_promotion_restart) ... ok
+test_image_gui_gate_and_snapshot_tamper (test_images.ImageTests.test_image_gui_gate_and_snapshot_tamper) ... ok
+test_restart_pending_relocation_and_stale_first_frame (test_images.ImageTests.test_restart_pending_relocation_and_stale_first_frame) ... ok
+test_retry_new_snapshot_and_history (test_images.ImageTests.test_retry_new_snapshot_and_history) ... ok
+test_tampering_wrong_target_and_path_rejected (test_images.ImageTests.test_tampering_wrong_target_and_path_rejected) ... ok
+test_three_purposes_context_workflow_lifecycle (test_images.ImageTests.test_three_purposes_context_workflow_lifecycle) ... ok
+test_historical_snapshots_survive_source_edit (test_production.ProductionTests.test_historical_snapshots_survive_source_edit) ... ok
+test_invalid_select_retry_and_duplicate_submit (test_production.ProductionTests.test_invalid_select_retry_and_duplicate_submit) ... ok
+test_legacy_records_load_without_migration (test_production.ProductionTests.test_legacy_records_load_without_migration) ... ok
+test_media_retry_selection_trace_and_relocation (test_production.ProductionTests.test_media_retry_selection_trace_and_relocation) ... ok
+test_pending_processing_restart_and_failure (test_production.ProductionTests.test_pending_processing_restart_and_failure) ... ok
+test_scene_invalid_relations_block_save (test_production.ProductionTests.test_scene_invalid_relations_block_save) ... ok
+test_scene_missing_image_and_invalid_snapshot (test_production.ProductionTests.test_scene_missing_image_and_invalid_snapshot) ... ok
+test_scene_references_and_neutral_prompt (test_production.ProductionTests.test_scene_references_and_neutral_prompt) ... ok
+test_changed_selection_never_reuses_old_subtitle (test_rough_cut.RoughCutTests.test_changed_selection_never_reuses_old_subtitle) ... ok
+test_dsh_tool_preserves_all_production_facts (test_rough_cut.RoughCutTests.test_dsh_tool_preserves_all_production_facts) ... ok
+test_duration_probe_trim_and_subtitle_provenance (test_rough_cut.RoughCutTests.test_duration_probe_trim_and_subtitle_provenance) ... ok
+test_explicit_order_persistence_and_duplicates (test_rough_cut.RoughCutTests.test_explicit_order_persistence_and_duplicates) ... ok
+test_gui_empty_timeline_and_saved_order (test_rough_cut.RoughCutTests.test_gui_empty_timeline_and_saved_order) ... ok
+test_manifest_tamper_and_unsaved_current_block (test_rough_cut.RoughCutTests.test_manifest_tamper_and_unsaved_current_block) ... ok
+test_mismatched_alignment_and_corrupt_media_block (test_rough_cut.RoughCutTests.test_mismatched_alignment_and_corrupt_media_block) ... ok
+test_missing_audio_requires_explicit_human_allowance (test_rough_cut.RoughCutTests.test_missing_audio_requires_explicit_human_allowance) ... ok
+test_missing_selected_video_blocks_without_candidate_fallback (test_rough_cut.RoughCutTests.test_missing_selected_video_blocks_without_candidate_fallback) ... ok
+test_mixed_source_rates_use_real_probe_and_normalize_preview (test_rough_cut.RoughCutTests.test_mixed_source_rates_use_real_probe_and_normalize_preview) ... ok
+test_preview_real_streams_and_portable_relocation (test_rough_cut.RoughCutTests.test_preview_real_streams_and_portable_relocation) ... ok
+test_real_otio_roundtrip_order_metadata_and_references (test_rough_cut.RoughCutTests.test_real_otio_roundtrip_order_metadata_and_references) ... ok
+test_harness_requires_all_corresponding_ids_and_handles_missing_trace (test_ui.PresentationTests.test_harness_requires_all_corresponding_ids_and_handles_missing_trace) ... ok
+test_invalid_data_keeps_error_state_and_ffmpeg_failure_is_actionable (test_ui.PresentationTests.test_invalid_data_keeps_error_state_and_ffmpeg_failure_is_actionable) ... ok
+test_multiline_binding_empty_review_and_human_gate_buttons (test_ui.PresentationTests.test_multiline_binding_empty_review_and_human_gate_buttons) ... ok
+test_selected_rejected_and_pending_are_derived_without_writes (test_ui.PresentationTests.test_selected_rejected_and_pending_are_derived_without_writes) ... ok
+
+----------------------------------------------------------------------
+Ran 63 tests in 130.837s
+
+OK
+{
+  "status": "completed",
+  "evidence": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\tmprzu1os4w\\audio-dsh",
+  "result": {
+    "dialogue_id": "628750086a2e495d880d7ddb8c7902ef",
+    "shot_id": "18030951a90449b4ac19d87eb9faeb30",
+    "voice_id": "8fb6f7aa72984af9b46bcd107766dc3d",
+    "task_id": "fed231a5abf141d4a924f1314671f138",
+    "result_id": "f596889e36be4d7a827445deb6126d1f",
+    "audio_path": "audio_results/f596889e36be4d7a827445deb6126d1f/fixture.wav",
+    "metadata": {
+      "codec_name": "pcm_s16le",
+      "sample_rate": "32000",
+      "channels": 1,
+      "duration": 4,
+      "format_name": "wav"
+    },
+    "alignment_id": "f596889e36be4d7a827445deb6126d1f",
+    "subtitle_path": "subtitles/f596889e36be4d7a827445deb6126d1f.srt",
+    "human_review_required": true,
+    "human_gate_unchanged": true,
+    "fixture": true,
+    "tts_api_calls": 0,
+    "alignment_model_executed": false
+  }
+}
+{
+  "status": "completed",
+  "evidence": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\tmpizwer__u\\image-dsh",
+  "result": {
+    "execution_id": "78e991e4be20476a9852381eb50bb374",
+    "task_id": "b0af6935d23e44c2a872ddb830ce1b12",
+    "shot_id": "9dc3101694ee4315af3f74617fb1c617",
+    "result_id": "78e991e4be20476a9852381eb50bb374",
+    "media_path": "image_results/78e991e4be20476a9852381eb50bb374/image.png",
+    "status": "completed",
+    "history": [
+      "pending",
+      "processing",
+      "completed"
+    ],
+    "human_review_required": true,
+    "selected_first_frame_unchanged": true,
+    "image_api_calls": 0,
+    "human_gate_unchanged": true
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "title": "Id",
+      "type": "string"
+    },
+    "name": {
+      "minLength": 1,
+      "title": "Name",
+      "type": "string"
+    },
+    "shot_ids": {
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 50,
+      "title": "Shot Ids",
+      "type": "array"
+    },
+    "allow_missing_audio": {
+      "default": false,
+      "title": "Allow Missing Audio",
+      "type": "boolean"
+    },
+    "allow_missing_subtitles": {
+      "default": false,
+      "title": "Allow Missing Subtitles",
+      "type": "boolean"
+    },
+    "policy": {
+      "default": "video-driven-trim; source-muted; dialogue-sequential; sidecar-srt",
+      "title": "Policy",
+      "type": "string"
+    },
+    "is_example": {
+      "default": true,
+      "title": "Is Example",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "name"
+  ],
+  "title": "TimelineDefinition",
+  "type": "object"
+}

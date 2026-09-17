@@ -1,0 +1,77 @@
+{
+  "status": "PASS",
+  "protected_files": 229,
+  "voice_id": "567804636c7440eab7210e6d882730e3",
+  "dialogue_id": "5c235da8a53240a789836abacaa80d11",
+  "selected_audio": "758fb7ebbde74f18a222afdbe1cb3196",
+  "dsh_candidate": "c23104d4d6064d71b22e15ab1251f7cb",
+  "media": [
+    {
+      "result_id": "49b3765ef10a4ee4a4874e717cae137b",
+      "task_id": "7283dbd05b4642499c0556cefdee9026",
+      "metadata": {
+        "codec_name": "pcm_s16le",
+        "sample_rate": "32000",
+        "channels": 1,
+        "duration": 4.0,
+        "format_name": "wav"
+      },
+      "subtitle": "subtitles/49b3765ef10a4ee4a4874e717cae137b.srt"
+    },
+    {
+      "result_id": "758fb7ebbde74f18a222afdbe1cb3196",
+      "task_id": "cea70d5a7cdd4804b2e90244a6ca1177",
+      "metadata": {
+        "codec_name": "pcm_s16le",
+        "sample_rate": "32000",
+        "channels": 1,
+        "duration": 4.0,
+        "format_name": "wav"
+      },
+      "subtitle": "subtitles/758fb7ebbde74f18a222afdbe1cb3196.srt"
+    },
+    {
+      "result_id": "c23104d4d6064d71b22e15ab1251f7cb",
+      "task_id": "bd137cb249c14b4eb4fe7941b17b14d2",
+      "metadata": {
+        "codec_name": "pcm_s16le",
+        "sample_rate": "32000",
+        "channels": 1,
+        "duration": 4.0,
+        "format_name": "wav"
+      },
+      "subtitle": "subtitles/c23104d4d6064d71b22e15ab1251f7cb.srt"
+    }
+  ],
+  "handoff": {
+    "shot_id": "d8094901e03441f1bb9ad8696bb427c0",
+    "dialogues": [
+      {
+        "dialogue_id": "5c235da8a53240a789836abacaa80d11",
+        "order": 1,
+        "character_id": "915567cdda674e0286aaab1db7a1cbde",
+        "expected_dialogue": "等一下，门口的灯还亮着。",
+        "selected_audio_result": "758fb7ebbde74f18a222afdbe1cb3196",
+        "audio_path": "audio_results/758fb7ebbde74f18a222afdbe1cb3196/fixture.wav",
+        "task_id": "cea70d5a7cdd4804b2e90244a6ca1177",
+        "voice_id": "567804636c7440eab7210e6d882730e3",
+        "submitted_text": "别出声，我们先看看门口。",
+        "delivery": "whisper",
+        "alignment_id": "758fb7ebbde74f18a222afdbe1cb3196",
+        "subtitle_path": "subtitles/758fb7ebbde74f18a222afdbe1cb3196.srt",
+        "fixture": true
+      },
+      {
+        "dialogue_id": "098290db9d3b4ea59da85a8529f661ca",
+        "order": 2,
+        "character_id": "915567cdda674e0286aaab1db7a1cbde",
+        "expected_dialogue": "好，我在这里等你。",
+        "selected_audio_result": null
+      }
+    ]
+  },
+  "tts_calls": 0,
+  "comfy_calls": 0,
+  "kling_calls": 0,
+  "alignment_model_executed": false
+}

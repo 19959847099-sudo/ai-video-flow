@@ -1,0 +1,70 @@
+{
+  "transport": "fixture",
+  "api_called": false,
+  "step": 5,
+  "scenario": "success",
+  "events": [
+    {
+      "method": "POST",
+      "url": "https://queue.fal.run/fal-ai/kling-video/o3/standard/reference-to-video",
+      "http_status": 200,
+      "body": {
+        "request_id": "6b975d8c237e4c8f97f8d7cee7f91d47",
+        "status_url": "https://queue.fal.run/fal-ai/kling-video/o3/standard/reference-to-video/requests/6b975d8c237e4c8f97f8d7cee7f91d47/status",
+        "response_url": "https://queue.fal.run/fal-ai/kling-video/o3/standard/reference-to-video/requests/6b975d8c237e4c8f97f8d7cee7f91d47/response",
+        "cancel_url": "https://queue.fal.run/fal-ai/kling-video/o3/standard/reference-to-video/requests/6b975d8c237e4c8f97f8d7cee7f91d47/cancel",
+        "queue_position": 0
+      }
+    },
+    {
+      "method": "GET",
+      "url": "https://queue.fal.run/fal-ai/kling-video/o3/standard/reference-to-video/requests/6b975d8c237e4c8f97f8d7cee7f91d47/status",
+      "http_status": 200,
+      "body": {
+        "request_id": "6b975d8c237e4c8f97f8d7cee7f91d47",
+        "status": "IN_QUEUE",
+        "queue_position": 0
+      }
+    },
+    {
+      "method": "GET",
+      "url": "https://queue.fal.run/fal-ai/kling-video/o3/standard/reference-to-video/requests/6b975d8c237e4c8f97f8d7cee7f91d47/status",
+      "http_status": 200,
+      "body": {
+        "request_id": "6b975d8c237e4c8f97f8d7cee7f91d47",
+        "status": "IN_PROGRESS",
+        "logs": []
+      }
+    },
+    {
+      "method": "GET",
+      "url": "https://queue.fal.run/fal-ai/kling-video/o3/standard/reference-to-video/requests/6b975d8c237e4c8f97f8d7cee7f91d47/status",
+      "http_status": 200,
+      "body": {
+        "request_id": "6b975d8c237e4c8f97f8d7cee7f91d47",
+        "status": "COMPLETED",
+        "logs": [],
+        "metrics": {
+          "inference_time": 0.01
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "url": "https://queue.fal.run/fal-ai/kling-video/o3/standard/reference-to-video/requests/6b975d8c237e4c8f97f8d7cee7f91d47/response",
+      "http_status": 200,
+      "body": {
+        "video": {
+          "url": "https://fixture.invalid/6b975d8c237e4c8f97f8d7cee7f91d47.mp4",
+          "content_type": "video/mp4",
+          "file_name": "fixture.mp4"
+        }
+      }
+    }
+  ],
+  "request_sha256": "43b03309f06f0403c75bb3c64351d332817981db43027c66e922b3df8da279a6",
+  "request_id": "6b975d8c237e4c8f97f8d7cee7f91d47",
+  "status_url": "https://queue.fal.run/fal-ai/kling-video/o3/standard/reference-to-video/requests/6b975d8c237e4c8f97f8d7cee7f91d47/status",
+  "response_url": "https://queue.fal.run/fal-ai/kling-video/o3/standard/reference-to-video/requests/6b975d8c237e4c8f97f8d7cee7f91d47/response",
+  "ready": true
+}

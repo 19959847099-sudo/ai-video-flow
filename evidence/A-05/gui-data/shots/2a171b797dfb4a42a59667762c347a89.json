@@ -1,0 +1,12 @@
+{
+  "schema_version": "0.2",
+  "id": "2a171b797dfb4a42a59667762c347a89",
+  "description": "A-05 示例镜头 雨夜审核",
+  "character_id": "915567cdda674e0286aaab1db7a1cbde",
+  "look_id": "78f99b5f38d5409ea21b84b13c8c84f9",
+  "scene_id": "8ebe68f860004bff9c383ef3ff643764",
+  "scene_state_id": "8c3bc5fb50ce4dbf83941cede21cddae",
+  "requirements": "便利店门口，角色撑伞向街对面看，固定中景。",
+  "generation_description": "雨夜，保持同一角色和便利店外观，缓慢抬头后停顿。",
+  "is_example": true
+}

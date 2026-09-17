@@ -1,0 +1,12 @@
+{
+  "schema_version": "0.2",
+  "id": "d8094901e03441f1bb9ad8696bb427c0",
+  "description": "A-03 示例镜头 fal 白天门口",
+  "character_id": "915567cdda674e0286aaab1db7a1cbde",
+  "look_id": "022b217ff1714ee99bf8f25ff09b41a0",
+  "scene_id": "8ebe68f860004bff9c383ef3ff643764",
+  "scene_state_id": "b3ac1413b0bf4c9bafe035b7b32ad08e",
+  "requirements": "固定中景，角色在便利店门口转身",
+  "generation_description": "自然日光，角色转身后停顿",
+  "is_example": true
+}

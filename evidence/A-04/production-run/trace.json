@@ -1,0 +1,180 @@
+{
+  "harness": "DeepSeek Harness",
+  "version": "0.1.5-rc.2",
+  "mode": "local-keyless",
+  "shot_id": "da107ac03bf949c0a099b4159fea8701",
+  "started_at": "2026-09-15T05:32:24.395Z",
+  "status": "completed",
+  "steps": [
+    {
+      "tool": "get_shot_context",
+      "input": {
+        "shot_id": "da107ac03bf949c0a099b4159fea8701"
+      },
+      "started_at": "2026-09-15T05:32:24.401Z",
+      "status": "completed",
+      "output": {
+        "shot_id": "da107ac03bf949c0a099b4159fea8701",
+        "character": "测试角色 林夏",
+        "look": "雨夜（示例）",
+        "scene": "示例便利店门口",
+        "state": "雨夜（示例）",
+        "character_references": 2,
+        "scene_references": 2,
+        "results": 1,
+        "selected_take": null
+      },
+      "finished_at": "2026-09-15T05:32:25.056Z"
+    },
+    {
+      "tool": "build_generation_task",
+      "input": {
+        "shot_id": "da107ac03bf949c0a099b4159fea8701"
+      },
+      "started_at": "2026-09-15T05:32:25.057Z",
+      "status": "completed",
+      "output": {
+        "task_id": "c5b47743c2a64392a97ba47c2fb9306a",
+        "execution_id": "6b975d8c237e4c8f97f8d7cee7f91d47",
+        "shot_id": "da107ac03bf949c0a099b4159fea8701",
+        "status": "pending",
+        "provider": "fal",
+        "model": "fal-ai/kling-video/o3/standard/reference-to-video",
+        "transport": "fixture",
+        "character_id": "915567cdda674e0286aaab1db7a1cbde",
+        "look_id": "78f99b5f38d5409ea21b84b13c8c84f9",
+        "scene_id": "8ebe68f860004bff9c383ef3ff643764",
+        "scene_state_id": "8c3bc5fb50ce4dbf83941cede21cddae",
+        "reference_count": 4
+      },
+      "finished_at": "2026-09-15T05:32:26.101Z"
+    },
+    {
+      "tool": "dry_run_generation",
+      "input": {
+        "execution_id": "6b975d8c237e4c8f97f8d7cee7f91d47"
+      },
+      "started_at": "2026-09-15T05:32:26.102Z",
+      "status": "completed",
+      "output": {
+        "execution_id": "6b975d8c237e4c8f97f8d7cee7f91d47",
+        "task_id": "c5b47743c2a64392a97ba47c2fb9306a",
+        "shot_id": "da107ac03bf949c0a099b4159fea8701",
+        "result_id": "6b975d8c237e4c8f97f8d7cee7f91d47",
+        "media_path": "results/6b975d8c237e4c8f97f8d7cee7f91d47/video.mp4",
+        "status": "completed",
+        "history": [
+          "pending",
+          "processing",
+          "completed"
+        ],
+        "production_update": "ingested by existing Result Ingestion",
+        "selected_take": null,
+        "simulation_only": true,
+        "video_api_calls": 0
+      },
+      "finished_at": "2026-09-15T05:32:27.748Z"
+    },
+    {
+      "tool": "inspect_media",
+      "input": {
+        "result_id": "6b975d8c237e4c8f97f8d7cee7f91d47"
+      },
+      "started_at": "2026-09-15T05:32:27.749Z",
+      "status": "completed",
+      "output": {
+        "result_id": "6b975d8c237e4c8f97f8d7cee7f91d47",
+        "task_id": "c5b47743c2a64392a97ba47c2fb9306a",
+        "shot_id": "da107ac03bf949c0a099b4159fea8701",
+        "path": "results/6b975d8c237e4c8f97f8d7cee7f91d47/video.mp4",
+        "tool": "ffprobe",
+        "parseable": true,
+        "codec_name": "h264",
+        "width": 640,
+        "height": 360,
+        "duration": 3
+      },
+      "finished_at": "2026-09-15T05:32:28.583Z"
+    },
+    {
+      "tool": "get_shot_context",
+      "input": {
+        "shot_id": "da107ac03bf949c0a099b4159fea8701"
+      },
+      "started_at": "2026-09-15T05:32:28.585Z",
+      "status": "completed",
+      "output": {
+        "shot_id": "da107ac03bf949c0a099b4159fea8701",
+        "character": "测试角色 林夏",
+        "look": "雨夜（示例）",
+        "scene": "示例便利店门口",
+        "state": "雨夜（示例）",
+        "character_references": 2,
+        "scene_references": 2,
+        "results": 2,
+        "selected_take": null
+      },
+      "finished_at": "2026-09-15T05:32:29.224Z"
+    }
+  ],
+  "observed_tool_results": [
+    {
+      "tool": "get_shot_context",
+      "at": "2026-09-15T05:32:25.054Z",
+      "content_blocks": 1
+    },
+    {
+      "tool": "build_generation_task",
+      "at": "2026-09-15T05:32:26.099Z",
+      "content_blocks": 1
+    },
+    {
+      "tool": "dry_run_generation",
+      "at": "2026-09-15T05:32:27.746Z",
+      "content_blocks": 1
+    },
+    {
+      "tool": "inspect_media",
+      "at": "2026-09-15T05:32:28.582Z",
+      "content_blocks": 1
+    },
+    {
+      "tool": "get_shot_context",
+      "at": "2026-09-15T05:32:29.222Z",
+      "content_blocks": 1
+    }
+  ],
+  "video_api_calls": 0,
+  "model_api_calls": 0,
+  "result": {
+    "execution_id": "6b975d8c237e4c8f97f8d7cee7f91d47",
+    "task_id": "c5b47743c2a64392a97ba47c2fb9306a",
+    "shot_id": "da107ac03bf949c0a099b4159fea8701",
+    "result_id": "6b975d8c237e4c8f97f8d7cee7f91d47",
+    "media_path": "results/6b975d8c237e4c8f97f8d7cee7f91d47/video.mp4",
+    "status": "completed",
+    "history": [
+      "pending",
+      "processing",
+      "completed"
+    ],
+    "production_update": "ingested by existing Result Ingestion",
+    "selected_take": null,
+    "simulation_only": true,
+    "video_api_calls": 0,
+    "media": {
+      "result_id": "6b975d8c237e4c8f97f8d7cee7f91d47",
+      "task_id": "c5b47743c2a64392a97ba47c2fb9306a",
+      "shot_id": "da107ac03bf949c0a099b4159fea8701",
+      "path": "results/6b975d8c237e4c8f97f8d7cee7f91d47/video.mp4",
+      "tool": "ffprobe",
+      "parseable": true,
+      "codec_name": "h264",
+      "width": 640,
+      "height": 360,
+      "duration": 3
+    },
+    "human_gate_unchanged": true
+  },
+  "finished_at": "2026-09-15T05:32:29.225Z"
+}

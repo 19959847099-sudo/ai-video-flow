@@ -1,0 +1,1 @@
+[["row","app.char_list",0],["tab","app.char_detail_tabs",1],["combo","app.look_choice",1],["click","button:生成角色参考图 →"],["fill","images.description","A-06 示例角色参考图；测试人工采纳流程，不评价生成质量。"],["click","button:生成图像 · ZERO-CALL"],["wait",5],["shot","character-image-preview.png"]]

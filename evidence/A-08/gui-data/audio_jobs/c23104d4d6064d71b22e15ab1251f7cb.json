@@ -1,0 +1,17 @@
+{
+  "id": "c23104d4d6064d71b22e15ab1251f7cb",
+  "task_id": "bd137cb249c14b4eb4fe7941b17b14d2",
+  "dialogue_id": "5c235da8a53240a789836abacaa80d11",
+  "status": "completed",
+  "history": [
+    "pending",
+    "processing",
+    "completed"
+  ],
+  "task_sha256": "c6e5f280dfed20f018d431c387361c1a1e664513cd53017499098143e17695d0",
+  "request_sha256": "233e51b4d5c486899da70ea22574809e48c98b8416a78ebed03247d16f093ee4",
+  "result_id": "c23104d4d6064d71b22e15ab1251f7cb",
+  "trace_id": "c23104d4d6064d71b22e15ab1251f7cb",
+  "error": "",
+  "simulation_only": true
+}

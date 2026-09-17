@@ -1,0 +1,1 @@
+[["tab","app.tabs",4],["row","images.list",3],["shot","first-frame-restarted.png"],["tab","app.tabs",2],["row","app.shot_list",3],["shot","shot-first-frame-binding.png"],["combo","app.provider_choice",1],["click","button:生成视频 →"],["wait",10],["shot","video-handoff-review.png"]]

@@ -1,0 +1,13 @@
+{
+  "unchanged": true,
+  "image_task_hashes": {
+    "evidence/A-06/gui-data/image_tasks/49689fe4488f4c8b866589ad8c867532/task.json": "6fd37852477d4e0bee5a5cef3fabcc647423a3a5378c97f393f9eaf20bcb1c2a",
+    "evidence/A-06/gui-data/image_tasks/6ea017c47b714b2f95e31f7a06074da4/task.json": "749dc95f4932234268f16efa48c5a59774b6ab0bba643eae46a642ab48f988ca",
+    "evidence/A-06/gui-data/image_tasks/a6fca7a7fa734d208f73f0a917956993/task.json": "9257928b3d65b14edf27351096666eba62dc380fcb14d601f304ca27a51f6a72",
+    "evidence/A-06/gui-data/image_tasks/dbfff949506441f8b525128de56d3fc4/task.json": "eba1550780ca85b51480a689d327e724b76e12462136740aacd59b835d41a643"
+  },
+  "changed_fields": [
+    "Character.description",
+    "Scene.description"
+  ]
+}

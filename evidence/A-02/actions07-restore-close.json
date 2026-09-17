@@ -1,0 +1,1 @@
+[["fill", "scene.description", "A-02 测试场景，非正式美术资产"], ["click", "button:保存场景"], ["xy", 65, 82], ["row", "app.char_list", 0], ["fill", "app.cdesc", "A-01 示例数据，仅用于流程验证"], ["click", "button:保存角色"], ["keys", "%{F4}"]]

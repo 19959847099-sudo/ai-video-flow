@@ -1,0 +1,92 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "title": "Id",
+      "type": "string"
+    },
+    "task_id": {
+      "title": "Task Id",
+      "type": "string"
+    },
+    "provider": {
+      "const": "comfyui",
+      "default": "comfyui",
+      "title": "Provider",
+      "type": "string"
+    },
+    "simulation_only": {
+      "const": true,
+      "default": true,
+      "title": "Simulation Only",
+      "type": "boolean"
+    },
+    "status": {
+      "default": "pending",
+      "enum": [
+        "pending",
+        "processing",
+        "completed",
+        "failed"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "history": {
+      "items": {
+        "type": "string"
+      },
+      "title": "History",
+      "type": "array"
+    },
+    "prompt_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Prompt Id"
+    },
+    "step": {
+      "default": 0,
+      "title": "Step",
+      "type": "integer"
+    },
+    "result_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Result Id"
+    },
+    "error": {
+      "default": "",
+      "title": "Error",
+      "type": "string"
+    },
+    "task_sha256": {
+      "title": "Task Sha256",
+      "type": "string"
+    },
+    "workflow_sha256": {
+      "title": "Workflow Sha256",
+      "type": "string"
+    }
+  },
+  "required": [
+    "task_id",
+    "task_sha256",
+    "workflow_sha256"
+  ],
+  "title": "ImageExecution",
+  "type": "object"
+}

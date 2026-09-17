@@ -1,0 +1,73 @@
+{
+  "harness": "DeepSeek Harness",
+  "version": "0.1.5-rc.2",
+  "mode": "local-keyless",
+  "shot_id": "d8094901e03441f1bb9ad8696bb427c0",
+  "started_at": "2026-09-16T04:24:39.171Z",
+  "status": "completed",
+  "steps": [
+    {
+      "tool": "prepare_dialogue_audio",
+      "input": {
+        "dialogue_id": "5c235da8a53240a789836abacaa80d11"
+      },
+      "started_at": "2026-09-16T04:24:39.177Z",
+      "status": "completed",
+      "output": {
+        "dialogue_id": "5c235da8a53240a789836abacaa80d11",
+        "shot_id": "d8094901e03441f1bb9ad8696bb427c0",
+        "voice_id": "567804636c7440eab7210e6d882730e3",
+        "task_id": "bd137cb249c14b4eb4fe7941b17b14d2",
+        "result_id": "c23104d4d6064d71b22e15ab1251f7cb",
+        "audio_path": "audio_results/c23104d4d6064d71b22e15ab1251f7cb/fixture.wav",
+        "metadata": {
+          "codec_name": "pcm_s16le",
+          "sample_rate": "32000",
+          "channels": 1,
+          "duration": 4,
+          "format_name": "wav"
+        },
+        "alignment_id": "c23104d4d6064d71b22e15ab1251f7cb",
+        "subtitle_path": "subtitles/c23104d4d6064d71b22e15ab1251f7cb.srt",
+        "human_review_required": true,
+        "human_gate_unchanged": true,
+        "fixture": true,
+        "tts_api_calls": 0,
+        "alignment_model_executed": false
+      },
+      "finished_at": "2026-09-16T04:24:40.675Z"
+    }
+  ],
+  "observed_tool_results": [
+    {
+      "tool": "prepare_dialogue_audio",
+      "at": "2026-09-16T04:24:40.674Z",
+      "content_blocks": 1
+    }
+  ],
+  "video_api_calls": 0,
+  "model_api_calls": 0,
+  "result": {
+    "dialogue_id": "5c235da8a53240a789836abacaa80d11",
+    "shot_id": "d8094901e03441f1bb9ad8696bb427c0",
+    "voice_id": "567804636c7440eab7210e6d882730e3",
+    "task_id": "bd137cb249c14b4eb4fe7941b17b14d2",
+    "result_id": "c23104d4d6064d71b22e15ab1251f7cb",
+    "audio_path": "audio_results/c23104d4d6064d71b22e15ab1251f7cb/fixture.wav",
+    "metadata": {
+      "codec_name": "pcm_s16le",
+      "sample_rate": "32000",
+      "channels": 1,
+      "duration": 4,
+      "format_name": "wav"
+    },
+    "alignment_id": "c23104d4d6064d71b22e15ab1251f7cb",
+    "subtitle_path": "subtitles/c23104d4d6064d71b22e15ab1251f7cb.srt",
+    "human_review_required": true,
+    "human_gate_unchanged": true,
+    "fixture": true,
+    "tts_api_calls": 0,
+    "alignment_model_executed": false
+  },
+  "finished_at": "2026-09-16T04:24:40.678Z"
+}

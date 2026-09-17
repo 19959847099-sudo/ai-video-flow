@@ -1,0 +1,9 @@
+test_inline_failure_and_duplicate_media_operation_do_not_change_records (test_ui_final.UIFinalTests.test_inline_failure_and_duplicate_media_operation_do_not_change_records) ... ok
+test_media_inspection_does_not_block_tk_and_obsolete_report_is_ignored (test_ui_final.UIFinalTests.test_media_inspection_does_not_block_tk_and_obsolete_report_is_ignored) ... ok
+test_navigation_dirty_guard_and_advanced_are_presentation_only (test_ui_final.UIFinalTests.test_navigation_dirty_guard_and_advanced_are_presentation_only) ... ok
+test_summary_reads_existing_selected_context_and_detects_changed_frame_assets (test_ui_final.UIFinalTests.test_summary_reads_existing_selected_context_and_detects_changed_frame_assets) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 3.878s
+
+OK

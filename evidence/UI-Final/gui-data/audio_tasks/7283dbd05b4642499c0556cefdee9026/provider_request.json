@@ -1,0 +1,40 @@
+{
+  "provider": "minimax",
+  "model": "speech-2.6-hd",
+  "method": "POST",
+  "url": "https://api.minimax.io/v1/t2a_v2",
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "auth_requirement": "Bearer API key required for real API; omitted, never read in fixture mode",
+  "simulation_only": true,
+  "body": {
+    "model": "speech-2.6-hd",
+    "text": "等一下，门口的灯还亮着。",
+    "stream": false,
+    "output_format": "hex",
+    "language_boost": "Chinese",
+    "voice_setting": {
+      "voice_id": "Chinese (Mandarin)_Warm_Girl",
+      "speed": 1.0,
+      "vol": 1,
+      "pitch": 0,
+      "emotion": "calm"
+    },
+    "audio_setting": {
+      "sample_rate": 32000,
+      "format": "wav",
+      "channel": 1
+    }
+  },
+  "voice_mapping": {
+    "voice_id": "567804636c7440eab7210e6d882730e3",
+    "provider": "minimax",
+    "provider_voice_id": "Chinese (Mandarin)_Warm_Girl",
+    "kind": "system"
+  },
+  "reference_policy": "Reference audio retained as identity evidence; system-voice TTS does not accept reference audio. No upload or cloning.",
+  "voice_reference_ids": [
+    "928a123ef3e74b78a008b1ad25279941"
+  ]
+}

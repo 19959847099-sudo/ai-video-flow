@@ -1,0 +1,1 @@
+[["shot","01-initial.png"],["row","app.char_list",0],["row","app.ref_list",0],["shot","02-a01-character-regression.png"],["xy",128,82],["fill","scene.name","示例便利店门口"],["fill","scene.description","A-02 测试场景，非正式美术资产"],["fill","scene.identity","玻璃双门，门右侧蓝色招牌，面向街道"],["click","scene.example"],["click","button:保存场景"],["click","button:添加场景图片…"]]

@@ -1,0 +1,16 @@
+{
+  "command": [
+    "E:\\codex\\AIGC\u6d41\\.tools\\node-v24.21.0-win-x64\\node.exe",
+    "--import",
+    "E:\\codex\\AIGC\u6d41\\integrations\\dsh\\network-lock.mjs",
+    "E:\\codex\\AIGC\u6d41\\integrations\\dsh\\node_modules\\@deepseek-ai\\dsh\\lib\\bin.js",
+    "--profile",
+    "production",
+    "--patch",
+    "E:\\codex\\AIGC\u6d41\\evidence\\A-04\\smoke-run\\profile.patch.json"
+  ],
+  "cwd": "E:\\codex\\AIGC\u6d41\\integrations\\dsh\\.runtime\\work",
+  "data_dir": "E:\\codex\\AIGC\u6d41\\evidence\\A-04\\smoke-data",
+  "run_id": "245305d53f9347f09101fa887ec11995",
+  "no_credentials_forwarded": true
+}

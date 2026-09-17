@@ -1,0 +1,9 @@
+{
+  "whisperx_import_available": false,
+  "whisperx_cli": null,
+  "ffmpeg": "C:\\Users\\LENOVO\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg.Essentials_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-8.1-essentials_build\\bin\\ffmpeg.EXE",
+  "ffprobe": "C:\\Users\\LENOVO\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Gyan.FFmpeg.Essentials_Microsoft.Winget.Source_8wekyb3d8bbwe\\ffmpeg-8.1-essentials_build\\bin\\ffprobe.EXE",
+  "git_exists": false,
+  "workspace_whisper_paths": [],
+  "scope": "Active Python, PATH, project root only; no credential scan, no model installation or endpoint probing."
+}

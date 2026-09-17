@@ -1,0 +1,22 @@
+{
+  "http_status": 200,
+  "response": {
+    "data": {
+      "audio": "[hex audio stored as result WAV after validation]",
+      "status": 2
+    },
+    "extra_info": {
+      "audio_length": 4000,
+      "audio_sample_rate": 32000,
+      "audio_size": 256044,
+      "audio_format": "wav",
+      "audio_channel": 1
+    },
+    "trace_id": "c23104d4d6064d71b22e15ab1251f7cb",
+    "base_resp": {
+      "status_code": 0,
+      "status_msg": "success"
+    }
+  },
+  "api_called": false
+}

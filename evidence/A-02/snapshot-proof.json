@@ -1,0 +1,31 @@
+{
+  "all_7_task_files_byte_unchanged": true,
+  "current_character_description": "A-02 快照验证：临时补充角色说明",
+  "current_scene_description": "A-02 快照验证：临时补充场景说明",
+  "snapshots": [
+    {
+      "task_id": "2ce4faa176094ff6b224e6f11c12c626",
+      "character_description": "A-01 示例数据，仅用于流程验证",
+      "scene_description": "A-02 测试场景，非正式美术资产"
+    },
+    {
+      "task_id": "338db3258eac41c8a0d57e81736c335d",
+      "character_description": "A-01 示例数据，仅用于流程验证",
+      "scene_description": "A-02 测试场景，非正式美术资产"
+    },
+    {
+      "task_id": "93be2c69012b4644b9cc16c814581f71",
+      "character_description": "A-01 示例数据，仅用于流程验证",
+      "scene_description": "A-02 测试场景，非正式美术资产"
+    }
+  ],
+  "hashes_after_edit": {
+    "data/tasks/2ce4faa176094ff6b224e6f11c12c626/task.json": "4fa7ea5e11b3523c39a6ac0c1c3ec4a7fa31a265931ba1ab07090043e672a23f",
+    "data/tasks/338db3258eac41c8a0d57e81736c335d/task.json": "3c0e349effc7ba7090d90180de1d931eafadd2e0630e054efc633d595d650cf8",
+    "data/tasks/6e19a014cbc34cc7a26637084b2b92d3/task.json": "1edfc035bb80ed1e36d13e0c79282ab41900ddbd69425620340e2ebe8dfba4bc",
+    "data/tasks/7dba6dc1fb5b440c868d1debbd583711/task.json": "b21c130ef101e1f0a8e7aa1803fad4b2044409289aa775521b805fc711deda0d",
+    "data/tasks/93be2c69012b4644b9cc16c814581f71/task.json": "0e1c887b5f6b2eb0ebf5e199f3c4d8b0093f3ea62677881026ff77da3c883e35",
+    "data/tasks/a6f320151d43405a8cb0163acb6e2797/task.json": "a0369e0183d6e1f86e092168c7c5635fa95f008bd50cf5ac8a131e20361c4af4",
+    "data/tasks/c03da2f6454b45d29ea703d692124dea/task.json": "43388ca79ee4228211b1c238a8bd7e354dffd4b1b388e52d1ff21f8b4229ec6a"
+  }
+}

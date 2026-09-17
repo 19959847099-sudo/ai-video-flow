@@ -1,0 +1,20 @@
+{
+  "provider": "dummy",
+  "simulation_only": true,
+  "api_called": false,
+  "task_id": "7dba6dc1fb5b440c868d1debbd583711",
+  "model": "dummy-video-v0",
+  "input": {
+    "text": "短黑发，椭圆脸；身份不随 Look 改变\nA-01 示例数据，仅用于流程验证\n夜晚，雨水打湿头发\n深色雨衣\n示例 Shot B 雨夜街边\n同一便利店门口，中近景，雨中望向街对面\n雨夜霓虹，角色穿雨衣，固定机位",
+    "images": [
+      {
+        "asset_path": "assets/e5e2c5fff24485f5dcf326997ecae62943b7f8729abddd4db29bf3a6696dd016.png",
+        "sha256": "e5e2c5fff24485f5dcf326997ecae62943b7f8729abddd4db29bf3a6696dd016"
+      },
+      {
+        "asset_path": "assets/6bd092a5c3745c549c6a62773acbed1cfdb7ecd195eda5fbfc11a8c31ef9e01e.png",
+        "sha256": "6bd092a5c3745c549c6a62773acbed1cfdb7ecd195eda5fbfc11a8c31ef9e01e"
+      }
+    ]
+  }
+}

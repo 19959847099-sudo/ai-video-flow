@@ -1,0 +1,12 @@
+{
+  "schema_version": "0.2",
+  "id": "da107ac03bf949c0a099b4159fea8701",
+  "description": "A-03 示例镜头 雨夜回归",
+  "character_id": "915567cdda674e0286aaab1db7a1cbde",
+  "look_id": "78f99b5f38d5409ea21b84b13c8c84f9",
+  "scene_id": "8ebe68f860004bff9c383ef3ff643764",
+  "scene_state_id": "8c3bc5fb50ce4dbf83941cede21cddae",
+  "requirements": "雨夜门口固定中景",
+  "generation_description": "角色撑伞站在门口，蓝色招牌反光",
+  "is_example": true
+}

@@ -1,0 +1,20 @@
+{
+  "provider": "dummy",
+  "simulation_only": true,
+  "api_called": false,
+  "task_id": "c03da2f6454b45d29ea703d692124dea",
+  "model": "dummy-video-v0",
+  "input": {
+    "text": "短黑发，椭圆脸；身份不随 Look 改变\nA-01 示例数据，仅用于流程验证\n白天，干燥，平静\n浅色衬衣\n示例 Shot A 日常街边\n便利店门口，中近景，望向街对面\n日光，角色缓慢转头，固定机位",
+    "images": [
+      {
+        "asset_path": "assets/e5e2c5fff24485f5dcf326997ecae62943b7f8729abddd4db29bf3a6696dd016.png",
+        "sha256": "e5e2c5fff24485f5dcf326997ecae62943b7f8729abddd4db29bf3a6696dd016"
+      },
+      {
+        "asset_path": "assets/07320b564caa7f9cd106fdbd77fb3392c28e10646d955c9deacbab89d1d99780.png",
+        "sha256": "07320b564caa7f9cd106fdbd77fb3392c28e10646d955c9deacbab89d1d99780"
+      }
+    ]
+  }
+}

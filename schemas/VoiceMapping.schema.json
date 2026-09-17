@@ -1,0 +1,36 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "voice_id": {
+      "title": "Voice Id",
+      "type": "string"
+    },
+    "provider": {
+      "const": "minimax",
+      "default": "minimax",
+      "title": "Provider",
+      "type": "string"
+    },
+    "provider_voice_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Provider Voice Id",
+      "type": "string"
+    },
+    "kind": {
+      "default": "system",
+      "enum": [
+        "system",
+        "clone"
+      ],
+      "title": "Kind",
+      "type": "string"
+    }
+  },
+  "required": [
+    "voice_id",
+    "provider_voice_id"
+  ],
+  "title": "VoiceMapping",
+  "type": "object"
+}

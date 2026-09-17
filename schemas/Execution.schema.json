@@ -1,0 +1,96 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "title": "Id",
+      "type": "string"
+    },
+    "task_id": {
+      "title": "Task Id",
+      "type": "string"
+    },
+    "shot_id": {
+      "title": "Shot Id",
+      "type": "string"
+    },
+    "take_number": {
+      "minimum": 1,
+      "title": "Take Number",
+      "type": "integer"
+    },
+    "provider": {
+      "default": "local-mock",
+      "enum": [
+        "local-mock",
+        "fal"
+      ],
+      "title": "Provider",
+      "type": "string"
+    },
+    "model": {
+      "default": "mock-card-video-v0",
+      "title": "Model",
+      "type": "string"
+    },
+    "simulation_only": {
+      "const": true,
+      "default": true,
+      "title": "Simulation Only",
+      "type": "boolean"
+    },
+    "status": {
+      "default": "pending",
+      "enum": [
+        "pending",
+        "processing",
+        "completed",
+        "failed"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "history": {
+      "items": {
+        "type": "string"
+      },
+      "title": "History",
+      "type": "array"
+    },
+    "retry_of": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Retry Of"
+    },
+    "result_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Result Id"
+    },
+    "error": {
+      "default": "",
+      "title": "Error",
+      "type": "string"
+    }
+  },
+  "required": [
+    "task_id",
+    "shot_id",
+    "take_number"
+  ],
+  "title": "Execution",
+  "type": "object"
+}

@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "protected_files_unchanged": 95,
+  "frozen_documents_unchanged": 3,
+  "official_dsh_tool_calls": 5,
+  "video_api_calls": 0,
+  "model_api_calls": 0,
+  "result_id": "6b975d8c237e4c8f97f8d7cee7f91d47",
+  "task_id": "c5b47743c2a64392a97ba47c2fb9306a",
+  "media": {
+    "codec_name": "h264",
+    "width": 640,
+    "height": 360,
+    "duration": 3.0
+  },
+  "human_gate_unchanged": true,
+  "executions": 7
+}

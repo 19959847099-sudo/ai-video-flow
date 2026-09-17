@@ -1,0 +1,4 @@
+02:12:22 ['wait', 2]
+02:12:25 ['shot', 'start-cmd.png']
+02:12:26 ['close']
+Desktop actions completed: 3

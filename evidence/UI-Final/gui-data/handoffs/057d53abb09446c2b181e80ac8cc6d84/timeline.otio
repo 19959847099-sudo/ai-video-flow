@@ -1,0 +1,266 @@
+{
+    "OTIO_SCHEMA": "Timeline.1",
+    "metadata": {
+        "aigc": {
+            "build_id": "addb9faa5a9a455c9348907d25f4a558",
+            "label": "ROUGH CUT / FIXTURE SOURCE MEDIA / NOT FINAL MASTER",
+            "policy": "video-driven-trim; source-muted; dialogue-sequential; sidecar-srt",
+            "timeline_id": "3bb952d7018548bcbd60b7e8ae9e5297"
+        }
+    },
+    "name": "A-08 示例 · 白天双镜头粗剪",
+    "global_start_time": {
+        "OTIO_SCHEMA": "RationalTime.1",
+        "rate": 24.0,
+        "value": 0.0
+    },
+    "tracks": {
+        "OTIO_SCHEMA": "Stack.1",
+        "metadata": {},
+        "name": "tracks",
+        "source_range": null,
+        "effects": [],
+        "markers": [],
+        "enabled": true,
+        "color": null,
+        "children": [
+            {
+                "OTIO_SCHEMA": "Track.1",
+                "metadata": {},
+                "name": "Selected Video — MUTE SOURCE AUDIO IN NLE",
+                "source_range": null,
+                "effects": [],
+                "markers": [],
+                "enabled": true,
+                "color": null,
+                "children": [
+                    {
+                        "OTIO_SCHEMA": "Clip.2",
+                        "metadata": {
+                            "aigc": {
+                                "kind": "video",
+                                "result_id": "a526a160decd4691a7da62a05aab5ebd",
+                                "sha256": "f6277dc38b9a668d6e18b2e0ce7d153e592f3c6a4deccf6fae5feb961c7a70bd",
+                                "shot_id": "d8094901e03441f1bb9ad8696bb427c0",
+                                "source_metadata": {
+                                    "avg_frame_rate": "24/1",
+                                    "codec_name": "h264",
+                                    "duration": 3.0,
+                                    "height": 360,
+                                    "r_frame_rate": "24/1",
+                                    "rate": "24",
+                                    "time_base": "1/12288",
+                                    "width": 640
+                                },
+                                "task_id": "5763220d7df54b348395cda70eac7760"
+                            }
+                        },
+                        "name": "A-03 示例镜头 fal 白天门口",
+                        "source_range": {
+                            "OTIO_SCHEMA": "TimeRange.1",
+                            "duration": {
+                                "OTIO_SCHEMA": "RationalTime.1",
+                                "rate": 24.0,
+                                "value": 72.0
+                            },
+                            "start_time": {
+                                "OTIO_SCHEMA": "RationalTime.1",
+                                "rate": 24.0,
+                                "value": 0.0
+                            }
+                        },
+                        "effects": [],
+                        "markers": [],
+                        "enabled": true,
+                        "color": null,
+                        "media_references": {
+                            "DEFAULT_MEDIA": {
+                                "OTIO_SCHEMA": "ExternalReference.1",
+                                "metadata": {},
+                                "name": "",
+                                "available_range": {
+                                    "OTIO_SCHEMA": "TimeRange.1",
+                                    "duration": {
+                                        "OTIO_SCHEMA": "RationalTime.1",
+                                        "rate": 24.0,
+                                        "value": 72.0
+                                    },
+                                    "start_time": {
+                                        "OTIO_SCHEMA": "RationalTime.1",
+                                        "rate": 24.0,
+                                        "value": 0.0
+                                    }
+                                },
+                                "available_image_bounds": null,
+                                "target_url": "media/f6277dc38b9a668d6e18b2e0ce7d153e592f3c6a4deccf6fae5feb961c7a70bd.mp4"
+                            }
+                        },
+                        "active_media_reference_key": "DEFAULT_MEDIA"
+                    },
+                    {
+                        "OTIO_SCHEMA": "Clip.2",
+                        "metadata": {
+                            "aigc": {
+                                "kind": "video",
+                                "result_id": "8320f36f12254dbb81ec91dd89c7701e",
+                                "sha256": "bbc899aa1d2850c80bf35bef5b1f5c6a5c657d5699d10ef83c053db30f5a5d4f",
+                                "shot_id": "cda53866e184457587a2b671ff062482",
+                                "source_metadata": {
+                                    "avg_frame_rate": "24/1",
+                                    "codec_name": "h264",
+                                    "duration": 3.0,
+                                    "height": 360,
+                                    "r_frame_rate": "24/1",
+                                    "rate": "24",
+                                    "time_base": "1/12288",
+                                    "width": 640
+                                },
+                                "task_id": "338db3258eac41c8a0d57e81736c335d"
+                            }
+                        },
+                        "name": "A-02 示例镜头 白天门口",
+                        "source_range": {
+                            "OTIO_SCHEMA": "TimeRange.1",
+                            "duration": {
+                                "OTIO_SCHEMA": "RationalTime.1",
+                                "rate": 24.0,
+                                "value": 72.0
+                            },
+                            "start_time": {
+                                "OTIO_SCHEMA": "RationalTime.1",
+                                "rate": 24.0,
+                                "value": 0.0
+                            }
+                        },
+                        "effects": [],
+                        "markers": [],
+                        "enabled": true,
+                        "color": null,
+                        "media_references": {
+                            "DEFAULT_MEDIA": {
+                                "OTIO_SCHEMA": "ExternalReference.1",
+                                "metadata": {},
+                                "name": "",
+                                "available_range": {
+                                    "OTIO_SCHEMA": "TimeRange.1",
+                                    "duration": {
+                                        "OTIO_SCHEMA": "RationalTime.1",
+                                        "rate": 24.0,
+                                        "value": 72.0
+                                    },
+                                    "start_time": {
+                                        "OTIO_SCHEMA": "RationalTime.1",
+                                        "rate": 24.0,
+                                        "value": 0.0
+                                    }
+                                },
+                                "available_image_bounds": null,
+                                "target_url": "media/bbc899aa1d2850c80bf35bef5b1f5c6a5c657d5699d10ef83c053db30f5a5d4f.mp4"
+                            }
+                        },
+                        "active_media_reference_key": "DEFAULT_MEDIA"
+                    }
+                ],
+                "kind": "Video"
+            },
+            {
+                "OTIO_SCHEMA": "Track.1",
+                "metadata": {},
+                "name": "Selected Dialogue",
+                "source_range": null,
+                "effects": [],
+                "markers": [],
+                "enabled": true,
+                "color": null,
+                "children": [
+                    {
+                        "OTIO_SCHEMA": "Clip.2",
+                        "metadata": {
+                            "aigc": {
+                                "dialogue_id": "5c235da8a53240a789836abacaa80d11",
+                                "kind": "audio",
+                                "result_id": "1d9b5aff1c494eb1ad166be377a8d937",
+                                "sha256": "cefaf9c3f07639397447295e7bb0fad9c9bf007359826c6d6b523bb5c688e8df",
+                                "shot_id": "d8094901e03441f1bb9ad8696bb427c0",
+                                "source_metadata": {
+                                    "avg_frame_rate": "0/0",
+                                    "channels": 1,
+                                    "codec_name": "pcm_s16le",
+                                    "duration": 4.0,
+                                    "r_frame_rate": "0/0",
+                                    "sample_rate": "32000",
+                                    "time_base": "1/32000"
+                                },
+                                "task_id": "d2925480ea774a0fb44293b1bb0aec81"
+                            }
+                        },
+                        "name": "1d9b5aff1c494eb1ad166be377a8d937",
+                        "source_range": {
+                            "OTIO_SCHEMA": "TimeRange.1",
+                            "duration": {
+                                "OTIO_SCHEMA": "RationalTime.1",
+                                "rate": 24.0,
+                                "value": 72.0
+                            },
+                            "start_time": {
+                                "OTIO_SCHEMA": "RationalTime.1",
+                                "rate": 24.0,
+                                "value": 0.0
+                            }
+                        },
+                        "effects": [],
+                        "markers": [],
+                        "enabled": true,
+                        "color": null,
+                        "media_references": {
+                            "DEFAULT_MEDIA": {
+                                "OTIO_SCHEMA": "ExternalReference.1",
+                                "metadata": {},
+                                "name": "",
+                                "available_range": {
+                                    "OTIO_SCHEMA": "TimeRange.1",
+                                    "duration": {
+                                        "OTIO_SCHEMA": "RationalTime.1",
+                                        "rate": 24.0,
+                                        "value": 96.0
+                                    },
+                                    "start_time": {
+                                        "OTIO_SCHEMA": "RationalTime.1",
+                                        "rate": 24.0,
+                                        "value": 0.0
+                                    }
+                                },
+                                "available_image_bounds": null,
+                                "target_url": "media/cefaf9c3f07639397447295e7bb0fad9c9bf007359826c6d6b523bb5c688e8df.wav"
+                            }
+                        },
+                        "active_media_reference_key": "DEFAULT_MEDIA"
+                    },
+                    {
+                        "OTIO_SCHEMA": "Gap.1",
+                        "metadata": {},
+                        "name": "",
+                        "source_range": {
+                            "OTIO_SCHEMA": "TimeRange.1",
+                            "duration": {
+                                "OTIO_SCHEMA": "RationalTime.1",
+                                "rate": 24.0,
+                                "value": 72.0
+                            },
+                            "start_time": {
+                                "OTIO_SCHEMA": "RationalTime.1",
+                                "rate": 24.0,
+                                "value": 0.0
+                            }
+                        },
+                        "effects": [],
+                        "markers": [],
+                        "enabled": true,
+                        "color": null
+                    }
+                ],
+                "kind": "Audio"
+            }
+        ]
+    }
+}

@@ -1,0 +1,18 @@
+{
+  "id": "6b975d8c237e4c8f97f8d7cee7f91d47",
+  "task_id": "c5b47743c2a64392a97ba47c2fb9306a",
+  "shot_id": "da107ac03bf949c0a099b4159fea8701",
+  "take_number": 2,
+  "provider": "fal",
+  "model": "fal-ai/kling-video/o3/standard/reference-to-video",
+  "simulation_only": true,
+  "status": "completed",
+  "history": [
+    "pending",
+    "processing",
+    "completed"
+  ],
+  "retry_of": null,
+  "result_id": "6b975d8c237e4c8f97f8d7cee7f91d47",
+  "error": ""
+}

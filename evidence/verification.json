@@ -1,0 +1,42 @@
+{
+  "character_count": 1,
+  "look_count": 2,
+  "reference_count": 3,
+  "shots": [
+    {
+      "shot": "示例 Shot A 日常街边",
+      "shot_id": "0e04f54a7ade4863850d03d8c3e38121",
+      "character_id": "915567cdda674e0286aaab1db7a1cbde",
+      "look": "日常装（示例）",
+      "look_id": "022b217ff1714ee99bf8f25ff09b41a0",
+      "references": [
+        "01-identity.png",
+        "02-daily.png"
+      ],
+      "latest_task": "c03da2f6454b45d29ea703d692124dea",
+      "dummy_verified": true
+    },
+    {
+      "shot": "示例 Shot B 雨夜街边",
+      "shot_id": "e0e94123d25144939538f75f225cb109",
+      "character_id": "915567cdda674e0286aaab1db7a1cbde",
+      "look": "雨夜（示例）",
+      "look_id": "78f99b5f38d5409ea21b84b13c8c84f9",
+      "references": [
+        "01-identity.png",
+        "03-rain.png"
+      ],
+      "latest_task": "7dba6dc1fb5b440c868d1debbd583711",
+      "dummy_verified": true
+    }
+  ],
+  "frozen_files_unchanged": true,
+  "schemas_match_models": true,
+  "gui_restart": {
+    "closed_pid": 46684,
+    "restarted_pid": 28876,
+    "evidence": "gui-restart-task.png"
+  },
+  "historical_tasks_note": "保留全部模拟任务快照；Shot B 首次误选日常 Look 的测试快照亦保留，不伪装成正式生成记录。",
+  "verification_method": "真实桌面鼠标键盘与原生文件选择器操作，执行者逐步检查截图；并非用户本人验收。"
+}

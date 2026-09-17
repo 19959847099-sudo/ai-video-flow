@@ -1,0 +1,16 @@
+{
+  "command": [
+    "E:\\codex\\AIGC\u6d41\\.tools\\node-v24.21.0-win-x64\\node.exe",
+    "--import",
+    "file:///E:/codex/AIGC%E6%B5%81/integrations/dsh/network-lock.mjs",
+    "E:\\codex\\AIGC\u6d41\\integrations\\dsh\\node_modules\\@deepseek-ai\\dsh\\lib\\bin.js",
+    "--profile",
+    "production",
+    "--patch",
+    "E:\\codex\\AIGC\u6d41\\evidence\\A-08\\dsh-run\\profile.patch.json"
+  ],
+  "cwd": "E:\\codex\\AIGC\u6d41\\integrations\\dsh\\.runtime\\work",
+  "data_dir": "E:\\codex\\AIGC\u6d41\\evidence\\A-08\\gui-data",
+  "run_id": "b20e966ae2e34d64840abaae8326001d",
+  "no_credentials_forwarded": true
+}

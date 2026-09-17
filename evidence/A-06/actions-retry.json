@@ -1,0 +1,1 @@
+[["fill","images.reason","A-06 测试 Reject / Retry，不代表模型画质评价。"],["click","button:Reject 图像"],["fill","images.description","A-06 测试首帧第二版；保留同一角色场景，调整镜头描述为近景。"],["click","button:Retry 图像"],["wait",4],["click","button:用作 Shot 首帧"],["shot","first-frame-selected.png"],["close"]]

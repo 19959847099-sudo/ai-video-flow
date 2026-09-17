@@ -1,0 +1,10 @@
+{
+  "schema_version": "0.1",
+  "id": "e0e94123d25144939538f75f225cb109",
+  "description": "示例 Shot B 雨夜街边",
+  "character_id": "915567cdda674e0286aaab1db7a1cbde",
+  "look_id": "78f99b5f38d5409ea21b84b13c8c84f9",
+  "requirements": "同一便利店门口，中近景，雨中望向街对面",
+  "generation_description": "雨夜霓虹，角色穿雨衣，固定机位",
+  "is_example": true
+}

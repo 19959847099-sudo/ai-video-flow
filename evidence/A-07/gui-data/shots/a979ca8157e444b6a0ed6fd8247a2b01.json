@@ -1,0 +1,12 @@
+{
+  "schema_version": "0.2",
+  "id": "a979ca8157e444b6a0ed6fd8247a2b01",
+  "description": "A-02 示例镜头 雨夜门口",
+  "character_id": "915567cdda674e0286aaab1db7a1cbde",
+  "look_id": "78f99b5f38d5409ea21b84b13c8c84f9",
+  "scene_id": "8ebe68f860004bff9c383ef3ff643764",
+  "scene_state_id": "8c3bc5fb50ce4dbf83941cede21cddae",
+  "requirements": "同一便利店门口，中近景，雨中看向街对面",
+  "generation_description": "雨夜霓虹反射，角色穿深色雨衣，缓慢转头",
+  "is_example": true
+}

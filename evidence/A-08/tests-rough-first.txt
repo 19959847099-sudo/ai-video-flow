@@ -1,0 +1,31 @@
+test_changed_selection_never_reuses_old_subtitle (test_rough_cut.RoughCutTests.test_changed_selection_never_reuses_old_subtitle) ... ok
+test_dsh_tool_preserves_all_production_facts (test_rough_cut.RoughCutTests.test_dsh_tool_preserves_all_production_facts) ... ok
+test_duration_probe_trim_and_subtitle_provenance (test_rough_cut.RoughCutTests.test_duration_probe_trim_and_subtitle_provenance) ... ok
+test_explicit_order_persistence_and_duplicates (test_rough_cut.RoughCutTests.test_explicit_order_persistence_and_duplicates) ... ok
+test_gui_empty_timeline_and_saved_order (test_rough_cut.RoughCutTests.test_gui_empty_timeline_and_saved_order) ... ok
+test_manifest_tamper_and_unsaved_current_block (test_rough_cut.RoughCutTests.test_manifest_tamper_and_unsaved_current_block) ... ok
+test_mismatched_alignment_and_corrupt_media_block (test_rough_cut.RoughCutTests.test_mismatched_alignment_and_corrupt_media_block) ... ERROR
+test_missing_audio_requires_explicit_human_allowance (test_rough_cut.RoughCutTests.test_missing_audio_requires_explicit_human_allowance) ... ok
+test_missing_selected_video_blocks_without_candidate_fallback (test_rough_cut.RoughCutTests.test_missing_selected_video_blocks_without_candidate_fallback) ... ok
+test_preview_real_streams_and_portable_relocation (test_rough_cut.RoughCutTests.test_preview_real_streams_and_portable_relocation) ... ok
+test_real_otio_roundtrip_order_metadata_and_references (test_rough_cut.RoughCutTests.test_real_otio_roundtrip_order_metadata_and_references) ... ok
+
+======================================================================
+ERROR: test_mismatched_alignment_and_corrupt_media_block (test_rough_cut.RoughCutTests.test_mismatched_alignment_and_corrupt_media_block)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\codex\AIGC��\tests\test_rough_cut.py", line 40, in test_mismatched_alignment_and_corrupt_media_block
+    rid='758fb7ebbde74f18a222afdbe1cb3196';p=self.store.record_path('alignments',rid);v=json.loads(p.read_text());v['audio_result_id']='c23104d4d6064d71b22e15ab1251f7cb';write_json(p,v)
+                                                                                                   ~~~~~~~~~~~^^
+  File "F:\python\Lib\pathlib\_local.py", line 546, in read_text
+    return PathBase.read_text(self, encoding, errors, newline)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\python\Lib\pathlib\_abc.py", line 633, in read_text
+    return f.read()
+           ~~~~~~^^
+UnicodeDecodeError: 'gbk' codec can't decode byte 0xab in position 369: illegal multibyte sequence
+
+----------------------------------------------------------------------
+Ran 11 tests in 36.032s
+
+FAILED (errors=1)

@@ -1,0 +1,8 @@
+{
+  "a01_process_closed": 28876,
+  "a02_first_process_closed": 39484,
+  "a02_restart_probe_closed": 28688,
+  "normal_entrypoint_process": 45432,
+  "normal_entrypoint": "python -m app.gui",
+  "selected_visible_after_normal_start": "22-normal-launch-selected.png"
+}

@@ -1,0 +1,146 @@
+{
+  "schema_version": "0.1",
+  "id": "915567cdda674e0286aaab1db7a1cbde",
+  "name": "测试角色 林夏",
+  "description": "A-01 示例数据，仅用于流程验证 | A-06 历史快照变更测试",
+  "identity": "短黑发，椭圆脸；身份不随 Look 改变",
+  "is_example": true,
+  "references": [
+    {
+      "id": "77c54f4d451940908208b87c38b010cf",
+      "name": "01-identity.png",
+      "path": "assets/e5e2c5fff24485f5dcf326997ecae62943b7f8729abddd4db29bf3a6696dd016.png",
+      "sha256": "e5e2c5fff24485f5dcf326997ecae62943b7f8729abddd4db29bf3a6696dd016",
+      "source_image_result_id": null
+    },
+    {
+      "id": "7c43b743542c4e9a90926e524180ad88",
+      "name": "02-daily.png",
+      "path": "assets/07320b564caa7f9cd106fdbd77fb3392c28e10646d955c9deacbab89d1d99780.png",
+      "sha256": "07320b564caa7f9cd106fdbd77fb3392c28e10646d955c9deacbab89d1d99780",
+      "source_image_result_id": null
+    },
+    {
+      "id": "a828af1711be46b0ac23221c840fee15",
+      "name": "03-rain.png",
+      "path": "assets/6bd092a5c3745c549c6a62773acbed1cfdb7ecd195eda5fbfc11a8c31ef9e01e.png",
+      "sha256": "6bd092a5c3745c549c6a62773acbed1cfdb7ecd195eda5fbfc11a8c31ef9e01e",
+      "source_image_result_id": null
+    },
+    {
+      "id": "8f9e64dc9c5a4b33bda5ad165959d2f7",
+      "name": "FIXTURE CHARACTER_REFERENCE 20fc42cd",
+      "path": "assets/1e977e0b56bcd37feca6a1fec0cf2a7885747b9658829d4539cf3fc651652469.png",
+      "sha256": "1e977e0b56bcd37feca6a1fec0cf2a7885747b9658829d4539cf3fc651652469",
+      "source_image_result_id": "20fc42cd38f14606ac84de5f55c56f49"
+    },
+    {
+      "id": "d8a4ad369ba542d48f11cee3ccd28d08",
+      "name": "UI测试参考图01.png",
+      "path": "assets/a08a1827d7dcfbe2b2abbe82c7ed80765fa44fdbe04063d85bc972c88f017451.png",
+      "sha256": "a08a1827d7dcfbe2b2abbe82c7ed80765fa44fdbe04063d85bc972c88f017451",
+      "source_image_result_id": null
+    },
+    {
+      "id": "1cddb412512c4503aaedf8b7a435b4be",
+      "name": "UI测试参考图02.png",
+      "path": "assets/319c2c9301c7387b29dc5a564042b04a8debfe553a926e647cd9350b44c5237a.png",
+      "sha256": "319c2c9301c7387b29dc5a564042b04a8debfe553a926e647cd9350b44c5237a",
+      "source_image_result_id": null
+    },
+    {
+      "id": "c5dcb8a3bef04759aafb0ae3d9ac8fd4",
+      "name": "UI测试参考图03.png",
+      "path": "assets/ea045cbcf57fb52f7e74d7548780adc11374ac4ac57a69367d934c3481654e5e.png",
+      "sha256": "ea045cbcf57fb52f7e74d7548780adc11374ac4ac57a69367d934c3481654e5e",
+      "source_image_result_id": null
+    },
+    {
+      "id": "a0ac31cf88af41559ba6adba8ab30ce8",
+      "name": "UI测试参考图04.png",
+      "path": "assets/1c5cb67ac5d591830ed37ac485d5473bc9c7db30be98ed29091878092793462e.png",
+      "sha256": "1c5cb67ac5d591830ed37ac485d5473bc9c7db30be98ed29091878092793462e",
+      "source_image_result_id": null
+    },
+    {
+      "id": "d7f3b2939bfb4d869911b3e9d8b210e6",
+      "name": "UI测试参考图05.png",
+      "path": "assets/681e975a17bc9dd9d89f934ba9459d4a5cbb6504f67e7774f8134927f27a680f.png",
+      "sha256": "681e975a17bc9dd9d89f934ba9459d4a5cbb6504f67e7774f8134927f27a680f",
+      "source_image_result_id": null
+    },
+    {
+      "id": "e1dae6f87cae44aab9edefb49aa5b9b1",
+      "name": "UI测试参考图06.png",
+      "path": "assets/e20c21ff517ff2ce96591b5eeecc36b15320177b9cbf43645964676eaabc13f8.png",
+      "sha256": "e20c21ff517ff2ce96591b5eeecc36b15320177b9cbf43645964676eaabc13f8",
+      "source_image_result_id": null
+    },
+    {
+      "id": "451a44d618fe4a9abdec66e0418aef4b",
+      "name": "UI测试参考图07.png",
+      "path": "assets/ee099a513ce0f6ce4d02b140a808227650eba8555a38b4ac7c1ff03e3799b629.png",
+      "sha256": "ee099a513ce0f6ce4d02b140a808227650eba8555a38b4ac7c1ff03e3799b629",
+      "source_image_result_id": null
+    },
+    {
+      "id": "e8fd90cd0e054b6fa0fa333a9787c554",
+      "name": "UI测试参考图08.png",
+      "path": "assets/55ac6006acbda535870faa55fd6ef8e1ea15746062dda8f6c3f6c2086f12c659.png",
+      "sha256": "55ac6006acbda535870faa55fd6ef8e1ea15746062dda8f6c3f6c2086f12c659",
+      "source_image_result_id": null
+    },
+    {
+      "id": "03a91e7b54ac49d18bf452575207fbf2",
+      "name": "UI测试参考图09.png",
+      "path": "assets/c0130ca8833309c4a9ed1b961230719fe42a8f6283ae491a515ce67ccdff1d1c.png",
+      "sha256": "c0130ca8833309c4a9ed1b961230719fe42a8f6283ae491a515ce67ccdff1d1c",
+      "source_image_result_id": null
+    },
+    {
+      "id": "70ef3097bad34f0c9f982c55a3d96eec",
+      "name": "UI测试参考图10.png",
+      "path": "assets/fba22840dc3daa6a5bd3a5cb0f000a93e0f944f79168fdd1994e43f24129b4a2.png",
+      "sha256": "fba22840dc3daa6a5bd3a5cb0f000a93e0f944f79168fdd1994e43f24129b4a2",
+      "source_image_result_id": null
+    },
+    {
+      "id": "3e19c6fdd0c64c7397972ea51be09960",
+      "name": "UI测试参考图11.png",
+      "path": "assets/a5ebc1c638ee4f6c69a14ed7ea935e7736559963115cc24dd0846801f3f888e9.png",
+      "sha256": "a5ebc1c638ee4f6c69a14ed7ea935e7736559963115cc24dd0846801f3f888e9",
+      "source_image_result_id": null
+    },
+    {
+      "id": "d856ba89f62c4d64b5cb33de1866c197",
+      "name": "UI测试参考图12.png",
+      "path": "assets/14ea8acd7faa1d983e9a78b1e00518638a2b52682dc98181629b94c983dee4f7.png",
+      "sha256": "14ea8acd7faa1d983e9a78b1e00518638a2b52682dc98181629b94c983dee4f7",
+      "source_image_result_id": null
+    }
+  ],
+  "identity_reference_ids": [
+    "77c54f4d451940908208b87c38b010cf"
+  ],
+  "looks": [
+    {
+      "id": "022b217ff1714ee99bf8f25ff09b41a0",
+      "name": "日常装（示例）",
+      "description": "白天，干燥，平静",
+      "appearance": "浅色衬衣",
+      "reference_ids": [
+        "7c43b743542c4e9a90926e524180ad88"
+      ]
+    },
+    {
+      "id": "78f99b5f38d5409ea21b84b13c8c84f9",
+      "name": "雨夜（示例）",
+      "description": "夜晚，雨水打湿头发",
+      "appearance": "深色雨衣",
+      "reference_ids": [
+        "a828af1711be46b0ac23221c840fee15",
+        "8f9e64dc9c5a4b33bda5ad165959d2f7"
+      ]
+    }
+  ]
+}

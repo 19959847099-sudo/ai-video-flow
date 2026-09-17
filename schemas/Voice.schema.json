@@ -1,0 +1,98 @@
+{
+  "$defs": {
+    "AudioReference": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "path": {
+          "title": "Path",
+          "type": "string"
+        },
+        "sha256": {
+          "title": "Sha256",
+          "type": "string"
+        },
+        "duration": {
+          "exclusiveMinimum": 0,
+          "title": "Duration",
+          "type": "number"
+        },
+        "is_example": {
+          "default": true,
+          "title": "Is Example",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "name",
+        "path",
+        "sha256",
+        "duration"
+      ],
+      "title": "AudioReference",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "title": "Id",
+      "type": "string"
+    },
+    "name": {
+      "minLength": 1,
+      "title": "Name",
+      "type": "string"
+    },
+    "character_id": {
+      "title": "Character Id",
+      "type": "string"
+    },
+    "description": {
+      "minLength": 1,
+      "title": "Description",
+      "type": "string"
+    },
+    "language": {
+      "default": "zh",
+      "title": "Language",
+      "type": "string"
+    },
+    "default_delivery": {
+      "default": "calm",
+      "title": "Default Delivery",
+      "type": "string"
+    },
+    "notes": {
+      "default": "",
+      "title": "Notes",
+      "type": "string"
+    },
+    "references": {
+      "items": {
+        "$ref": "#/$defs/AudioReference"
+      },
+      "title": "References",
+      "type": "array"
+    },
+    "is_example": {
+      "default": true,
+      "title": "Is Example",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "name",
+    "character_id",
+    "description"
+  ],
+  "title": "Voice",
+  "type": "object"
+}

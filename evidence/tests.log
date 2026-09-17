@@ -1,0 +1,12 @@
+test_dedup (test_core.MainChainTests.test_dedup) ... ok
+test_invalid_relations_and_input (test_core.MainChainTests.test_invalid_relations_and_input) ... ok
+test_missing_or_changed_media_blocks_task (test_core.MainChainTests.test_missing_or_changed_media_blocks_task) ... ok
+test_no_reference_blocks_task (test_core.MainChainTests.test_no_reference_blocks_task) ... ok
+test_restart_and_relocation_without_originals (test_core.MainChainTests.test_restart_and_relocation_without_originals) ... ok
+test_reuse_and_look_reference_isolation (test_core.MainChainTests.test_reuse_and_look_reference_isolation) ... ok
+test_task_snapshot_survives_character_edits_and_ref_removal (test_core.MainChainTests.test_task_snapshot_survives_character_edits_and_ref_removal) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.857s
+
+OK

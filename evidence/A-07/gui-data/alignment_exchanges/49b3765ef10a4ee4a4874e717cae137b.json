@@ -1,0 +1,173 @@
+{
+  "request": {
+    "operation": "transcribe_then_align",
+    "audio_path": "audio_results/49b3765ef10a4ee4a4874e717cae137b/fixture.wav",
+    "audio_sha256": "c0658cd8de3077854e80b896f2410f03a72c9a922c900e30d8a3f5117a70463c",
+    "language": "zh",
+    "execution": "external-worker-contract",
+    "model_configuration": "remote-worker-owned; not installed locally",
+    "output_contract": "WhisperX AlignedTranscriptionResult: segments, word_segments"
+  },
+  "response": {
+    "segments": [
+      {
+        "start": 0.1,
+        "end": 1.7,
+        "text": "这是音频测试。",
+        "words": [
+          {
+            "word": "这",
+            "start": 0.1,
+            "end": 0.3286
+          },
+          {
+            "word": "是",
+            "start": 0.3286,
+            "end": 0.5571
+          },
+          {
+            "word": "音",
+            "start": 0.5571,
+            "end": 0.7857
+          },
+          {
+            "word": "频",
+            "start": 0.7857,
+            "end": 1.0143
+          },
+          {
+            "word": "测",
+            "start": 1.0143,
+            "end": 1.2429
+          },
+          {
+            "word": "试",
+            "start": 1.2429,
+            "end": 1.4714
+          },
+          {
+            "word": "。",
+            "start": 1.4714,
+            "end": 1.7
+          }
+        ]
+      },
+      {
+        "start": 2.1,
+        "end": 3.7,
+        "text": "等待人工确认。",
+        "words": [
+          {
+            "word": "等",
+            "start": 2.1,
+            "end": 2.3286
+          },
+          {
+            "word": "待",
+            "start": 2.3286,
+            "end": 2.5571
+          },
+          {
+            "word": "人",
+            "start": 2.5571,
+            "end": 2.7857
+          },
+          {
+            "word": "工",
+            "start": 2.7857,
+            "end": 3.0143
+          },
+          {
+            "word": "确",
+            "start": 3.0143,
+            "end": 3.2429
+          },
+          {
+            "word": "认",
+            "start": 3.2429,
+            "end": 3.4714
+          },
+          {
+            "word": "。",
+            "start": 3.4714,
+            "end": 3.7
+          }
+        ]
+      }
+    ],
+    "word_segments": [
+      {
+        "word": "这",
+        "start": 0.1,
+        "end": 0.3286
+      },
+      {
+        "word": "是",
+        "start": 0.3286,
+        "end": 0.5571
+      },
+      {
+        "word": "音",
+        "start": 0.5571,
+        "end": 0.7857
+      },
+      {
+        "word": "频",
+        "start": 0.7857,
+        "end": 1.0143
+      },
+      {
+        "word": "测",
+        "start": 1.0143,
+        "end": 1.2429
+      },
+      {
+        "word": "试",
+        "start": 1.2429,
+        "end": 1.4714
+      },
+      {
+        "word": "。",
+        "start": 1.4714,
+        "end": 1.7
+      },
+      {
+        "word": "等",
+        "start": 2.1,
+        "end": 2.3286
+      },
+      {
+        "word": "待",
+        "start": 2.3286,
+        "end": 2.5571
+      },
+      {
+        "word": "人",
+        "start": 2.5571,
+        "end": 2.7857
+      },
+      {
+        "word": "工",
+        "start": 2.7857,
+        "end": 3.0143
+      },
+      {
+        "word": "确",
+        "start": 3.0143,
+        "end": 3.2429
+      },
+      {
+        "word": "认",
+        "start": 3.2429,
+        "end": 3.4714
+      },
+      {
+        "word": "。",
+        "start": 3.4714,
+        "end": 3.7
+      }
+    ]
+  },
+  "fixture": true,
+  "model_executed": false
+}

@@ -1,0 +1,11 @@
+{
+  "version": "0.18.1",
+  "video_clips": 2,
+  "audio_clips": 1,
+  "duration": 6.0,
+  "shot_order": [
+    "cda53866e184457587a2b671ff062482",
+    "d8094901e03441f1bb9ad8696bb427c0"
+  ],
+  "round_trip": true
+}

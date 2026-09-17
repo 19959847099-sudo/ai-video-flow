@@ -1,0 +1,451 @@
+{
+  "$defs": {
+    "AudioReference": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "path": {
+          "title": "Path",
+          "type": "string"
+        },
+        "sha256": {
+          "title": "Sha256",
+          "type": "string"
+        },
+        "duration": {
+          "exclusiveMinimum": 0,
+          "title": "Duration",
+          "type": "number"
+        },
+        "is_example": {
+          "default": true,
+          "title": "Is Example",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "name",
+        "path",
+        "sha256",
+        "duration"
+      ],
+      "title": "AudioReference",
+      "type": "object"
+    },
+    "Character": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "0.1",
+          "default": "0.1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "description": {
+          "default": "",
+          "title": "Description",
+          "type": "string"
+        },
+        "identity": {
+          "minLength": 1,
+          "title": "Identity",
+          "type": "string"
+        },
+        "is_example": {
+          "default": false,
+          "title": "Is Example",
+          "type": "boolean"
+        },
+        "references": {
+          "items": {
+            "$ref": "#/$defs/Reference"
+          },
+          "title": "References",
+          "type": "array"
+        },
+        "identity_reference_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Identity Reference Ids",
+          "type": "array"
+        },
+        "looks": {
+          "items": {
+            "$ref": "#/$defs/Look"
+          },
+          "title": "Looks",
+          "type": "array"
+        }
+      },
+      "required": [
+        "name",
+        "identity"
+      ],
+      "title": "Character",
+      "type": "object"
+    },
+    "Dialogue": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "character_id": {
+          "title": "Character Id",
+          "type": "string"
+        },
+        "shot_id": {
+          "title": "Shot Id",
+          "type": "string"
+        },
+        "order": {
+          "default": 1,
+          "minimum": 1,
+          "title": "Order",
+          "type": "integer"
+        },
+        "text": {
+          "maxLength": 3000,
+          "minLength": 1,
+          "title": "Text",
+          "type": "string"
+        },
+        "delivery": {
+          "default": "calm",
+          "title": "Delivery",
+          "type": "string"
+        },
+        "is_example": {
+          "default": true,
+          "title": "Is Example",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "character_id",
+        "shot_id",
+        "text"
+      ],
+      "title": "Dialogue",
+      "type": "object"
+    },
+    "Look": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "description": {
+          "default": "",
+          "title": "Description",
+          "type": "string"
+        },
+        "appearance": {
+          "default": "",
+          "title": "Appearance",
+          "type": "string"
+        },
+        "reference_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Reference Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "title": "Look",
+      "type": "object"
+    },
+    "Reference": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "path": {
+          "title": "Path",
+          "type": "string"
+        },
+        "sha256": {
+          "title": "Sha256",
+          "type": "string"
+        },
+        "source_image_result_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Image Result Id"
+        }
+      },
+      "required": [
+        "name",
+        "path",
+        "sha256"
+      ],
+      "title": "Reference",
+      "type": "object"
+    },
+    "Shot": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "default": "0.1",
+          "enum": [
+            "0.1",
+            "0.2"
+          ],
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "description": {
+          "minLength": 1,
+          "title": "Description",
+          "type": "string"
+        },
+        "character_id": {
+          "title": "Character Id",
+          "type": "string"
+        },
+        "look_id": {
+          "title": "Look Id",
+          "type": "string"
+        },
+        "scene_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Scene Id"
+        },
+        "scene_state_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Scene State Id"
+        },
+        "requirements": {
+          "minLength": 1,
+          "title": "Requirements",
+          "type": "string"
+        },
+        "generation_description": {
+          "minLength": 1,
+          "title": "Generation Description",
+          "type": "string"
+        },
+        "is_example": {
+          "default": false,
+          "title": "Is Example",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "description",
+        "character_id",
+        "look_id",
+        "requirements",
+        "generation_description"
+      ],
+      "title": "Shot",
+      "type": "object"
+    },
+    "Voice": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "character_id": {
+          "title": "Character Id",
+          "type": "string"
+        },
+        "description": {
+          "minLength": 1,
+          "title": "Description",
+          "type": "string"
+        },
+        "language": {
+          "default": "zh",
+          "title": "Language",
+          "type": "string"
+        },
+        "default_delivery": {
+          "default": "calm",
+          "title": "Default Delivery",
+          "type": "string"
+        },
+        "notes": {
+          "default": "",
+          "title": "Notes",
+          "type": "string"
+        },
+        "references": {
+          "items": {
+            "$ref": "#/$defs/AudioReference"
+          },
+          "title": "References",
+          "type": "array"
+        },
+        "is_example": {
+          "default": true,
+          "title": "Is Example",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "name",
+        "character_id",
+        "description"
+      ],
+      "title": "Voice",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "title": "Id",
+      "type": "string"
+    },
+    "created_at": {
+      "title": "Created At",
+      "type": "string"
+    },
+    "kind": {
+      "const": "audio",
+      "default": "audio",
+      "title": "Kind",
+      "type": "string"
+    },
+    "audio_role": {
+      "const": "dialogue",
+      "default": "dialogue",
+      "title": "Audio Role",
+      "type": "string"
+    },
+    "dialogue": {
+      "$ref": "#/$defs/Dialogue"
+    },
+    "character": {
+      "$ref": "#/$defs/Character"
+    },
+    "shot": {
+      "$ref": "#/$defs/Shot"
+    },
+    "voice": {
+      "$ref": "#/$defs/Voice"
+    },
+    "text": {
+      "maxLength": 3000,
+      "minLength": 1,
+      "title": "Text",
+      "type": "string"
+    },
+    "delivery": {
+      "minLength": 1,
+      "title": "Delivery",
+      "type": "string"
+    },
+    "sample_rate": {
+      "const": 32000,
+      "default": 32000,
+      "title": "Sample Rate",
+      "type": "integer"
+    },
+    "format": {
+      "const": "wav",
+      "default": "wav",
+      "title": "Format",
+      "type": "string"
+    },
+    "speed": {
+      "default": 1,
+      "maximum": 2,
+      "minimum": 0.5,
+      "title": "Speed",
+      "type": "number"
+    },
+    "retry_of": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Retry Of"
+    }
+  },
+  "required": [
+    "dialogue",
+    "character",
+    "shot",
+    "voice",
+    "text",
+    "delivery"
+  ],
+  "title": "AudioTask",
+  "type": "object"
+}

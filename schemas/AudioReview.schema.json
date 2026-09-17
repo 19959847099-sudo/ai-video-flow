@@ -1,0 +1,33 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "dialogue_id": {
+      "title": "Dialogue Id",
+      "type": "string"
+    },
+    "selected_result_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Selected Result Id"
+    },
+    "rejected": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "title": "Rejected",
+      "type": "object"
+    }
+  },
+  "required": [
+    "dialogue_id"
+  ],
+  "title": "AudioReview",
+  "type": "object"
+}

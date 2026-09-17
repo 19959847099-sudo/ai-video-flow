@@ -1,0 +1,24 @@
+{
+  "path": "rough-cut.mp4",
+  "sha256": "122ffcd836b6ea13bef10ab391ea46fac83ac4c0549540a3ec08cf8456e224d7",
+  "video": {
+    "codec_name": "h264",
+    "width": 640,
+    "height": 360,
+    "avg_frame_rate": "24/1",
+    "r_frame_rate": "24/1",
+    "time_base": "1/12288",
+    "duration": 6.0,
+    "rate": "24"
+  },
+  "audio": {
+    "codec_name": "aac",
+    "avg_frame_rate": "0/0",
+    "r_frame_rate": "0/0",
+    "time_base": "1/48000",
+    "sample_rate": "48000",
+    "channels": 1,
+    "duration": 6.008
+  },
+  "label": "ROUGH CUT / FIXTURE SOURCE MEDIA / NOT FINAL MASTER"
+}

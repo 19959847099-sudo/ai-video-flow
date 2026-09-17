@@ -1,0 +1,11 @@
+{
+  "id": "5e0b895931a2442ba6ac600b9fd13485",
+  "task_id": "9733b06f652e4b569f7371fa3ce5a2b6",
+  "execution_id": "5e0b895931a2442ba6ac600b9fd13485",
+  "purpose": "SHOT_FIRST_FRAME",
+  "path": "image_results/5e0b895931a2442ba6ac600b9fd13485/image.png",
+  "sha256": "a281fba6dab88bc0a0105c97357004ee2b8585efc9c904c7ee216ab1a3d1b685",
+  "width": 768,
+  "height": 512,
+  "simulation_only": true
+}

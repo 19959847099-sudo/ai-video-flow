@@ -1,0 +1,115 @@
+{
+  "id": "bd137cb249c14b4eb4fe7941b17b14d2",
+  "created_at": "2026-09-16T04:24:40.055981+00:00",
+  "kind": "audio",
+  "audio_role": "dialogue",
+  "dialogue": {
+    "id": "5c235da8a53240a789836abacaa80d11",
+    "character_id": "915567cdda674e0286aaab1db7a1cbde",
+    "shot_id": "d8094901e03441f1bb9ad8696bb427c0",
+    "order": 1,
+    "text": "等一下，门口的灯还亮着。",
+    "delivery": "calm",
+    "is_example": true
+  },
+  "character": {
+    "schema_version": "0.1",
+    "id": "915567cdda674e0286aaab1db7a1cbde",
+    "name": "测试角色 林夏",
+    "description": "A-01 示例数据，仅用于流程验证 | A-06 历史快照变更测试",
+    "identity": "短黑发，椭圆脸；身份不随 Look 改变",
+    "is_example": true,
+    "references": [
+      {
+        "id": "77c54f4d451940908208b87c38b010cf",
+        "name": "01-identity.png",
+        "path": "assets/e5e2c5fff24485f5dcf326997ecae62943b7f8729abddd4db29bf3a6696dd016.png",
+        "sha256": "e5e2c5fff24485f5dcf326997ecae62943b7f8729abddd4db29bf3a6696dd016",
+        "source_image_result_id": null
+      },
+      {
+        "id": "7c43b743542c4e9a90926e524180ad88",
+        "name": "02-daily.png",
+        "path": "assets/07320b564caa7f9cd106fdbd77fb3392c28e10646d955c9deacbab89d1d99780.png",
+        "sha256": "07320b564caa7f9cd106fdbd77fb3392c28e10646d955c9deacbab89d1d99780",
+        "source_image_result_id": null
+      },
+      {
+        "id": "a828af1711be46b0ac23221c840fee15",
+        "name": "03-rain.png",
+        "path": "assets/6bd092a5c3745c549c6a62773acbed1cfdb7ecd195eda5fbfc11a8c31ef9e01e.png",
+        "sha256": "6bd092a5c3745c549c6a62773acbed1cfdb7ecd195eda5fbfc11a8c31ef9e01e",
+        "source_image_result_id": null
+      },
+      {
+        "id": "8f9e64dc9c5a4b33bda5ad165959d2f7",
+        "name": "FIXTURE CHARACTER_REFERENCE 20fc42cd",
+        "path": "assets/1e977e0b56bcd37feca6a1fec0cf2a7885747b9658829d4539cf3fc651652469.png",
+        "sha256": "1e977e0b56bcd37feca6a1fec0cf2a7885747b9658829d4539cf3fc651652469",
+        "source_image_result_id": "20fc42cd38f14606ac84de5f55c56f49"
+      }
+    ],
+    "identity_reference_ids": [
+      "77c54f4d451940908208b87c38b010cf"
+    ],
+    "looks": [
+      {
+        "id": "022b217ff1714ee99bf8f25ff09b41a0",
+        "name": "日常装（示例）",
+        "description": "白天，干燥，平静",
+        "appearance": "浅色衬衣",
+        "reference_ids": [
+          "7c43b743542c4e9a90926e524180ad88"
+        ]
+      },
+      {
+        "id": "78f99b5f38d5409ea21b84b13c8c84f9",
+        "name": "雨夜（示例）",
+        "description": "夜晚，雨水打湿头发",
+        "appearance": "深色雨衣",
+        "reference_ids": [
+          "a828af1711be46b0ac23221c840fee15",
+          "8f9e64dc9c5a4b33bda5ad165959d2f7"
+        ]
+      }
+    ]
+  },
+  "shot": {
+    "schema_version": "0.2",
+    "id": "d8094901e03441f1bb9ad8696bb427c0",
+    "description": "A-03 示例镜头 fal 白天门口",
+    "character_id": "915567cdda674e0286aaab1db7a1cbde",
+    "look_id": "022b217ff1714ee99bf8f25ff09b41a0",
+    "scene_id": "8ebe68f860004bff9c383ef3ff643764",
+    "scene_state_id": "b3ac1413b0bf4c9bafe035b7b32ad08e",
+    "requirements": "固定中景，角色在便利店门口转身",
+    "generation_description": "自然日光，角色转身后停顿",
+    "is_example": true
+  },
+  "voice": {
+    "id": "567804636c7440eab7210e6d882730e3",
+    "name": "A-07 示例林夏声音",
+    "character_id": "915567cdda674e0286aaab1db7a1cbde",
+    "description": "测试声音身份：年轻女性感、温暖清晰；仅工程示例，不代表实际配音音色。",
+    "language": "zh",
+    "default_delivery": "calm",
+    "notes": "A-07 FIXTURE；禁止真实 TTS 与克隆。",
+    "references": [
+      {
+        "id": "928a123ef3e74b78a008b1ad25279941",
+        "name": "FIXTURE-tone.wav",
+        "path": "audio_assets/732ef1fad28679f9b2c4909b51718974f618a2a0c49c1d790b36d323c15d5134.wav",
+        "sha256": "732ef1fad28679f9b2c4909b51718974f618a2a0c49c1d790b36d323c15d5134",
+        "duration": 4.0,
+        "is_example": true
+      }
+    ],
+    "is_example": true
+  },
+  "text": "等一下，门口的灯还亮着。",
+  "delivery": "calm",
+  "sample_rate": 32000,
+  "format": "wav",
+  "speed": 1.0,
+  "retry_of": null
+}

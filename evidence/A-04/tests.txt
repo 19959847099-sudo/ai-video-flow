@@ -1,0 +1,32 @@
+test_dedup (test_core.MainChainTests.test_dedup) ... ok
+test_invalid_relations_and_input (test_core.MainChainTests.test_invalid_relations_and_input) ... ok
+test_missing_or_changed_media_blocks_task (test_core.MainChainTests.test_missing_or_changed_media_blocks_task) ... ok
+test_no_reference_blocks_task (test_core.MainChainTests.test_no_reference_blocks_task) ... ok
+test_restart_and_relocation_without_originals (test_core.MainChainTests.test_restart_and_relocation_without_originals) ... ok
+test_reuse_and_look_reference_isolation (test_core.MainChainTests.test_reuse_and_look_reference_isolation) ... ok
+test_task_snapshot_survives_character_edits_and_ref_removal (test_core.MainChainTests.test_task_snapshot_survives_character_edits_and_ref_removal) ... ok
+test_failure_fixtures_never_create_results_or_select (test_fal.FalTests.test_failure_fixtures_never_create_results_or_select) ... ok
+test_limits_and_changed_reference_are_explicit_errors (test_fal.FalTests.test_limits_and_changed_reference_are_explicit_errors) ... ok
+test_malformed_status_result_and_cross_request_rejected (test_fal.FalTests.test_malformed_status_result_and_cross_request_rejected) ... ok
+test_request_preserves_all_inputs_and_reference_bytes (test_fal.FalTests.test_request_preserves_all_inputs_and_reference_bytes) ... ok
+test_submitted_request_change_stops_execution (test_fal.FalTests.test_submitted_request_change_stops_execution) ... ok
+test_zero_network_full_chain_restart_retry_and_relocation (test_fal.FalTests.test_zero_network_full_chain_restart_retry_and_relocation) ... ok
+test_context_snapshot_result_media_and_human_gate (test_harness.HarnessToolsTests.test_context_snapshot_result_media_and_human_gate) ... ok
+test_missing_reference_and_wrong_execution_are_rejected (test_harness.HarnessToolsTests.test_missing_reference_and_wrong_execution_are_rejected) ... ok
+test_official_dsh_cli_tool_events_network_lock_and_independence (test_harness.HarnessToolsTests.test_official_dsh_cli_tool_events_network_lock_and_independence) ... ok
+test_provider_failure_stops_chain_without_selection (test_harness.HarnessToolsTests.test_provider_failure_stops_chain_without_selection) ... ok
+test_safety_allowlist_rejects_human_gate_live_mode_and_paths (test_harness.HarnessToolsTests.test_safety_allowlist_rejects_human_gate_live_mode_and_paths) ... ok
+test_stdio_rejects_unknown_request_and_returns_structured_error (test_harness.HarnessToolsTests.test_stdio_rejects_unknown_request_and_returns_structured_error) ... ok
+test_historical_snapshots_survive_source_edit (test_production.ProductionTests.test_historical_snapshots_survive_source_edit) ... ok
+test_invalid_select_retry_and_duplicate_submit (test_production.ProductionTests.test_invalid_select_retry_and_duplicate_submit) ... ok
+test_legacy_records_load_without_migration (test_production.ProductionTests.test_legacy_records_load_without_migration) ... ok
+test_media_retry_selection_trace_and_relocation (test_production.ProductionTests.test_media_retry_selection_trace_and_relocation) ... ok
+test_pending_processing_restart_and_failure (test_production.ProductionTests.test_pending_processing_restart_and_failure) ... ok
+test_scene_invalid_relations_block_save (test_production.ProductionTests.test_scene_invalid_relations_block_save) ... ok
+test_scene_missing_image_and_invalid_snapshot (test_production.ProductionTests.test_scene_missing_image_and_invalid_snapshot) ... ok
+test_scene_references_and_neutral_prompt (test_production.ProductionTests.test_scene_references_and_neutral_prompt) ... ok
+
+----------------------------------------------------------------------
+Ran 27 tests in 26.943s
+
+OK

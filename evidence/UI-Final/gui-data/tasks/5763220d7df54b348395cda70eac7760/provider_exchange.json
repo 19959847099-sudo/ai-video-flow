@@ -1,0 +1,70 @@
+{
+  "transport": "fixture",
+  "api_called": false,
+  "step": 5,
+  "scenario": "success",
+  "events": [
+    {
+      "method": "POST",
+      "url": "https://queue.fal.run/fal-ai/kling-video/o3/standard/reference-to-video",
+      "http_status": 200,
+      "body": {
+        "request_id": "a526a160decd4691a7da62a05aab5ebd",
+        "status_url": "https://queue.fal.run/fal-ai/kling-video/o3/standard/reference-to-video/requests/a526a160decd4691a7da62a05aab5ebd/status",
+        "response_url": "https://queue.fal.run/fal-ai/kling-video/o3/standard/reference-to-video/requests/a526a160decd4691a7da62a05aab5ebd/response",
+        "cancel_url": "https://queue.fal.run/fal-ai/kling-video/o3/standard/reference-to-video/requests/a526a160decd4691a7da62a05aab5ebd/cancel",
+        "queue_position": 0
+      }
+    },
+    {
+      "method": "GET",
+      "url": "https://queue.fal.run/fal-ai/kling-video/o3/standard/reference-to-video/requests/a526a160decd4691a7da62a05aab5ebd/status",
+      "http_status": 200,
+      "body": {
+        "request_id": "a526a160decd4691a7da62a05aab5ebd",
+        "status": "IN_QUEUE",
+        "queue_position": 0
+      }
+    },
+    {
+      "method": "GET",
+      "url": "https://queue.fal.run/fal-ai/kling-video/o3/standard/reference-to-video/requests/a526a160decd4691a7da62a05aab5ebd/status",
+      "http_status": 200,
+      "body": {
+        "request_id": "a526a160decd4691a7da62a05aab5ebd",
+        "status": "IN_PROGRESS",
+        "logs": []
+      }
+    },
+    {
+      "method": "GET",
+      "url": "https://queue.fal.run/fal-ai/kling-video/o3/standard/reference-to-video/requests/a526a160decd4691a7da62a05aab5ebd/status",
+      "http_status": 200,
+      "body": {
+        "request_id": "a526a160decd4691a7da62a05aab5ebd",
+        "status": "COMPLETED",
+        "logs": [],
+        "metrics": {
+          "inference_time": 0.01
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "url": "https://queue.fal.run/fal-ai/kling-video/o3/standard/reference-to-video/requests/a526a160decd4691a7da62a05aab5ebd/response",
+      "http_status": 200,
+      "body": {
+        "video": {
+          "url": "https://fixture.invalid/a526a160decd4691a7da62a05aab5ebd.mp4",
+          "content_type": "video/mp4",
+          "file_name": "fixture.mp4"
+        }
+      }
+    }
+  ],
+  "request_sha256": "ff55e958fe0d797a462fde8b7d0184930f33ce6e2bb6ef84351c29ba73e1d92c",
+  "request_id": "a526a160decd4691a7da62a05aab5ebd",
+  "status_url": "https://queue.fal.run/fal-ai/kling-video/o3/standard/reference-to-video/requests/a526a160decd4691a7da62a05aab5ebd/status",
+  "response_url": "https://queue.fal.run/fal-ai/kling-video/o3/standard/reference-to-video/requests/a526a160decd4691a7da62a05aab5ebd/response",
+  "ready": true
+}

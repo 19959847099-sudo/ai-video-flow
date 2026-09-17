@@ -1,0 +1,9 @@
+{
+  "command": "python -m unittest discover -s tests -v",
+  "exit_code": 0,
+  "tests_run": 15,
+  "result": "OK",
+  "a01_regression_tests": 7,
+  "a02_new_tests": 8,
+  "note": "实际测试执行输出记录于本轮施工工具日志；本文件为结果摘要。"
+}

@@ -1,0 +1,79 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "default": "0.1",
+      "enum": [
+        "0.1",
+        "0.2"
+      ],
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "id": {
+      "title": "Id",
+      "type": "string"
+    },
+    "description": {
+      "minLength": 1,
+      "title": "Description",
+      "type": "string"
+    },
+    "character_id": {
+      "title": "Character Id",
+      "type": "string"
+    },
+    "look_id": {
+      "title": "Look Id",
+      "type": "string"
+    },
+    "scene_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Scene Id"
+    },
+    "scene_state_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Scene State Id"
+    },
+    "requirements": {
+      "minLength": 1,
+      "title": "Requirements",
+      "type": "string"
+    },
+    "generation_description": {
+      "minLength": 1,
+      "title": "Generation Description",
+      "type": "string"
+    },
+    "is_example": {
+      "default": false,
+      "title": "Is Example",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "description",
+    "character_id",
+    "look_id",
+    "requirements",
+    "generation_description"
+  ],
+  "title": "Shot",
+  "type": "object"
+}

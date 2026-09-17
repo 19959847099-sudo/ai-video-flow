@@ -1,0 +1,14 @@
+{
+  "id": "d1987bb9d30343c0a3b400b3185dbf1d",
+  "execution_id": "d1987bb9d30343c0a3b400b3185dbf1d",
+  "shot_id": "2a171b797dfb4a42a59667762c347a89",
+  "task_id": "a72fbbdab40843a0a7921c5b23f021b0",
+  "take_number": 2,
+  "provider": "fal",
+  "model": "fal-ai/kling-video/o3/standard/reference-to-video",
+  "simulation_only": true,
+  "path": "results/d1987bb9d30343c0a3b400b3185dbf1d/video.mp4",
+  "poster_path": "results/d1987bb9d30343c0a3b400b3185dbf1d/poster.png",
+  "sha256": "4d77d5b0822197b1ab8ae2d5002af726fa88633c1b48838e2bf3113de15c3822",
+  "duration": 3.0
+}

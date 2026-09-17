@@ -1,0 +1,112 @@
+{
+  "harness": "DeepSeek Harness",
+  "version": "0.1.5-rc.2",
+  "mode": "local-keyless",
+  "shot_id": "d8094901e03441f1bb9ad8696bb427c0",
+  "started_at": "2026-09-16T01:13:48.414Z",
+  "status": "completed",
+  "steps": [
+    {
+      "tool": "get_shot_context",
+      "input": {
+        "shot_id": "d8094901e03441f1bb9ad8696bb427c0"
+      },
+      "started_at": "2026-09-16T01:13:48.421Z",
+      "status": "completed",
+      "output": {
+        "shot_id": "d8094901e03441f1bb9ad8696bb427c0",
+        "character": "测试角色 林夏",
+        "look": "日常装（示例）",
+        "scene": "示例便利店门口",
+        "state": "白天（示例）",
+        "character_references": 2,
+        "scene_references": 2,
+        "results": 3,
+        "selected_take": "2cb8df46592b47f5a7284946e73ed280"
+      },
+      "finished_at": "2026-09-16T01:13:49.246Z"
+    },
+    {
+      "tool": "prepare_shot_first_frame",
+      "input": {
+        "shot_id": "d8094901e03441f1bb9ad8696bb427c0"
+      },
+      "started_at": "2026-09-16T01:13:49.248Z",
+      "status": "completed",
+      "output": {
+        "execution_id": "5e0b895931a2442ba6ac600b9fd13485",
+        "task_id": "9733b06f652e4b569f7371fa3ce5a2b6",
+        "shot_id": "d8094901e03441f1bb9ad8696bb427c0",
+        "result_id": "5e0b895931a2442ba6ac600b9fd13485",
+        "media_path": "image_results/5e0b895931a2442ba6ac600b9fd13485/image.png",
+        "status": "completed",
+        "history": [
+          "pending",
+          "processing",
+          "completed"
+        ],
+        "human_review_required": true,
+        "selected_first_frame_unchanged": true,
+        "image_api_calls": 0
+      },
+      "finished_at": "2026-09-16T01:13:50.477Z"
+    },
+    {
+      "tool": "get_shot_context",
+      "input": {
+        "shot_id": "d8094901e03441f1bb9ad8696bb427c0"
+      },
+      "started_at": "2026-09-16T01:13:50.479Z",
+      "status": "completed",
+      "output": {
+        "shot_id": "d8094901e03441f1bb9ad8696bb427c0",
+        "character": "测试角色 林夏",
+        "look": "日常装（示例）",
+        "scene": "示例便利店门口",
+        "state": "白天（示例）",
+        "character_references": 2,
+        "scene_references": 2,
+        "results": 3,
+        "selected_take": "2cb8df46592b47f5a7284946e73ed280"
+      },
+      "finished_at": "2026-09-16T01:13:51.343Z"
+    }
+  ],
+  "observed_tool_results": [
+    {
+      "tool": "get_shot_context",
+      "at": "2026-09-16T01:13:49.244Z",
+      "content_blocks": 1
+    },
+    {
+      "tool": "prepare_shot_first_frame",
+      "at": "2026-09-16T01:13:50.474Z",
+      "content_blocks": 1
+    },
+    {
+      "tool": "get_shot_context",
+      "at": "2026-09-16T01:13:51.341Z",
+      "content_blocks": 1
+    }
+  ],
+  "video_api_calls": 0,
+  "model_api_calls": 0,
+  "result": {
+    "execution_id": "5e0b895931a2442ba6ac600b9fd13485",
+    "task_id": "9733b06f652e4b569f7371fa3ce5a2b6",
+    "shot_id": "d8094901e03441f1bb9ad8696bb427c0",
+    "result_id": "5e0b895931a2442ba6ac600b9fd13485",
+    "media_path": "image_results/5e0b895931a2442ba6ac600b9fd13485/image.png",
+    "status": "completed",
+    "history": [
+      "pending",
+      "processing",
+      "completed"
+    ],
+    "human_review_required": true,
+    "selected_first_frame_unchanged": true,
+    "image_api_calls": 0,
+    "human_gate_unchanged": true
+  },
+  "finished_at": "2026-09-16T01:13:51.344Z"
+}

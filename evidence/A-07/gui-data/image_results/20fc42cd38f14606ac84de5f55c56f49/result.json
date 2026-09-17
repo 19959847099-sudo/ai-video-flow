@@ -1,0 +1,11 @@
+{
+  "id": "20fc42cd38f14606ac84de5f55c56f49",
+  "task_id": "dbfff949506441f8b525128de56d3fc4",
+  "execution_id": "20fc42cd38f14606ac84de5f55c56f49",
+  "purpose": "CHARACTER_REFERENCE",
+  "path": "image_results/20fc42cd38f14606ac84de5f55c56f49/image.png",
+  "sha256": "1e977e0b56bcd37feca6a1fec0cf2a7885747b9658829d4539cf3fc651652469",
+  "width": 768,
+  "height": 512,
+  "simulation_only": true
+}

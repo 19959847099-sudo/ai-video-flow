@@ -1,0 +1,1 @@
+[["click","button:播放结果"],["player","08-playing-real-mp4.png",1],["wait",3],["fill","review.reason","示例：希望动作停顿更明确"],["click","button:Reject 此 Take"],["fill","review.retry_prompt","白天自然光，固定机位，角色转头后停顿两秒"],["click","button:Retry 已 Reject 的 Take"],["shot","09-retry-submitted.png"],["wait",5],["click","button:Select 此 Take"],["shot","10-selected-take.png"]]

@@ -1,0 +1,46 @@
+{
+  "status": "PASS",
+  "protected_files": 276,
+  "timeline_id": "3bb952d7018548bcbd60b7e8ae9e5297",
+  "build_id": "8537794881984f73ac7b075b87b3db15",
+  "otio_version": "0.18.1",
+  "manifest": "evidence\\A-08\\gui-data\\rough_cut_builds\\8537794881984f73ac7b075b87b3db15\\manifest.json",
+  "handoff": "evidence\\A-08\\gui-data\\handoffs\\091f08129a72473e86fa204668b335b8",
+  "video": {
+    "codec_name": "h264",
+    "width": 640,
+    "height": 360,
+    "avg_frame_rate": "24/1",
+    "r_frame_rate": "24/1",
+    "time_base": "1/12288",
+    "duration": 6.0,
+    "rate": "24"
+  },
+  "audio": {
+    "codec_name": "aac",
+    "avg_frame_rate": "0/0",
+    "r_frame_rate": "0/0",
+    "time_base": "1/48000",
+    "sample_rate": "48000",
+    "channels": 1,
+    "duration": 6.008
+  },
+  "decoded_shot_order": [
+    {
+      "shot_id": "d8094901e03441f1bb9ad8696bb427c0",
+      "mean_pixel_error": 0.0419212962962963
+    },
+    {
+      "shot_id": "cda53866e184457587a2b671ff062482",
+      "mean_pixel_error": 0.04349537037037037
+    }
+  ],
+  "audio_policy_rms": {
+    "dialogue": 0.08479931709865794,
+    "silence": 0.0
+  },
+  "portable_relocation": true,
+  "human_gate_unchanged": true,
+  "real_api_calls": 0,
+  "generation_cost": 0
+}

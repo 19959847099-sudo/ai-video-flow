@@ -1,0 +1,11 @@
+{
+  "id": "83aa9b7e11164e5ea82a990cf15c02d3",
+  "name": "UI-Final 测试 · 缺失选片阻断",
+  "shot_ids": [
+    "0e04f54a7ade4863850d03d8c3e38121"
+  ],
+  "allow_missing_audio": false,
+  "allow_missing_subtitles": false,
+  "policy": "video-driven-trim; source-muted; dialogue-sequential; sidecar-srt",
+  "is_example": true
+}

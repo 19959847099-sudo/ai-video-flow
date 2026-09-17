@@ -1,0 +1,49 @@
+{
+  "harness": "DeepSeek Harness",
+  "version": "0.1.5-rc.2",
+  "mode": "local-keyless",
+  "shot_id": "d8094901e03441f1bb9ad8696bb427c0",
+  "started_at": "2026-09-16T12:50:39.019Z",
+  "status": "completed",
+  "steps": [
+    {
+      "tool": "prepare_rough_cut",
+      "input": {
+        "timeline_id": "3bb952d7018548bcbd60b7e8ae9e5297"
+      },
+      "started_at": "2026-09-16T12:50:39.027Z",
+      "status": "completed",
+      "output": {
+        "timeline_id": "3bb952d7018548bcbd60b7e8ae9e5297",
+        "build_id": "8537794881984f73ac7b075b87b3db15",
+        "manifest_path": "rough_cut_builds/8537794881984f73ac7b075b87b3db15/manifest.json",
+        "duration": 6,
+        "human_review_required": true,
+        "human_gate_unchanged": true,
+        "preview_label": "ROUGH CUT / FIXTURE SOURCE MEDIA / NOT FINAL MASTER",
+        "generation_api_calls": 0
+      },
+      "finished_at": "2026-09-16T12:50:44.175Z"
+    }
+  ],
+  "observed_tool_results": [
+    {
+      "tool": "prepare_rough_cut",
+      "at": "2026-09-16T12:50:44.173Z",
+      "content_blocks": 1
+    }
+  ],
+  "video_api_calls": 0,
+  "model_api_calls": 0,
+  "result": {
+    "timeline_id": "3bb952d7018548bcbd60b7e8ae9e5297",
+    "build_id": "8537794881984f73ac7b075b87b3db15",
+    "manifest_path": "rough_cut_builds/8537794881984f73ac7b075b87b3db15/manifest.json",
+    "duration": 6,
+    "human_review_required": true,
+    "human_gate_unchanged": true,
+    "preview_label": "ROUGH CUT / FIXTURE SOURCE MEDIA / NOT FINAL MASTER",
+    "generation_api_calls": 0
+  },
+  "finished_at": "2026-09-16T12:50:44.178Z"
+}

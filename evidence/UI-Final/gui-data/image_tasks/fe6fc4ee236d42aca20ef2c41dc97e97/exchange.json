@@ -1,0 +1,433 @@
+[
+  {
+    "method": "POST",
+    "path": "/upload/image",
+    "request": {
+      "content_type": "multipart/form-data",
+      "fields": {
+        "type": "input",
+        "subfolder": "aigc",
+        "overwrite": "false"
+      },
+      "files": {
+        "image": {
+          "filename": "fe6fc4ee236d42aca20ef2c41dc97e97.png",
+          "local_path": "image_tasks/fe6fc4ee236d42aca20ef2c41dc97e97/reference-board.png",
+          "sha256": "e9e9c28fedeabf23530e00134b0635d643de297c41d7b0318e401f29b3e06eaa"
+        }
+      }
+    },
+    "http_status": 200,
+    "response": {
+      "name": "fe6fc4ee236d42aca20ef2c41dc97e97.png",
+      "subfolder": "aigc",
+      "type": "input"
+    },
+    "api_called": false
+  },
+  {
+    "method": "POST",
+    "path": "/prompt",
+    "request": {
+      "prompt": {
+        "4": {
+          "class_type": "CheckpointLoaderSimple",
+          "inputs": {
+            "ckpt_name": "REMOTE_CHECKPOINT_REQUIRED.safetensors"
+          }
+        },
+        "6": {
+          "class_type": "CLIPTextEncode",
+          "inputs": {
+            "clip": [
+              "4",
+              1
+            ],
+            "text": "Purpose: SHOT_FIRST_FRAME\ncharacter: 测试角色 林夏 | 短黑发，椭圆脸；身份不随 Look 改变 | A-01 示例数据，仅用于流程验证 | A-06 历史快照变更测试\nlook: 日常装（示例） | 白天，干燥，平静 | 浅色衬衣\nscene: 示例便利店门口 | 玻璃双门，门右侧蓝色招牌，面向街道 | A-02 测试场景，非正式美术资产 | A-06 历史快照变更测试\nscene_state: 白天（示例） | 营业中的便利店门口 | 白天自然光，地面干燥\nshot: A-03 示例镜头 fal 白天门口 | 固定中景，角色在便利店门口转身\nGeneration description: 自然日光，角色转身后停顿"
+          }
+        },
+        "7": {
+          "class_type": "CLIPTextEncode",
+          "inputs": {
+            "clip": [
+              "4",
+              1
+            ],
+            "text": ""
+          }
+        },
+        "3": {
+          "class_type": "KSampler",
+          "inputs": {
+            "model": [
+              "4",
+              0
+            ],
+            "positive": [
+              "6",
+              0
+            ],
+            "negative": [
+              "7",
+              0
+            ],
+            "latent_image": [
+              "5",
+              0
+            ],
+            "seed": 1,
+            "steps": 20,
+            "cfg": 7.0,
+            "sampler_name": "euler",
+            "scheduler": "normal",
+            "denoise": 0.7
+          }
+        },
+        "8": {
+          "class_type": "VAEDecode",
+          "inputs": {
+            "samples": [
+              "3",
+              0
+            ],
+            "vae": [
+              "4",
+              2
+            ]
+          }
+        },
+        "9": {
+          "class_type": "SaveImage",
+          "inputs": {
+            "images": [
+              "8",
+              0
+            ],
+            "filename_prefix": "aigc/fe6fc4ee236d42aca20ef2c41dc97e97"
+          }
+        },
+        "10": {
+          "class_type": "LoadImage",
+          "inputs": {
+            "image": "aigc/fe6fc4ee236d42aca20ef2c41dc97e97.png"
+          }
+        },
+        "5": {
+          "class_type": "VAEEncode",
+          "inputs": {
+            "pixels": [
+              "10",
+              0
+            ],
+            "vae": [
+              "4",
+              2
+            ]
+          }
+        }
+      },
+      "client_id": "fe6fc4ee236d42aca20ef2c41dc97e97"
+    },
+    "http_status": 200,
+    "response": {
+      "prompt_id": "f5df3794-2e48-488e-ab60-312b47fa0396",
+      "number": 1,
+      "node_errors": {}
+    },
+    "api_called": false
+  },
+  {
+    "method": "GET",
+    "path": "/history/f5df3794-2e48-488e-ab60-312b47fa0396",
+    "request": null,
+    "http_status": 200,
+    "response": {},
+    "api_called": false
+  },
+  {
+    "method": "GET",
+    "path": "/queue",
+    "request": null,
+    "http_status": 200,
+    "response": {
+      "queue_pending": [
+        [
+          1,
+          "f5df3794-2e48-488e-ab60-312b47fa0396",
+          {
+            "4": {
+              "class_type": "CheckpointLoaderSimple",
+              "inputs": {
+                "ckpt_name": "REMOTE_CHECKPOINT_REQUIRED.safetensors"
+              }
+            },
+            "6": {
+              "class_type": "CLIPTextEncode",
+              "inputs": {
+                "clip": [
+                  "4",
+                  1
+                ],
+                "text": "Purpose: SHOT_FIRST_FRAME\ncharacter: 测试角色 林夏 | 短黑发，椭圆脸；身份不随 Look 改变 | A-01 示例数据，仅用于流程验证 | A-06 历史快照变更测试\nlook: 日常装（示例） | 白天，干燥，平静 | 浅色衬衣\nscene: 示例便利店门口 | 玻璃双门，门右侧蓝色招牌，面向街道 | A-02 测试场景，非正式美术资产 | A-06 历史快照变更测试\nscene_state: 白天（示例） | 营业中的便利店门口 | 白天自然光，地面干燥\nshot: A-03 示例镜头 fal 白天门口 | 固定中景，角色在便利店门口转身\nGeneration description: 自然日光，角色转身后停顿"
+              }
+            },
+            "7": {
+              "class_type": "CLIPTextEncode",
+              "inputs": {
+                "clip": [
+                  "4",
+                  1
+                ],
+                "text": ""
+              }
+            },
+            "3": {
+              "class_type": "KSampler",
+              "inputs": {
+                "model": [
+                  "4",
+                  0
+                ],
+                "positive": [
+                  "6",
+                  0
+                ],
+                "negative": [
+                  "7",
+                  0
+                ],
+                "latent_image": [
+                  "5",
+                  0
+                ],
+                "seed": 1,
+                "steps": 20,
+                "cfg": 7.0,
+                "sampler_name": "euler",
+                "scheduler": "normal",
+                "denoise": 0.7
+              }
+            },
+            "8": {
+              "class_type": "VAEDecode",
+              "inputs": {
+                "samples": [
+                  "3",
+                  0
+                ],
+                "vae": [
+                  "4",
+                  2
+                ]
+              }
+            },
+            "9": {
+              "class_type": "SaveImage",
+              "inputs": {
+                "images": [
+                  "8",
+                  0
+                ],
+                "filename_prefix": "aigc/fe6fc4ee236d42aca20ef2c41dc97e97"
+              }
+            },
+            "10": {
+              "class_type": "LoadImage",
+              "inputs": {
+                "image": "aigc/fe6fc4ee236d42aca20ef2c41dc97e97.png"
+              }
+            },
+            "5": {
+              "class_type": "VAEEncode",
+              "inputs": {
+                "pixels": [
+                  "10",
+                  0
+                ],
+                "vae": [
+                  "4",
+                  2
+                ]
+              }
+            }
+          },
+          {},
+          [
+            "9"
+          ]
+        ]
+      ],
+      "queue_running": []
+    },
+    "api_called": false
+  },
+  {
+    "method": "GET",
+    "path": "/history/f5df3794-2e48-488e-ab60-312b47fa0396",
+    "request": null,
+    "http_status": 200,
+    "response": {},
+    "api_called": false
+  },
+  {
+    "method": "GET",
+    "path": "/queue",
+    "request": null,
+    "http_status": 200,
+    "response": {
+      "queue_pending": [],
+      "queue_running": [
+        [
+          1,
+          "f5df3794-2e48-488e-ab60-312b47fa0396",
+          {
+            "4": {
+              "class_type": "CheckpointLoaderSimple",
+              "inputs": {
+                "ckpt_name": "REMOTE_CHECKPOINT_REQUIRED.safetensors"
+              }
+            },
+            "6": {
+              "class_type": "CLIPTextEncode",
+              "inputs": {
+                "clip": [
+                  "4",
+                  1
+                ],
+                "text": "Purpose: SHOT_FIRST_FRAME\ncharacter: 测试角色 林夏 | 短黑发，椭圆脸；身份不随 Look 改变 | A-01 示例数据，仅用于流程验证 | A-06 历史快照变更测试\nlook: 日常装（示例） | 白天，干燥，平静 | 浅色衬衣\nscene: 示例便利店门口 | 玻璃双门，门右侧蓝色招牌，面向街道 | A-02 测试场景，非正式美术资产 | A-06 历史快照变更测试\nscene_state: 白天（示例） | 营业中的便利店门口 | 白天自然光，地面干燥\nshot: A-03 示例镜头 fal 白天门口 | 固定中景，角色在便利店门口转身\nGeneration description: 自然日光，角色转身后停顿"
+              }
+            },
+            "7": {
+              "class_type": "CLIPTextEncode",
+              "inputs": {
+                "clip": [
+                  "4",
+                  1
+                ],
+                "text": ""
+              }
+            },
+            "3": {
+              "class_type": "KSampler",
+              "inputs": {
+                "model": [
+                  "4",
+                  0
+                ],
+                "positive": [
+                  "6",
+                  0
+                ],
+                "negative": [
+                  "7",
+                  0
+                ],
+                "latent_image": [
+                  "5",
+                  0
+                ],
+                "seed": 1,
+                "steps": 20,
+                "cfg": 7.0,
+                "sampler_name": "euler",
+                "scheduler": "normal",
+                "denoise": 0.7
+              }
+            },
+            "8": {
+              "class_type": "VAEDecode",
+              "inputs": {
+                "samples": [
+                  "3",
+                  0
+                ],
+                "vae": [
+                  "4",
+                  2
+                ]
+              }
+            },
+            "9": {
+              "class_type": "SaveImage",
+              "inputs": {
+                "images": [
+                  "8",
+                  0
+                ],
+                "filename_prefix": "aigc/fe6fc4ee236d42aca20ef2c41dc97e97"
+              }
+            },
+            "10": {
+              "class_type": "LoadImage",
+              "inputs": {
+                "image": "aigc/fe6fc4ee236d42aca20ef2c41dc97e97.png"
+              }
+            },
+            "5": {
+              "class_type": "VAEEncode",
+              "inputs": {
+                "pixels": [
+                  "10",
+                  0
+                ],
+                "vae": [
+                  "4",
+                  2
+                ]
+              }
+            }
+          },
+          {},
+          [
+            "9"
+          ]
+        ]
+      ]
+    },
+    "api_called": false
+  },
+  {
+    "method": "GET",
+    "path": "/history/f5df3794-2e48-488e-ab60-312b47fa0396",
+    "request": null,
+    "http_status": 200,
+    "response": {
+      "f5df3794-2e48-488e-ab60-312b47fa0396": {
+        "outputs": {
+          "9": {
+            "images": [
+              {
+                "filename": "f5df3794-2e48-488e-ab60-312b47fa0396.png",
+                "subfolder": "aigc",
+                "type": "output"
+              }
+            ]
+          }
+        },
+        "status": {
+          "status_str": "success",
+          "completed": true,
+          "messages": [
+            [
+              "execution_success",
+              {
+                "prompt_id": "f5df3794-2e48-488e-ab60-312b47fa0396"
+              }
+            ]
+          ]
+        }
+      }
+    },
+    "api_called": false
+  },
+  {
+    "method": "GET",
+    "path": "/view?filename=f5df3794-2e48-488e-ab60-312b47fa0396.png&subfolder=aigc&type=output",
+    "request": null,
+    "http_status": 200,
+    "response": {
+      "bytes": 24539
+    },
+    "api_called": false
+  }
+]

@@ -1,0 +1,28 @@
+{
+  "provider": "local-mock",
+  "simulation_only": true,
+  "api_called": false,
+  "task_id": "2ce4faa176094ff6b224e6f11c12c626",
+  "model": "mock-card-video-v0",
+  "input": {
+    "text": "identity: 短黑发，椭圆脸；身份不随 Look 改变\ncharacter_description: A-01 示例数据，仅用于流程验证\nlook: 夜晚，雨水打湿头发\nappearance: 深色雨衣\nshot: A-02 示例镜头 雨夜门口\nrequirements: 同一便利店门口，中近景，雨中看向街对面\ngeneration_description: 雨夜霓虹反射，角色穿深色雨衣，缓慢转头\nscene_name: 示例便利店门口\nscene_identity: 玻璃双门，门右侧蓝色招牌，面向街道\nscene_description: A-02 测试场景，非正式美术资产\nscene_state: 雨夜（示例）\nscene_state_description: 雨夜营业，路面反光\nscene_environment: 雨水，招牌霓虹反射",
+    "images": [
+      {
+        "asset_path": "assets/e5e2c5fff24485f5dcf326997ecae62943b7f8729abddd4db29bf3a6696dd016.png",
+        "sha256": "e5e2c5fff24485f5dcf326997ecae62943b7f8729abddd4db29bf3a6696dd016"
+      },
+      {
+        "asset_path": "assets/6bd092a5c3745c549c6a62773acbed1cfdb7ecd195eda5fbfc11a8c31ef9e01e.png",
+        "sha256": "6bd092a5c3745c549c6a62773acbed1cfdb7ecd195eda5fbfc11a8c31ef9e01e"
+      },
+      {
+        "asset_path": "assets/5796bea3c8709e909ee4f9021b242d2e7e1b7a7c05077bf0acac7204d499f962.png",
+        "sha256": "5796bea3c8709e909ee4f9021b242d2e7e1b7a7c05077bf0acac7204d499f962"
+      },
+      {
+        "asset_path": "assets/d03672a4c3e5f95b2d2ba9e2e6d6c246b40dab09b8e233c0883c99edee49faaa.png",
+        "sha256": "d03672a4c3e5f95b2d2ba9e2e6d6c246b40dab09b8e233c0883c99edee49faaa"
+      }
+    ]
+  }
+}

@@ -1,0 +1,312 @@
+[
+  {
+    "method": "POST",
+    "path": "/upload/image",
+    "http_status": 200,
+    "response": {
+      "name": "dbfff949506441f8b525128de56d3fc4.png",
+      "subfolder": "aigc",
+      "type": "input"
+    },
+    "api_called": false
+  },
+  {
+    "method": "POST",
+    "path": "/prompt",
+    "http_status": 200,
+    "response": {
+      "prompt_id": "20fc42cd-38f1-4606-ac84-de5f55c56f49",
+      "number": 1,
+      "node_errors": {}
+    },
+    "api_called": false
+  },
+  {
+    "method": "GET",
+    "path": "/history/20fc42cd-38f1-4606-ac84-de5f55c56f49",
+    "http_status": 200,
+    "response": {},
+    "api_called": false
+  },
+  {
+    "method": "GET",
+    "path": "/queue",
+    "http_status": 200,
+    "response": {
+      "queue_pending": [
+        [
+          1,
+          "20fc42cd-38f1-4606-ac84-de5f55c56f49",
+          {
+            "4": {
+              "class_type": "CheckpointLoaderSimple",
+              "inputs": {
+                "ckpt_name": "REMOTE_CHECKPOINT_REQUIRED.safetensors"
+              }
+            },
+            "6": {
+              "class_type": "CLIPTextEncode",
+              "inputs": {
+                "clip": [
+                  "4",
+                  1
+                ],
+                "text": "Purpose: CHARACTER_REFERENCE\ncharacter: 测试角色 林夏 | 短黑发，椭圆脸；身份不随 Look 改变 | A-01 示例数据，仅用于流程验证\nlook: 雨夜（示例） | 夜晚，雨水打湿头发 | 深色雨衣\nGeneration description: A-06 示例角色参考图；测试人工采纳流程，不评价生成质量。"
+              }
+            },
+            "7": {
+              "class_type": "CLIPTextEncode",
+              "inputs": {
+                "clip": [
+                  "4",
+                  1
+                ],
+                "text": ""
+              }
+            },
+            "3": {
+              "class_type": "KSampler",
+              "inputs": {
+                "model": [
+                  "4",
+                  0
+                ],
+                "positive": [
+                  "6",
+                  0
+                ],
+                "negative": [
+                  "7",
+                  0
+                ],
+                "latent_image": [
+                  "5",
+                  0
+                ],
+                "seed": 1,
+                "steps": 20,
+                "cfg": 7.0,
+                "sampler_name": "euler",
+                "scheduler": "normal",
+                "denoise": 0.7
+              }
+            },
+            "8": {
+              "class_type": "VAEDecode",
+              "inputs": {
+                "samples": [
+                  "3",
+                  0
+                ],
+                "vae": [
+                  "4",
+                  2
+                ]
+              }
+            },
+            "9": {
+              "class_type": "SaveImage",
+              "inputs": {
+                "images": [
+                  "8",
+                  0
+                ],
+                "filename_prefix": "aigc/dbfff949506441f8b525128de56d3fc4"
+              }
+            },
+            "10": {
+              "class_type": "LoadImage",
+              "inputs": {
+                "image": "aigc/dbfff949506441f8b525128de56d3fc4.png"
+              }
+            },
+            "5": {
+              "class_type": "VAEEncode",
+              "inputs": {
+                "pixels": [
+                  "10",
+                  0
+                ],
+                "vae": [
+                  "4",
+                  2
+                ]
+              }
+            }
+          },
+          {},
+          [
+            "9"
+          ]
+        ]
+      ],
+      "queue_running": []
+    },
+    "api_called": false
+  },
+  {
+    "method": "GET",
+    "path": "/history/20fc42cd-38f1-4606-ac84-de5f55c56f49",
+    "http_status": 200,
+    "response": {},
+    "api_called": false
+  },
+  {
+    "method": "GET",
+    "path": "/queue",
+    "http_status": 200,
+    "response": {
+      "queue_pending": [],
+      "queue_running": [
+        [
+          1,
+          "20fc42cd-38f1-4606-ac84-de5f55c56f49",
+          {
+            "4": {
+              "class_type": "CheckpointLoaderSimple",
+              "inputs": {
+                "ckpt_name": "REMOTE_CHECKPOINT_REQUIRED.safetensors"
+              }
+            },
+            "6": {
+              "class_type": "CLIPTextEncode",
+              "inputs": {
+                "clip": [
+                  "4",
+                  1
+                ],
+                "text": "Purpose: CHARACTER_REFERENCE\ncharacter: 测试角色 林夏 | 短黑发，椭圆脸；身份不随 Look 改变 | A-01 示例数据，仅用于流程验证\nlook: 雨夜（示例） | 夜晚，雨水打湿头发 | 深色雨衣\nGeneration description: A-06 示例角色参考图；测试人工采纳流程，不评价生成质量。"
+              }
+            },
+            "7": {
+              "class_type": "CLIPTextEncode",
+              "inputs": {
+                "clip": [
+                  "4",
+                  1
+                ],
+                "text": ""
+              }
+            },
+            "3": {
+              "class_type": "KSampler",
+              "inputs": {
+                "model": [
+                  "4",
+                  0
+                ],
+                "positive": [
+                  "6",
+                  0
+                ],
+                "negative": [
+                  "7",
+                  0
+                ],
+                "latent_image": [
+                  "5",
+                  0
+                ],
+                "seed": 1,
+                "steps": 20,
+                "cfg": 7.0,
+                "sampler_name": "euler",
+                "scheduler": "normal",
+                "denoise": 0.7
+              }
+            },
+            "8": {
+              "class_type": "VAEDecode",
+              "inputs": {
+                "samples": [
+                  "3",
+                  0
+                ],
+                "vae": [
+                  "4",
+                  2
+                ]
+              }
+            },
+            "9": {
+              "class_type": "SaveImage",
+              "inputs": {
+                "images": [
+                  "8",
+                  0
+                ],
+                "filename_prefix": "aigc/dbfff949506441f8b525128de56d3fc4"
+              }
+            },
+            "10": {
+              "class_type": "LoadImage",
+              "inputs": {
+                "image": "aigc/dbfff949506441f8b525128de56d3fc4.png"
+              }
+            },
+            "5": {
+              "class_type": "VAEEncode",
+              "inputs": {
+                "pixels": [
+                  "10",
+                  0
+                ],
+                "vae": [
+                  "4",
+                  2
+                ]
+              }
+            }
+          },
+          {},
+          [
+            "9"
+          ]
+        ]
+      ]
+    },
+    "api_called": false
+  },
+  {
+    "method": "GET",
+    "path": "/history/20fc42cd-38f1-4606-ac84-de5f55c56f49",
+    "http_status": 200,
+    "response": {
+      "20fc42cd-38f1-4606-ac84-de5f55c56f49": {
+        "outputs": {
+          "9": {
+            "images": [
+              {
+                "filename": "20fc42cd-38f1-4606-ac84-de5f55c56f49.png",
+                "subfolder": "aigc",
+                "type": "output"
+              }
+            ]
+          }
+        },
+        "status": {
+          "status_str": "success",
+          "completed": true,
+          "messages": [
+            [
+              "execution_success",
+              {
+                "prompt_id": "20fc42cd-38f1-4606-ac84-de5f55c56f49"
+              }
+            ]
+          ]
+        }
+      }
+    },
+    "api_called": false
+  },
+  {
+    "method": "GET",
+    "path": "/view",
+    "http_status": 200,
+    "response": {
+      "bytes": 24613
+    },
+    "api_called": false
+  }
+]

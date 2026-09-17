@@ -1,0 +1,53 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "result_id": {
+      "title": "Result Id",
+      "type": "string"
+    },
+    "rejected": {
+      "default": false,
+      "title": "Rejected",
+      "type": "boolean"
+    },
+    "reason": {
+      "default": "",
+      "title": "Reason",
+      "type": "string"
+    },
+    "promotion": {
+      "anyOf": [
+        {
+          "enum": [
+            "identity",
+            "variant",
+            "first_frame"
+          ],
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Promotion"
+    },
+    "reference_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Reference Id"
+    }
+  },
+  "required": [
+    "result_id"
+  ],
+  "title": "ImageReview",
+  "type": "object"
+}

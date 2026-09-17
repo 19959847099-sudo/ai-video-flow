@@ -1,0 +1,169 @@
+{
+  "$defs": {
+    "Segment": {
+      "additionalProperties": false,
+      "properties": {
+        "start": {
+          "minimum": 0,
+          "title": "Start",
+          "type": "number"
+        },
+        "end": {
+          "minimum": 0,
+          "title": "End",
+          "type": "number"
+        },
+        "text": {
+          "minLength": 1,
+          "title": "Text",
+          "type": "string"
+        },
+        "words": {
+          "items": {
+            "$ref": "#/$defs/WordTiming"
+          },
+          "title": "Words",
+          "type": "array"
+        }
+      },
+      "required": [
+        "start",
+        "end",
+        "text"
+      ],
+      "title": "Segment",
+      "type": "object"
+    },
+    "WordTiming": {
+      "additionalProperties": false,
+      "properties": {
+        "word": {
+          "title": "Word",
+          "type": "string"
+        },
+        "start": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Start"
+        },
+        "end": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "End"
+        },
+        "score": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Score"
+        }
+      },
+      "required": [
+        "word"
+      ],
+      "title": "WordTiming",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "title": "Id",
+      "type": "string"
+    },
+    "audio_result_id": {
+      "title": "Audio Result Id",
+      "type": "string"
+    },
+    "task_id": {
+      "title": "Task Id",
+      "type": "string"
+    },
+    "dialogue_id": {
+      "title": "Dialogue Id",
+      "type": "string"
+    },
+    "shot_id": {
+      "title": "Shot Id",
+      "type": "string"
+    },
+    "audio_sha256": {
+      "title": "Audio Sha256",
+      "type": "string"
+    },
+    "expected_text": {
+      "title": "Expected Text",
+      "type": "string"
+    },
+    "transcript": {
+      "title": "Transcript",
+      "type": "string"
+    },
+    "segments": {
+      "items": {
+        "$ref": "#/$defs/Segment"
+      },
+      "title": "Segments",
+      "type": "array"
+    },
+    "engine": {
+      "const": "whisperx-contract",
+      "default": "whisperx-contract",
+      "title": "Engine",
+      "type": "string"
+    },
+    "fixture": {
+      "const": true,
+      "default": true,
+      "title": "Fixture",
+      "type": "boolean"
+    },
+    "subtitle_path": {
+      "title": "Subtitle Path",
+      "type": "string"
+    },
+    "subtitle_sha256": {
+      "title": "Subtitle Sha256",
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "audio_result_id",
+    "task_id",
+    "dialogue_id",
+    "shot_id",
+    "audio_sha256",
+    "expected_text",
+    "transcript",
+    "segments",
+    "subtitle_path",
+    "subtitle_sha256"
+  ],
+  "title": "AlignmentResult",
+  "type": "object"
+}

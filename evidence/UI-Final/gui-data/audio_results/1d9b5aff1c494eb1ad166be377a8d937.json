@@ -1,0 +1,18 @@
+{
+  "id": "1d9b5aff1c494eb1ad166be377a8d937",
+  "task_id": "d2925480ea774a0fb44293b1bb0aec81",
+  "dialogue_id": "5c235da8a53240a789836abacaa80d11",
+  "character_id": "915567cdda674e0286aaab1db7a1cbde",
+  "shot_id": "d8094901e03441f1bb9ad8696bb427c0",
+  "voice_id": "567804636c7440eab7210e6d882730e3",
+  "path": "audio_results/1d9b5aff1c494eb1ad166be377a8d937/fixture.wav",
+  "sha256": "cefaf9c3f07639397447295e7bb0fad9c9bf007359826c6d6b523bb5c688e8df",
+  "metadata": {
+    "codec_name": "pcm_s16le",
+    "sample_rate": "32000",
+    "channels": 1,
+    "duration": 4.0,
+    "format_name": "wav"
+  },
+  "simulation_only": true
+}

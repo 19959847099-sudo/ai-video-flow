@@ -1,0 +1,312 @@
+[
+  {
+    "method": "POST",
+    "path": "/upload/image",
+    "http_status": 200,
+    "response": {
+      "name": "49689fe4488f4c8b866589ad8c867532.png",
+      "subfolder": "aigc",
+      "type": "input"
+    },
+    "api_called": false
+  },
+  {
+    "method": "POST",
+    "path": "/prompt",
+    "http_status": 200,
+    "response": {
+      "prompt_id": "5502ea89-1123-4d9e-8e7c-f0a8298867ff",
+      "number": 1,
+      "node_errors": {}
+    },
+    "api_called": false
+  },
+  {
+    "method": "GET",
+    "path": "/history/5502ea89-1123-4d9e-8e7c-f0a8298867ff",
+    "http_status": 200,
+    "response": {},
+    "api_called": false
+  },
+  {
+    "method": "GET",
+    "path": "/queue",
+    "http_status": 200,
+    "response": {
+      "queue_pending": [
+        [
+          1,
+          "5502ea89-1123-4d9e-8e7c-f0a8298867ff",
+          {
+            "4": {
+              "class_type": "CheckpointLoaderSimple",
+              "inputs": {
+                "ckpt_name": "REMOTE_CHECKPOINT_REQUIRED.safetensors"
+              }
+            },
+            "6": {
+              "class_type": "CLIPTextEncode",
+              "inputs": {
+                "clip": [
+                  "4",
+                  1
+                ],
+                "text": "Purpose: SCENE_REFERENCE\nscene: 示例便利店门口 | 玻璃双门，门右侧蓝色招牌，面向街道 | A-02 测试场景，非正式美术资产\nscene_state: 雨夜（示例） | 雨夜营业，路面反光 | 雨水，招牌霓虹反射\nGeneration description: A-06 示例场景参考图；验证雨夜 State 资产回收。"
+              }
+            },
+            "7": {
+              "class_type": "CLIPTextEncode",
+              "inputs": {
+                "clip": [
+                  "4",
+                  1
+                ],
+                "text": ""
+              }
+            },
+            "3": {
+              "class_type": "KSampler",
+              "inputs": {
+                "model": [
+                  "4",
+                  0
+                ],
+                "positive": [
+                  "6",
+                  0
+                ],
+                "negative": [
+                  "7",
+                  0
+                ],
+                "latent_image": [
+                  "5",
+                  0
+                ],
+                "seed": 1,
+                "steps": 20,
+                "cfg": 7.0,
+                "sampler_name": "euler",
+                "scheduler": "normal",
+                "denoise": 0.7
+              }
+            },
+            "8": {
+              "class_type": "VAEDecode",
+              "inputs": {
+                "samples": [
+                  "3",
+                  0
+                ],
+                "vae": [
+                  "4",
+                  2
+                ]
+              }
+            },
+            "9": {
+              "class_type": "SaveImage",
+              "inputs": {
+                "images": [
+                  "8",
+                  0
+                ],
+                "filename_prefix": "aigc/49689fe4488f4c8b866589ad8c867532"
+              }
+            },
+            "10": {
+              "class_type": "LoadImage",
+              "inputs": {
+                "image": "aigc/49689fe4488f4c8b866589ad8c867532.png"
+              }
+            },
+            "5": {
+              "class_type": "VAEEncode",
+              "inputs": {
+                "pixels": [
+                  "10",
+                  0
+                ],
+                "vae": [
+                  "4",
+                  2
+                ]
+              }
+            }
+          },
+          {},
+          [
+            "9"
+          ]
+        ]
+      ],
+      "queue_running": []
+    },
+    "api_called": false
+  },
+  {
+    "method": "GET",
+    "path": "/history/5502ea89-1123-4d9e-8e7c-f0a8298867ff",
+    "http_status": 200,
+    "response": {},
+    "api_called": false
+  },
+  {
+    "method": "GET",
+    "path": "/queue",
+    "http_status": 200,
+    "response": {
+      "queue_pending": [],
+      "queue_running": [
+        [
+          1,
+          "5502ea89-1123-4d9e-8e7c-f0a8298867ff",
+          {
+            "4": {
+              "class_type": "CheckpointLoaderSimple",
+              "inputs": {
+                "ckpt_name": "REMOTE_CHECKPOINT_REQUIRED.safetensors"
+              }
+            },
+            "6": {
+              "class_type": "CLIPTextEncode",
+              "inputs": {
+                "clip": [
+                  "4",
+                  1
+                ],
+                "text": "Purpose: SCENE_REFERENCE\nscene: 示例便利店门口 | 玻璃双门，门右侧蓝色招牌，面向街道 | A-02 测试场景，非正式美术资产\nscene_state: 雨夜（示例） | 雨夜营业，路面反光 | 雨水，招牌霓虹反射\nGeneration description: A-06 示例场景参考图；验证雨夜 State 资产回收。"
+              }
+            },
+            "7": {
+              "class_type": "CLIPTextEncode",
+              "inputs": {
+                "clip": [
+                  "4",
+                  1
+                ],
+                "text": ""
+              }
+            },
+            "3": {
+              "class_type": "KSampler",
+              "inputs": {
+                "model": [
+                  "4",
+                  0
+                ],
+                "positive": [
+                  "6",
+                  0
+                ],
+                "negative": [
+                  "7",
+                  0
+                ],
+                "latent_image": [
+                  "5",
+                  0
+                ],
+                "seed": 1,
+                "steps": 20,
+                "cfg": 7.0,
+                "sampler_name": "euler",
+                "scheduler": "normal",
+                "denoise": 0.7
+              }
+            },
+            "8": {
+              "class_type": "VAEDecode",
+              "inputs": {
+                "samples": [
+                  "3",
+                  0
+                ],
+                "vae": [
+                  "4",
+                  2
+                ]
+              }
+            },
+            "9": {
+              "class_type": "SaveImage",
+              "inputs": {
+                "images": [
+                  "8",
+                  0
+                ],
+                "filename_prefix": "aigc/49689fe4488f4c8b866589ad8c867532"
+              }
+            },
+            "10": {
+              "class_type": "LoadImage",
+              "inputs": {
+                "image": "aigc/49689fe4488f4c8b866589ad8c867532.png"
+              }
+            },
+            "5": {
+              "class_type": "VAEEncode",
+              "inputs": {
+                "pixels": [
+                  "10",
+                  0
+                ],
+                "vae": [
+                  "4",
+                  2
+                ]
+              }
+            }
+          },
+          {},
+          [
+            "9"
+          ]
+        ]
+      ]
+    },
+    "api_called": false
+  },
+  {
+    "method": "GET",
+    "path": "/history/5502ea89-1123-4d9e-8e7c-f0a8298867ff",
+    "http_status": 200,
+    "response": {
+      "5502ea89-1123-4d9e-8e7c-f0a8298867ff": {
+        "outputs": {
+          "9": {
+            "images": [
+              {
+                "filename": "5502ea89-1123-4d9e-8e7c-f0a8298867ff.png",
+                "subfolder": "aigc",
+                "type": "output"
+              }
+            ]
+          }
+        },
+        "status": {
+          "status_str": "success",
+          "completed": true,
+          "messages": [
+            [
+              "execution_success",
+              {
+                "prompt_id": "5502ea89-1123-4d9e-8e7c-f0a8298867ff"
+              }
+            ]
+          ]
+        }
+      }
+    },
+    "api_called": false
+  },
+  {
+    "method": "GET",
+    "path": "/view",
+    "http_status": 200,
+    "response": {
+      "bytes": 24443
+    },
+    "api_called": false
+  }
+]

@@ -1,0 +1,312 @@
+[
+  {
+    "method": "POST",
+    "path": "/upload/image",
+    "http_status": 200,
+    "response": {
+      "name": "6ea017c47b714b2f95e31f7a06074da4.png",
+      "subfolder": "aigc",
+      "type": "input"
+    },
+    "api_called": false
+  },
+  {
+    "method": "POST",
+    "path": "/prompt",
+    "http_status": 200,
+    "response": {
+      "prompt_id": "f663c7ef-fadf-44d2-be15-e1d0f3fcbac7",
+      "number": 1,
+      "node_errors": {}
+    },
+    "api_called": false
+  },
+  {
+    "method": "GET",
+    "path": "/history/f663c7ef-fadf-44d2-be15-e1d0f3fcbac7",
+    "http_status": 200,
+    "response": {},
+    "api_called": false
+  },
+  {
+    "method": "GET",
+    "path": "/queue",
+    "http_status": 200,
+    "response": {
+      "queue_pending": [
+        [
+          1,
+          "f663c7ef-fadf-44d2-be15-e1d0f3fcbac7",
+          {
+            "4": {
+              "class_type": "CheckpointLoaderSimple",
+              "inputs": {
+                "ckpt_name": "REMOTE_CHECKPOINT_REQUIRED.safetensors"
+              }
+            },
+            "6": {
+              "class_type": "CLIPTextEncode",
+              "inputs": {
+                "clip": [
+                  "4",
+                  1
+                ],
+                "text": "Purpose: SHOT_FIRST_FRAME\ncharacter: 测试角色 林夏 | 短黑发，椭圆脸；身份不随 Look 改变 | A-01 示例数据，仅用于流程验证\nlook: 日常装（示例） | 白天，干燥，平静 | 浅色衬衣\nscene: 示例便利店门口 | 玻璃双门，门右侧蓝色招牌，面向街道 | A-02 测试场景，非正式美术资产\nscene_state: 白天（示例） | 营业中的便利店门口 | 白天自然光，地面干燥\nshot: A-03 示例镜头 fal 白天门口 | 固定中景，角色在便利店门口转身\nGeneration description: A-06 测试首帧第一版；白天便利店门口人物中景。"
+              }
+            },
+            "7": {
+              "class_type": "CLIPTextEncode",
+              "inputs": {
+                "clip": [
+                  "4",
+                  1
+                ],
+                "text": ""
+              }
+            },
+            "3": {
+              "class_type": "KSampler",
+              "inputs": {
+                "model": [
+                  "4",
+                  0
+                ],
+                "positive": [
+                  "6",
+                  0
+                ],
+                "negative": [
+                  "7",
+                  0
+                ],
+                "latent_image": [
+                  "5",
+                  0
+                ],
+                "seed": 1,
+                "steps": 20,
+                "cfg": 7.0,
+                "sampler_name": "euler",
+                "scheduler": "normal",
+                "denoise": 0.7
+              }
+            },
+            "8": {
+              "class_type": "VAEDecode",
+              "inputs": {
+                "samples": [
+                  "3",
+                  0
+                ],
+                "vae": [
+                  "4",
+                  2
+                ]
+              }
+            },
+            "9": {
+              "class_type": "SaveImage",
+              "inputs": {
+                "images": [
+                  "8",
+                  0
+                ],
+                "filename_prefix": "aigc/6ea017c47b714b2f95e31f7a06074da4"
+              }
+            },
+            "10": {
+              "class_type": "LoadImage",
+              "inputs": {
+                "image": "aigc/6ea017c47b714b2f95e31f7a06074da4.png"
+              }
+            },
+            "5": {
+              "class_type": "VAEEncode",
+              "inputs": {
+                "pixels": [
+                  "10",
+                  0
+                ],
+                "vae": [
+                  "4",
+                  2
+                ]
+              }
+            }
+          },
+          {},
+          [
+            "9"
+          ]
+        ]
+      ],
+      "queue_running": []
+    },
+    "api_called": false
+  },
+  {
+    "method": "GET",
+    "path": "/history/f663c7ef-fadf-44d2-be15-e1d0f3fcbac7",
+    "http_status": 200,
+    "response": {},
+    "api_called": false
+  },
+  {
+    "method": "GET",
+    "path": "/queue",
+    "http_status": 200,
+    "response": {
+      "queue_pending": [],
+      "queue_running": [
+        [
+          1,
+          "f663c7ef-fadf-44d2-be15-e1d0f3fcbac7",
+          {
+            "4": {
+              "class_type": "CheckpointLoaderSimple",
+              "inputs": {
+                "ckpt_name": "REMOTE_CHECKPOINT_REQUIRED.safetensors"
+              }
+            },
+            "6": {
+              "class_type": "CLIPTextEncode",
+              "inputs": {
+                "clip": [
+                  "4",
+                  1
+                ],
+                "text": "Purpose: SHOT_FIRST_FRAME\ncharacter: 测试角色 林夏 | 短黑发，椭圆脸；身份不随 Look 改变 | A-01 示例数据，仅用于流程验证\nlook: 日常装（示例） | 白天，干燥，平静 | 浅色衬衣\nscene: 示例便利店门口 | 玻璃双门，门右侧蓝色招牌，面向街道 | A-02 测试场景，非正式美术资产\nscene_state: 白天（示例） | 营业中的便利店门口 | 白天自然光，地面干燥\nshot: A-03 示例镜头 fal 白天门口 | 固定中景，角色在便利店门口转身\nGeneration description: A-06 测试首帧第一版；白天便利店门口人物中景。"
+              }
+            },
+            "7": {
+              "class_type": "CLIPTextEncode",
+              "inputs": {
+                "clip": [
+                  "4",
+                  1
+                ],
+                "text": ""
+              }
+            },
+            "3": {
+              "class_type": "KSampler",
+              "inputs": {
+                "model": [
+                  "4",
+                  0
+                ],
+                "positive": [
+                  "6",
+                  0
+                ],
+                "negative": [
+                  "7",
+                  0
+                ],
+                "latent_image": [
+                  "5",
+                  0
+                ],
+                "seed": 1,
+                "steps": 20,
+                "cfg": 7.0,
+                "sampler_name": "euler",
+                "scheduler": "normal",
+                "denoise": 0.7
+              }
+            },
+            "8": {
+              "class_type": "VAEDecode",
+              "inputs": {
+                "samples": [
+                  "3",
+                  0
+                ],
+                "vae": [
+                  "4",
+                  2
+                ]
+              }
+            },
+            "9": {
+              "class_type": "SaveImage",
+              "inputs": {
+                "images": [
+                  "8",
+                  0
+                ],
+                "filename_prefix": "aigc/6ea017c47b714b2f95e31f7a06074da4"
+              }
+            },
+            "10": {
+              "class_type": "LoadImage",
+              "inputs": {
+                "image": "aigc/6ea017c47b714b2f95e31f7a06074da4.png"
+              }
+            },
+            "5": {
+              "class_type": "VAEEncode",
+              "inputs": {
+                "pixels": [
+                  "10",
+                  0
+                ],
+                "vae": [
+                  "4",
+                  2
+                ]
+              }
+            }
+          },
+          {},
+          [
+            "9"
+          ]
+        ]
+      ]
+    },
+    "api_called": false
+  },
+  {
+    "method": "GET",
+    "path": "/history/f663c7ef-fadf-44d2-be15-e1d0f3fcbac7",
+    "http_status": 200,
+    "response": {
+      "f663c7ef-fadf-44d2-be15-e1d0f3fcbac7": {
+        "outputs": {
+          "9": {
+            "images": [
+              {
+                "filename": "f663c7ef-fadf-44d2-be15-e1d0f3fcbac7.png",
+                "subfolder": "aigc",
+                "type": "output"
+              }
+            ]
+          }
+        },
+        "status": {
+          "status_str": "success",
+          "completed": true,
+          "messages": [
+            [
+              "execution_success",
+              {
+                "prompt_id": "f663c7ef-fadf-44d2-be15-e1d0f3fcbac7"
+              }
+            ]
+          ]
+        }
+      }
+    },
+    "api_called": false
+  },
+  {
+    "method": "GET",
+    "path": "/view",
+    "http_status": 200,
+    "response": {
+      "bytes": 24451
+    },
+    "api_called": false
+  }
+]

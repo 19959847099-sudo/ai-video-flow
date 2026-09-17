@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.venv/
+*.tmp
+.test-tools/
+.tools/
+node_modules/
+integrations/dsh/.runtime/

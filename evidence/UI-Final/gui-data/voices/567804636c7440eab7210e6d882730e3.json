@@ -1,0 +1,20 @@
+{
+  "id": "567804636c7440eab7210e6d882730e3",
+  "name": "A-07 示例林夏声音",
+  "character_id": "915567cdda674e0286aaab1db7a1cbde",
+  "description": "测试声音身份：年轻女性感、温暖清晰；仅工程示例，不代表实际配音音色。",
+  "language": "zh",
+  "default_delivery": "calm",
+  "notes": "A-07 FIXTURE；禁止真实 TTS 与克隆。",
+  "references": [
+    {
+      "id": "928a123ef3e74b78a008b1ad25279941",
+      "name": "FIXTURE-tone.wav",
+      "path": "audio_assets/732ef1fad28679f9b2c4909b51718974f618a2a0c49c1d790b36d323c15d5134.wav",
+      "sha256": "732ef1fad28679f9b2c4909b51718974f618a2a0c49c1d790b36d323c15d5134",
+      "duration": 4.0,
+      "is_example": true
+    }
+  ],
+  "is_example": true
+}

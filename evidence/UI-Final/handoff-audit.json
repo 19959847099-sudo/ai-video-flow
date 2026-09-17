@@ -1,0 +1,6386 @@
+{
+  "time": "2026-09-17T02:06:45.599646",
+  "window": [
+    20,
+    20,
+    1940,
+    1100
+  ],
+  "widgets": {
+    ".": {
+      "handle": 2494466,
+      "width": 1264,
+      "height": 681,
+      "mapped": true
+    },
+    ".!label": {
+      "handle": 1053036,
+      "width": 1236,
+      "height": 21,
+      "mapped": true,
+      "text": "导出交接 完成：E:\\codex\\AIGC流\\evidence\\UI-Final\\gui-data\\handoffs\\057d53abb09446c2b181e80ac8cc6d84",
+      "state": []
+    },
+    ".!frame": {
+      "handle": 987354,
+      "width": 1264,
+      "height": 49,
+      "mapped": true,
+      "state": []
+    },
+    ".!frame.!label": {
+      "handle": 1379920,
+      "width": 172,
+      "height": 31,
+      "mapped": true,
+      "text": "AI 视频生产工作台",
+      "state": []
+    },
+    ".!frame.!label2": {
+      "handle": 1643000,
+      "width": 110,
+      "height": 21,
+      "mapped": true,
+      "text": "交付  /  粗剪 / 交接",
+      "state": []
+    },
+    ".!frame.!statusbadge": {
+      "handle": 1510752,
+      "width": 153,
+      "height": 27,
+      "mapped": true,
+      "text": "FIXTURE · ZERO-CALL"
+    },
+    ".!frame2": {
+      "handle": 1053188,
+      "width": 1264,
+      "height": 595,
+      "mapped": true,
+      "state": [
+        "hover"
+      ]
+    },
+    ".!frame2.!frame": {
+      "handle": 985516,
+      "width": 136,
+      "height": 595,
+      "mapped": true,
+      "state": []
+    },
+    ".!frame2.!frame.!navigation": {
+      "handle": 2558720,
+      "width": 136,
+      "height": 595,
+      "mapped": true,
+      "state": []
+    },
+    ".!frame2.!frame.!navigation.!label": {
+      "handle": 790594,
+      "width": 70,
+      "height": 20,
+      "mapped": true,
+      "text": "WORKFLOW",
+      "state": []
+    },
+    ".!frame2.!frame.!navigation.!label2": {
+      "handle": 987858,
+      "width": 26,
+      "height": 20,
+      "mapped": true,
+      "text": "生产",
+      "state": []
+    },
+    ".!frame2.!frame.!navigation.!button": {
+      "handle": 790390,
+      "width": 124,
+      "height": 25,
+      "mapped": true,
+      "text": "镜头工作台",
+      "state": []
+    },
+    "button:镜头工作台": {
+      "handle": 790390,
+      "width": 124,
+      "height": 25,
+      "mapped": true,
+      "text": "镜头工作台",
+      "state": []
+    },
+    ".!frame2.!frame.!navigation.!button2": {
+      "handle": 1184314,
+      "width": 124,
+      "height": 25,
+      "mapped": true,
+      "text": "对白",
+      "state": []
+    },
+    "button:对白": {
+      "handle": 1184314,
+      "width": 124,
+      "height": 25,
+      "mapped": true,
+      "text": "对白",
+      "state": []
+    },
+    ".!frame2.!frame.!navigation.!label3": {
+      "handle": 1118150,
+      "width": 26,
+      "height": 20,
+      "mapped": true,
+      "text": "资产",
+      "state": []
+    },
+    ".!frame2.!frame.!navigation.!button3": {
+      "handle": 1247690,
+      "width": 124,
+      "height": 25,
+      "mapped": true,
+      "text": "角色",
+      "state": []
+    },
+    "button:角色": {
+      "handle": 1247690,
+      "width": 124,
+      "height": 25,
+      "mapped": true,
+      "text": "角色",
+      "state": []
+    },
+    ".!frame2.!frame.!navigation.!button4": {
+      "handle": 1381388,
+      "width": 124,
+      "height": 25,
+      "mapped": true,
+      "text": "场景",
+      "state": []
+    },
+    "button:场景": {
+      "handle": 1381388,
+      "width": 124,
+      "height": 25,
+      "mapped": true,
+      "text": "场景",
+      "state": []
+    },
+    ".!frame2.!frame.!navigation.!button5": {
+      "handle": 1313372,
+      "width": 124,
+      "height": 25,
+      "mapped": true,
+      "text": "声音",
+      "state": []
+    },
+    "button:声音": {
+      "handle": 1313372,
+      "width": 124,
+      "height": 25,
+      "mapped": true,
+      "text": "声音",
+      "state": []
+    },
+    ".!frame2.!frame.!navigation.!label4": {
+      "handle": 988012,
+      "width": 26,
+      "height": 20,
+      "mapped": true,
+      "text": "审核",
+      "state": []
+    },
+    ".!frame2.!frame.!navigation.!button6": {
+      "handle": 1837830,
+      "width": 124,
+      "height": 25,
+      "mapped": true,
+      "text": "图像 / 首帧",
+      "state": []
+    },
+    "button:图像 / 首帧": {
+      "handle": 1837830,
+      "width": 124,
+      "height": 25,
+      "mapped": true,
+      "text": "图像 / 首帧",
+      "state": []
+    },
+    ".!frame2.!frame.!navigation.!button7": {
+      "handle": 987878,
+      "width": 124,
+      "height": 25,
+      "mapped": true,
+      "text": "视频选片",
+      "state": []
+    },
+    "button:视频选片": {
+      "handle": 987878,
+      "width": 124,
+      "height": 25,
+      "mapped": true,
+      "text": "视频选片",
+      "state": []
+    },
+    ".!frame2.!frame.!navigation.!button8": {
+      "handle": 790388,
+      "width": 124,
+      "height": 25,
+      "mapped": true,
+      "text": "音频选片",
+      "state": []
+    },
+    "button:音频选片": {
+      "handle": 790388,
+      "width": 124,
+      "height": 25,
+      "mapped": true,
+      "text": "音频选片",
+      "state": []
+    },
+    ".!frame2.!frame.!navigation.!label5": {
+      "handle": 15403734,
+      "width": 26,
+      "height": 20,
+      "mapped": true,
+      "text": "交付",
+      "state": []
+    },
+    ".!frame2.!frame.!navigation.!button9": {
+      "handle": 1379146,
+      "width": 124,
+      "height": 25,
+      "mapped": true,
+      "text": "粗剪 / 交接",
+      "state": []
+    },
+    "button:粗剪 / 交接": {
+      "handle": 1379146,
+      "width": 124,
+      "height": 25,
+      "mapped": true,
+      "text": "粗剪 / 交接",
+      "state": []
+    },
+    ".!frame2.!notebook": {
+      "handle": 2494044,
+      "width": 1120,
+      "height": 591,
+      "mapped": true,
+      "state": [
+        "hover"
+      ],
+      "tab_points": {}
+    },
+    ".!frame2.!notebook.!frame": {
+      "handle": 3148756,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame": {
+      "handle": 856838,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame.!label": {
+      "handle": 1183128,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "角色资产",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame.!label2": {
+      "handle": 1314122,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "先定义“谁”，再保存不同 Look。",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame.!rows": {
+      "handle": 592266,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame.!rows.!treeview": {
+      "handle": 2689484,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": [],
+      "rows": [
+        [
+          2,
+          2,
+          235,
+          64
+        ]
+      ]
+    },
+    ".!frame2.!notebook.!frame.!frame.!rows.!scrollbar": {
+      "handle": 921386,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame.!rows.!label": {
+      "handle": 593770,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "暂无记录 · 使用新建或生成操作开始",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame.!button": {
+      "handle": 1183048,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "新建角色",
+      "state": []
+    },
+    "button:新建角色": {
+      "handle": 1183048,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "新建角色",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame2": {
+      "handle": 2297298,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame2.!assetcard": {
+      "handle": 2099428,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame2.!assetcard.!label": {
+      "handle": 659266,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "暂无封面",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame2.!assetcard.!frame": {
+      "handle": 987818,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame2.!assetcard.!frame.!label": {
+      "handle": 1182288,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame2.!assetcard.!frame.!label2": {
+      "handle": 592270,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame2.!label": {
+      "handle": 987360,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame2.!actionbar": {
+      "handle": 1118966,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame2.!actionbar.!button": {
+      "handle": 1052330,
+      "width": 97,
+      "height": 29,
+      "mapped": false,
+      "text": "保存角色",
+      "state": []
+    },
+    "button:保存角色": {
+      "handle": 1052330,
+      "width": 97,
+      "height": 29,
+      "mapped": false,
+      "text": "保存角色",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame2.!actionbar.!button2": {
+      "handle": 3803606,
+      "width": 120,
+      "height": 29,
+      "mapped": false,
+      "text": "生成角色参考图 →",
+      "state": []
+    },
+    "button:生成角色参考图 →": {
+      "handle": 3803606,
+      "width": 120,
+      "height": 29,
+      "mapped": false,
+      "text": "生成角色参考图 →",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame2.!actionbar.!button3": {
+      "handle": 724746,
+      "width": 97,
+      "height": 29,
+      "mapped": false,
+      "text": "声音 Voice →",
+      "state": []
+    },
+    "button:声音 Voice →": {
+      "handle": 724746,
+      "width": 97,
+      "height": 29,
+      "mapped": false,
+      "text": "声音 Voice →",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame2.!notebook": {
+      "handle": 856608,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": [],
+      "tab_points": {}
+    },
+    ".!frame2.!notebook.!frame.!frame2.!notebook.!scrollarea": {
+      "handle": 922160,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame2.!notebook.!scrollarea.!canvas": {
+      "handle": 790122,
+      "width": 1,
+      "height": 1,
+      "mapped": false
+    },
+    ".!frame2.!notebook.!frame.!frame2.!notebook.!scrollarea.!canvas.!frame": {
+      "handle": 1118662,
+      "width": 198,
+      "height": 384,
+      "mapped": true,
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame2.!notebook.!scrollarea.!canvas.!frame.!label": {
+      "handle": 1511092,
+      "width": 68,
+      "height": 26,
+      "mapped": true,
+      "text": "稳定身份",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame2.!notebook.!scrollarea.!canvas.!frame.!label2": {
+      "handle": 1117954,
+      "width": 184,
+      "height": 21,
+      "mapped": true,
+      "text": "描述跨镜头保持不变的角色特征。",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame2.!notebook.!scrollarea.!canvas.!frame.!label3": {
+      "handle": 1444636,
+      "width": 61,
+      "height": 21,
+      "mapped": true,
+      "text": "角色名称 *",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame2.!notebook.!scrollarea.!canvas.!frame.!entry": {
+      "handle": 987384,
+      "width": 184,
+      "height": 31,
+      "mapped": true,
+      "text": "PY_VAR5",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame2.!notebook.!scrollarea.!canvas.!frame.!label4": {
+      "handle": 987626,
+      "width": 52,
+      "height": 21,
+      "mapped": true,
+      "text": "基本描述",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame2.!notebook.!scrollarea.!canvas.!frame.!frame": {
+      "handle": 1118908,
+      "width": 184,
+      "height": 63,
+      "mapped": true,
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame2.!notebook.!scrollarea.!canvas.!frame.!frame.!text": {
+      "handle": 659328,
+      "width": 169,
+      "height": 63,
+      "mapped": true,
+      "text": ""
+    },
+    ".!frame2.!notebook.!frame.!frame2.!notebook.!scrollarea.!canvas.!frame.!frame.!scrollbar": {
+      "handle": 790382,
+      "width": 15,
+      "height": 63,
+      "mapped": true,
+      "state": [
+        "disabled"
+      ]
+    },
+    ".!frame2.!notebook.!frame.!frame2.!notebook.!scrollarea.!canvas.!frame.!label5": {
+      "handle": 5116416,
+      "width": 85,
+      "height": 21,
+      "mapped": true,
+      "text": "核心身份描述 *",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame2.!notebook.!scrollarea.!canvas.!frame.!frame2": {
+      "handle": 1118942,
+      "width": 184,
+      "height": 80,
+      "mapped": true,
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame2.!notebook.!scrollarea.!canvas.!frame.!frame2.!text": {
+      "handle": 985440,
+      "width": 169,
+      "height": 80,
+      "mapped": true,
+      "text": ""
+    },
+    ".!frame2.!notebook.!frame.!frame2.!notebook.!scrollarea.!canvas.!frame.!frame2.!scrollbar": {
+      "handle": 1183408,
+      "width": 15,
+      "height": 80,
+      "mapped": true,
+      "state": [
+        "disabled"
+      ]
+    },
+    ".!frame2.!notebook.!frame.!frame2.!notebook.!scrollarea.!canvas.!frame.!checkbutton": {
+      "handle": 1182794,
+      "width": 106,
+      "height": 23,
+      "mapped": true,
+      "text": "测试 / 示例数据",
+      "state": []
+    },
+    "check:.!frame2.!notebook.!frame.!frame2.!notebook.!scrollarea.!canvas.!frame.!checkbutton": {
+      "handle": 1182794,
+      "width": 106,
+      "height": 23,
+      "mapped": true,
+      "text": "测试 / 示例数据",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame2.!notebook.!scrollarea.!scrollbar": {
+      "handle": 856612,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame2.!notebook.!frame": {
+      "handle": 1052898,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame2.!notebook.!frame.!label": {
+      "handle": 987434,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "角色参考图",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame2.!notebook.!frame.!label2": {
+      "handle": 987674,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "缩略图下方显示用途；身份图用于每个 Look。",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame2.!notebook.!frame.!actionbar": {
+      "handle": 790598,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame2.!notebook.!frame.!actionbar.!button": {
+      "handle": 1380550,
+      "width": 97,
+      "height": 29,
+      "mapped": false,
+      "text": "添加图片…",
+      "state": []
+    },
+    "button:添加图片…": {
+      "handle": 1380550,
+      "width": 97,
+      "height": 29,
+      "mapped": false,
+      "text": "添加图片…",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame2.!notebook.!frame.!actionbar.!button2": {
+      "handle": 1049148,
+      "width": 97,
+      "height": 29,
+      "mapped": false,
+      "text": "移除关联",
+      "state": []
+    },
+    "button:移除关联": {
+      "handle": 1049148,
+      "width": 97,
+      "height": 29,
+      "mapped": false,
+      "text": "移除关联",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame2.!notebook.!frame.!actionbar.!button3": {
+      "handle": 1118424,
+      "width": 117,
+      "height": 29,
+      "mapped": false,
+      "text": "设为 / 取消身份图",
+      "state": []
+    },
+    "button:设为 / 取消身份图": {
+      "handle": 1118424,
+      "width": 117,
+      "height": 29,
+      "mapped": false,
+      "text": "设为 / 取消身份图",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame2.!notebook.!frame.!frame": {
+      "handle": 1053538,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame2.!notebook.!frame.!frame.!frame": {
+      "handle": 1052286,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame2.!notebook.!frame.!frame.!frame.!label": {
+      "handle": 1053560,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "选择参考图预览",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame2.!notebook.!frame.!frame.!rows": {
+      "handle": 1510180,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame2.!notebook.!frame.!frame.!rows.!treeview": {
+      "handle": 3214238,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": [],
+      "rows": []
+    },
+    ".!frame2.!notebook.!frame.!frame2.!notebook.!frame.!frame.!rows.!scrollbar": {
+      "handle": 1117696,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame2.!notebook.!frame.!frame.!rows.!label": {
+      "handle": 659308,
+      "width": 136,
+      "height": 38,
+      "mapped": false,
+      "text": "暂无记录 · 使用新建或生成操作开始",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame2.!notebook.!scrollarea2": {
+      "handle": 1118944,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame2.!notebook.!scrollarea2.!canvas": {
+      "handle": 1118940,
+      "width": 1,
+      "height": 1,
+      "mapped": false
+    },
+    ".!frame2.!notebook.!frame.!frame2.!notebook.!scrollarea2.!canvas.!frame": {
+      "handle": 855928,
+      "width": 211,
+      "height": 509,
+      "mapped": true,
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame2.!notebook.!scrollarea2.!canvas.!frame.!label": {
+      "handle": 721552,
+      "width": 84,
+      "height": 26,
+      "mapped": true,
+      "text": "造型与状态",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame2.!notebook.!scrollarea2.!canvas.!frame.!label2": {
+      "handle": 987638,
+      "width": 197,
+      "height": 21,
+      "mapped": true,
+      "text": "同一角色可跨镜头复用不同 Look。",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame2.!notebook.!scrollarea2.!canvas.!frame.!combobox": {
+      "handle": 855964,
+      "width": 197,
+      "height": 31,
+      "mapped": true,
+      "text": "",
+      "state": [
+        "readonly"
+      ]
+    },
+    ".!frame2.!notebook.!frame.!frame2.!notebook.!scrollarea2.!canvas.!frame.!label3": {
+      "handle": 987908,
+      "width": 70,
+      "height": 21,
+      "mapped": true,
+      "text": "Look 名称 *",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame2.!notebook.!scrollarea2.!canvas.!frame.!entry": {
+      "handle": 1838798,
+      "width": 197,
+      "height": 31,
+      "mapped": true,
+      "text": "PY_VAR7",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame2.!notebook.!scrollarea2.!canvas.!frame.!label4": {
+      "handle": 788880,
+      "width": 52,
+      "height": 21,
+      "mapped": true,
+      "text": "状态描述",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame2.!notebook.!scrollarea2.!canvas.!frame.!frame": {
+      "handle": 659190,
+      "width": 197,
+      "height": 46,
+      "mapped": true,
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame2.!notebook.!scrollarea2.!canvas.!frame.!frame.!text": {
+      "handle": 2362382,
+      "width": 182,
+      "height": 46,
+      "mapped": true,
+      "text": ""
+    },
+    ".!frame2.!notebook.!frame.!frame2.!notebook.!scrollarea2.!canvas.!frame.!frame.!scrollbar": {
+      "handle": 856832,
+      "width": 15,
+      "height": 46,
+      "mapped": true,
+      "state": [
+        "disabled"
+      ]
+    },
+    ".!frame2.!notebook.!frame.!frame2.!notebook.!scrollarea2.!canvas.!frame.!label5": {
+      "handle": 856970,
+      "width": 124,
+      "height": 21,
+      "mapped": true,
+      "text": "服装、妆容与外观补充",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame2.!notebook.!scrollarea2.!canvas.!frame.!frame2": {
+      "handle": 1117800,
+      "width": 197,
+      "height": 63,
+      "mapped": true,
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame2.!notebook.!scrollarea2.!canvas.!frame.!frame2.!text": {
+      "handle": 1379106,
+      "width": 182,
+      "height": 63,
+      "mapped": true,
+      "text": ""
+    },
+    ".!frame2.!notebook.!frame.!frame2.!notebook.!scrollarea2.!canvas.!frame.!frame2.!scrollbar": {
+      "handle": 786938,
+      "width": 15,
+      "height": 63,
+      "mapped": true,
+      "state": [
+        "disabled"
+      ]
+    },
+    ".!frame2.!notebook.!frame.!frame2.!notebook.!scrollarea2.!canvas.!frame.!label6": {
+      "handle": 2820474,
+      "width": 197,
+      "height": 21,
+      "mapped": true,
+      "text": "当前 Look 专用参考图（点击多选）",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame2.!notebook.!scrollarea2.!canvas.!frame.!listbox": {
+      "handle": 1053498,
+      "width": 197,
+      "height": 74,
+      "mapped": true,
+      "rows": []
+    },
+    ".!frame2.!notebook.!frame.!frame2.!notebook.!scrollarea2.!canvas.!frame.!actionbar": {
+      "handle": 1641538,
+      "width": 197,
+      "height": 67,
+      "mapped": true,
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame2.!notebook.!scrollarea2.!canvas.!frame.!actionbar.!button": {
+      "handle": 1051190,
+      "width": 97,
+      "height": 29,
+      "mapped": true,
+      "text": "新建 Look",
+      "state": []
+    },
+    "button:新建 Look": {
+      "handle": 1051190,
+      "width": 97,
+      "height": 29,
+      "mapped": true,
+      "text": "新建 Look",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame2.!notebook.!scrollarea2.!canvas.!frame.!actionbar.!button2": {
+      "handle": 1052848,
+      "width": 117,
+      "height": 29,
+      "mapped": true,
+      "text": "保存 Look 和角色",
+      "state": []
+    },
+    "button:保存 Look 和角色": {
+      "handle": 1052848,
+      "width": 117,
+      "height": 29,
+      "mapped": true,
+      "text": "保存 Look 和角色",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame.!frame2.!notebook.!scrollarea2.!scrollbar": {
+      "handle": 723336,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!frame2": {
+      "handle": 1445464,
+      "width": 1116,
+      "height": 587,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!frame2.!frame": {
+      "handle": 790060,
+      "width": 260,
+      "height": 563,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!frame2.!frame.!label": {
+      "handle": 2100108,
+      "width": 87,
+      "height": 26,
+      "mapped": false,
+      "text": "镜头 Shots",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame2.!frame.!label2": {
+      "handle": 2033248,
+      "width": 260,
+      "height": 21,
+      "mapped": false,
+      "text": "角色与场景复用 · 人工选片",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame2.!frame.!rows": {
+      "handle": 855474,
+      "width": 260,
+      "height": 468,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!frame2.!frame.!rows.!treeview": {
+      "handle": 724452,
+      "width": 245,
+      "height": 468,
+      "mapped": false,
+      "state": [],
+      "rows": [
+        [
+          2,
+          2,
+          241,
+          66
+        ],
+        [
+          2,
+          68,
+          241,
+          66
+        ],
+        [
+          2,
+          134,
+          241,
+          66
+        ],
+        [
+          2,
+          200,
+          241,
+          66
+        ],
+        [
+          2,
+          266,
+          241,
+          66
+        ],
+        [
+          2,
+          332,
+          241,
+          66
+        ]
+      ]
+    },
+    ".!frame2.!notebook.!frame2.!frame.!rows.!scrollbar": {
+      "handle": 2623940,
+      "width": 15,
+      "height": 468,
+      "mapped": false,
+      "state": [
+        "disabled"
+      ]
+    },
+    ".!frame2.!notebook.!frame2.!frame.!rows.!label": {
+      "handle": 1509102,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "暂无记录 · 使用新建或生成操作开始",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame2.!frame.!actionbar": {
+      "handle": 1052440,
+      "width": 260,
+      "height": 33,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!frame2.!frame.!actionbar.!button": {
+      "handle": 987442,
+      "width": 97,
+      "height": 29,
+      "mapped": false,
+      "text": "新建 Shot",
+      "state": []
+    },
+    "button:新建 Shot": {
+      "handle": 987442,
+      "width": 97,
+      "height": 29,
+      "mapped": false,
+      "text": "新建 Shot",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame2.!frame.!actionbar.!button2": {
+      "handle": 987588,
+      "width": 98,
+      "height": 29,
+      "mapped": false,
+      "text": "查看 Takes →",
+      "state": []
+    },
+    "button:查看 Takes →": {
+      "handle": 987588,
+      "width": 98,
+      "height": 29,
+      "mapped": false,
+      "text": "查看 Takes →",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame2.!frame2": {
+      "handle": 724914,
+      "width": 820,
+      "height": 563,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!label": {
+      "handle": 1314098,
+      "width": 820,
+      "height": 26,
+      "mapped": false,
+      "text": "已选定  ·  A-03 示例镜头 fal 白天门口",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!actionbar": {
+      "handle": 986764,
+      "width": 820,
+      "height": 33,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!actionbar.!button": {
+      "handle": 921498,
+      "width": 97,
+      "height": 29,
+      "mapped": false,
+      "text": "保存 Shot",
+      "state": []
+    },
+    "button:保存 Shot": {
+      "handle": 921498,
+      "width": 97,
+      "height": 29,
+      "mapped": false,
+      "text": "保存 Shot",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!actionbar.!button2": {
+      "handle": 788982,
+      "width": 97,
+      "height": 29,
+      "mapped": false,
+      "text": "生成视频 →",
+      "state": []
+    },
+    "button:生成视频 →": {
+      "handle": 788982,
+      "width": 97,
+      "height": 29,
+      "mapped": false,
+      "text": "生成视频 →",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!actionbar.!button3": {
+      "handle": 1053478,
+      "width": 118,
+      "height": 29,
+      "mapped": false,
+      "text": "生成 Shot 首帧 →",
+      "state": []
+    },
+    "button:生成 Shot 首帧 →": {
+      "handle": 1053478,
+      "width": 118,
+      "height": 29,
+      "mapped": false,
+      "text": "生成 Shot 首帧 →",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!actionbar.!button4": {
+      "handle": 2558694,
+      "width": 97,
+      "height": 29,
+      "mapped": false,
+      "text": "对白 / 音频 →",
+      "state": []
+    },
+    "button:对白 / 音频 →": {
+      "handle": 2558694,
+      "width": 97,
+      "height": 29,
+      "mapped": false,
+      "text": "对白 / 音频 →",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!label2": {
+      "handle": 854282,
+      "width": 820,
+      "height": 21,
+      "mapped": false,
+      "text": "首帧：Selected（与视频 Take 独立）",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook": {
+      "handle": 3607286,
+      "width": 820,
+      "height": 465,
+      "mapped": false,
+      "state": [],
+      "tab_points": {
+        "0": [
+          17,
+          20
+        ],
+        "1": [
+          82,
+          15
+        ]
+      }
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!shotoverview": {
+      "handle": 1968780,
+      "width": 816,
+      "height": 428,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!shotoverview.!scrollarea": {
+      "handle": 1117840,
+      "width": 816,
+      "height": 428,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!shotoverview.!scrollarea.!canvas": {
+      "handle": 1052176,
+      "width": 801,
+      "height": 428,
+      "mapped": false
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!shotoverview.!scrollarea.!canvas.!frame": {
+      "handle": 1052928,
+      "width": 801,
+      "height": 340,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!shotoverview.!scrollarea.!canvas.!frame.!label": {
+      "handle": 1180966,
+      "width": 206,
+      "height": 26,
+      "mapped": false,
+      "text": "A-03 示例镜头 fal 白天门口",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!shotoverview.!scrollarea.!canvas.!frame.!actionbar": {
+      "handle": 921314,
+      "width": 787,
+      "height": 31,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!shotoverview.!scrollarea.!canvas.!frame.!actionbar.!statusbadge25": {
+      "handle": 1837260,
+      "width": 111,
+      "height": 27,
+      "mapped": false,
+      "text": "Reference  8 张"
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!shotoverview.!scrollarea.!canvas.!frame.!actionbar.!statusbadge26": {
+      "handle": 1706408,
+      "width": 103,
+      "height": 27,
+      "mapped": false,
+      "text": "首帧  Selected"
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!shotoverview.!scrollarea.!canvas.!frame.!actionbar.!statusbadge27": {
+      "handle": 920060,
+      "width": 156,
+      "height": 27,
+      "mapped": false,
+      "text": "视频  Take 4 · Selected"
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!shotoverview.!scrollarea.!canvas.!frame.!actionbar.!statusbadge28": {
+      "handle": 920056,
+      "width": 127,
+      "height": 27,
+      "mapped": false,
+      "text": "音频  1/2 Selected"
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!shotoverview.!scrollarea.!canvas.!frame.!actionbar.!statusbadge29": {
+      "handle": 986992,
+      "width": 100,
+      "height": 27,
+      "mapped": false,
+      "text": "字幕  1 Ready"
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!shotoverview.!scrollarea.!canvas.!frame.!actionbar.!statusbadge30": {
+      "handle": 2492822,
+      "width": 145,
+      "height": 27,
+      "mapped": false,
+      "text": "Timeline  已列入 2 条"
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!shotoverview.!scrollarea.!canvas.!frame.!frame": {
+      "handle": 1052250,
+      "width": 787,
+      "height": 165,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!shotoverview.!scrollarea.!canvas.!frame.!frame.!text": {
+      "handle": 1118702,
+      "width": 772,
+      "height": 165,
+      "mapped": false,
+      "text": "谁\n测试角色 林夏 / 日常装（示例）\n\n在哪里\n示例便利店门口 / 白天（示例）\n\n做什么 / 怎么拍\n固定中景，角色在便利店门口转身\n\n声音  A-07 示例林夏声音  ·  2 句对白"
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!shotoverview.!scrollarea.!canvas.!frame.!frame.!scrollbar": {
+      "handle": 1249508,
+      "width": 15,
+      "height": 165,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!shotoverview.!scrollarea.!canvas.!frame.!label2": {
+      "handle": 2362500,
+      "width": 340,
+      "height": 21,
+      "mapped": false,
+      "text": "状态直接读取已保存的生产记录；选择与最终判断仍由人完成。",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!shotoverview.!scrollarea.!canvas.!frame.!advanced": {
+      "handle": 854288,
+      "width": 787,
+      "height": 29,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!shotoverview.!scrollarea.!canvas.!frame.!advanced.!button": {
+      "handle": 987324,
+      "width": 152,
+      "height": 29,
+      "mapped": false,
+      "text": "＋ Advanced · 技术详情",
+      "state": []
+    },
+    "button:＋ Advanced · 技术详情": {
+      "handle": 3017608,
+      "width": 152,
+      "height": 29,
+      "mapped": false,
+      "text": "＋ Advanced · 技术详情",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!shotoverview.!scrollarea.!canvas.!frame.!advanced.!frame": {
+      "handle": 2165996,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!shotoverview.!scrollarea.!canvas.!frame.!advanced.!frame.!frame": {
+      "handle": 987374,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!shotoverview.!scrollarea.!canvas.!frame.!advanced.!frame.!frame.!text": {
+      "handle": 987404,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "{\n  \"shot\": {\n    \"schema_version\": \"0.2\",\n    \"id\": \"d8094901e03441f1bb9ad8696bb427c0\",\n    \"description\": \"A-03 示例镜头 fal 白天门口\",\n    \"character_id\": \"915567cdda674e0286aaab1db7a1cbde\",\n    \"look_id\": \"022b217ff1714ee99bf8f25ff09b41a0\",\n    \"scene_id\": \"8ebe68f860004bff9c383ef3ff643764\",\n    \"scene_state_id\": \"b3ac1413b0bf4c9bafe035b7b32ad08e\",\n    \"requirements\": \"固定中景，角色在便利店门口转身\",\n    \"generation_description\": \"自然日光，角色转身后停顿\",\n    \"is_example\": true\n  },\n  \"selected_video\": \"a526a160decd4691a7da62a05aab5ebd\",\n  \"selected_audio\": [\n    \"1d9b5aff1c494eb1ad166be377a8d937\",\n    null\n  ],\n  \"first_frame\": {\n    \"result_id\": \"746c2cd33f5d4c92a90793b9757806c6\",\n    \"task_id\": \"8f8666f8b0404e71bd7a097c56572d93\",\n    \"shot_id\": \"d8094901e03441f1bb9ad8696bb427c0\",\n    \"path\": \"image_results/746c2cd33f5d4c92a90793b9757806c6/image.png\",\n    \"sha256\": \"3c6c5d897e4bac5095fe1b26afe20ce12ba7bcbcea3f82f3a169cafe4f99c029\"\n  },\n  \"timelines\": [\n    \"3bb952d7018548bcbd60b7e8ae9e5297\",\n    \"6ebaee3dab6c4a5fbe7bdea11a5b2a4b\"\n  ]\n}"
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!shotoverview.!scrollarea.!canvas.!frame.!advanced.!frame.!frame.!scrollbar": {
+      "handle": 987624,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!shotoverview.!scrollarea.!scrollbar": {
+      "handle": 855922,
+      "width": 15,
+      "height": 428,
+      "mapped": false,
+      "state": [
+        "disabled"
+      ]
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!scrollarea": {
+      "handle": 659496,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!scrollarea.!canvas": {
+      "handle": 724966,
+      "width": 1,
+      "height": 1,
+      "mapped": false
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!scrollarea.!canvas.!frame": {
+      "handle": 3149294,
+      "width": 242,
+      "height": 703,
+      "mapped": true,
+      "state": []
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!scrollarea.!canvas.!frame.!label": {
+      "handle": 788118,
+      "width": 122,
+      "height": 21,
+      "mapped": true,
+      "text": "镜头名称 / 简短描述 *",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!scrollarea.!canvas.!frame.!entry": {
+      "handle": 1772176,
+      "width": 228,
+      "height": 31,
+      "mapped": true,
+      "text": "PY_VAR9",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!scrollarea.!canvas.!frame.!labelframe": {
+      "handle": 922434,
+      "width": 228,
+      "height": 118,
+      "mapped": true,
+      "text": "01  谁 · Character + Look",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!scrollarea.!canvas.!frame.!labelframe.!combobox": {
+      "handle": 1117596,
+      "width": 200,
+      "height": 31,
+      "mapped": true,
+      "text": "",
+      "state": [
+        "readonly"
+      ]
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!scrollarea.!canvas.!frame.!labelframe.!combobox2": {
+      "handle": 1576444,
+      "width": 200,
+      "height": 31,
+      "mapped": true,
+      "text": "",
+      "state": [
+        "readonly"
+      ]
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!scrollarea.!canvas.!frame.!labelframe2": {
+      "handle": 1641562,
+      "width": 228,
+      "height": 118,
+      "mapped": true,
+      "text": "02  在哪里 · Scene + State",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!scrollarea.!canvas.!frame.!labelframe2.!combobox": {
+      "handle": 1772348,
+      "width": 200,
+      "height": 31,
+      "mapped": true,
+      "text": "",
+      "state": [
+        "readonly"
+      ]
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!scrollarea.!canvas.!frame.!labelframe2.!combobox2": {
+      "handle": 2624764,
+      "width": 200,
+      "height": 31,
+      "mapped": true,
+      "text": "",
+      "state": [
+        "readonly"
+      ]
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!scrollarea.!canvas.!frame.!label2": {
+      "handle": 855968,
+      "width": 120,
+      "height": 21,
+      "mapped": true,
+      "text": "03  做什么 / 怎么拍 *",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!scrollarea.!canvas.!frame.!frame": {
+      "handle": 1118750,
+      "width": 228,
+      "height": 63,
+      "mapped": true,
+      "state": []
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!scrollarea.!canvas.!frame.!frame.!text": {
+      "handle": 1053218,
+      "width": 213,
+      "height": 63,
+      "mapped": true,
+      "text": "固定中景，角色在便利店门口转身"
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!scrollarea.!canvas.!frame.!frame.!scrollbar": {
+      "handle": 1642008,
+      "width": 15,
+      "height": 63,
+      "mapped": true,
+      "state": [
+        "disabled"
+      ]
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!scrollarea.!canvas.!frame.!label3": {
+      "handle": 2034714,
+      "width": 61,
+      "height": 21,
+      "mapped": true,
+      "text": "生成描述 *",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!scrollarea.!canvas.!frame.!frame2": {
+      "handle": 3411326,
+      "width": 228,
+      "height": 80,
+      "mapped": true,
+      "state": []
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!scrollarea.!canvas.!frame.!frame2.!text": {
+      "handle": 919902,
+      "width": 213,
+      "height": 80,
+      "mapped": true,
+      "text": "自然日光，角色转身后停顿"
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!scrollarea.!canvas.!frame.!frame2.!scrollbar": {
+      "handle": 856722,
+      "width": 15,
+      "height": 80,
+      "mapped": true,
+      "state": [
+        "disabled"
+      ]
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!scrollarea.!canvas.!frame.!label4": {
+      "handle": 1446028,
+      "width": 228,
+      "height": 21,
+      "mapped": true,
+      "text": "04  生成方式 · 当前均不调用真实视频 API",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!scrollarea.!canvas.!frame.!combobox": {
+      "handle": 791318,
+      "width": 228,
+      "height": 31,
+      "mapped": true,
+      "text": "",
+      "state": [
+        "readonly"
+      ]
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!scrollarea.!canvas.!frame.!label5": {
+      "handle": 987478,
+      "width": 216,
+      "height": 21,
+      "mapped": true,
+      "text": "REAL 未启用 · 当前视频用于验证生产链",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!scrollarea.!canvas.!frame.!checkbutton": {
+      "handle": 2821226,
+      "width": 106,
+      "height": 23,
+      "mapped": true,
+      "text": "测试 / 示例数据",
+      "state": [
+        "selected"
+      ]
+    },
+    "check:.!frame2.!notebook.!frame2.!frame2.!notebook.!scrollarea.!canvas.!frame.!checkbutton": {
+      "handle": 2821226,
+      "width": 106,
+      "height": 23,
+      "mapped": true,
+      "text": "测试 / 示例数据",
+      "state": [
+        "selected"
+      ]
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!scrollarea.!canvas.!frame.!advanced": {
+      "handle": 2231052,
+      "width": 228,
+      "height": 29,
+      "mapped": true,
+      "state": []
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!scrollarea.!canvas.!frame.!advanced.!button": {
+      "handle": 985268,
+      "width": 209,
+      "height": 29,
+      "mapped": true,
+      "text": "＋ Advanced · Dummy / 工程验证",
+      "state": []
+    },
+    "button:＋ Advanced · Dummy / 工程验证": {
+      "handle": 985268,
+      "width": 209,
+      "height": 29,
+      "mapped": true,
+      "text": "＋ Advanced · Dummy / 工程验证",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!scrollarea.!canvas.!frame.!advanced.!frame": {
+      "handle": 1052376,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!scrollarea.!canvas.!frame.!advanced.!frame.!actionbar": {
+      "handle": 1444724,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!scrollarea.!canvas.!frame.!advanced.!frame.!actionbar.!button": {
+      "handle": 921496,
+      "width": 164,
+      "height": 29,
+      "mapped": false,
+      "text": "生成任务（Dummy 验证）",
+      "state": []
+    },
+    "button:生成任务（Dummy 验证）": {
+      "handle": 921496,
+      "width": 164,
+      "height": 29,
+      "mapped": false,
+      "text": "生成任务（Dummy 验证）",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!scrollarea.!canvas.!frame.!advanced.!frame.!actionbar.!button2": {
+      "handle": 1053212,
+      "width": 97,
+      "height": 29,
+      "mapped": false,
+      "text": "数据文件夹",
+      "state": []
+    },
+    "button:数据文件夹": {
+      "handle": 1053212,
+      "width": 97,
+      "height": 29,
+      "mapped": false,
+      "text": "数据文件夹",
+      "state": []
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!scrollarea.!canvas.!frame.!advanced.!frame.!frame": {
+      "handle": 1509646,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!scrollarea.!canvas.!frame.!advanced.!frame.!frame.!text": {
+      "handle": 1053366,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": ""
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!scrollarea.!canvas.!frame.!advanced.!frame.!frame.!scrollbar": {
+      "handle": 1052824,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!frame2.!frame2.!notebook.!scrollarea.!scrollbar": {
+      "handle": 1053110,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor": {
+      "handle": 921616,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame": {
+      "handle": 1903218,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame.!label": {
+      "handle": 1248782,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "场景资产",
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame.!label2": {
+      "handle": 4525088,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "定义“在哪里”，复用不同场景状态。",
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame.!rows": {
+      "handle": 1772104,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame.!rows.!treeview": {
+      "handle": 856852,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": [],
+      "rows": [
+        ""
+      ]
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame.!rows.!scrollbar": {
+      "handle": 659534,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame.!rows.!label": {
+      "handle": 987440,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "暂无记录 · 使用新建或生成操作开始",
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame.!button": {
+      "handle": 1053468,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "新建场景",
+      "state": []
+    },
+    "button:新建场景": {
+      "handle": 1053468,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "新建场景",
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2": {
+      "handle": 10029672,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!assetcard": {
+      "handle": 987720,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!assetcard.!label": {
+      "handle": 987386,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "暂无可用封面",
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!assetcard.!frame": {
+      "handle": 1052628,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!assetcard.!frame.!label": {
+      "handle": 659420,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "新建场景",
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!assetcard.!frame.!label2": {
+      "handle": 987906,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "填写场景身份，导入参考图，再保存可复用的生产资产。",
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!actionbar": {
+      "handle": 659422,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!actionbar.!button": {
+      "handle": 790362,
+      "width": 97,
+      "height": 29,
+      "mapped": false,
+      "text": "保存场景",
+      "state": []
+    },
+    "button:保存场景": {
+      "handle": 790362,
+      "width": 97,
+      "height": 29,
+      "mapped": false,
+      "text": "保存场景",
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!actionbar.!button2": {
+      "handle": 1053520,
+      "width": 120,
+      "height": 29,
+      "mapped": false,
+      "text": "生成场景参考图 →",
+      "state": []
+    },
+    "button:生成场景参考图 →": {
+      "handle": 1053520,
+      "width": 120,
+      "height": 29,
+      "mapped": false,
+      "text": "生成场景参考图 →",
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!notebook": {
+      "handle": 2034824,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": [],
+      "tab_points": {}
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!notebook.!scrollarea": {
+      "handle": 1445174,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!notebook.!scrollarea.!canvas": {
+      "handle": 2690450,
+      "width": 1,
+      "height": 1,
+      "mapped": false
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!notebook.!scrollarea.!canvas.!frame": {
+      "handle": 1051430,
+      "width": 270,
+      "height": 384,
+      "mapped": true,
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!notebook.!scrollarea.!canvas.!frame.!label": {
+      "handle": 921338,
+      "width": 68,
+      "height": 26,
+      "mapped": true,
+      "text": "稳定空间",
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!notebook.!scrollarea.!canvas.!frame.!label2": {
+      "handle": 1641336,
+      "width": 256,
+      "height": 21,
+      "mapped": true,
+      "text": "描述这个地方本身，不需要填写复杂美术字段。",
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!notebook.!scrollarea.!canvas.!frame.!label3": {
+      "handle": 1052566,
+      "width": 61,
+      "height": 21,
+      "mapped": true,
+      "text": "场景名称 *",
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!notebook.!scrollarea.!canvas.!frame.!entry": {
+      "handle": 1248618,
+      "width": 256,
+      "height": 31,
+      "mapped": true,
+      "text": "PY_VAR2",
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!notebook.!scrollarea.!canvas.!frame.!label4": {
+      "handle": 722726,
+      "width": 76,
+      "height": 21,
+      "mapped": true,
+      "text": "简短场景描述",
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!notebook.!scrollarea.!canvas.!frame.!frame": {
+      "handle": 2100374,
+      "width": 256,
+      "height": 63,
+      "mapped": true,
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!notebook.!scrollarea.!canvas.!frame.!frame.!text": {
+      "handle": 1247628,
+      "width": 241,
+      "height": 63,
+      "mapped": true,
+      "text": ""
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!notebook.!scrollarea.!canvas.!frame.!frame.!scrollbar": {
+      "handle": 856078,
+      "width": 15,
+      "height": 63,
+      "mapped": true,
+      "state": [
+        "disabled"
+      ]
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!notebook.!scrollarea.!canvas.!frame.!label5": {
+      "handle": 1249532,
+      "width": 122,
+      "height": 21,
+      "mapped": true,
+      "text": "稳定视觉 / 空间特征 *",
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!notebook.!scrollarea.!canvas.!frame.!frame2": {
+      "handle": 1641204,
+      "width": 256,
+      "height": 80,
+      "mapped": true,
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!notebook.!scrollarea.!canvas.!frame.!frame2.!text": {
+      "handle": 1706464,
+      "width": 241,
+      "height": 80,
+      "mapped": true,
+      "text": ""
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!notebook.!scrollarea.!canvas.!frame.!frame2.!scrollbar": {
+      "handle": 659536,
+      "width": 15,
+      "height": 80,
+      "mapped": true,
+      "state": [
+        "disabled"
+      ]
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!notebook.!scrollarea.!canvas.!frame.!checkbutton": {
+      "handle": 35326674,
+      "width": 106,
+      "height": 23,
+      "mapped": true,
+      "text": "测试 / 示例数据",
+      "state": []
+    },
+    "check:.!frame2.!notebook.!sceneeditor.!frame2.!notebook.!scrollarea.!canvas.!frame.!checkbutton": {
+      "handle": 35326674,
+      "width": 106,
+      "height": 23,
+      "mapped": true,
+      "text": "测试 / 示例数据",
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!notebook.!scrollarea.!scrollbar": {
+      "handle": 3869778,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!notebook.!frame": {
+      "handle": 1249164,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!notebook.!frame.!label": {
+      "handle": 659492,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "场景参考图",
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!notebook.!frame.!label2": {
+      "handle": 987426,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "稳定图用于全部状态；状态专用图按当前 State 使用。",
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!notebook.!frame.!actionbar": {
+      "handle": 987154,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!notebook.!frame.!actionbar.!button": {
+      "handle": 659322,
+      "width": 102,
+      "height": 29,
+      "mapped": false,
+      "text": "添加场景图片…",
+      "state": []
+    },
+    "button:添加场景图片…": {
+      "handle": 659322,
+      "width": 102,
+      "height": 29,
+      "mapped": false,
+      "text": "添加场景图片…",
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!notebook.!frame.!actionbar.!button2": {
+      "handle": 724902,
+      "width": 97,
+      "height": 29,
+      "mapped": false,
+      "text": "移除图片关联",
+      "state": []
+    },
+    "button:移除图片关联": {
+      "handle": 724902,
+      "width": 97,
+      "height": 29,
+      "mapped": false,
+      "text": "移除图片关联",
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!notebook.!frame.!actionbar.!button3": {
+      "handle": 1707388,
+      "width": 117,
+      "height": 29,
+      "mapped": false,
+      "text": "设为 / 取消稳定图",
+      "state": []
+    },
+    "button:设为 / 取消稳定图": {
+      "handle": 1707388,
+      "width": 117,
+      "height": 29,
+      "mapped": false,
+      "text": "设为 / 取消稳定图",
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!notebook.!frame.!frame": {
+      "handle": 2034662,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!notebook.!frame.!frame.!frame": {
+      "handle": 1314588,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!notebook.!frame.!frame.!frame.!label": {
+      "handle": 987028,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "选择参考图预览",
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!notebook.!frame.!frame.!rows": {
+      "handle": 3477328,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!notebook.!frame.!frame.!rows.!treeview": {
+      "handle": 790316,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": [],
+      "rows": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!notebook.!frame.!frame.!rows.!scrollbar": {
+      "handle": 1969264,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!notebook.!frame.!frame.!rows.!label": {
+      "handle": 1379712,
+      "width": 136,
+      "height": 38,
+      "mapped": false,
+      "text": "暂无记录 · 使用新建或生成操作开始",
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!notebook.!scrollarea2": {
+      "handle": 856086,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!notebook.!scrollarea2.!canvas": {
+      "handle": 1183036,
+      "width": 1,
+      "height": 1,
+      "mapped": false
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!notebook.!scrollarea2.!canvas.!frame": {
+      "handle": 1707056,
+      "width": 210,
+      "height": 509,
+      "mapped": true,
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!notebook.!scrollarea2.!canvas.!frame.!label": {
+      "handle": 1576330,
+      "width": 68,
+      "height": 26,
+      "mapped": true,
+      "text": "场景状态",
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!notebook.!scrollarea2.!canvas.!frame.!label2": {
+      "handle": 921374,
+      "width": 196,
+      "height": 21,
+      "mapped": true,
+      "text": "白天、雨夜等状态属于同一个场景。",
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!notebook.!scrollarea2.!canvas.!frame.!combobox": {
+      "handle": 791180,
+      "width": 196,
+      "height": 31,
+      "mapped": true,
+      "text": "",
+      "state": [
+        "readonly"
+      ]
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!notebook.!scrollarea2.!canvas.!frame.!label3": {
+      "handle": 3214634,
+      "width": 61,
+      "height": 21,
+      "mapped": true,
+      "text": "状态名称 *",
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!notebook.!scrollarea2.!canvas.!frame.!entry": {
+      "handle": 1314332,
+      "width": 196,
+      "height": 31,
+      "mapped": true,
+      "text": "PY_VAR4",
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!notebook.!scrollarea2.!canvas.!frame.!label4": {
+      "handle": 3476628,
+      "width": 52,
+      "height": 21,
+      "mapped": true,
+      "text": "状态描述",
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!notebook.!scrollarea2.!canvas.!frame.!frame": {
+      "handle": 2558402,
+      "width": 196,
+      "height": 46,
+      "mapped": true,
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!notebook.!scrollarea2.!canvas.!frame.!frame.!text": {
+      "handle": 1118986,
+      "width": 181,
+      "height": 46,
+      "mapped": true,
+      "text": ""
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!notebook.!scrollarea2.!canvas.!frame.!frame.!scrollbar": {
+      "handle": 854430,
+      "width": 15,
+      "height": 46,
+      "mapped": true,
+      "state": [
+        "disabled"
+      ]
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!notebook.!scrollarea2.!canvas.!frame.!label5": {
+      "handle": 987874,
+      "width": 148,
+      "height": 21,
+      "mapped": true,
+      "text": "环境变化（光线、天气等）",
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!notebook.!scrollarea2.!canvas.!frame.!frame2": {
+      "handle": 790374,
+      "width": 196,
+      "height": 63,
+      "mapped": true,
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!notebook.!scrollarea2.!canvas.!frame.!frame2.!text": {
+      "handle": 1052364,
+      "width": 181,
+      "height": 63,
+      "mapped": true,
+      "text": ""
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!notebook.!scrollarea2.!canvas.!frame.!frame2.!scrollbar": {
+      "handle": 987400,
+      "width": 15,
+      "height": 63,
+      "mapped": true,
+      "state": [
+        "disabled"
+      ]
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!notebook.!scrollarea2.!canvas.!frame.!label6": {
+      "handle": 2951956,
+      "width": 160,
+      "height": 21,
+      "mapped": true,
+      "text": "当前状态专用图（点击多选）",
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!notebook.!scrollarea2.!canvas.!frame.!listbox": {
+      "handle": 2690438,
+      "width": 196,
+      "height": 74,
+      "mapped": true,
+      "rows": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!notebook.!scrollarea2.!canvas.!frame.!actionbar": {
+      "handle": 2034908,
+      "width": 196,
+      "height": 67,
+      "mapped": true,
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!notebook.!scrollarea2.!canvas.!frame.!actionbar.!button": {
+      "handle": 854274,
+      "width": 97,
+      "height": 29,
+      "mapped": true,
+      "text": "新建场景状态",
+      "state": []
+    },
+    "button:新建场景状态": {
+      "handle": 854274,
+      "width": 97,
+      "height": 29,
+      "mapped": true,
+      "text": "新建场景状态",
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!notebook.!scrollarea2.!canvas.!frame.!actionbar.!button2": {
+      "handle": 2558400,
+      "width": 104,
+      "height": 29,
+      "mapped": true,
+      "text": "保存状态与场景",
+      "state": []
+    },
+    "button:保存状态与场景": {
+      "handle": 2558400,
+      "width": 104,
+      "height": 29,
+      "mapped": true,
+      "text": "保存状态与场景",
+      "state": []
+    },
+    ".!frame2.!notebook.!sceneeditor.!frame2.!notebook.!scrollarea2.!scrollbar": {
+      "handle": 856866,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!reviewpanel": {
+      "handle": 856024,
+      "width": 1116,
+      "height": 587,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!reviewpanel.!label": {
+      "handle": 2821008,
+      "width": 84,
+      "height": 26,
+      "mapped": false,
+      "text": "审核与选片",
+      "state": []
+    },
+    ".!frame2.!notebook.!reviewpanel.!label2": {
+      "handle": 1576262,
+      "width": 1092,
+      "height": 21,
+      "mapped": false,
+      "text": "候选视频由你判断。Select 保存最终选择；Reject 后可以创建新的 Take。",
+      "state": []
+    },
+    ".!frame2.!notebook.!reviewpanel.!combobox": {
+      "handle": 987954,
+      "width": 1092,
+      "height": 31,
+      "mapped": false,
+      "text": "",
+      "state": [
+        "readonly"
+      ]
+    },
+    ".!frame2.!notebook.!reviewpanel.!frame": {
+      "handle": 1772356,
+      "width": 1092,
+      "height": 460,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!reviewpanel.!frame.!frame": {
+      "handle": 985264,
+      "width": 150,
+      "height": 460,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!reviewpanel.!frame.!frame.!label": {
+      "handle": 1052968,
+      "width": 50,
+      "height": 26,
+      "mapped": false,
+      "text": "Takes",
+      "state": []
+    },
+    ".!frame2.!notebook.!reviewpanel.!frame.!frame.!label2": {
+      "handle": 1575656,
+      "width": 150,
+      "height": 21,
+      "mapped": false,
+      "text": "✓ 最终素材：Take 4",
+      "state": []
+    },
+    ".!frame2.!notebook.!reviewpanel.!frame.!frame.!rows": {
+      "handle": 921130,
+      "width": 150,
+      "height": 398,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!reviewpanel.!frame.!frame.!rows.!treeview": {
+      "handle": 6622232,
+      "width": 135,
+      "height": 398,
+      "mapped": false,
+      "state": [],
+      "rows": [
+        [
+          2,
+          2,
+          135,
+          64
+        ],
+        [
+          2,
+          66,
+          135,
+          64
+        ],
+        [
+          2,
+          130,
+          135,
+          64
+        ],
+        [
+          2,
+          194,
+          135,
+          64
+        ]
+      ]
+    },
+    ".!frame2.!notebook.!reviewpanel.!frame.!frame.!rows.!scrollbar": {
+      "handle": 2034434,
+      "width": 15,
+      "height": 398,
+      "mapped": false,
+      "state": [
+        "disabled"
+      ]
+    },
+    ".!frame2.!notebook.!reviewpanel.!frame.!frame.!rows.!label": {
+      "handle": 2821318,
+      "width": 136,
+      "height": 38,
+      "mapped": false,
+      "text": "暂无记录 · 使用新建或生成操作开始",
+      "state": []
+    },
+    ".!frame2.!notebook.!reviewpanel.!frame.!frame2": {
+      "handle": 12782300,
+      "width": 200,
+      "height": 460,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!reviewpanel.!frame.!frame2.!button": {
+      "handle": 1052312,
+      "width": 200,
+      "height": 29,
+      "mapped": false,
+      "text": "Retry · 创建新 Take",
+      "state": [
+        "disabled"
+      ]
+    },
+    "button:Retry · 创建新 Take": {
+      "handle": 1052312,
+      "width": 200,
+      "height": 29,
+      "mapped": false,
+      "text": "Retry · 创建新 Take",
+      "state": [
+        "disabled"
+      ]
+    },
+    ".!frame2.!notebook.!reviewpanel.!frame.!frame2.!scrollarea": {
+      "handle": 1444782,
+      "width": 200,
+      "height": 423,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!reviewpanel.!frame.!frame2.!scrollarea.!canvas": {
+      "handle": 593788,
+      "width": 185,
+      "height": 423,
+      "mapped": false
+    },
+    ".!frame2.!notebook.!reviewpanel.!frame.!frame2.!scrollarea.!canvas.!frame": {
+      "handle": 4525448,
+      "width": 185,
+      "height": 575,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!reviewpanel.!frame.!frame2.!scrollarea.!canvas.!frame.!label": {
+      "handle": 1183124,
+      "width": 68,
+      "height": 26,
+      "mapped": false,
+      "text": "人工决策",
+      "state": []
+    },
+    ".!frame2.!notebook.!reviewpanel.!frame.!frame2.!scrollarea.!canvas.!frame.!label2": {
+      "handle": 1118894,
+      "width": 171,
+      "height": 66,
+      "mapped": false,
+      "text": "Take 04\nSELECTED"
+    },
+    ".!frame2.!notebook.!reviewpanel.!frame.!frame2.!scrollarea.!canvas.!frame.!label3": {
+      "handle": 1576334,
+      "width": 95,
+      "height": 26,
+      "mapped": false,
+      "text": "ZERO-CALL",
+      "state": []
+    },
+    ".!frame2.!notebook.!reviewpanel.!frame.!frame2.!scrollarea.!canvas.!frame.!label4": {
+      "handle": 1118454,
+      "width": 171,
+      "height": 55,
+      "mapped": false,
+      "text": "fal / Kling O3\nFixture · 未真实调用视频 API\nREAL 未启用",
+      "state": []
+    },
+    ".!frame2.!notebook.!reviewpanel.!frame.!frame2.!scrollarea.!canvas.!frame.!button": {
+      "handle": 4460644,
+      "width": 171,
+      "height": 29,
+      "mapped": false,
+      "text": "Select · 选为最终素材",
+      "state": [
+        "disabled"
+      ]
+    },
+    "button:Select · 选为最终素材": {
+      "handle": 4460644,
+      "width": 171,
+      "height": 29,
+      "mapped": false,
+      "text": "Select · 选为最终素材",
+      "state": [
+        "disabled"
+      ]
+    },
+    ".!frame2.!notebook.!reviewpanel.!frame.!frame2.!scrollarea.!canvas.!frame.!label5": {
+      "handle": 1445486,
+      "width": 160,
+      "height": 21,
+      "mapped": false,
+      "text": "保存明确选择，重启后保持。",
+      "state": []
+    },
+    ".!frame2.!notebook.!reviewpanel.!frame.!frame2.!scrollarea.!canvas.!frame.!separator": {
+      "handle": 5835986,
+      "width": 171,
+      "height": 2,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!reviewpanel.!frame.!frame2.!scrollarea.!canvas.!frame.!label6": {
+      "handle": 985554,
+      "width": 124,
+      "height": 21,
+      "mapped": false,
+      "text": "不采用的原因（可选）",
+      "state": []
+    },
+    ".!frame2.!notebook.!reviewpanel.!frame.!frame2.!scrollarea.!canvas.!frame.!frame": {
+      "handle": 1838340,
+      "width": 171,
+      "height": 46,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!reviewpanel.!frame.!frame2.!scrollarea.!canvas.!frame.!frame.!text": {
+      "handle": 788912,
+      "width": 156,
+      "height": 46,
+      "mapped": false,
+      "text": ""
+    },
+    ".!frame2.!notebook.!reviewpanel.!frame.!frame2.!scrollarea.!canvas.!frame.!frame.!scrollbar": {
+      "handle": 921370,
+      "width": 15,
+      "height": 46,
+      "mapped": false,
+      "state": [
+        "disabled"
+      ]
+    },
+    ".!frame2.!notebook.!reviewpanel.!frame.!frame2.!scrollarea.!canvas.!frame.!button2": {
+      "handle": 921534,
+      "width": 171,
+      "height": 29,
+      "mapped": false,
+      "text": "Reject · 不采用此 Take",
+      "state": []
+    },
+    "button:Reject · 不采用此 Take": {
+      "handle": 921534,
+      "width": 171,
+      "height": 29,
+      "mapped": false,
+      "text": "Reject · 不采用此 Take",
+      "state": []
+    },
+    ".!frame2.!notebook.!reviewpanel.!frame.!frame2.!scrollarea.!canvas.!frame.!label7": {
+      "handle": 2624250,
+      "width": 134,
+      "height": 21,
+      "mapped": false,
+      "text": "Retry 生成描述（可选）",
+      "state": []
+    },
+    ".!frame2.!notebook.!reviewpanel.!frame.!frame2.!scrollarea.!canvas.!frame.!frame2": {
+      "handle": 2361944,
+      "width": 171,
+      "height": 63,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!reviewpanel.!frame.!frame2.!scrollarea.!canvas.!frame.!frame2.!text": {
+      "handle": 723384,
+      "width": 156,
+      "height": 63,
+      "mapped": false,
+      "text": ""
+    },
+    ".!frame2.!notebook.!reviewpanel.!frame.!frame2.!scrollarea.!canvas.!frame.!frame2.!scrollbar": {
+      "handle": 2294826,
+      "width": 15,
+      "height": 63,
+      "mapped": false,
+      "state": [
+        "disabled"
+      ]
+    },
+    ".!frame2.!notebook.!reviewpanel.!frame.!frame2.!scrollarea.!canvas.!frame.!label8": {
+      "handle": 1903746,
+      "width": 171,
+      "height": 38,
+      "mapped": false,
+      "text": "留空沿用当前 Shot 描述。创建新 Take，保留原历史。",
+      "state": []
+    },
+    ".!frame2.!notebook.!reviewpanel.!frame.!frame2.!scrollarea.!scrollbar": {
+      "handle": 921482,
+      "width": 15,
+      "height": 423,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!reviewpanel.!frame.!frame3": {
+      "handle": 2166792,
+      "width": 714,
+      "height": 460,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!reviewpanel.!frame.!frame3.!label": {
+      "handle": 1379694,
+      "width": 714,
+      "height": 26,
+      "mapped": false,
+      "text": "Take 04 · SELECTED · 3 秒",
+      "state": []
+    },
+    ".!frame2.!notebook.!reviewpanel.!frame.!frame3.!label2": {
+      "handle": 1510920,
+      "width": 714,
+      "height": 352,
+      "mapped": false,
+      "text": ""
+    },
+    ".!frame2.!notebook.!reviewpanel.!frame.!frame3.!button": {
+      "handle": 2165804,
+      "width": 106,
+      "height": 29,
+      "mapped": false,
+      "text": "▶ 播放实际视频",
+      "state": []
+    },
+    "button:▶ 播放实际视频": {
+      "handle": 2165804,
+      "width": 106,
+      "height": 29,
+      "mapped": false,
+      "text": "▶ 播放实际视频",
+      "state": []
+    },
+    ".!frame2.!notebook.!reviewpanel.!frame.!frame3.!advanced": {
+      "handle": 1052316,
+      "width": 714,
+      "height": 29,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!reviewpanel.!frame.!frame3.!advanced.!button": {
+      "handle": 1053402,
+      "width": 166,
+      "height": 29,
+      "mapped": false,
+      "text": "＋ 生成上下文 / Advanced",
+      "state": []
+    },
+    "button:＋ 生成上下文 / Advanced": {
+      "handle": 1053402,
+      "width": 166,
+      "height": 29,
+      "mapped": false,
+      "text": "＋ 生成上下文 / Advanced",
+      "state": []
+    },
+    ".!frame2.!notebook.!reviewpanel.!frame.!frame3.!advanced.!frame": {
+      "handle": 1053328,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!reviewpanel.!frame.!frame3.!advanced.!frame.!notebook": {
+      "handle": 987880,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": [],
+      "tab_points": {}
+    },
+    ".!frame2.!notebook.!reviewpanel.!frame.!frame3.!advanced.!frame.!notebook.!frame": {
+      "handle": 1052930,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!reviewpanel.!frame.!frame3.!advanced.!frame.!notebook.!frame.!frame": {
+      "handle": 37751492,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!reviewpanel.!frame.!frame3.!advanced.!frame.!notebook.!frame.!frame.!text": {
+      "handle": 4916166,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "首帧输入 · 已绑定（当次任务快照；ID 见 Advanced）\n角色  测试角色 林夏 / 日常装（示例）\n场景  示例便利店门口 / 白天（示例）\n镜头  A-03 示例镜头 fal 白天门口\n角色参考图  01-identity.png, 02-daily.png\n场景参考图  01-scene-stable.png, 02-scene-day.png\n\n最终生成描述\nidentity: 短黑发，椭圆脸；身份不随 Look 改变\ncharacter_description: A-01 示例数据，仅用于流程验证 | A-06 历史快照变更测试\nlook: 白天，干燥，平静\nappearance: 浅色衬衣\nshot: A-03 示例镜头 fal 白天门口\nrequirements: 固定中景，角色在便利店门口转身\ngeneration_description: 自然日光，角色转身后停顿\nscene_name: 示例便利店门口\nscene_identity: 玻璃双门，门右侧蓝色招牌，面向街道\nscene_description: A-02 测试场景，非正式美术资产 | A-06 历史快照变更测试\nscene_state: 白天（示例）\nscene_state_description: 营业中的便利店门口\nscene_environment: 白天自然光，地面干燥\n\nReference bindings:\n@Image1: Character / Look — 01-identity.png\n@Image2: Character / Look — 02-daily.png\n@Image3: Scene / State — 01-scene-stable.png\n@Image4: Scene / State — 02-scene-day.png"
+    },
+    ".!frame2.!notebook.!reviewpanel.!frame.!frame3.!advanced.!frame.!notebook.!frame.!frame.!scrollbar": {
+      "handle": 790490,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!reviewpanel.!frame.!frame3.!advanced.!frame.!notebook.!frame2": {
+      "handle": 593968,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!reviewpanel.!frame.!frame3.!advanced.!frame.!notebook.!frame2.!frame": {
+      "handle": 987396,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!reviewpanel.!frame.!frame3.!advanced.!frame.!notebook.!frame2.!frame.!text": {
+      "handle": 788986,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "Provider：fal\n模式：ZERO-CALL\npending → processing → completed\n\n没有匹配的 Harness 记录。此结果可独立读取和审核，无需启动 DSH。"
+    },
+    ".!frame2.!notebook.!reviewpanel.!frame.!frame3.!advanced.!frame.!notebook.!frame2.!frame.!scrollbar": {
+      "handle": 1378706,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!reviewpanel.!frame.!frame3.!advanced.!frame.!notebook.!frame3": {
+      "handle": 986860,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!reviewpanel.!frame.!frame3.!advanced.!frame.!notebook.!frame3.!frame": {
+      "handle": 1050814,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!reviewpanel.!frame.!frame3.!advanced.!frame.!notebook.!frame3.!frame.!text": {
+      "handle": 987936,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "Execution：a526a160decd4691a7da62a05aab5ebd\nTask：5763220d7df54b348395cda70eac7760\nShot：d8094901e03441f1bb9ad8696bb427c0\nModel：fal-ai/kling-video/o3/standard/reference-to-video\nRetry of：a9782a10334247d5aec68d48ac3cba3b\nTrace：无匹配旁路记录\n\n素材：results/a526a160decd4691a7da62a05aab5ebd/video.mp4\nSHA256：f6277dc38b9a668d6e18b2e0ce7d153e592f3c6a4deccf6fae5feb961c7a70bd\nRequest：E:\\codex\\AIGC流\\evidence\\UI-Final\\gui-data\\tasks\\5763220d7df54b348395cda70eac7760\\provider_request.json\n\n{\n  \"provider\": \"fal\",\n  \"model\": \"fal-ai/kling-video/o3/standard/reference-to-video\",\n  \"simulation_only\": true,\n  \"transport\": \"fixture\",\n  \"method\": \"POST\",\n  \"url\": \"https://queue.fal.run/fal-ai/kling-video/o3/standard/reference-to-video\",\n  \"headers\": {\n    \"Content-Type\": \"application/json\"\n  },\n  \"auth_requirement\": \"Authorization: Key <FAL_KEY>; omitted in fixture mode\",\n  \"body\": {\n    \"prompt\": \"identity: 短黑发，椭圆脸；身份不随 Look 改变\\ncharacter_description: A-01 示例数据，仅用于流程验证 | A-06 历史快照变更测试\\nlook: 白天，干燥，平静\\nappearance: 浅色衬衣\\nshot: A-03 示例镜头 fal 白天门口\\nrequirements: 固定中景，角色在便利店门口转身\\ngeneration_description: 自然日光，角色转身后停顿\\nscene_name: 示例便利店门口\\nscene_identity: 玻璃双门，门右侧蓝色招牌，面向街道\\nscene_description: A-02 测试场景，非正式美术资产 | A-06 历史快照变更测试\\nscene_state: 白天（示例）\\nscene_state_description: 营业中的便利店门口\\nscene_environment: 白天自然光，地面干燥\\n\\nReference bindings:\\n@Image1: Character / Look — 01-identity.png\\n@Image2: Character / Look — 02-daily.png\\n@Image3: Scene / State — 01-scene-stable.png\\n@Image4: Scene / State — 02-scene-day.png\",\n    \"image_urls\": [\n      \"[参考图 1，完整内容见请求文件]\",\n      \"[参考图 2，完整内容见请求文件]\",\n      \"[参考图 3，完整内容见请求文件]\",\n      \"[参考图 4，完整内容见请求文件]\"\n    ],\n    \"duration\": \"3\",\n    \"aspect_ratio\": \"16:9\",\n    \"generate_audio\": false,\n    \"shot_type\": \"customize\",\n    \"start_image_url\": \"[首帧图片，完整内容见请求文件]\"\n  },\n  \"reference_bindings\": [\n    {\n      \"token\": \"@Image1\",\n      \"role\": \"Character / Look\",\n      \"reference_id\": \"77c54f4d451940908208b87c38b010cf\",\n      \"name\": \"01-identity.png\",\n      \"asset_path\": \"assets/e5e2c5fff24485f5dcf326997ecae62943b7f8729abddd4db29bf3a6696dd016.png\",\n      \"sha256\": \"e5e2c5fff24485f5dcf326997ecae62943b7f8729abddd4db29bf3a6696dd016\"\n    },\n    {\n      \"token\": \"@Image2\",\n      \"role\": \"Character / Look\",\n      \"reference_id\": \"7c43b743542c4e9a90926e524180ad88\",\n      \"name\": \"02-daily.png\",\n      \"asset_path\": \"assets/07320b564caa7f9cd106fdbd77fb3392c28e10646d955c9deacbab89d1d99780.png\",\n      \"sha256\": \"07320b564caa7f9cd106fdbd77fb3392c28e10646d955c9deacbab89d1d99780\"\n    },\n    {\n      \"token\": \"@Image3\",\n      \"role\": \"Scene / State\",\n      \"reference_id\": \"acb8b601aa894428a9c5f93c85505d67\",\n      \"name\": \"01-scene-stable.png\",\n      \"asset_path\": \"assets/5796bea3c8709e909ee4f9021b242d2e7e1b7a7c05077bf0acac7204d499f962.png\",\n      \"sha256\": \"5796bea3c8709e909ee4f9021b242d2e7e1b7a7c05077bf0acac7204d499f962\"\n    },\n    {\n      \"token\": \"@Image4\",\n      \"role\": \"Scene / State\",\n      \"reference_id\": \"55de852a607c4483a554baf0430ca1f4\",\n      \"name\": \"02-scene-day.png\",\n      \"asset_path\": \"assets/7dc02c15ae5f90cfc402fb90e2f9ad9227c0263724dae0457dfb2dc79d5f96b1.png\",\n      \"sha256\": \"7dc02c15ae5f90cfc402fb90e2f9ad9227c0263724dae0457dfb2dc79d5f96b1\"\n    }\n  ],\n  \"first_frame_binding\": {\n    \"result_id\": \"2892d2e785254fc694fc5f754f5a496d\",\n    \"task_id\": \"a6fca7a7fa734d208f73f0a917956993\",\n    \"shot_id\": \"d8094901e03441f1bb9ad8696bb427c0\",\n    \"path\": \"image_results/2892d2e785254fc694fc5f754f5a496d/image.png\",\n    \"sha256\": \"20c7aa9d4de10f1f301f56c8b522833ef935ab2e37377cc1a180774958cb8ada\"\n  }\n}"
+    },
+    ".!frame2.!notebook.!reviewpanel.!frame.!frame3.!advanced.!frame.!notebook.!frame3.!frame.!scrollbar": {
+      "handle": 2821166,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!imagepanel": {
+      "handle": 1313868,
+      "width": 1116,
+      "height": 587,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!imagepanel.!frame": {
+      "handle": 8063164,
+      "width": 205,
+      "height": 563,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!imagepanel.!frame.!label": {
+      "handle": 657850,
+      "width": 176,
+      "height": 26,
+      "mapped": false,
+      "text": "图像候选 · ZERO-CALL",
+      "state": []
+    },
+    ".!frame2.!notebook.!imagepanel.!frame.!rows": {
+      "handle": 987340,
+      "width": 205,
+      "height": 537,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!imagepanel.!frame.!rows.!treeview": {
+      "handle": 987896,
+      "width": 190,
+      "height": 537,
+      "mapped": false,
+      "state": [],
+      "rows": [
+        [
+          2,
+          2,
+          186,
+          64
+        ],
+        [
+          2,
+          66,
+          186,
+          64
+        ],
+        [
+          2,
+          130,
+          186,
+          64
+        ],
+        [
+          2,
+          194,
+          186,
+          64
+        ],
+        [
+          2,
+          258,
+          186,
+          64
+        ],
+        [
+          2,
+          322,
+          186,
+          64
+        ],
+        [
+          2,
+          386,
+          186,
+          64
+        ],
+        [
+          2,
+          450,
+          186,
+          64
+        ]
+      ]
+    },
+    ".!frame2.!notebook.!imagepanel.!frame.!rows.!scrollbar": {
+      "handle": 921894,
+      "width": 15,
+      "height": 537,
+      "mapped": false,
+      "state": [
+        "disabled"
+      ]
+    },
+    ".!frame2.!notebook.!imagepanel.!frame.!rows.!label": {
+      "handle": 1967278,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "暂无记录 · 使用新建或生成操作开始",
+      "state": []
+    },
+    ".!frame2.!notebook.!imagepanel.!frame2": {
+      "handle": 2886514,
+      "width": 873,
+      "height": 563,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!imagepanel.!frame2.!label": {
+      "handle": 659304,
+      "width": 206,
+      "height": 26,
+      "mapped": false,
+      "text": "A-03 示例镜头 fal 白天门口",
+      "state": []
+    },
+    ".!frame2.!notebook.!imagepanel.!frame2.!label2": {
+      "handle": 2165026,
+      "width": 383,
+      "height": 21,
+      "mapped": false,
+      "text": "ComfyUI Fixture · 本地占位 PNG · 不代表 AI 图像质量 · 采纳由你决定",
+      "state": []
+    },
+    ".!frame2.!notebook.!imagepanel.!frame2.!actionbar": {
+      "handle": 987826,
+      "width": 873,
+      "height": 33,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!imagepanel.!frame2.!actionbar.!button": {
+      "handle": 1379594,
+      "width": 116,
+      "height": 29,
+      "mapped": false,
+      "text": "采纳为稳定参考图",
+      "state": [
+        "disabled"
+      ]
+    },
+    "button:采纳为稳定参考图": {
+      "handle": 1379594,
+      "width": 116,
+      "height": 29,
+      "mapped": false,
+      "text": "采纳为稳定参考图",
+      "state": [
+        "disabled"
+      ]
+    },
+    ".!frame2.!notebook.!imagepanel.!frame2.!actionbar.!button2": {
+      "handle": 1117778,
+      "width": 155,
+      "height": 29,
+      "mapped": false,
+      "text": "采纳为当前 Look / State",
+      "state": [
+        "disabled"
+      ]
+    },
+    "button:采纳为当前 Look / State": {
+      "handle": 1117778,
+      "width": 155,
+      "height": 29,
+      "mapped": false,
+      "text": "采纳为当前 Look / State",
+      "state": [
+        "disabled"
+      ]
+    },
+    ".!frame2.!notebook.!imagepanel.!frame2.!actionbar.!button3": {
+      "handle": 853282,
+      "width": 102,
+      "height": 29,
+      "mapped": false,
+      "text": "用作 Shot 首帧",
+      "state": []
+    },
+    "button:用作 Shot 首帧": {
+      "handle": 853282,
+      "width": 102,
+      "height": 29,
+      "mapped": false,
+      "text": "用作 Shot 首帧",
+      "state": []
+    },
+    ".!frame2.!notebook.!imagepanel.!frame2.!actionbar.!button4": {
+      "handle": 1706396,
+      "width": 97,
+      "height": 29,
+      "mapped": false,
+      "text": "Reject 图像",
+      "state": [
+        "disabled"
+      ]
+    },
+    "button:Reject 图像": {
+      "handle": 1706396,
+      "width": 97,
+      "height": 29,
+      "mapped": false,
+      "text": "Reject 图像",
+      "state": [
+        "disabled"
+      ]
+    },
+    ".!frame2.!notebook.!imagepanel.!frame2.!actionbar.!button5": {
+      "handle": 11078366,
+      "width": 97,
+      "height": 29,
+      "mapped": false,
+      "text": "Retry 图像",
+      "state": [
+        "disabled"
+      ]
+    },
+    "button:Retry 图像": {
+      "handle": 11078366,
+      "width": 97,
+      "height": 29,
+      "mapped": false,
+      "text": "Retry 图像",
+      "state": [
+        "disabled"
+      ]
+    },
+    ".!frame2.!notebook.!imagepanel.!frame2.!statusbadge": {
+      "handle": 1248032,
+      "width": 143,
+      "height": 27,
+      "mapped": false,
+      "text": "PROMOTED / 已采纳"
+    },
+    ".!frame2.!notebook.!imagepanel.!frame2.!advanced": {
+      "handle": 1182800,
+      "width": 873,
+      "height": 29,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!imagepanel.!frame2.!advanced.!button": {
+      "handle": 1117808,
+      "width": 131,
+      "height": 29,
+      "mapped": false,
+      "text": "＋ 生成 / Retry 设置",
+      "state": []
+    },
+    "button:＋ 生成 / Retry 设置": {
+      "handle": 1117808,
+      "width": 131,
+      "height": 29,
+      "mapped": false,
+      "text": "＋ 生成 / Retry 设置",
+      "state": []
+    },
+    ".!frame2.!notebook.!imagepanel.!frame2.!advanced.!frame": {
+      "handle": 4985340,
+      "width": 873,
+      "height": 216,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!imagepanel.!frame2.!advanced.!frame.!label": {
+      "handle": 788996,
+      "width": 123,
+      "height": 21,
+      "mapped": false,
+      "text": "生成描述 / Retry 描述",
+      "state": []
+    },
+    ".!frame2.!notebook.!imagepanel.!frame2.!advanced.!frame.!frame": {
+      "handle": 1248634,
+      "width": 873,
+      "height": 63,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!imagepanel.!frame2.!advanced.!frame.!frame.!text": {
+      "handle": 4328454,
+      "width": 858,
+      "height": 63,
+      "mapped": false,
+      "text": "自然日光，角色转身后停顿"
+    },
+    ".!frame2.!notebook.!imagepanel.!frame2.!advanced.!frame.!frame.!scrollbar": {
+      "handle": 790626,
+      "width": 15,
+      "height": 63,
+      "mapped": false,
+      "state": [
+        "disabled"
+      ]
+    },
+    ".!frame2.!notebook.!imagepanel.!frame2.!advanced.!frame.!actionbar": {
+      "handle": 1052302,
+      "width": 873,
+      "height": 33,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!imagepanel.!frame2.!advanced.!frame.!actionbar.!button": {
+      "handle": 4196828,
+      "width": 144,
+      "height": 29,
+      "mapped": false,
+      "text": "生成图像 · ZERO-CALL",
+      "state": [
+        "disabled"
+      ]
+    },
+    "button:生成图像 · ZERO-CALL": {
+      "handle": 4196828,
+      "width": 144,
+      "height": 29,
+      "mapped": false,
+      "text": "生成图像 · ZERO-CALL",
+      "state": [
+        "disabled"
+      ]
+    },
+    ".!frame2.!notebook.!imagepanel.!frame2.!advanced.!frame.!label2": {
+      "handle": 723458,
+      "width": 115,
+      "height": 21,
+      "mapped": false,
+      "text": "Reject 原因（可选）",
+      "state": []
+    },
+    ".!frame2.!notebook.!imagepanel.!frame2.!advanced.!frame.!frame2": {
+      "handle": 788758,
+      "width": 873,
+      "height": 44,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!imagepanel.!frame2.!advanced.!frame.!frame2.!text": {
+      "handle": 1119038,
+      "width": 858,
+      "height": 29,
+      "mapped": false,
+      "text": ""
+    },
+    ".!frame2.!notebook.!imagepanel.!frame2.!advanced.!frame.!frame2.!scrollbar": {
+      "handle": 987672,
+      "width": 15,
+      "height": 44,
+      "mapped": false,
+      "state": [
+        "disabled"
+      ]
+    },
+    ".!frame2.!notebook.!imagepanel.!frame2.!advanced2": {
+      "handle": 852680,
+      "width": 873,
+      "height": 29,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!imagepanel.!frame2.!advanced2.!button": {
+      "handle": 3017608,
+      "width": 152,
+      "height": 29,
+      "mapped": false,
+      "text": "＋ Advanced · 技术详情",
+      "state": []
+    },
+    ".!frame2.!notebook.!imagepanel.!frame2.!advanced2.!frame": {
+      "handle": 1706456,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!imagepanel.!frame2.!advanced2.!frame.!frame": {
+      "handle": 1706604,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!imagepanel.!frame2.!advanced2.!frame.!frame.!text": {
+      "handle": 921348,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "Purpose: SHOT_FIRST_FRAME\ncharacter: 测试角色 林夏 | 短黑发，椭圆脸；身份不随 Look 改变 | A-01 示例数据，仅用于流程验证 | A-06 历史快照变更测试\nlook: 日常装（示例） | 白天，干燥，平静 | 浅色衬衣\nscene: 示例便利店门口 | 玻璃双门，门右侧蓝色招牌，面向街道 | A-02 测试场景，非正式美术资产 | A-06 历史快照变更测试\nscene_state: 白天（示例） | 营业中的便利店门口 | 白天自然光，地面干燥\nshot: A-03 示例镜头 fal 白天门口 | 固定中景，角色在便利店门口转身\nGeneration description: 自然日光，角色转身后停顿\nTask 8f8666f8b0404e71bd7a097c56572d93\nResult 746c2cd33f5d4c92a90793b9757806c6\nHuman Gate: first_frame"
+    },
+    ".!frame2.!notebook.!imagepanel.!frame2.!advanced2.!frame.!frame.!scrollbar": {
+      "handle": 1184560,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!imagepanel.!frame2.!label3": {
+      "handle": 919138,
+      "width": 873,
+      "height": 346,
+      "mapped": false,
+      "text": "",
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel": {
+      "handle": 789000,
+      "width": 1116,
+      "height": 587,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!label": {
+      "handle": 13503104,
+      "width": 232,
+      "height": 26,
+      "mapped": false,
+      "text": "声音资产 / 对白生产 / 音频选片",
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook": {
+      "handle": 659490,
+      "width": 1092,
+      "height": 529,
+      "mapped": false,
+      "state": [],
+      "tab_points": {
+        "0": [
+          17,
+          15
+        ],
+        "1": [
+          102,
+          15
+        ],
+        "2": [
+          212,
+          20
+        ]
+      }
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame": {
+      "handle": 4000646,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame.!frame": {
+      "handle": 1905002,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame.!frame.!rows": {
+      "handle": 1053364,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame.!frame.!rows.!treeview": {
+      "handle": 853592,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": [],
+      "rows": [
+        ""
+      ]
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame.!frame.!rows.!scrollbar": {
+      "handle": 918214,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame.!frame.!rows.!label": {
+      "handle": 855698,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "暂无记录 · 使用新建或生成操作开始",
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame.!frame.!button": {
+      "handle": 1838438,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "新建 Voice",
+      "state": []
+    },
+    "button:新建 Voice": {
+      "handle": 1838438,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "新建 Voice",
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame.!frame2": {
+      "handle": 1707618,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame.!frame2.!actionbar": {
+      "handle": 856974,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame.!frame2.!actionbar.!button": {
+      "handle": 3869090,
+      "width": 97,
+      "height": 29,
+      "mapped": false,
+      "text": "保存 Voice",
+      "state": []
+    },
+    "button:保存 Voice": {
+      "handle": 3869090,
+      "width": 97,
+      "height": 29,
+      "mapped": false,
+      "text": "保存 Voice",
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame.!frame2.!actionbar.!button2": {
+      "handle": 592318,
+      "width": 128,
+      "height": 29,
+      "mapped": false,
+      "text": "设为角色默认 Voice",
+      "state": []
+    },
+    "button:设为角色默认 Voice": {
+      "handle": 592318,
+      "width": 128,
+      "height": 29,
+      "mapped": false,
+      "text": "设为角色默认 Voice",
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame.!frame2.!actionbar.!button3": {
+      "handle": 790894,
+      "width": 102,
+      "height": 29,
+      "mapped": false,
+      "text": "导入参考音频…",
+      "state": []
+    },
+    "button:导入参考音频…": {
+      "handle": 790894,
+      "width": 102,
+      "height": 29,
+      "mapped": false,
+      "text": "导入参考音频…",
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame.!frame2.!scrollarea": {
+      "handle": 2951646,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame.!frame2.!scrollarea.!canvas": {
+      "handle": 854272,
+      "width": 1,
+      "height": 1,
+      "mapped": false
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame.!frame2.!scrollarea.!canvas.!frame": {
+      "handle": 985774,
+      "width": 414,
+      "height": 493,
+      "mapped": true,
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame.!frame2.!scrollarea.!canvas.!frame.!label": {
+      "handle": 1313728,
+      "width": 88,
+      "height": 21,
+      "mapped": true,
+      "text": "关联 Character",
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame.!frame2.!scrollarea.!canvas.!frame.!combobox": {
+      "handle": 3345276,
+      "width": 400,
+      "height": 31,
+      "mapped": true,
+      "text": "",
+      "state": [
+        "readonly"
+      ]
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame.!frame2.!scrollarea.!canvas.!frame.!label2": {
+      "handle": 1379924,
+      "width": 61,
+      "height": 21,
+      "mapped": true,
+      "text": "声音名称 *",
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame.!frame2.!scrollarea.!canvas.!frame.!entry": {
+      "handle": 1182044,
+      "width": 400,
+      "height": 31,
+      "mapped": true,
+      "text": "PY_VAR12",
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame.!frame2.!scrollarea.!canvas.!frame.!label3": {
+      "handle": 1052464,
+      "width": 85,
+      "height": 21,
+      "mapped": true,
+      "text": "稳定声音描述 *",
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame.!frame2.!scrollarea.!canvas.!frame.!frame": {
+      "handle": 3216224,
+      "width": 400,
+      "height": 63,
+      "mapped": true,
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame.!frame2.!scrollarea.!canvas.!frame.!frame.!text": {
+      "handle": 723428,
+      "width": 385,
+      "height": 63,
+      "mapped": true,
+      "text": ""
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame.!frame2.!scrollarea.!canvas.!frame.!frame.!scrollbar": {
+      "handle": 1053088,
+      "width": 15,
+      "height": 63,
+      "mapped": true,
+      "state": [
+        "disabled"
+      ]
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame.!frame2.!scrollarea.!canvas.!frame.!label4": {
+      "handle": 1119120,
+      "width": 78,
+      "height": 21,
+      "mapped": true,
+      "text": "默认 Delivery",
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame.!frame2.!scrollarea.!canvas.!frame.!combobox2": {
+      "handle": 1968792,
+      "width": 400,
+      "height": 31,
+      "mapped": true,
+      "text": "",
+      "state": [
+        "readonly"
+      ]
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame.!frame2.!scrollarea.!canvas.!frame.!label5": {
+      "handle": 4722038,
+      "width": 271,
+      "height": 21,
+      "mapped": true,
+      "text": "Provider 映射：MiniMax 系统声音 · ZERO-CALL",
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame.!frame2.!scrollarea.!canvas.!frame.!advanced": {
+      "handle": 3673116,
+      "width": 400,
+      "height": 29,
+      "mapped": true,
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame.!frame2.!scrollarea.!canvas.!frame.!advanced.!button": {
+      "handle": 2166816,
+      "width": 210,
+      "height": 29,
+      "mapped": true,
+      "text": "＋ Advanced · Provider Mapping",
+      "state": []
+    },
+    "button:＋ Advanced · Provider Mapping": {
+      "handle": 2166816,
+      "width": 210,
+      "height": 29,
+      "mapped": true,
+      "text": "＋ Advanced · Provider Mapping",
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame.!frame2.!scrollarea.!canvas.!frame.!advanced.!frame": {
+      "handle": 2296410,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame.!frame2.!scrollarea.!canvas.!frame.!advanced.!frame.!label": {
+      "handle": 1708234,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "MiniMax 系统 Voice ID",
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame.!frame2.!scrollarea.!canvas.!frame.!advanced.!frame.!entry": {
+      "handle": 788910,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "PY_VAR13",
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame.!frame2.!scrollarea.!canvas.!frame.!label6": {
+      "handle": 4327906,
+      "width": 28,
+      "height": 21,
+      "mapped": true,
+      "text": "备注",
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame.!frame2.!scrollarea.!canvas.!frame.!frame2": {
+      "handle": 987472,
+      "width": 400,
+      "height": 46,
+      "mapped": true,
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame.!frame2.!scrollarea.!canvas.!frame.!frame2.!text": {
+      "handle": 2756054,
+      "width": 385,
+      "height": 46,
+      "mapped": true,
+      "text": ""
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame.!frame2.!scrollarea.!canvas.!frame.!frame2.!scrollbar": {
+      "handle": 854292,
+      "width": 15,
+      "height": 46,
+      "mapped": true,
+      "state": [
+        "disabled"
+      ]
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame.!frame2.!scrollarea.!canvas.!frame.!label7": {
+      "handle": 788260,
+      "width": 400,
+      "height": 21,
+      "mapped": true,
+      "text": "参考音频：无",
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame.!frame2.!scrollarea.!canvas.!frame.!label8": {
+      "handle": 593888,
+      "width": 400,
+      "height": 21,
+      "mapped": true,
+      "text": "系统声音模式不会上传参考音频或执行克隆；导入文件仅保存为身份参考。",
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame.!frame2.!scrollarea.!scrollbar": {
+      "handle": 1052408,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame2": {
+      "handle": 1184558,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame2.!frame": {
+      "handle": 921686,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame2.!frame.!rows": {
+      "handle": 592152,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame2.!frame.!rows.!treeview": {
+      "handle": 721926,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": [],
+      "rows": [
+        "",
+        ""
+      ]
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame2.!frame.!rows.!scrollbar": {
+      "handle": 592256,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame2.!frame.!rows.!label": {
+      "handle": 591038,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "暂无记录 · 使用新建或生成操作开始",
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame2.!frame.!button": {
+      "handle": 2886674,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "新建 Dialogue",
+      "state": []
+    },
+    "button:新建 Dialogue": {
+      "handle": 2886674,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "新建 Dialogue",
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame2.!frame2": {
+      "handle": 724950,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame2.!frame2.!actionbar": {
+      "handle": 593964,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame2.!frame2.!actionbar.!button": {
+      "handle": 1118470,
+      "width": 100,
+      "height": 29,
+      "mapped": false,
+      "text": "保存 Dialogue",
+      "state": []
+    },
+    "button:保存 Dialogue": {
+      "handle": 1118470,
+      "width": 100,
+      "height": 29,
+      "mapped": false,
+      "text": "保存 Dialogue",
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame2.!frame2.!actionbar.!button2": {
+      "handle": 6425616,
+      "width": 144,
+      "height": 29,
+      "mapped": false,
+      "text": "生成音频 · ZERO-CALL",
+      "state": []
+    },
+    "button:生成音频 · ZERO-CALL": {
+      "handle": 6425616,
+      "width": 144,
+      "height": 29,
+      "mapped": false,
+      "text": "生成音频 · ZERO-CALL",
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame2.!frame2.!actionbar.!button3": {
+      "handle": 921340,
+      "width": 97,
+      "height": 29,
+      "mapped": false,
+      "text": "查看音频候选",
+      "state": []
+    },
+    "button:查看音频候选": {
+      "handle": 921340,
+      "width": 97,
+      "height": 29,
+      "mapped": false,
+      "text": "查看音频候选",
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame2.!frame2.!scrollarea": {
+      "handle": 921612,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame2.!frame2.!scrollarea.!canvas": {
+      "handle": 593914,
+      "width": 1,
+      "height": 1,
+      "mapped": false
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame2.!frame2.!scrollarea.!canvas.!frame": {
+      "handle": 724976,
+      "width": 233,
+      "height": 441,
+      "mapped": true,
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame2.!frame2.!scrollarea.!canvas.!frame.!label": {
+      "handle": 1052658,
+      "width": 58,
+      "height": 21,
+      "mapped": true,
+      "text": "关联 Shot",
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame2.!frame2.!scrollarea.!canvas.!frame.!combobox": {
+      "handle": 3476286,
+      "width": 219,
+      "height": 31,
+      "mapped": true,
+      "text": "",
+      "state": [
+        "readonly"
+      ]
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame2.!frame2.!scrollarea.!canvas.!frame.!label2": {
+      "handle": 1707342,
+      "width": 182,
+      "height": 21,
+      "mapped": true,
+      "text": "选择 Shot 后显示角色与默认声音",
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame2.!frame2.!scrollarea.!canvas.!frame.!label3": {
+      "handle": 659370,
+      "width": 170,
+      "height": 21,
+      "mapped": true,
+      "text": "对白顺序（同一 Shot 内唯一）",
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame2.!frame2.!scrollarea.!canvas.!frame.!entry": {
+      "handle": 1247606,
+      "width": 219,
+      "height": 31,
+      "mapped": true,
+      "text": "PY_VAR14",
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame2.!frame2.!scrollarea.!canvas.!frame.!label4": {
+      "handle": 1774388,
+      "width": 85,
+      "height": 21,
+      "mapped": true,
+      "text": "预期对白文本 *",
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame2.!frame2.!scrollarea.!canvas.!frame.!frame": {
+      "handle": 1509748,
+      "width": 219,
+      "height": 114,
+      "mapped": true,
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame2.!frame2.!scrollarea.!canvas.!frame.!frame.!text": {
+      "handle": 987882,
+      "width": 204,
+      "height": 114,
+      "mapped": true,
+      "text": ""
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame2.!frame2.!scrollarea.!canvas.!frame.!frame.!scrollbar": {
+      "handle": 4722772,
+      "width": 15,
+      "height": 114,
+      "mapped": true,
+      "state": [
+        "disabled"
+      ]
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame2.!frame2.!scrollarea.!canvas.!frame.!label5": {
+      "handle": 1053194,
+      "width": 50,
+      "height": 21,
+      "mapped": true,
+      "text": "Delivery",
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame2.!frame2.!scrollarea.!canvas.!frame.!combobox2": {
+      "handle": 1444866,
+      "width": 219,
+      "height": 31,
+      "mapped": true,
+      "text": "",
+      "state": [
+        "readonly"
+      ]
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame2.!frame2.!scrollarea.!canvas.!frame.!label6": {
+      "handle": 1445106,
+      "width": 219,
+      "height": 21,
+      "mapped": true,
+      "text": "保存对白后可生成音频候选",
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame2.!frame2.!scrollarea.!canvas.!frame.!advanced": {
+      "handle": 1314702,
+      "width": 219,
+      "height": 29,
+      "mapped": true,
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame2.!frame2.!scrollarea.!canvas.!frame.!advanced.!button": {
+      "handle": 1052116,
+      "width": 219,
+      "height": 29,
+      "mapped": true,
+      "text": "＋ Advanced · Shot Audio Handoff",
+      "state": []
+    },
+    "button:＋ Advanced · Shot Audio Handoff": {
+      "handle": 1052116,
+      "width": 219,
+      "height": 29,
+      "mapped": true,
+      "text": "＋ Advanced · Shot Audio Handoff",
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame2.!frame2.!scrollarea.!canvas.!frame.!advanced.!frame": {
+      "handle": 984874,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame2.!frame2.!scrollarea.!canvas.!frame.!advanced.!frame.!frame": {
+      "handle": 659428,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame2.!frame2.!scrollarea.!canvas.!frame.!advanced.!frame.!frame.!text": {
+      "handle": 1052612,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": ""
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame2.!frame2.!scrollarea.!canvas.!frame.!advanced.!frame.!frame.!scrollbar": {
+      "handle": 1576634,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame2.!frame2.!scrollarea.!scrollbar": {
+      "handle": 4852156,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame3": {
+      "handle": 1312898,
+      "width": 1088,
+      "height": 492,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame3.!frame": {
+      "handle": 1643028,
+      "width": 205,
+      "height": 472,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame3.!frame.!rows": {
+      "handle": 1183690,
+      "width": 205,
+      "height": 472,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame3.!frame.!rows.!treeview": {
+      "handle": 2820972,
+      "width": 190,
+      "height": 472,
+      "mapped": false,
+      "state": [],
+      "rows": [
+        [
+          2,
+          2,
+          186,
+          64
+        ],
+        [
+          2,
+          66,
+          186,
+          64
+        ],
+        [
+          2,
+          130,
+          186,
+          64
+        ],
+        [
+          2,
+          194,
+          186,
+          64
+        ]
+      ]
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame3.!frame.!rows.!scrollbar": {
+      "handle": 1315350,
+      "width": 15,
+      "height": 472,
+      "mapped": false,
+      "state": [
+        "disabled"
+      ]
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame3.!frame.!rows.!label": {
+      "handle": 2493578,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "暂无记录 · 使用新建或生成操作开始",
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame3.!frame2": {
+      "handle": 4591334,
+      "width": 847,
+      "height": 472,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame3.!frame2.!actionbar": {
+      "handle": 5575076,
+      "width": 847,
+      "height": 33,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame3.!frame2.!actionbar.!button": {
+      "handle": 2100334,
+      "width": 100,
+      "height": 29,
+      "mapped": false,
+      "text": "试听实际 WAV",
+      "state": []
+    },
+    "button:试听实际 WAV": {
+      "handle": 2100334,
+      "width": 100,
+      "height": 29,
+      "mapped": false,
+      "text": "试听实际 WAV",
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame3.!frame2.!actionbar.!button2": {
+      "handle": 1314334,
+      "width": 97,
+      "height": 29,
+      "mapped": false,
+      "text": "Select Audio",
+      "state": []
+    },
+    "button:Select Audio": {
+      "handle": 1314334,
+      "width": 97,
+      "height": 29,
+      "mapped": false,
+      "text": "Select Audio",
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame3.!frame2.!actionbar.!button3": {
+      "handle": 1641804,
+      "width": 97,
+      "height": 29,
+      "mapped": false,
+      "text": "Reject Audio",
+      "state": []
+    },
+    "button:Reject Audio": {
+      "handle": 1641804,
+      "width": 97,
+      "height": 29,
+      "mapped": false,
+      "text": "Reject Audio",
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame3.!frame2.!actionbar.!button4": {
+      "handle": 986660,
+      "width": 97,
+      "height": 29,
+      "mapped": false,
+      "text": "Retry Audio",
+      "state": [
+        "disabled"
+      ]
+    },
+    "button:Retry Audio": {
+      "handle": 986660,
+      "width": 97,
+      "height": 29,
+      "mapped": false,
+      "text": "Retry Audio",
+      "state": [
+        "disabled"
+      ]
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame3.!frame2.!actionbar.!button5": {
+      "handle": 854302,
+      "width": 132,
+      "height": 29,
+      "mapped": false,
+      "text": "对齐 + SRT · Fixture",
+      "state": []
+    },
+    "button:对齐 + SRT · Fixture": {
+      "handle": 854302,
+      "width": 132,
+      "height": 29,
+      "mapped": false,
+      "text": "对齐 + SRT · Fixture",
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame3.!frame2.!scrollarea": {
+      "handle": 1707512,
+      "width": 847,
+      "height": 439,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame3.!frame2.!scrollarea.!canvas": {
+      "handle": 1313578,
+      "width": 832,
+      "height": 439,
+      "mapped": false
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame3.!frame2.!scrollarea.!canvas.!frame": {
+      "handle": 854290,
+      "width": 832,
+      "height": 348,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame3.!frame2.!scrollarea.!canvas.!frame.!label": {
+      "handle": 1052194,
+      "width": 401,
+      "height": 26,
+      "mapped": false,
+      "text": "SELECTED · A-07 示例林夏声音 / calm · completed",
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame3.!frame2.!scrollarea.!canvas.!frame.!label2": {
+      "handle": 2888790,
+      "width": 410,
+      "height": 21,
+      "mapped": false,
+      "text": "音频为低音量测试音调；转写与时间均为 Fixture，未运行 WhisperX 模型。",
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame3.!frame2.!scrollarea.!canvas.!frame.!statusbadge": {
+      "handle": 788974,
+      "width": 81,
+      "height": 27,
+      "mapped": false,
+      "text": "SELECTED"
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame3.!frame2.!scrollarea.!canvas.!frame.!advanced": {
+      "handle": 922384,
+      "width": 818,
+      "height": 29,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame3.!frame2.!scrollarea.!canvas.!frame.!advanced.!button": {
+      "handle": 38471872,
+      "width": 155,
+      "height": 29,
+      "mapped": false,
+      "text": "＋ Retry 设置 / 拒绝原因",
+      "state": []
+    },
+    "button:＋ Retry 设置 / 拒绝原因": {
+      "handle": 38471872,
+      "width": 155,
+      "height": 29,
+      "mapped": false,
+      "text": "＋ Retry 设置 / 拒绝原因",
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame3.!frame2.!scrollarea.!canvas.!frame.!advanced.!frame": {
+      "handle": 1052926,
+      "width": 818,
+      "height": 301,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame3.!frame2.!scrollarea.!canvas.!frame.!advanced.!frame.!label": {
+      "handle": 987900,
+      "width": 147,
+      "height": 21,
+      "mapped": false,
+      "text": "当次请求文本 / Retry 文本",
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame3.!frame2.!scrollarea.!canvas.!frame.!advanced.!frame.!frame": {
+      "handle": 986868,
+      "width": 818,
+      "height": 63,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame3.!frame2.!scrollarea.!canvas.!frame.!advanced.!frame.!frame.!text": {
+      "handle": 1378726,
+      "width": 803,
+      "height": 63,
+      "mapped": false,
+      "text": "等一下，门口的灯还亮着。"
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame3.!frame2.!scrollarea.!canvas.!frame.!advanced.!frame.!frame.!scrollbar": {
+      "handle": 856590,
+      "width": 15,
+      "height": 63,
+      "mapped": false,
+      "state": [
+        "disabled"
+      ]
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame3.!frame2.!scrollarea.!canvas.!frame.!advanced.!frame.!label2": {
+      "handle": 721566,
+      "width": 171,
+      "height": 21,
+      "mapped": false,
+      "text": "当次 Delivery / Retry Delivery",
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame3.!frame2.!scrollarea.!canvas.!frame.!advanced.!frame.!combobox": {
+      "handle": 1444408,
+      "width": 818,
+      "height": 31,
+      "mapped": false,
+      "text": "",
+      "state": [
+        "readonly"
+      ]
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame3.!frame2.!scrollarea.!canvas.!frame.!advanced.!frame.!label3": {
+      "handle": 1313664,
+      "width": 322,
+      "height": 21,
+      "mapped": false,
+      "text": "语速（0.5～2；仅影响请求参数，Fixture 不模拟声学质量）",
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame3.!frame2.!scrollarea.!canvas.!frame.!advanced.!frame.!entry": {
+      "handle": 1706986,
+      "width": 818,
+      "height": 31,
+      "mapped": false,
+      "text": "PY_VAR15",
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame3.!frame2.!scrollarea.!canvas.!frame.!advanced.!frame.!label4": {
+      "handle": 788980,
+      "width": 115,
+      "height": 21,
+      "mapped": false,
+      "text": "Reject 原因（可选）",
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame3.!frame2.!scrollarea.!canvas.!frame.!advanced.!frame.!frame2": {
+      "handle": 919064,
+      "width": 818,
+      "height": 44,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame3.!frame2.!scrollarea.!canvas.!frame.!advanced.!frame.!frame2.!text": {
+      "handle": 788992,
+      "width": 803,
+      "height": 29,
+      "mapped": false,
+      "text": ""
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame3.!frame2.!scrollarea.!canvas.!frame.!advanced.!frame.!frame2.!scrollbar": {
+      "handle": 1247492,
+      "width": 15,
+      "height": 44,
+      "mapped": false,
+      "state": [
+        "disabled"
+      ]
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame3.!frame2.!scrollarea.!canvas.!frame.!notebook": {
+      "handle": 921330,
+      "width": 818,
+      "height": 185,
+      "mapped": false,
+      "state": [],
+      "tab_points": {
+        "0": [
+          17,
+          15
+        ],
+        "1": [
+          102,
+          20
+        ],
+        "2": [
+          232,
+          15
+        ]
+      }
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame3.!frame2.!scrollarea.!canvas.!frame.!notebook.!frame": {
+      "handle": 2231206,
+      "width": 814,
+      "height": 148,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame3.!frame2.!scrollarea.!canvas.!frame.!notebook.!frame.!frame": {
+      "handle": 1117824,
+      "width": 814,
+      "height": 148,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame3.!frame2.!scrollarea.!canvas.!frame.!notebook.!frame.!frame.!text": {
+      "handle": 853028,
+      "width": 799,
+      "height": 148,
+      "mapped": false,
+      "text": "Voice: A-07 示例林夏声音\nCharacter: 测试角色 林夏\nShot: A-03 示例镜头 fal 白天门口\n预期对白: 等一下，门口的灯还亮着。\n当次提交文本: 等一下，门口的灯还亮着。\nDelivery: calm\n"
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame3.!frame2.!scrollarea.!canvas.!frame.!notebook.!frame.!frame.!scrollbar": {
+      "handle": 921366,
+      "width": 15,
+      "height": 148,
+      "mapped": false,
+      "state": [
+        "disabled"
+      ]
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame3.!frame2.!scrollarea.!canvas.!frame.!notebook.!frame2": {
+      "handle": 788764,
+      "width": 814,
+      "height": 148,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame3.!frame2.!scrollarea.!canvas.!frame.!notebook.!frame2.!frame": {
+      "handle": 1314114,
+      "width": 814,
+      "height": 148,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame3.!frame2.!scrollarea.!canvas.!frame.!notebook.!frame2.!frame.!text": {
+      "handle": 788998,
+      "width": 799,
+      "height": 148,
+      "mapped": false,
+      "text": "FIXTURE · 未运行 WhisperX 模型\nExpected: 等一下，门口的灯还亮着。\n模拟 Actual Transcript: 这是音频测试。等待人工确认。\n\n1\n00:00:00,100 --> 00:00:01,700\n[FIXTURE] 这是音频测试。\n\n2\n00:00:02,100 --> 00:00:03,700\n[FIXTURE] 等待人工确认。\n\nWord timing:\n[\n  {\n    \"start\": 0.1,\n    \"end\": 1.7,\n    \"text\": \"这是音频测试。\",\n    \"words\": [\n      {\n        \"word\": \"这\",\n        \"start\": 0.1,\n        \"end\": 0.3286,\n        \"score\": null\n      },\n      {\n        \"word\": \"是\",\n        \"start\": 0.3286,\n        \"end\": 0.5571,\n        \"score\": null\n      },\n      {\n        \"word\": \"音\",\n        \"start\": 0.5571,\n        \"end\": 0.7857,\n        \"score\": null\n      },\n      {\n        \"word\": \"频\",\n        \"start\": 0.7857,\n        \"end\": 1.0143,\n        \"score\": null\n      },\n      {\n        \"word\": \"测\",\n        \"start\": 1.0143,\n        \"end\": 1.2429,\n        \"score\": null\n      },\n      {\n        \"word\": \"试\",\n        \"start\": 1.2429,\n        \"end\": 1.4714,\n        \"score\": null\n      },\n      {\n        \"word\": \"。\",\n        \"start\": 1.4714,\n        \"end\": 1.7,\n        \"score\": null\n      }\n    ]\n  },\n  {\n    \"start\": 2.1,\n    \"end\": 3.7,\n    \"text\": \"等待人工确认。\",\n    \"words\": [\n      {\n        \"word\": \"等\",\n        \"start\": 2.1,\n        \"end\": 2.3286,\n        \"score\": null\n      },\n      {\n        \"word\": \"待\",\n        \"start\": 2.3286,\n        \"end\": 2.5571,\n        \"score\": null\n      },\n      {\n        \"word\": \"人\",\n        \"start\": 2.5571,\n        \"end\": 2.7857,\n        \"score\": null\n      },\n      {\n        \"word\": \"工\",\n        \"start\": 2.7857,\n        \"end\": 3.0143,\n        \"score\": null\n      },\n      {\n        \"word\": \"确\",\n        \"start\": 3.0143,\n        \"end\": 3.2429,\n        \"score\": null\n      },\n      {\n        \"word\": \"认\",\n        \"start\": 3.2429,\n        \"end\": 3.4714,\n        \"score\": null\n      },\n      {\n        \"word\": \"。\",\n        \"start\": 3.4714,\n        \"end\": 3.7,\n        \"score\": null\n      }\n    ]\n  }\n]"
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame3.!frame2.!scrollarea.!canvas.!frame.!notebook.!frame2.!frame.!scrollbar": {
+      "handle": 853764,
+      "width": 15,
+      "height": 148,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame3.!frame2.!scrollarea.!canvas.!frame.!notebook.!frame3": {
+      "handle": 1510756,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame3.!frame2.!scrollarea.!canvas.!frame.!notebook.!frame3.!frame": {
+      "handle": 1119116,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame3.!frame2.!scrollarea.!canvas.!frame.!notebook.!frame3.!frame.!text": {
+      "handle": 788990,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "Audio Task: d2925480ea774a0fb44293b1bb0aec81\nResult: 1d9b5aff1c494eb1ad166be377a8d937\n{\n  \"provider\": \"minimax\",\n  \"model\": \"speech-2.6-hd\",\n  \"method\": \"POST\",\n  \"url\": \"https://api.minimax.io/v1/t2a_v2\",\n  \"headers\": {\n    \"Content-Type\": \"application/json\"\n  },\n  \"auth_requirement\": \"Bearer API key required for real API; omitted, never read in fixture mode\",\n  \"simulation_only\": true,\n  \"body\": {\n    \"model\": \"speech-2.6-hd\",\n    \"text\": \"等一下，门口的灯还亮着。\",\n    \"stream\": false,\n    \"output_format\": \"hex\",\n    \"language_boost\": \"Chinese\",\n    \"voice_setting\": {\n      \"voice_id\": \"Chinese (Mandarin)_Warm_Girl\",\n      \"speed\": 1.0,\n      \"vol\": 1,\n      \"pitch\": 0,\n      \"emotion\": \"calm\"\n    },\n    \"audio_setting\": {\n      \"sample_rate\": 32000,\n      \"format\": \"wav\",\n      \"channel\": 1\n    }\n  },\n  \"voice_mapping\": {\n    \"voice_id\": \"567804636c7440eab7210e6d882730e3\",\n    \"provider\": \"minimax\",\n    \"provider_voice_id\": \"Chinese (Mandarin)_Warm_Girl\",\n    \"kind\": \"system\"\n  },\n  \"reference_policy\": \"Reference audio retained as identity evidence; system-voice TTS does not accept reference audio. No upload or cloning.\",\n  \"voice_reference_ids\": [\n    \"928a123ef3e74b78a008b1ad25279941\"\n  ]\n}"
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame3.!frame2.!scrollarea.!canvas.!frame.!notebook.!frame3.!frame.!scrollbar": {
+      "handle": 987376,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!audiopanel.!notebook.!frame3.!frame2.!scrollarea.!scrollbar": {
+      "handle": 3280586,
+      "width": 15,
+      "height": 439,
+      "mapped": false,
+      "state": [
+        "disabled"
+      ]
+    },
+    ".!frame2.!notebook.!roughcutpanel": {
+      "handle": 3673234,
+      "width": 1116,
+      "height": 587,
+      "mapped": true,
+      "state": [
+        "hover"
+      ]
+    },
+    ".!frame2.!notebook.!roughcutpanel.!statusbadge": {
+      "handle": 1380730,
+      "width": 153,
+      "height": 27,
+      "mapped": true,
+      "text": "READY · 2 镜头 · 6.00s"
+    },
+    ".!frame2.!notebook.!roughcutpanel.!label": {
+      "handle": 987876,
+      "width": 286,
+      "height": 26,
+      "mapped": true,
+      "text": "粗剪交接 · FIXTURE 素材 · 非最终成片",
+      "state": []
+    },
+    ".!frame2.!notebook.!roughcutpanel.!frame": {
+      "handle": 4001854,
+      "width": 1092,
+      "height": 37,
+      "mapped": true,
+      "state": []
+    },
+    ".!frame2.!notebook.!roughcutpanel.!frame.!combobox": {
+      "handle": 855584,
+      "width": 886,
+      "height": 31,
+      "mapped": true,
+      "text": "",
+      "state": [
+        "readonly"
+      ]
+    },
+    ".!frame2.!notebook.!roughcutpanel.!frame.!button": {
+      "handle": 1969452,
+      "width": 97,
+      "height": 29,
+      "mapped": true,
+      "text": "新建 Timeline",
+      "state": []
+    },
+    "button:新建 Timeline": {
+      "handle": 1969452,
+      "width": 97,
+      "height": 29,
+      "mapped": true,
+      "text": "新建 Timeline",
+      "state": []
+    },
+    ".!frame2.!notebook.!roughcutpanel.!frame.!button2": {
+      "handle": 1380002,
+      "width": 97,
+      "height": 29,
+      "mapped": true,
+      "text": "刷新 Timeline",
+      "state": []
+    },
+    "button:刷新 Timeline": {
+      "handle": 1380002,
+      "width": 97,
+      "height": 29,
+      "mapped": true,
+      "text": "刷新 Timeline",
+      "state": []
+    },
+    ".!frame2.!notebook.!roughcutpanel.!advanced": {
+      "handle": 1510746,
+      "width": 1092,
+      "height": 29,
+      "mapped": true,
+      "state": []
+    },
+    ".!frame2.!notebook.!roughcutpanel.!advanced.!button": {
+      "handle": 1838392,
+      "width": 173,
+      "height": 29,
+      "mapped": true,
+      "text": "＋ Timeline 名称 / 允许策略",
+      "state": []
+    },
+    "button:＋ Timeline 名称 / 允许策略": {
+      "handle": 1838392,
+      "width": 173,
+      "height": 29,
+      "mapped": true,
+      "text": "＋ Timeline 名称 / 允许策略",
+      "state": []
+    },
+    ".!frame2.!notebook.!roughcutpanel.!advanced.!frame": {
+      "handle": 788744,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!roughcutpanel.!advanced.!frame.!label": {
+      "handle": 1052054,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "Timeline 名称 *",
+      "state": []
+    },
+    ".!frame2.!notebook.!roughcutpanel.!advanced.!frame.!entry": {
+      "handle": 921344,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "PY_VAR16",
+      "state": []
+    },
+    ".!frame2.!notebook.!roughcutpanel.!advanced.!frame.!frame": {
+      "handle": 921390,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!roughcutpanel.!advanced.!frame.!frame.!checkbutton": {
+      "handle": 1049040,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "允许缺失对白 / 无音频 Shot（静音）",
+      "state": [
+        "selected"
+      ]
+    },
+    "check:.!frame2.!notebook.!roughcutpanel.!advanced.!frame.!frame.!checkbutton": {
+      "handle": 1049040,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "允许缺失对白 / 无音频 Shot（静音）",
+      "state": [
+        "selected"
+      ]
+    },
+    ".!frame2.!notebook.!roughcutpanel.!advanced.!frame.!frame.!checkbutton2": {
+      "handle": 1641598,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "允许当前音频没有字幕",
+      "state": [
+        "selected"
+      ]
+    },
+    "check:.!frame2.!notebook.!roughcutpanel.!advanced.!frame.!frame.!checkbutton2": {
+      "handle": 1641598,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "允许当前音频没有字幕",
+      "state": [
+        "selected"
+      ]
+    },
+    ".!frame2.!notebook.!roughcutpanel.!advanced.!frame.!label2": {
+      "handle": 5704532,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "策略：视频时长驱动；对白依序排列并截短超出部分；视频原音静音；字幕单独 SRT。",
+      "state": []
+    },
+    ".!frame2.!notebook.!roughcutpanel.!actionbar": {
+      "handle": 854432,
+      "width": 1092,
+      "height": 33,
+      "mapped": true,
+      "state": [
+        "hover"
+      ]
+    },
+    ".!frame2.!notebook.!roughcutpanel.!actionbar.!button": {
+      "handle": 1773974,
+      "width": 97,
+      "height": 29,
+      "mapped": true,
+      "text": "保存顺序",
+      "state": []
+    },
+    "button:保存顺序": {
+      "handle": 1773974,
+      "width": 97,
+      "height": 29,
+      "mapped": true,
+      "text": "保存顺序",
+      "state": []
+    },
+    ".!frame2.!notebook.!roughcutpanel.!actionbar.!button2": {
+      "handle": 1116410,
+      "width": 97,
+      "height": 29,
+      "mapped": true,
+      "text": "Validate",
+      "state": []
+    },
+    "button:Validate": {
+      "handle": 1116410,
+      "width": 97,
+      "height": 29,
+      "mapped": true,
+      "text": "Validate",
+      "state": []
+    },
+    ".!frame2.!notebook.!roughcutpanel.!actionbar.!button3": {
+      "handle": 4657240,
+      "width": 101,
+      "height": 29,
+      "mapped": true,
+      "text": "Build Timeline",
+      "state": []
+    },
+    "button:Build Timeline": {
+      "handle": 4657240,
+      "width": 101,
+      "height": 29,
+      "mapped": true,
+      "text": "Build Timeline",
+      "state": []
+    },
+    ".!frame2.!notebook.!roughcutpanel.!actionbar.!button4": {
+      "handle": 986782,
+      "width": 121,
+      "height": 29,
+      "mapped": true,
+      "text": "Generate Preview",
+      "state": []
+    },
+    "button:Generate Preview": {
+      "handle": 986782,
+      "width": 121,
+      "height": 29,
+      "mapped": true,
+      "text": "Generate Preview",
+      "state": []
+    },
+    ".!frame2.!notebook.!roughcutpanel.!actionbar.!button5": {
+      "handle": 790188,
+      "width": 100,
+      "height": 29,
+      "mapped": true,
+      "text": "Open Preview",
+      "state": []
+    },
+    "button:Open Preview": {
+      "handle": 790188,
+      "width": 100,
+      "height": 29,
+      "mapped": true,
+      "text": "Open Preview",
+      "state": []
+    },
+    ".!frame2.!notebook.!roughcutpanel.!actionbar.!button6": {
+      "handle": 1510824,
+      "width": 109,
+      "height": 29,
+      "mapped": true,
+      "text": "Export Handoff",
+      "state": [
+        "active",
+        "focus",
+        "hover"
+      ]
+    },
+    "button:Export Handoff": {
+      "handle": 1510824,
+      "width": 109,
+      "height": 29,
+      "mapped": true,
+      "text": "Export Handoff",
+      "state": [
+        "active",
+        "focus",
+        "hover"
+      ]
+    },
+    ".!frame2.!notebook.!roughcutpanel.!panedwindow": {
+      "handle": 2165598,
+      "width": 1092,
+      "height": 349,
+      "mapped": true,
+      "state": []
+    },
+    ".!frame2.!notebook.!roughcutpanel.!panedwindow.!frame": {
+      "handle": 2755430,
+      "width": 485,
+      "height": 349,
+      "mapped": true,
+      "state": []
+    },
+    ".!frame2.!notebook.!roughcutpanel.!panedwindow.!frame.!frame": {
+      "handle": 724996,
+      "width": 485,
+      "height": 37,
+      "mapped": true,
+      "state": []
+    },
+    ".!frame2.!notebook.!roughcutpanel.!panedwindow.!frame.!frame.!combobox": {
+      "handle": 462890,
+      "width": 382,
+      "height": 31,
+      "mapped": true,
+      "text": "",
+      "state": [
+        "readonly"
+      ]
+    },
+    ".!frame2.!notebook.!roughcutpanel.!panedwindow.!frame.!frame.!button": {
+      "handle": 790230,
+      "width": 97,
+      "height": 29,
+      "mapped": true,
+      "text": "添加 Shot",
+      "state": []
+    },
+    "button:添加 Shot": {
+      "handle": 790230,
+      "width": 97,
+      "height": 29,
+      "mapped": true,
+      "text": "添加 Shot",
+      "state": []
+    },
+    ".!frame2.!notebook.!roughcutpanel.!panedwindow.!frame.!actionbar": {
+      "handle": 593448,
+      "width": 485,
+      "height": 33,
+      "mapped": true,
+      "state": []
+    },
+    ".!frame2.!notebook.!roughcutpanel.!panedwindow.!frame.!actionbar.!button": {
+      "handle": 921394,
+      "width": 97,
+      "height": 29,
+      "mapped": true,
+      "text": "Move Up",
+      "state": []
+    },
+    "button:Move Up": {
+      "handle": 921394,
+      "width": 97,
+      "height": 29,
+      "mapped": true,
+      "text": "Move Up",
+      "state": []
+    },
+    ".!frame2.!notebook.!roughcutpanel.!panedwindow.!frame.!actionbar.!button2": {
+      "handle": 2231542,
+      "width": 97,
+      "height": 29,
+      "mapped": true,
+      "text": "Move Down",
+      "state": []
+    },
+    "button:Move Down": {
+      "handle": 2231542,
+      "width": 97,
+      "height": 29,
+      "mapped": true,
+      "text": "Move Down",
+      "state": []
+    },
+    ".!frame2.!notebook.!roughcutpanel.!panedwindow.!frame.!actionbar.!button3": {
+      "handle": 9438516,
+      "width": 97,
+      "height": 29,
+      "mapped": true,
+      "text": "移出顺序",
+      "state": []
+    },
+    "button:移出顺序": {
+      "handle": 9438516,
+      "width": 97,
+      "height": 29,
+      "mapped": true,
+      "text": "移出顺序",
+      "state": []
+    },
+    ".!frame2.!notebook.!roughcutpanel.!panedwindow.!frame.!rows": {
+      "handle": 722462,
+      "width": 485,
+      "height": 279,
+      "mapped": true,
+      "state": []
+    },
+    ".!frame2.!notebook.!roughcutpanel.!panedwindow.!frame.!rows.!treeview": {
+      "handle": 790830,
+      "width": 470,
+      "height": 279,
+      "mapped": true,
+      "state": [],
+      "rows": [
+        [
+          2,
+          2,
+          466,
+          64
+        ],
+        [
+          2,
+          66,
+          466,
+          64
+        ]
+      ]
+    },
+    ".!frame2.!notebook.!roughcutpanel.!panedwindow.!frame.!rows.!scrollbar": {
+      "handle": 591656,
+      "width": 15,
+      "height": 279,
+      "mapped": true,
+      "state": [
+        "disabled"
+      ]
+    },
+    ".!frame2.!notebook.!roughcutpanel.!panedwindow.!frame.!rows.!label": {
+      "handle": 462802,
+      "width": 136,
+      "height": 38,
+      "mapped": false,
+      "text": "暂无记录 · 使用新建或生成操作开始",
+      "state": []
+    },
+    ".!frame2.!notebook.!roughcutpanel.!panedwindow.!frame2": {
+      "handle": 3149576,
+      "width": 601,
+      "height": 349,
+      "mapped": true,
+      "state": []
+    },
+    ".!frame2.!notebook.!roughcutpanel.!panedwindow.!frame2.!notebook": {
+      "handle": 988008,
+      "width": 601,
+      "height": 349,
+      "mapped": true,
+      "state": [],
+      "tab_points": {
+        "0": [
+          17,
+          20
+        ],
+        "1": [
+          82,
+          15
+        ]
+      }
+    },
+    ".!frame2.!notebook.!roughcutpanel.!panedwindow.!frame2.!notebook.!frame": {
+      "handle": 2888632,
+      "width": 597,
+      "height": 312,
+      "mapped": true,
+      "state": []
+    },
+    ".!frame2.!notebook.!roughcutpanel.!panedwindow.!frame2.!notebook.!frame.!frame": {
+      "handle": 855520,
+      "width": 597,
+      "height": 216,
+      "mapped": true,
+      "state": []
+    },
+    ".!frame2.!notebook.!roughcutpanel.!panedwindow.!frame2.!notebook.!frame.!frame.!text": {
+      "handle": 3607562,
+      "width": 582,
+      "height": 216,
+      "mapped": true,
+      "text": "24 fps · 6.00s · 视频时长驱动\n\nA-03 示例镜头 fal 白天门口\nSELECTED VIDEO · 3.00s · 对白 1 段 · 字幕 2 段\n\nA-02 示例镜头 白天门口\nSELECTED VIDEO · 3.00s · 对白 0 段 · 字幕 0 段\n\nWARNING: 对白 1: video-driven trim 4.000s → 3.000s\n\nWARNING: 对白 2: audio missing / pending human selection\n\nWARNING: A-02 示例镜头 白天门口: 无 Dialogue，需人工允许无音频 Shot\n\nTimeline 已构建\nPreview READY\nHandoff READY"
+    },
+    ".!frame2.!notebook.!roughcutpanel.!panedwindow.!frame2.!notebook.!frame.!frame.!scrollbar": {
+      "handle": 590292,
+      "width": 15,
+      "height": 216,
+      "mapped": true,
+      "state": []
+    },
+    ".!frame2.!notebook.!roughcutpanel.!panedwindow.!frame2.!notebook.!frame2": {
+      "handle": 592258,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!roughcutpanel.!panedwindow.!frame2.!notebook.!frame2.!frame": {
+      "handle": 591034,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    ".!frame2.!notebook.!roughcutpanel.!panedwindow.!frame2.!notebook.!frame2.!frame.!text": {
+      "handle": 791326,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "{\n  \"manifest\": {\n    \"timeline\": {\n      \"id\": \"3bb952d7018548bcbd60b7e8ae9e5297\",\n      \"name\": \"A-08 示例 · 白天双镜头粗剪\",\n      \"shot_ids\": [\n        \"d8094901e03441f1bb9ad8696bb427c0\",\n        \"cda53866e184457587a2b671ff062482\"\n      ],\n      \"allow_missing_audio\": true,\n      \"allow_missing_subtitles\": true,\n      \"policy\": \"video-driven-trim; source-muted; dialogue-sequential; sidecar-srt\",\n      \"is_example\": true\n    },\n    \"status\": \"Ready\",\n    \"errors\": [],\n    \"warnings\": [\n      \"5c235da8: video-driven trim 4.000s → 3.000s\",\n      \"098290db: audio missing / pending human selection\",\n      \"cda53866: 无 Dialogue，需人工允许无音频 Shot\"\n    ],\n    \"rate\": \"24\",\n    \"duration_frames\": 144,\n    \"duration\": 6.0,\n    \"clips\": [\n      {\n        \"shot_id\": \"d8094901e03441f1bb9ad8696bb427c0\",\n        \"name\": \"A-03 示例镜头 fal 白天门口\",\n        \"result_id\": \"a526a160decd4691a7da62a05aab5ebd\",\n        \"task_id\": \"5763220d7df54b348395cda70eac7760\",\n        \"take_number\": 4,\n        \"path\": \"results/a526a160decd4691a7da62a05aab5ebd/video.mp4\",\n        \"sha256\": \"f6277dc38b9a668d6e18b2e0ce7d153e592f3c6a4deccf6fae5feb961c7a70bd\",\n        \"metadata\": {\n          \"codec_name\": \"h264\",\n          \"width\": 640,\n          \"height\": 360,\n          \"avg_frame_rate\": \"24/1\",\n          \"r_frame_rate\": \"24/1\",\n          \"time_base\": \"1/12288\",\n          \"duration\": 3.0,\n          \"rate\": \"24\"\n        },\n        \"source_in\": 0,\n        \"source_out\": 3.0,\n        \"timeline_in\": 0,\n        \"timeline_out\": 72,\n        \"frames\": 72,\n        \"audios\": [\n          {\n            \"dialogue_id\": \"5c235da8a53240a789836abacaa80d11\",\n            \"result_id\": \"1d9b5aff1c494eb1ad166be377a8d937\",\n            \"task_id\": \"d2925480ea774a0fb44293b1bb0aec81\",\n            \"voice_id\": \"567804636c7440eab7210e6d882730e3\",\n            \"path\": \"audio_results/1d9b5aff1c494eb1ad166be377a8d937/fixture.wav\",\n            \"sha256\": \"cefaf9c3f07639397447295e7bb0fad9c9bf007359826c6d6b523bb5c688e8df\",\n            \"metadata\": {\n              \"codec_name\": \"pcm_s16le\",\n              \"avg_frame_rate\": \"0/0\",\n              \"r_frame_rate\": \"0/0\",\n              \"time_base\": \"1/32000\",\n              \"sample_rate\": \"32000\",\n              \"channels\": 1,\n              \"duration\": 4.0\n            },\n            \"source_in\": 0,\n            \"source_out\": 3.0,\n            \"offset\": 0.0,\n            \"duration\": 3.0,\n            \"alignment_id\": \"1d9b5aff1c494eb1ad166be377a8d937\",\n            \"subtitle_path\": \"subtitles/1d9b5aff1c494eb1ad166be377a8d937.srt\",\n            \"subtitle_sha256\": \"5995cba3c47f04ad124b64616dd1625de490d76e022763e5fd4bff4e5b7b474b\"\n          }\n        ],\n        \"subtitles\": [\n          {\n            \"start\": 0.1,\n            \"end\": 1.7,\n            \"text\": \"[FIXTURE] 这是音频测试。\",\n            \"audio_result_id\": \"1d9b5aff1c494eb1ad166be377a8d937\",\n            \"alignment_id\": \"1d9b5aff1c494eb1ad166be377a8d937\"\n          },\n          {\n            \"start\": 2.1,\n            \"end\": 3.0,\n            \"text\": \"[FIXTURE] 等待人工确认。\",\n            \"audio_result_id\": \"1d9b5aff1c494eb1ad166be377a8d937\",\n            \"alignment_id\": \"1d9b5aff1c494eb1ad166be377a8d937\"\n          }\n        ]\n      },\n      {\n        \"shot_id\": \"cda53866e184457587a2b671ff062482\",\n        \"name\": \"A-02 示例镜头 白天门口\",\n        \"result_id\": \"8320f36f12254dbb81ec91dd89c7701e\",\n        \"task_id\": \"338db3258eac41c8a0d57e81736c335d\",\n        \"take_number\": 2,\n        \"path\": \"results/8320f36f12254dbb81ec91dd89c7701e/video.mp4\",\n        \"sha256\": \"bbc899aa1d2850c80bf35bef5b1f5c6a5c657d5699d10ef83c053db30f5a5d4f\",\n        \"metadata\": {\n          \"codec_name\": \"h264\",\n          \"width\": 640,\n          \"height\": 360,\n          \"avg_frame_rate\": \"24/1\",\n          \"r_frame_rate\": \"24/1\",\n          \"time_base\": \"1/12288\",\n          \"duration\": 3.0,\n          \"rate\": \"24\"\n        },\n        \"source_in\": 0,\n        \"source_out\": 3.0,\n        \"timeline_in\": 72,\n        \"timeline_out\": 144,\n        \"frames\": 72,\n        \"audios\": [],\n        \"subtitles\": []\n      }\n    ],\n    \"label\": \"ROUGH CUT / FIXTURE SOURCE MEDIA / NOT FINAL MASTER\"\n  },\n  \"artifacts\": {\n    \"build\": \"E:\\\\codex\\\\AIGC流\\\\evidence\\\\UI-Final\\\\gui-data\\\\rough_cut_builds\\\\addb9faa5a9a455c9348907d25f4a558\",\n    \"preview\": true,\n    \"handoff\": true\n  }\n}"
+    },
+    ".!frame2.!notebook.!roughcutpanel.!panedwindow.!frame2.!notebook.!frame2.!frame.!scrollbar": {
+      "handle": 1052992,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    "app.status": {
+      "handle": 1053036,
+      "width": 1236,
+      "height": 21,
+      "mapped": true,
+      "text": "导出交接 完成：E:\\codex\\AIGC流\\evidence\\UI-Final\\gui-data\\handoffs\\057d53abb09446c2b181e80ac8cc6d84",
+      "state": []
+    },
+    "app.breadcrumb": {
+      "handle": 1643000,
+      "width": 110,
+      "height": 21,
+      "mapped": true,
+      "text": "交付  /  粗剪 / 交接",
+      "state": []
+    },
+    "app.nav_mount": {
+      "handle": 985516,
+      "width": 136,
+      "height": 595,
+      "mapped": true,
+      "state": []
+    },
+    "app.tabs": {
+      "handle": 2494044,
+      "width": 1120,
+      "height": 591,
+      "mapped": true,
+      "state": [
+        "hover"
+      ],
+      "tab_points": {}
+    },
+    "app.ctab": {
+      "handle": 3148756,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    "app.stab": {
+      "handle": 1445464,
+      "width": 1116,
+      "height": 587,
+      "mapped": false,
+      "state": []
+    },
+    "app.scene_editor": {
+      "handle": 921616,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    "app.char_list": {
+      "handle": 2689484,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": [],
+      "rows": [
+        [
+          2,
+          2,
+          235,
+          64
+        ]
+      ]
+    },
+    "app.char_card": {
+      "handle": 2099428,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    "app.char_summary": {
+      "handle": 987360,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "",
+      "state": []
+    },
+    "app.char_detail_tabs": {
+      "handle": 856608,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": [],
+      "tab_points": {}
+    },
+    "app.cname": {
+      "handle": 987384,
+      "width": 184,
+      "height": 31,
+      "mapped": true,
+      "text": "PY_VAR5",
+      "state": []
+    },
+    "app.cdesc": {
+      "handle": 659328,
+      "width": 169,
+      "height": 63,
+      "mapped": true,
+      "text": ""
+    },
+    "app.cidentity": {
+      "handle": 985440,
+      "width": 169,
+      "height": 80,
+      "mapped": true,
+      "text": ""
+    },
+    "app.cexample": {
+      "handle": 1182794,
+      "width": 106,
+      "height": 23,
+      "mapped": true,
+      "text": "测试 / 示例数据",
+      "state": []
+    },
+    "app.preview_label": {
+      "handle": 1053560,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "选择参考图预览",
+      "state": []
+    },
+    "app.ref_list": {
+      "handle": 3214238,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": [],
+      "rows": []
+    },
+    "app.look_choice": {
+      "handle": 855964,
+      "width": 197,
+      "height": 31,
+      "mapped": true,
+      "text": "",
+      "state": [
+        "readonly"
+      ]
+    },
+    "popup:app.look_choice": {
+      "handle": 788622,
+      "width": 1,
+      "height": 1,
+      "rows": []
+    },
+    "app.lname": {
+      "handle": 1838798,
+      "width": 197,
+      "height": 31,
+      "mapped": true,
+      "text": "PY_VAR7",
+      "state": []
+    },
+    "app.ldesc": {
+      "handle": 2362382,
+      "width": 182,
+      "height": 46,
+      "mapped": true,
+      "text": ""
+    },
+    "app.lappearance": {
+      "handle": 1379106,
+      "width": 182,
+      "height": 63,
+      "mapped": true,
+      "text": ""
+    },
+    "app.look_refs": {
+      "handle": 1053498,
+      "width": 197,
+      "height": 74,
+      "mapped": true,
+      "rows": []
+    },
+    "app.shot_list": {
+      "handle": 724452,
+      "width": 245,
+      "height": 468,
+      "mapped": false,
+      "state": [],
+      "rows": [
+        [
+          2,
+          2,
+          241,
+          66
+        ],
+        [
+          2,
+          68,
+          241,
+          66
+        ],
+        [
+          2,
+          134,
+          241,
+          66
+        ],
+        [
+          2,
+          200,
+          241,
+          66
+        ],
+        [
+          2,
+          266,
+          241,
+          66
+        ],
+        [
+          2,
+          332,
+          241,
+          66
+        ]
+      ]
+    },
+    "app.shot_heading": {
+      "handle": 1314098,
+      "width": 820,
+      "height": 26,
+      "mapped": false,
+      "text": "已选定  ·  A-03 示例镜头 fal 白天门口",
+      "state": []
+    },
+    "app.first_frame_label": {
+      "handle": 854282,
+      "width": 820,
+      "height": 21,
+      "mapped": false,
+      "text": "首帧：Selected（与视频 Take 独立）",
+      "state": []
+    },
+    "app.shot_detail_tabs": {
+      "handle": 3607286,
+      "width": 820,
+      "height": 465,
+      "mapped": false,
+      "state": [],
+      "tab_points": {
+        "0": [
+          17,
+          20
+        ],
+        "1": [
+          82,
+          15
+        ]
+      }
+    },
+    "app.shot_overview": {
+      "handle": 1968780,
+      "width": 816,
+      "height": 428,
+      "mapped": false,
+      "state": []
+    },
+    "app.shot_scroll": {
+      "handle": 659496,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    "app.sdesc": {
+      "handle": 1772176,
+      "width": 228,
+      "height": 31,
+      "mapped": true,
+      "text": "PY_VAR9",
+      "state": []
+    },
+    "app.sc": {
+      "handle": 1117596,
+      "width": 200,
+      "height": 31,
+      "mapped": true,
+      "text": "",
+      "state": [
+        "readonly"
+      ]
+    },
+    "popup:app.sc": {
+      "handle": 853292,
+      "width": 1,
+      "height": 1,
+      "rows": []
+    },
+    "app.sl": {
+      "handle": 1576444,
+      "width": 200,
+      "height": 31,
+      "mapped": true,
+      "text": "",
+      "state": [
+        "readonly"
+      ]
+    },
+    "popup:app.sl": {
+      "handle": 788768,
+      "width": 1,
+      "height": 1,
+      "rows": []
+    },
+    "app.ss": {
+      "handle": 1772348,
+      "width": 200,
+      "height": 31,
+      "mapped": true,
+      "text": "",
+      "state": [
+        "readonly"
+      ]
+    },
+    "popup:app.ss": {
+      "handle": 723434,
+      "width": 1,
+      "height": 1,
+      "rows": []
+    },
+    "app.sstate": {
+      "handle": 2624764,
+      "width": 200,
+      "height": 31,
+      "mapped": true,
+      "text": "",
+      "state": [
+        "readonly"
+      ]
+    },
+    "popup:app.sstate": {
+      "handle": 1573968,
+      "width": 1,
+      "height": 1,
+      "rows": []
+    },
+    "app.sreq": {
+      "handle": 1053218,
+      "width": 213,
+      "height": 63,
+      "mapped": true,
+      "text": "固定中景，角色在便利店门口转身"
+    },
+    "app.sgen": {
+      "handle": 919902,
+      "width": 213,
+      "height": 80,
+      "mapped": true,
+      "text": "自然日光，角色转身后停顿"
+    },
+    "app.provider_choice": {
+      "handle": 791318,
+      "width": 228,
+      "height": 31,
+      "mapped": true,
+      "text": "",
+      "state": [
+        "readonly"
+      ]
+    },
+    "popup:app.provider_choice": {
+      "handle": 1119036,
+      "width": 1,
+      "height": 1,
+      "rows": []
+    },
+    "app.sexample": {
+      "handle": 2821226,
+      "width": 106,
+      "height": 23,
+      "mapped": true,
+      "text": "测试 / 示例数据",
+      "state": [
+        "selected"
+      ]
+    },
+    "app.result": {
+      "handle": 1053366,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": ""
+    },
+    "app.review_panel": {
+      "handle": 856024,
+      "width": 1116,
+      "height": 587,
+      "mapped": false,
+      "state": []
+    },
+    "app.image_panel": {
+      "handle": 1313868,
+      "width": 1116,
+      "height": 587,
+      "mapped": false,
+      "state": []
+    },
+    "app.audio_panel": {
+      "handle": 789000,
+      "width": 1116,
+      "height": 587,
+      "mapped": false,
+      "state": []
+    },
+    "app.rough_panel": {
+      "handle": 3673234,
+      "width": 1116,
+      "height": 587,
+      "mapped": true,
+      "state": [
+        "hover"
+      ]
+    },
+    "app.navigation": {
+      "handle": 2558720,
+      "width": 136,
+      "height": 595,
+      "mapped": true,
+      "state": []
+    },
+    "scene.master": {
+      "handle": 2494044,
+      "width": 1120,
+      "height": 591,
+      "mapped": true,
+      "state": [
+        "hover"
+      ],
+      "tab_points": {}
+    },
+    "scene.list": {
+      "handle": 856852,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": [],
+      "rows": [
+        ""
+      ]
+    },
+    "scene.card": {
+      "handle": 987720,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    "scene.detail_tabs": {
+      "handle": 2034824,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": [],
+      "tab_points": {}
+    },
+    "scene.name": {
+      "handle": 1248618,
+      "width": 256,
+      "height": 31,
+      "mapped": true,
+      "text": "PY_VAR2",
+      "state": []
+    },
+    "scene.description": {
+      "handle": 1247628,
+      "width": 241,
+      "height": 63,
+      "mapped": true,
+      "text": ""
+    },
+    "scene.identity": {
+      "handle": 1706464,
+      "width": 241,
+      "height": 80,
+      "mapped": true,
+      "text": ""
+    },
+    "scene.example": {
+      "handle": 35326674,
+      "width": 106,
+      "height": 23,
+      "mapped": true,
+      "text": "测试 / 示例数据",
+      "state": []
+    },
+    "scene.picture": {
+      "handle": 987028,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "选择参考图预览",
+      "state": []
+    },
+    "scene.refs": {
+      "handle": 790316,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": [],
+      "rows": []
+    },
+    "scene.choice": {
+      "handle": 791180,
+      "width": 196,
+      "height": 31,
+      "mapped": true,
+      "text": "",
+      "state": [
+        "readonly"
+      ]
+    },
+    "popup:scene.choice": {
+      "handle": 853370,
+      "width": 1,
+      "height": 1,
+      "rows": []
+    },
+    "scene.state_name": {
+      "handle": 1314332,
+      "width": 196,
+      "height": 31,
+      "mapped": true,
+      "text": "PY_VAR4",
+      "state": []
+    },
+    "scene.state_description": {
+      "handle": 1118986,
+      "width": 181,
+      "height": 46,
+      "mapped": true,
+      "text": ""
+    },
+    "scene.environment": {
+      "handle": 1052364,
+      "width": 181,
+      "height": 63,
+      "mapped": true,
+      "text": ""
+    },
+    "scene.state_refs": {
+      "handle": 2690438,
+      "width": 196,
+      "height": 74,
+      "mapped": true,
+      "rows": []
+    },
+    "review.master": {
+      "handle": 2494044,
+      "width": 1120,
+      "height": 591,
+      "mapped": true,
+      "state": [
+        "hover"
+      ],
+      "tab_points": {}
+    },
+    "review.shot_choice": {
+      "handle": 987954,
+      "width": 1092,
+      "height": 31,
+      "mapped": false,
+      "text": "",
+      "state": [
+        "readonly"
+      ]
+    },
+    "popup:review.shot_choice": {
+      "handle": 788890,
+      "width": 1090,
+      "height": 108,
+      "rows": [
+        [
+          0,
+          0,
+          153,
+          17
+        ],
+        [
+          0,
+          18,
+          166,
+          17
+        ],
+        [
+          0,
+          36,
+          166,
+          17
+        ],
+        [
+          0,
+          54,
+          184,
+          17
+        ],
+        [
+          0,
+          72,
+          166,
+          17
+        ],
+        [
+          0,
+          90,
+          153,
+          17
+        ]
+      ]
+    },
+    "review.selected_label": {
+      "handle": 1575656,
+      "width": 150,
+      "height": 21,
+      "mapped": false,
+      "text": "✓ 最终素材：Take 4",
+      "state": []
+    },
+    "review.list": {
+      "handle": 6622232,
+      "width": 135,
+      "height": 398,
+      "mapped": false,
+      "state": [],
+      "rows": [
+        [
+          2,
+          2,
+          135,
+          64
+        ],
+        [
+          2,
+          66,
+          135,
+          64
+        ],
+        [
+          2,
+          130,
+          135,
+          64
+        ],
+        [
+          2,
+          194,
+          135,
+          64
+        ]
+      ]
+    },
+    "review.retry_button": {
+      "handle": 1052312,
+      "width": 200,
+      "height": 29,
+      "mapped": false,
+      "text": "Retry · 创建新 Take",
+      "state": [
+        "disabled"
+      ]
+    },
+    "review.decision_scroll": {
+      "handle": 1444782,
+      "width": 200,
+      "height": 423,
+      "mapped": false,
+      "state": []
+    },
+    "review.badge": {
+      "handle": 1118894,
+      "width": 171,
+      "height": 66,
+      "mapped": false,
+      "text": "Take 04\nSELECTED"
+    },
+    "review.mode_label": {
+      "handle": 1576334,
+      "width": 95,
+      "height": 26,
+      "mapped": false,
+      "text": "ZERO-CALL",
+      "state": []
+    },
+    "review.provider_label": {
+      "handle": 1118454,
+      "width": 171,
+      "height": 55,
+      "mapped": false,
+      "text": "fal / Kling O3\nFixture · 未真实调用视频 API\nREAL 未启用",
+      "state": []
+    },
+    "review.select_button": {
+      "handle": 4460644,
+      "width": 171,
+      "height": 29,
+      "mapped": false,
+      "text": "Select · 选为最终素材",
+      "state": [
+        "disabled"
+      ]
+    },
+    "review.reason": {
+      "handle": 788912,
+      "width": 156,
+      "height": 46,
+      "mapped": false,
+      "text": ""
+    },
+    "review.reject_button": {
+      "handle": 921534,
+      "width": 171,
+      "height": 29,
+      "mapped": false,
+      "text": "Reject · 不采用此 Take",
+      "state": []
+    },
+    "review.retry_prompt": {
+      "handle": 723384,
+      "width": 156,
+      "height": 63,
+      "mapped": false,
+      "text": ""
+    },
+    "review.summary": {
+      "handle": 1379694,
+      "width": 714,
+      "height": 26,
+      "mapped": false,
+      "text": "Take 04 · SELECTED · 3 秒",
+      "state": []
+    },
+    "review.preview": {
+      "handle": 1510920,
+      "width": 714,
+      "height": 352,
+      "mapped": false,
+      "text": ""
+    },
+    "review.play_button": {
+      "handle": 2165804,
+      "width": 106,
+      "height": 29,
+      "mapped": false,
+      "text": "▶ 播放实际视频",
+      "state": []
+    },
+    "review.context_advanced": {
+      "handle": 1052316,
+      "width": 714,
+      "height": 29,
+      "mapped": false,
+      "state": []
+    },
+    "review.context_tabs": {
+      "handle": 987880,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": [],
+      "tab_points": {}
+    },
+    "review.context": {
+      "handle": 4916166,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "首帧输入 · 已绑定（当次任务快照；ID 见 Advanced）\n角色  测试角色 林夏 / 日常装（示例）\n场景  示例便利店门口 / 白天（示例）\n镜头  A-03 示例镜头 fal 白天门口\n角色参考图  01-identity.png, 02-daily.png\n场景参考图  01-scene-stable.png, 02-scene-day.png\n\n最终生成描述\nidentity: 短黑发，椭圆脸；身份不随 Look 改变\ncharacter_description: A-01 示例数据，仅用于流程验证 | A-06 历史快照变更测试\nlook: 白天，干燥，平静\nappearance: 浅色衬衣\nshot: A-03 示例镜头 fal 白天门口\nrequirements: 固定中景，角色在便利店门口转身\ngeneration_description: 自然日光，角色转身后停顿\nscene_name: 示例便利店门口\nscene_identity: 玻璃双门，门右侧蓝色招牌，面向街道\nscene_description: A-02 测试场景，非正式美术资产 | A-06 历史快照变更测试\nscene_state: 白天（示例）\nscene_state_description: 营业中的便利店门口\nscene_environment: 白天自然光，地面干燥\n\nReference bindings:\n@Image1: Character / Look — 01-identity.png\n@Image2: Character / Look — 02-daily.png\n@Image3: Scene / State — 01-scene-stable.png\n@Image4: Scene / State — 02-scene-day.png"
+    },
+    "review.execution_summary": {
+      "handle": 788986,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "Provider：fal\n模式：ZERO-CALL\npending → processing → completed\n\n没有匹配的 Harness 记录。此结果可独立读取和审核，无需启动 DSH。"
+    },
+    "review.details": {
+      "handle": 987936,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "Execution：a526a160decd4691a7da62a05aab5ebd\nTask：5763220d7df54b348395cda70eac7760\nShot：d8094901e03441f1bb9ad8696bb427c0\nModel：fal-ai/kling-video/o3/standard/reference-to-video\nRetry of：a9782a10334247d5aec68d48ac3cba3b\nTrace：无匹配旁路记录\n\n素材：results/a526a160decd4691a7da62a05aab5ebd/video.mp4\nSHA256：f6277dc38b9a668d6e18b2e0ce7d153e592f3c6a4deccf6fae5feb961c7a70bd\nRequest：E:\\codex\\AIGC流\\evidence\\UI-Final\\gui-data\\tasks\\5763220d7df54b348395cda70eac7760\\provider_request.json\n\n{\n  \"provider\": \"fal\",\n  \"model\": \"fal-ai/kling-video/o3/standard/reference-to-video\",\n  \"simulation_only\": true,\n  \"transport\": \"fixture\",\n  \"method\": \"POST\",\n  \"url\": \"https://queue.fal.run/fal-ai/kling-video/o3/standard/reference-to-video\",\n  \"headers\": {\n    \"Content-Type\": \"application/json\"\n  },\n  \"auth_requirement\": \"Authorization: Key <FAL_KEY>; omitted in fixture mode\",\n  \"body\": {\n    \"prompt\": \"identity: 短黑发，椭圆脸；身份不随 Look 改变\\ncharacter_description: A-01 示例数据，仅用于流程验证 | A-06 历史快照变更测试\\nlook: 白天，干燥，平静\\nappearance: 浅色衬衣\\nshot: A-03 示例镜头 fal 白天门口\\nrequirements: 固定中景，角色在便利店门口转身\\ngeneration_description: 自然日光，角色转身后停顿\\nscene_name: 示例便利店门口\\nscene_identity: 玻璃双门，门右侧蓝色招牌，面向街道\\nscene_description: A-02 测试场景，非正式美术资产 | A-06 历史快照变更测试\\nscene_state: 白天（示例）\\nscene_state_description: 营业中的便利店门口\\nscene_environment: 白天自然光，地面干燥\\n\\nReference bindings:\\n@Image1: Character / Look — 01-identity.png\\n@Image2: Character / Look — 02-daily.png\\n@Image3: Scene / State — 01-scene-stable.png\\n@Image4: Scene / State — 02-scene-day.png\",\n    \"image_urls\": [\n      \"[参考图 1，完整内容见请求文件]\",\n      \"[参考图 2，完整内容见请求文件]\",\n      \"[参考图 3，完整内容见请求文件]\",\n      \"[参考图 4，完整内容见请求文件]\"\n    ],\n    \"duration\": \"3\",\n    \"aspect_ratio\": \"16:9\",\n    \"generate_audio\": false,\n    \"shot_type\": \"customize\",\n    \"start_image_url\": \"[首帧图片，完整内容见请求文件]\"\n  },\n  \"reference_bindings\": [\n    {\n      \"token\": \"@Image1\",\n      \"role\": \"Character / Look\",\n      \"reference_id\": \"77c54f4d451940908208b87c38b010cf\",\n      \"name\": \"01-identity.png\",\n      \"asset_path\": \"assets/e5e2c5fff24485f5dcf326997ecae62943b7f8729abddd4db29bf3a6696dd016.png\",\n      \"sha256\": \"e5e2c5fff24485f5dcf326997ecae62943b7f8729abddd4db29bf3a6696dd016\"\n    },\n    {\n      \"token\": \"@Image2\",\n      \"role\": \"Character / Look\",\n      \"reference_id\": \"7c43b743542c4e9a90926e524180ad88\",\n      \"name\": \"02-daily.png\",\n      \"asset_path\": \"assets/07320b564caa7f9cd106fdbd77fb3392c28e10646d955c9deacbab89d1d99780.png\",\n      \"sha256\": \"07320b564caa7f9cd106fdbd77fb3392c28e10646d955c9deacbab89d1d99780\"\n    },\n    {\n      \"token\": \"@Image3\",\n      \"role\": \"Scene / State\",\n      \"reference_id\": \"acb8b601aa894428a9c5f93c85505d67\",\n      \"name\": \"01-scene-stable.png\",\n      \"asset_path\": \"assets/5796bea3c8709e909ee4f9021b242d2e7e1b7a7c05077bf0acac7204d499f962.png\",\n      \"sha256\": \"5796bea3c8709e909ee4f9021b242d2e7e1b7a7c05077bf0acac7204d499f962\"\n    },\n    {\n      \"token\": \"@Image4\",\n      \"role\": \"Scene / State\",\n      \"reference_id\": \"55de852a607c4483a554baf0430ca1f4\",\n      \"name\": \"02-scene-day.png\",\n      \"asset_path\": \"assets/7dc02c15ae5f90cfc402fb90e2f9ad9227c0263724dae0457dfb2dc79d5f96b1.png\",\n      \"sha256\": \"7dc02c15ae5f90cfc402fb90e2f9ad9227c0263724dae0457dfb2dc79d5f96b1\"\n    }\n  ],\n  \"first_frame_binding\": {\n    \"result_id\": \"2892d2e785254fc694fc5f754f5a496d\",\n    \"task_id\": \"a6fca7a7fa734d208f73f0a917956993\",\n    \"shot_id\": \"d8094901e03441f1bb9ad8696bb427c0\",\n    \"path\": \"image_results/2892d2e785254fc694fc5f754f5a496d/image.png\",\n    \"sha256\": \"20c7aa9d4de10f1f301f56c8b522833ef935ab2e37377cc1a180774958cb8ada\"\n  }\n}"
+    },
+    "images.master": {
+      "handle": 2494044,
+      "width": 1120,
+      "height": 591,
+      "mapped": true,
+      "state": [
+        "hover"
+      ],
+      "tab_points": {}
+    },
+    "images.list": {
+      "handle": 987896,
+      "width": 190,
+      "height": 537,
+      "mapped": false,
+      "state": [],
+      "rows": [
+        [
+          2,
+          2,
+          186,
+          64
+        ],
+        [
+          2,
+          66,
+          186,
+          64
+        ],
+        [
+          2,
+          130,
+          186,
+          64
+        ],
+        [
+          2,
+          194,
+          186,
+          64
+        ],
+        [
+          2,
+          258,
+          186,
+          64
+        ],
+        [
+          2,
+          322,
+          186,
+          64
+        ],
+        [
+          2,
+          386,
+          186,
+          64
+        ],
+        [
+          2,
+          450,
+          186,
+          64
+        ]
+      ]
+    },
+    "images.title": {
+      "handle": 659304,
+      "width": 206,
+      "height": 26,
+      "mapped": false,
+      "text": "A-03 示例镜头 fal 白天门口",
+      "state": []
+    },
+    "images.accept_identity": {
+      "handle": 1379594,
+      "width": 116,
+      "height": 29,
+      "mapped": false,
+      "text": "采纳为稳定参考图",
+      "state": [
+        "disabled"
+      ]
+    },
+    "images.accept_variant": {
+      "handle": 1117778,
+      "width": 155,
+      "height": 29,
+      "mapped": false,
+      "text": "采纳为当前 Look / State",
+      "state": [
+        "disabled"
+      ]
+    },
+    "images.accept_frame": {
+      "handle": 853282,
+      "width": 102,
+      "height": 29,
+      "mapped": false,
+      "text": "用作 Shot 首帧",
+      "state": []
+    },
+    "images.reject_button": {
+      "handle": 1706396,
+      "width": 97,
+      "height": 29,
+      "mapped": false,
+      "text": "Reject 图像",
+      "state": [
+        "disabled"
+      ]
+    },
+    "images.retry_button": {
+      "handle": 11078366,
+      "width": 97,
+      "height": 29,
+      "mapped": false,
+      "text": "Retry 图像",
+      "state": [
+        "disabled"
+      ]
+    },
+    "images.image_badge": {
+      "handle": 1248032,
+      "width": 143,
+      "height": 27,
+      "mapped": false,
+      "text": "PROMOTED / 已采纳"
+    },
+    "images.settings": {
+      "handle": 1182800,
+      "width": 873,
+      "height": 29,
+      "mapped": false,
+      "state": []
+    },
+    "images.description": {
+      "handle": 4328454,
+      "width": 858,
+      "height": 63,
+      "mapped": false,
+      "text": "自然日光，角色转身后停顿"
+    },
+    "images.generate_button": {
+      "handle": 4196828,
+      "width": 144,
+      "height": 29,
+      "mapped": false,
+      "text": "生成图像 · ZERO-CALL",
+      "state": [
+        "disabled"
+      ]
+    },
+    "images.reason": {
+      "handle": 1119038,
+      "width": 858,
+      "height": 29,
+      "mapped": false,
+      "text": ""
+    },
+    "images.details": {
+      "handle": 921348,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "Purpose: SHOT_FIRST_FRAME\ncharacter: 测试角色 林夏 | 短黑发，椭圆脸；身份不随 Look 改变 | A-01 示例数据，仅用于流程验证 | A-06 历史快照变更测试\nlook: 日常装（示例） | 白天，干燥，平静 | 浅色衬衣\nscene: 示例便利店门口 | 玻璃双门，门右侧蓝色招牌，面向街道 | A-02 测试场景，非正式美术资产 | A-06 历史快照变更测试\nscene_state: 白天（示例） | 营业中的便利店门口 | 白天自然光，地面干燥\nshot: A-03 示例镜头 fal 白天门口 | 固定中景，角色在便利店门口转身\nGeneration description: 自然日光，角色转身后停顿\nTask 8f8666f8b0404e71bd7a097c56572d93\nResult 746c2cd33f5d4c92a90793b9757806c6\nHuman Gate: first_frame"
+    },
+    "images.preview": {
+      "handle": 919138,
+      "width": 873,
+      "height": 346,
+      "mapped": false,
+      "text": "",
+      "state": []
+    },
+    "audio.master": {
+      "handle": 2494044,
+      "width": 1120,
+      "height": 591,
+      "mapped": true,
+      "state": [
+        "hover"
+      ],
+      "tab_points": {}
+    },
+    "audio.tabs": {
+      "handle": 659490,
+      "width": 1092,
+      "height": 529,
+      "mapped": false,
+      "state": [],
+      "tab_points": {
+        "0": [
+          17,
+          15
+        ],
+        "1": [
+          102,
+          15
+        ],
+        "2": [
+          212,
+          20
+        ]
+      }
+    },
+    "audio.voice_tab": {
+      "handle": 4000646,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    "audio.dialogue_tab": {
+      "handle": 1184558,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": []
+    },
+    "audio.review_tab": {
+      "handle": 1312898,
+      "width": 1088,
+      "height": 492,
+      "mapped": false,
+      "state": []
+    },
+    "audio.voice_list": {
+      "handle": 853592,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": [],
+      "rows": [
+        ""
+      ]
+    },
+    "audio.voice_character": {
+      "handle": 3345276,
+      "width": 400,
+      "height": 31,
+      "mapped": true,
+      "text": "",
+      "state": [
+        "readonly"
+      ]
+    },
+    "popup:audio.voice_character": {
+      "handle": 788862,
+      "width": 1,
+      "height": 1,
+      "rows": []
+    },
+    "audio.voice_name": {
+      "handle": 1182044,
+      "width": 400,
+      "height": 31,
+      "mapped": true,
+      "text": "PY_VAR12",
+      "state": []
+    },
+    "audio.voice_description": {
+      "handle": 723428,
+      "width": 385,
+      "height": 63,
+      "mapped": true,
+      "text": ""
+    },
+    "audio.voice_delivery": {
+      "handle": 1968792,
+      "width": 400,
+      "height": 31,
+      "mapped": true,
+      "text": "",
+      "state": [
+        "readonly"
+      ]
+    },
+    "popup:audio.voice_delivery": {
+      "handle": 2493688,
+      "width": 1,
+      "height": 1,
+      "rows": []
+    },
+    "audio.mapping_status": {
+      "handle": 4722038,
+      "width": 271,
+      "height": 21,
+      "mapped": true,
+      "text": "Provider 映射：MiniMax 系统声音 · ZERO-CALL",
+      "state": []
+    },
+    "audio.voice_advanced": {
+      "handle": 3673116,
+      "width": 400,
+      "height": 29,
+      "mapped": true,
+      "state": []
+    },
+    "audio.provider_voice": {
+      "handle": 788910,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "PY_VAR13",
+      "state": []
+    },
+    "audio.voice_notes": {
+      "handle": 2756054,
+      "width": 385,
+      "height": 46,
+      "mapped": true,
+      "text": ""
+    },
+    "audio.voice_references": {
+      "handle": 788260,
+      "width": 400,
+      "height": 21,
+      "mapped": true,
+      "text": "参考音频：无",
+      "state": []
+    },
+    "audio.dialogue_list": {
+      "handle": 721926,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "state": [],
+      "rows": [
+        "",
+        ""
+      ]
+    },
+    "audio.dialogue_shot": {
+      "handle": 3476286,
+      "width": 219,
+      "height": 31,
+      "mapped": true,
+      "text": "",
+      "state": [
+        "readonly"
+      ]
+    },
+    "popup:audio.dialogue_shot": {
+      "handle": 788918,
+      "width": 1,
+      "height": 1,
+      "rows": []
+    },
+    "audio.speaker": {
+      "handle": 1707342,
+      "width": 182,
+      "height": 21,
+      "mapped": true,
+      "text": "选择 Shot 后显示角色与默认声音",
+      "state": []
+    },
+    "audio.dialogue_order": {
+      "handle": 1247606,
+      "width": 219,
+      "height": 31,
+      "mapped": true,
+      "text": "PY_VAR14",
+      "state": []
+    },
+    "audio.dialogue_text": {
+      "handle": 987882,
+      "width": 204,
+      "height": 114,
+      "mapped": true,
+      "text": ""
+    },
+    "audio.dialogue_delivery": {
+      "handle": 1444866,
+      "width": 219,
+      "height": 31,
+      "mapped": true,
+      "text": "",
+      "state": [
+        "readonly"
+      ]
+    },
+    "popup:audio.dialogue_delivery": {
+      "handle": 1183494,
+      "width": 1,
+      "height": 1,
+      "rows": []
+    },
+    "audio.handoff_summary": {
+      "handle": 1445106,
+      "width": 219,
+      "height": 21,
+      "mapped": true,
+      "text": "保存对白后可生成音频候选",
+      "state": []
+    },
+    "audio.handoff_advanced": {
+      "handle": 1314702,
+      "width": 219,
+      "height": 29,
+      "mapped": true,
+      "state": []
+    },
+    "audio.handoff": {
+      "handle": 1052612,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": ""
+    },
+    "audio.result_list": {
+      "handle": 2820972,
+      "width": 190,
+      "height": 472,
+      "mapped": false,
+      "state": [],
+      "rows": [
+        [
+          2,
+          2,
+          186,
+          64
+        ],
+        [
+          2,
+          66,
+          186,
+          64
+        ],
+        [
+          2,
+          130,
+          186,
+          64
+        ],
+        [
+          2,
+          194,
+          186,
+          64
+        ]
+      ]
+    },
+    "audio.play_button": {
+      "handle": 2100334,
+      "width": 100,
+      "height": 29,
+      "mapped": false,
+      "text": "试听实际 WAV",
+      "state": []
+    },
+    "audio.select_button": {
+      "handle": 1314334,
+      "width": 97,
+      "height": 29,
+      "mapped": false,
+      "text": "Select Audio",
+      "state": []
+    },
+    "audio.reject_button": {
+      "handle": 1641804,
+      "width": 97,
+      "height": 29,
+      "mapped": false,
+      "text": "Reject Audio",
+      "state": []
+    },
+    "audio.retry_button": {
+      "handle": 986660,
+      "width": 97,
+      "height": 29,
+      "mapped": false,
+      "text": "Retry Audio",
+      "state": [
+        "disabled"
+      ]
+    },
+    "audio.align_button": {
+      "handle": 854302,
+      "width": 132,
+      "height": 29,
+      "mapped": false,
+      "text": "对齐 + SRT · Fixture",
+      "state": []
+    },
+    "audio.review_scroll": {
+      "handle": 1707512,
+      "width": 847,
+      "height": 439,
+      "mapped": false,
+      "state": []
+    },
+    "audio.result_title": {
+      "handle": 1052194,
+      "width": 401,
+      "height": 26,
+      "mapped": false,
+      "text": "SELECTED · A-07 示例林夏声音 / calm · completed",
+      "state": []
+    },
+    "audio.audio_badge": {
+      "handle": 788974,
+      "width": 81,
+      "height": 27,
+      "mapped": false,
+      "text": "SELECTED"
+    },
+    "audio.retry_settings": {
+      "handle": 922384,
+      "width": 818,
+      "height": 29,
+      "mapped": false,
+      "state": []
+    },
+    "audio.retry_text": {
+      "handle": 1378726,
+      "width": 803,
+      "height": 63,
+      "mapped": false,
+      "text": "等一下，门口的灯还亮着。"
+    },
+    "audio.retry_delivery": {
+      "handle": 1444408,
+      "width": 818,
+      "height": 31,
+      "mapped": false,
+      "text": "",
+      "state": [
+        "readonly"
+      ]
+    },
+    "popup:audio.retry_delivery": {
+      "handle": 2953568,
+      "width": 1,
+      "height": 1,
+      "rows": []
+    },
+    "audio.retry_speed": {
+      "handle": 1706986,
+      "width": 818,
+      "height": 31,
+      "mapped": false,
+      "text": "PY_VAR15",
+      "state": []
+    },
+    "audio.reason": {
+      "handle": 788992,
+      "width": 803,
+      "height": 29,
+      "mapped": false,
+      "text": ""
+    },
+    "audio.review_details_tabs": {
+      "handle": 921330,
+      "width": 818,
+      "height": 185,
+      "mapped": false,
+      "state": [],
+      "tab_points": {
+        "0": [
+          17,
+          15
+        ],
+        "1": [
+          102,
+          20
+        ],
+        "2": [
+          232,
+          15
+        ]
+      }
+    },
+    "audio.context": {
+      "handle": 853028,
+      "width": 799,
+      "height": 148,
+      "mapped": false,
+      "text": "Voice: A-07 示例林夏声音\nCharacter: 测试角色 林夏\nShot: A-03 示例镜头 fal 白天门口\n预期对白: 等一下，门口的灯还亮着。\n当次提交文本: 等一下，门口的灯还亮着。\nDelivery: calm\n"
+    },
+    "audio.timing": {
+      "handle": 788998,
+      "width": 799,
+      "height": 148,
+      "mapped": false,
+      "text": "FIXTURE · 未运行 WhisperX 模型\nExpected: 等一下，门口的灯还亮着。\n模拟 Actual Transcript: 这是音频测试。等待人工确认。\n\n1\n00:00:00,100 --> 00:00:01,700\n[FIXTURE] 这是音频测试。\n\n2\n00:00:02,100 --> 00:00:03,700\n[FIXTURE] 等待人工确认。\n\nWord timing:\n[\n  {\n    \"start\": 0.1,\n    \"end\": 1.7,\n    \"text\": \"这是音频测试。\",\n    \"words\": [\n      {\n        \"word\": \"这\",\n        \"start\": 0.1,\n        \"end\": 0.3286,\n        \"score\": null\n      },\n      {\n        \"word\": \"是\",\n        \"start\": 0.3286,\n        \"end\": 0.5571,\n        \"score\": null\n      },\n      {\n        \"word\": \"音\",\n        \"start\": 0.5571,\n        \"end\": 0.7857,\n        \"score\": null\n      },\n      {\n        \"word\": \"频\",\n        \"start\": 0.7857,\n        \"end\": 1.0143,\n        \"score\": null\n      },\n      {\n        \"word\": \"测\",\n        \"start\": 1.0143,\n        \"end\": 1.2429,\n        \"score\": null\n      },\n      {\n        \"word\": \"试\",\n        \"start\": 1.2429,\n        \"end\": 1.4714,\n        \"score\": null\n      },\n      {\n        \"word\": \"。\",\n        \"start\": 1.4714,\n        \"end\": 1.7,\n        \"score\": null\n      }\n    ]\n  },\n  {\n    \"start\": 2.1,\n    \"end\": 3.7,\n    \"text\": \"等待人工确认。\",\n    \"words\": [\n      {\n        \"word\": \"等\",\n        \"start\": 2.1,\n        \"end\": 2.3286,\n        \"score\": null\n      },\n      {\n        \"word\": \"待\",\n        \"start\": 2.3286,\n        \"end\": 2.5571,\n        \"score\": null\n      },\n      {\n        \"word\": \"人\",\n        \"start\": 2.5571,\n        \"end\": 2.7857,\n        \"score\": null\n      },\n      {\n        \"word\": \"工\",\n        \"start\": 2.7857,\n        \"end\": 3.0143,\n        \"score\": null\n      },\n      {\n        \"word\": \"确\",\n        \"start\": 3.0143,\n        \"end\": 3.2429,\n        \"score\": null\n      },\n      {\n        \"word\": \"认\",\n        \"start\": 3.2429,\n        \"end\": 3.4714,\n        \"score\": null\n      },\n      {\n        \"word\": \"。\",\n        \"start\": 3.4714,\n        \"end\": 3.7,\n        \"score\": null\n      }\n    ]\n  }\n]"
+    },
+    "audio.details": {
+      "handle": 788990,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "Audio Task: d2925480ea774a0fb44293b1bb0aec81\nResult: 1d9b5aff1c494eb1ad166be377a8d937\n{\n  \"provider\": \"minimax\",\n  \"model\": \"speech-2.6-hd\",\n  \"method\": \"POST\",\n  \"url\": \"https://api.minimax.io/v1/t2a_v2\",\n  \"headers\": {\n    \"Content-Type\": \"application/json\"\n  },\n  \"auth_requirement\": \"Bearer API key required for real API; omitted, never read in fixture mode\",\n  \"simulation_only\": true,\n  \"body\": {\n    \"model\": \"speech-2.6-hd\",\n    \"text\": \"等一下，门口的灯还亮着。\",\n    \"stream\": false,\n    \"output_format\": \"hex\",\n    \"language_boost\": \"Chinese\",\n    \"voice_setting\": {\n      \"voice_id\": \"Chinese (Mandarin)_Warm_Girl\",\n      \"speed\": 1.0,\n      \"vol\": 1,\n      \"pitch\": 0,\n      \"emotion\": \"calm\"\n    },\n    \"audio_setting\": {\n      \"sample_rate\": 32000,\n      \"format\": \"wav\",\n      \"channel\": 1\n    }\n  },\n  \"voice_mapping\": {\n    \"voice_id\": \"567804636c7440eab7210e6d882730e3\",\n    \"provider\": \"minimax\",\n    \"provider_voice_id\": \"Chinese (Mandarin)_Warm_Girl\",\n    \"kind\": \"system\"\n  },\n  \"reference_policy\": \"Reference audio retained as identity evidence; system-voice TTS does not accept reference audio. No upload or cloning.\",\n  \"voice_reference_ids\": [\n    \"928a123ef3e74b78a008b1ad25279941\"\n  ]\n}"
+    },
+    "rough.master": {
+      "handle": 2494044,
+      "width": 1120,
+      "height": 591,
+      "mapped": true,
+      "state": [
+        "hover"
+      ],
+      "tab_points": {}
+    },
+    "rough.badge": {
+      "handle": 1380730,
+      "width": 153,
+      "height": 27,
+      "mapped": true,
+      "text": "READY · 2 镜头 · 6.00s"
+    },
+    "rough.saved": {
+      "handle": 855584,
+      "width": 886,
+      "height": 31,
+      "mapped": true,
+      "text": "",
+      "state": [
+        "readonly"
+      ]
+    },
+    "popup:rough.saved": {
+      "handle": 7015110,
+      "width": 884,
+      "height": 36,
+      "rows": [
+        [
+          0,
+          0,
+          150,
+          17
+        ],
+        [
+          0,
+          18,
+          103,
+          17
+        ]
+      ]
+    },
+    "rough.settings": {
+      "handle": 1510746,
+      "width": 1092,
+      "height": 29,
+      "mapped": true,
+      "state": []
+    },
+    "rough.name": {
+      "handle": 921344,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "PY_VAR16",
+      "state": []
+    },
+    "rough.allow_audio": {
+      "handle": 1049040,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "允许缺失对白 / 无音频 Shot（静音）",
+      "state": [
+        "selected"
+      ]
+    },
+    "rough.allow_subtitles": {
+      "handle": 1641598,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "允许当前音频没有字幕",
+      "state": [
+        "selected"
+      ]
+    },
+    "rough.available": {
+      "handle": 462890,
+      "width": 382,
+      "height": 31,
+      "mapped": true,
+      "text": "",
+      "state": [
+        "readonly"
+      ]
+    },
+    "popup:rough.available": {
+      "handle": 987912,
+      "width": 1,
+      "height": 1,
+      "rows": []
+    },
+    "rough.order_list": {
+      "handle": 790830,
+      "width": 470,
+      "height": 279,
+      "mapped": true,
+      "state": [],
+      "rows": [
+        [
+          2,
+          2,
+          466,
+          64
+        ],
+        [
+          2,
+          66,
+          466,
+          64
+        ]
+      ]
+    },
+    "rough.info_tabs": {
+      "handle": 988008,
+      "width": 601,
+      "height": 349,
+      "mapped": true,
+      "state": [],
+      "tab_points": {
+        "0": [
+          17,
+          20
+        ],
+        "1": [
+          82,
+          15
+        ]
+      }
+    },
+    "rough.details": {
+      "handle": 3607562,
+      "width": 582,
+      "height": 216,
+      "mapped": true,
+      "text": "24 fps · 6.00s · 视频时长驱动\n\nA-03 示例镜头 fal 白天门口\nSELECTED VIDEO · 3.00s · 对白 1 段 · 字幕 2 段\n\nA-02 示例镜头 白天门口\nSELECTED VIDEO · 3.00s · 对白 0 段 · 字幕 0 段\n\nWARNING: 对白 1: video-driven trim 4.000s → 3.000s\n\nWARNING: 对白 2: audio missing / pending human selection\n\nWARNING: A-02 示例镜头 白天门口: 无 Dialogue，需人工允许无音频 Shot\n\nTimeline 已构建\nPreview READY\nHandoff READY"
+    },
+    "rough.technical": {
+      "handle": 791326,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "{\n  \"manifest\": {\n    \"timeline\": {\n      \"id\": \"3bb952d7018548bcbd60b7e8ae9e5297\",\n      \"name\": \"A-08 示例 · 白天双镜头粗剪\",\n      \"shot_ids\": [\n        \"d8094901e03441f1bb9ad8696bb427c0\",\n        \"cda53866e184457587a2b671ff062482\"\n      ],\n      \"allow_missing_audio\": true,\n      \"allow_missing_subtitles\": true,\n      \"policy\": \"video-driven-trim; source-muted; dialogue-sequential; sidecar-srt\",\n      \"is_example\": true\n    },\n    \"status\": \"Ready\",\n    \"errors\": [],\n    \"warnings\": [\n      \"5c235da8: video-driven trim 4.000s → 3.000s\",\n      \"098290db: audio missing / pending human selection\",\n      \"cda53866: 无 Dialogue，需人工允许无音频 Shot\"\n    ],\n    \"rate\": \"24\",\n    \"duration_frames\": 144,\n    \"duration\": 6.0,\n    \"clips\": [\n      {\n        \"shot_id\": \"d8094901e03441f1bb9ad8696bb427c0\",\n        \"name\": \"A-03 示例镜头 fal 白天门口\",\n        \"result_id\": \"a526a160decd4691a7da62a05aab5ebd\",\n        \"task_id\": \"5763220d7df54b348395cda70eac7760\",\n        \"take_number\": 4,\n        \"path\": \"results/a526a160decd4691a7da62a05aab5ebd/video.mp4\",\n        \"sha256\": \"f6277dc38b9a668d6e18b2e0ce7d153e592f3c6a4deccf6fae5feb961c7a70bd\",\n        \"metadata\": {\n          \"codec_name\": \"h264\",\n          \"width\": 640,\n          \"height\": 360,\n          \"avg_frame_rate\": \"24/1\",\n          \"r_frame_rate\": \"24/1\",\n          \"time_base\": \"1/12288\",\n          \"duration\": 3.0,\n          \"rate\": \"24\"\n        },\n        \"source_in\": 0,\n        \"source_out\": 3.0,\n        \"timeline_in\": 0,\n        \"timeline_out\": 72,\n        \"frames\": 72,\n        \"audios\": [\n          {\n            \"dialogue_id\": \"5c235da8a53240a789836abacaa80d11\",\n            \"result_id\": \"1d9b5aff1c494eb1ad166be377a8d937\",\n            \"task_id\": \"d2925480ea774a0fb44293b1bb0aec81\",\n            \"voice_id\": \"567804636c7440eab7210e6d882730e3\",\n            \"path\": \"audio_results/1d9b5aff1c494eb1ad166be377a8d937/fixture.wav\",\n            \"sha256\": \"cefaf9c3f07639397447295e7bb0fad9c9bf007359826c6d6b523bb5c688e8df\",\n            \"metadata\": {\n              \"codec_name\": \"pcm_s16le\",\n              \"avg_frame_rate\": \"0/0\",\n              \"r_frame_rate\": \"0/0\",\n              \"time_base\": \"1/32000\",\n              \"sample_rate\": \"32000\",\n              \"channels\": 1,\n              \"duration\": 4.0\n            },\n            \"source_in\": 0,\n            \"source_out\": 3.0,\n            \"offset\": 0.0,\n            \"duration\": 3.0,\n            \"alignment_id\": \"1d9b5aff1c494eb1ad166be377a8d937\",\n            \"subtitle_path\": \"subtitles/1d9b5aff1c494eb1ad166be377a8d937.srt\",\n            \"subtitle_sha256\": \"5995cba3c47f04ad124b64616dd1625de490d76e022763e5fd4bff4e5b7b474b\"\n          }\n        ],\n        \"subtitles\": [\n          {\n            \"start\": 0.1,\n            \"end\": 1.7,\n            \"text\": \"[FIXTURE] 这是音频测试。\",\n            \"audio_result_id\": \"1d9b5aff1c494eb1ad166be377a8d937\",\n            \"alignment_id\": \"1d9b5aff1c494eb1ad166be377a8d937\"\n          },\n          {\n            \"start\": 2.1,\n            \"end\": 3.0,\n            \"text\": \"[FIXTURE] 等待人工确认。\",\n            \"audio_result_id\": \"1d9b5aff1c494eb1ad166be377a8d937\",\n            \"alignment_id\": \"1d9b5aff1c494eb1ad166be377a8d937\"\n          }\n        ]\n      },\n      {\n        \"shot_id\": \"cda53866e184457587a2b671ff062482\",\n        \"name\": \"A-02 示例镜头 白天门口\",\n        \"result_id\": \"8320f36f12254dbb81ec91dd89c7701e\",\n        \"task_id\": \"338db3258eac41c8a0d57e81736c335d\",\n        \"take_number\": 2,\n        \"path\": \"results/8320f36f12254dbb81ec91dd89c7701e/video.mp4\",\n        \"sha256\": \"bbc899aa1d2850c80bf35bef5b1f5c6a5c657d5699d10ef83c053db30f5a5d4f\",\n        \"metadata\": {\n          \"codec_name\": \"h264\",\n          \"width\": 640,\n          \"height\": 360,\n          \"avg_frame_rate\": \"24/1\",\n          \"r_frame_rate\": \"24/1\",\n          \"time_base\": \"1/12288\",\n          \"duration\": 3.0,\n          \"rate\": \"24\"\n        },\n        \"source_in\": 0,\n        \"source_out\": 3.0,\n        \"timeline_in\": 72,\n        \"timeline_out\": 144,\n        \"frames\": 72,\n        \"audios\": [],\n        \"subtitles\": []\n      }\n    ],\n    \"label\": \"ROUGH CUT / FIXTURE SOURCE MEDIA / NOT FINAL MASTER\"\n  },\n  \"artifacts\": {\n    \"build\": \"E:\\\\codex\\\\AIGC流\\\\evidence\\\\UI-Final\\\\gui-data\\\\rough_cut_builds\\\\addb9faa5a9a455c9348907d25f4a558\",\n    \"preview\": true,\n    \"handoff\": true\n  }\n}"
+    },
+    "overview.master": {
+      "handle": 3607286,
+      "width": 820,
+      "height": 465,
+      "mapped": false,
+      "state": [],
+      "tab_points": {
+        "0": [
+          17,
+          20
+        ],
+        "1": [
+          82,
+          15
+        ]
+      }
+    },
+    "overview.heading": {
+      "handle": 1180966,
+      "width": 206,
+      "height": 26,
+      "mapped": false,
+      "text": "A-03 示例镜头 fal 白天门口",
+      "state": []
+    },
+    "overview.badges": {
+      "handle": 921314,
+      "width": 787,
+      "height": 31,
+      "mapped": false,
+      "state": []
+    },
+    "overview.summary": {
+      "handle": 1118702,
+      "width": 772,
+      "height": 165,
+      "mapped": false,
+      "text": "谁\n测试角色 林夏 / 日常装（示例）\n\n在哪里\n示例便利店门口 / 白天（示例）\n\n做什么 / 怎么拍\n固定中景，角色在便利店门口转身\n\n声音  A-07 示例林夏声音  ·  2 句对白"
+    },
+    "overview.advanced": {
+      "handle": 854288,
+      "width": 787,
+      "height": 29,
+      "mapped": false,
+      "state": []
+    },
+    "overview.details": {
+      "handle": 987404,
+      "width": 1,
+      "height": 1,
+      "mapped": false,
+      "text": "{\n  \"shot\": {\n    \"schema_version\": \"0.2\",\n    \"id\": \"d8094901e03441f1bb9ad8696bb427c0\",\n    \"description\": \"A-03 示例镜头 fal 白天门口\",\n    \"character_id\": \"915567cdda674e0286aaab1db7a1cbde\",\n    \"look_id\": \"022b217ff1714ee99bf8f25ff09b41a0\",\n    \"scene_id\": \"8ebe68f860004bff9c383ef3ff643764\",\n    \"scene_state_id\": \"b3ac1413b0bf4c9bafe035b7b32ad08e\",\n    \"requirements\": \"固定中景，角色在便利店门口转身\",\n    \"generation_description\": \"自然日光，角色转身后停顿\",\n    \"is_example\": true\n  },\n  \"selected_video\": \"a526a160decd4691a7da62a05aab5ebd\",\n  \"selected_audio\": [\n    \"1d9b5aff1c494eb1ad166be377a8d937\",\n    null\n  ],\n  \"first_frame\": {\n    \"result_id\": \"746c2cd33f5d4c92a90793b9757806c6\",\n    \"task_id\": \"8f8666f8b0404e71bd7a097c56572d93\",\n    \"shot_id\": \"d8094901e03441f1bb9ad8696bb427c0\",\n    \"path\": \"image_results/746c2cd33f5d4c92a90793b9757806c6/image.png\",\n    \"sha256\": \"3c6c5d897e4bac5095fe1b26afe20ce12ba7bcbcea3f82f3a169cafe4f99c029\"\n  },\n  \"timelines\": [\n    \"3bb952d7018548bcbd60b7e8ae9e5297\",\n    \"6ebaee3dab6c4a5fbe7bdea11a5b2a4b\"\n  ]\n}"
+    }
+  }
+}

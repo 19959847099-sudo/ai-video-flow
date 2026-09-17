@@ -1,0 +1,21 @@
+{
+  "status": "completed",
+  "evidence": "E:\\codex\\AIGC��\\evidence\\A-06\\dsh-run",
+  "result": {
+    "execution_id": "5e0b895931a2442ba6ac600b9fd13485",
+    "task_id": "9733b06f652e4b569f7371fa3ce5a2b6",
+    "shot_id": "d8094901e03441f1bb9ad8696bb427c0",
+    "result_id": "5e0b895931a2442ba6ac600b9fd13485",
+    "media_path": "image_results/5e0b895931a2442ba6ac600b9fd13485/image.png",
+    "status": "completed",
+    "history": [
+      "pending",
+      "processing",
+      "completed"
+    ],
+    "human_review_required": true,
+    "selected_first_frame_unchanged": true,
+    "image_api_calls": 0,
+    "human_gate_unchanged": true
+  }
+}

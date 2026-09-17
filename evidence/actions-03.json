@@ -1,0 +1,1 @@
+[["keys","{ENTER}"],["click",570,744],["keys","^a"],["text","\"E:\\codex\\AIGC流\\examples\\reference-fixtures\\01-identity.png\" \"E:\\codex\\AIGC流\\examples\\reference-fixtures\\02-daily.png\" \"E:\\codex\\AIGC流\\examples\\reference-fixtures\\03-rain.png\""],["keys","{ENTER}"],["wait",2],["shot","evidence/gui-import.png"]]

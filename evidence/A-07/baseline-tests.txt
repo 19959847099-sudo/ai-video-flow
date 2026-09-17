@@ -1,0 +1,67 @@
+test_dedup (test_core.MainChainTests.test_dedup) ... ok
+test_invalid_relations_and_input (test_core.MainChainTests.test_invalid_relations_and_input) ... ok
+test_missing_or_changed_media_blocks_task (test_core.MainChainTests.test_missing_or_changed_media_blocks_task) ... ok
+test_no_reference_blocks_task (test_core.MainChainTests.test_no_reference_blocks_task) ... ok
+test_restart_and_relocation_without_originals (test_core.MainChainTests.test_restart_and_relocation_without_originals) ... ok
+test_reuse_and_look_reference_isolation (test_core.MainChainTests.test_reuse_and_look_reference_isolation) ... ok
+test_task_snapshot_survives_character_edits_and_ref_removal (test_core.MainChainTests.test_task_snapshot_survives_character_edits_and_ref_removal) ... ok
+test_failure_fixtures_never_create_results_or_select (test_fal.FalTests.test_failure_fixtures_never_create_results_or_select) ... ok
+test_limits_and_changed_reference_are_explicit_errors (test_fal.FalTests.test_limits_and_changed_reference_are_explicit_errors) ... ok
+test_malformed_status_result_and_cross_request_rejected (test_fal.FalTests.test_malformed_status_result_and_cross_request_rejected) ... ok
+test_request_preserves_all_inputs_and_reference_bytes (test_fal.FalTests.test_request_preserves_all_inputs_and_reference_bytes) ... ok
+test_submitted_request_change_stops_execution (test_fal.FalTests.test_submitted_request_change_stops_execution) ... ok
+test_zero_network_full_chain_restart_retry_and_relocation (test_fal.FalTests.test_zero_network_full_chain_restart_retry_and_relocation) ... ok
+test_context_snapshot_result_media_and_human_gate (test_harness.HarnessToolsTests.test_context_snapshot_result_media_and_human_gate) ... ok
+test_missing_reference_and_wrong_execution_are_rejected (test_harness.HarnessToolsTests.test_missing_reference_and_wrong_execution_are_rejected) ... ok
+test_official_dsh_cli_tool_events_network_lock_and_independence (test_harness.HarnessToolsTests.test_official_dsh_cli_tool_events_network_lock_and_independence) ... ok
+test_provider_failure_stops_chain_without_selection (test_harness.HarnessToolsTests.test_provider_failure_stops_chain_without_selection) ... ok
+test_safety_allowlist_rejects_human_gate_live_mode_and_paths (test_harness.HarnessToolsTests.test_safety_allowlist_rejects_human_gate_live_mode_and_paths) ... ok
+test_stdio_rejects_unknown_request_and_returns_structured_error (test_harness.HarnessToolsTests.test_stdio_rejects_unknown_request_and_returns_structured_error) ... ok
+test_actual_dsh_image_tool (test_images.ImageTests.test_actual_dsh_image_tool) ... ok
+test_adapter_failures_and_illegal_workflow (test_images.ImageTests.test_adapter_failures_and_illegal_workflow) ... ok
+test_dsh_tool_keeps_human_gate (test_images.ImageTests.test_dsh_tool_keeps_human_gate) ... ok
+test_first_frame_video_handoff_and_independent_selected_take (test_images.ImageTests.test_first_frame_video_handoff_and_independent_selected_take) ... ok
+test_human_reference_promotion_restart (test_images.ImageTests.test_human_reference_promotion_restart) ... ok
+test_image_gui_gate_and_snapshot_tamper (test_images.ImageTests.test_image_gui_gate_and_snapshot_tamper) ... ok
+test_restart_pending_relocation_and_stale_first_frame (test_images.ImageTests.test_restart_pending_relocation_and_stale_first_frame) ... ok
+test_retry_new_snapshot_and_history (test_images.ImageTests.test_retry_new_snapshot_and_history) ... ok
+test_tampering_wrong_target_and_path_rejected (test_images.ImageTests.test_tampering_wrong_target_and_path_rejected) ... ok
+test_three_purposes_context_workflow_lifecycle (test_images.ImageTests.test_three_purposes_context_workflow_lifecycle) ... ok
+test_historical_snapshots_survive_source_edit (test_production.ProductionTests.test_historical_snapshots_survive_source_edit) ... ok
+test_invalid_select_retry_and_duplicate_submit (test_production.ProductionTests.test_invalid_select_retry_and_duplicate_submit) ... ok
+test_legacy_records_load_without_migration (test_production.ProductionTests.test_legacy_records_load_without_migration) ... ok
+test_media_retry_selection_trace_and_relocation (test_production.ProductionTests.test_media_retry_selection_trace_and_relocation) ... ok
+test_pending_processing_restart_and_failure (test_production.ProductionTests.test_pending_processing_restart_and_failure) ... ok
+test_scene_invalid_relations_block_save (test_production.ProductionTests.test_scene_invalid_relations_block_save) ... ok
+test_scene_missing_image_and_invalid_snapshot (test_production.ProductionTests.test_scene_missing_image_and_invalid_snapshot) ... ok
+test_scene_references_and_neutral_prompt (test_production.ProductionTests.test_scene_references_and_neutral_prompt) ... ok
+test_harness_requires_all_corresponding_ids_and_handles_missing_trace (test_ui.PresentationTests.test_harness_requires_all_corresponding_ids_and_handles_missing_trace) ... ok
+test_invalid_data_keeps_error_state_and_ffmpeg_failure_is_actionable (test_ui.PresentationTests.test_invalid_data_keeps_error_state_and_ffmpeg_failure_is_actionable) ... ok
+test_multiline_binding_empty_review_and_human_gate_buttons (test_ui.PresentationTests.test_multiline_binding_empty_review_and_human_gate_buttons) ... ok
+test_selected_rejected_and_pending_are_derived_without_writes (test_ui.PresentationTests.test_selected_rejected_and_pending_are_derived_without_writes) ... ok
+
+----------------------------------------------------------------------
+Ran 41 tests in 53.482s
+
+OK
+{
+  "status": "completed",
+  "evidence": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\tmpwu4ua26s\\image-dsh",
+  "result": {
+    "execution_id": "22f6273b706a4b23a6b60dd8f7c3be03",
+    "task_id": "6d2f74a48a6541978c70cf4cd0b906dc",
+    "shot_id": "e85afa6654ec49aba18baaf3b44cc8ac",
+    "result_id": "22f6273b706a4b23a6b60dd8f7c3be03",
+    "media_path": "image_results/22f6273b706a4b23a6b60dd8f7c3be03/image.png",
+    "status": "completed",
+    "history": [
+      "pending",
+      "processing",
+      "completed"
+    ],
+    "human_review_required": true,
+    "selected_first_frame_unchanged": true,
+    "image_api_calls": 0,
+    "human_gate_unchanged": true
+  }
+}

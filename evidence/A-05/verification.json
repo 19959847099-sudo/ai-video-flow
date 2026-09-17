@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "protected_files_unchanged": 91,
+  "frozen_documents_unchanged": 3,
+  "original_executions": 7,
+  "gui_shot_id": "2a171b797dfb4a42a59667762c347a89",
+  "gui_task_ids": [
+    "5aa62134efef439ea6a67e75c54f067e",
+    "a72fbbdab40843a0a7921c5b23f021b0"
+  ],
+  "gui_result_ids": [
+    "5a049b8f1282498b8834f02d99819c50",
+    "d1987bb9d30343c0a3b400b3185dbf1d"
+  ],
+  "selected_result_id": "d1987bb9d30343c0a3b400b3185dbf1d",
+  "api_calls": 0,
+  "media": {
+    "codec_name": "h264",
+    "width": 640,
+    "height": 360,
+    "duration": 3.0
+  }
+}

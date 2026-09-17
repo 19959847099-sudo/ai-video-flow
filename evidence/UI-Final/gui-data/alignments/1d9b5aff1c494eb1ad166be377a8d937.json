@@ -1,0 +1,114 @@
+{
+  "id": "1d9b5aff1c494eb1ad166be377a8d937",
+  "audio_result_id": "1d9b5aff1c494eb1ad166be377a8d937",
+  "task_id": "d2925480ea774a0fb44293b1bb0aec81",
+  "dialogue_id": "5c235da8a53240a789836abacaa80d11",
+  "shot_id": "d8094901e03441f1bb9ad8696bb427c0",
+  "audio_sha256": "cefaf9c3f07639397447295e7bb0fad9c9bf007359826c6d6b523bb5c688e8df",
+  "expected_text": "等一下，门口的灯还亮着。",
+  "transcript": "这是音频测试。等待人工确认。",
+  "segments": [
+    {
+      "start": 0.1,
+      "end": 1.7,
+      "text": "这是音频测试。",
+      "words": [
+        {
+          "word": "这",
+          "start": 0.1,
+          "end": 0.3286,
+          "score": null
+        },
+        {
+          "word": "是",
+          "start": 0.3286,
+          "end": 0.5571,
+          "score": null
+        },
+        {
+          "word": "音",
+          "start": 0.5571,
+          "end": 0.7857,
+          "score": null
+        },
+        {
+          "word": "频",
+          "start": 0.7857,
+          "end": 1.0143,
+          "score": null
+        },
+        {
+          "word": "测",
+          "start": 1.0143,
+          "end": 1.2429,
+          "score": null
+        },
+        {
+          "word": "试",
+          "start": 1.2429,
+          "end": 1.4714,
+          "score": null
+        },
+        {
+          "word": "。",
+          "start": 1.4714,
+          "end": 1.7,
+          "score": null
+        }
+      ]
+    },
+    {
+      "start": 2.1,
+      "end": 3.7,
+      "text": "等待人工确认。",
+      "words": [
+        {
+          "word": "等",
+          "start": 2.1,
+          "end": 2.3286,
+          "score": null
+        },
+        {
+          "word": "待",
+          "start": 2.3286,
+          "end": 2.5571,
+          "score": null
+        },
+        {
+          "word": "人",
+          "start": 2.5571,
+          "end": 2.7857,
+          "score": null
+        },
+        {
+          "word": "工",
+          "start": 2.7857,
+          "end": 3.0143,
+          "score": null
+        },
+        {
+          "word": "确",
+          "start": 3.0143,
+          "end": 3.2429,
+          "score": null
+        },
+        {
+          "word": "认",
+          "start": 3.2429,
+          "end": 3.4714,
+          "score": null
+        },
+        {
+          "word": "。",
+          "start": 3.4714,
+          "end": 3.7,
+          "score": null
+        }
+      ]
+    }
+  ],
+  "engine": "whisperx-contract",
+  "fixture": true,
+  "subtitle_path": "subtitles/1d9b5aff1c494eb1ad166be377a8d937.srt",
+  "subtitle_sha256": "5995cba3c47f04ad124b64616dd1625de490d76e022763e5fd4bff4e5b7b474b"
+}

@@ -1,0 +1,200 @@
+{
+  "schema_version": "0.1",
+  "id": "fe6fc4ee236d42aca20ef2c41dc97e97",
+  "created_at": "2026-09-16T18:05:47.162302+00:00",
+  "kind": "image",
+  "purpose": "SHOT_FIRST_FRAME",
+  "character": {
+    "schema_version": "0.1",
+    "id": "915567cdda674e0286aaab1db7a1cbde",
+    "name": "测试角色 林夏",
+    "description": "A-01 示例数据，仅用于流程验证 | A-06 历史快照变更测试",
+    "identity": "短黑发，椭圆脸；身份不随 Look 改变",
+    "is_example": true,
+    "references": [
+      {
+        "id": "77c54f4d451940908208b87c38b010cf",
+        "name": "01-identity.png",
+        "path": "assets/e5e2c5fff24485f5dcf326997ecae62943b7f8729abddd4db29bf3a6696dd016.png",
+        "sha256": "e5e2c5fff24485f5dcf326997ecae62943b7f8729abddd4db29bf3a6696dd016",
+        "source_image_result_id": null
+      },
+      {
+        "id": "7c43b743542c4e9a90926e524180ad88",
+        "name": "02-daily.png",
+        "path": "assets/07320b564caa7f9cd106fdbd77fb3392c28e10646d955c9deacbab89d1d99780.png",
+        "sha256": "07320b564caa7f9cd106fdbd77fb3392c28e10646d955c9deacbab89d1d99780",
+        "source_image_result_id": null
+      },
+      {
+        "id": "a828af1711be46b0ac23221c840fee15",
+        "name": "03-rain.png",
+        "path": "assets/6bd092a5c3745c549c6a62773acbed1cfdb7ecd195eda5fbfc11a8c31ef9e01e.png",
+        "sha256": "6bd092a5c3745c549c6a62773acbed1cfdb7ecd195eda5fbfc11a8c31ef9e01e",
+        "source_image_result_id": null
+      },
+      {
+        "id": "8f9e64dc9c5a4b33bda5ad165959d2f7",
+        "name": "FIXTURE CHARACTER_REFERENCE 20fc42cd",
+        "path": "assets/1e977e0b56bcd37feca6a1fec0cf2a7885747b9658829d4539cf3fc651652469.png",
+        "sha256": "1e977e0b56bcd37feca6a1fec0cf2a7885747b9658829d4539cf3fc651652469",
+        "source_image_result_id": "20fc42cd38f14606ac84de5f55c56f49"
+      }
+    ],
+    "identity_reference_ids": [
+      "77c54f4d451940908208b87c38b010cf"
+    ],
+    "looks": [
+      {
+        "id": "022b217ff1714ee99bf8f25ff09b41a0",
+        "name": "日常装（示例）",
+        "description": "白天，干燥，平静",
+        "appearance": "浅色衬衣",
+        "reference_ids": [
+          "7c43b743542c4e9a90926e524180ad88"
+        ]
+      },
+      {
+        "id": "78f99b5f38d5409ea21b84b13c8c84f9",
+        "name": "雨夜（示例）",
+        "description": "夜晚，雨水打湿头发",
+        "appearance": "深色雨衣",
+        "reference_ids": [
+          "a828af1711be46b0ac23221c840fee15",
+          "8f9e64dc9c5a4b33bda5ad165959d2f7"
+        ]
+      }
+    ]
+  },
+  "look": {
+    "id": "022b217ff1714ee99bf8f25ff09b41a0",
+    "name": "日常装（示例）",
+    "description": "白天，干燥，平静",
+    "appearance": "浅色衬衣",
+    "reference_ids": [
+      "7c43b743542c4e9a90926e524180ad88"
+    ]
+  },
+  "references": [
+    {
+      "id": "77c54f4d451940908208b87c38b010cf",
+      "name": "01-identity.png",
+      "path": "assets/e5e2c5fff24485f5dcf326997ecae62943b7f8729abddd4db29bf3a6696dd016.png",
+      "sha256": "e5e2c5fff24485f5dcf326997ecae62943b7f8729abddd4db29bf3a6696dd016",
+      "source_image_result_id": null
+    },
+    {
+      "id": "7c43b743542c4e9a90926e524180ad88",
+      "name": "02-daily.png",
+      "path": "assets/07320b564caa7f9cd106fdbd77fb3392c28e10646d955c9deacbab89d1d99780.png",
+      "sha256": "07320b564caa7f9cd106fdbd77fb3392c28e10646d955c9deacbab89d1d99780",
+      "source_image_result_id": null
+    }
+  ],
+  "scene": {
+    "schema_version": "0.2",
+    "id": "8ebe68f860004bff9c383ef3ff643764",
+    "name": "示例便利店门口",
+    "description": "A-02 测试场景，非正式美术资产 | A-06 历史快照变更测试",
+    "identity": "玻璃双门，门右侧蓝色招牌，面向街道",
+    "is_example": true,
+    "references": [
+      {
+        "id": "acb8b601aa894428a9c5f93c85505d67",
+        "name": "01-scene-stable.png",
+        "path": "assets/5796bea3c8709e909ee4f9021b242d2e7e1b7a7c05077bf0acac7204d499f962.png",
+        "sha256": "5796bea3c8709e909ee4f9021b242d2e7e1b7a7c05077bf0acac7204d499f962",
+        "source_image_result_id": null
+      },
+      {
+        "id": "55de852a607c4483a554baf0430ca1f4",
+        "name": "02-scene-day.png",
+        "path": "assets/7dc02c15ae5f90cfc402fb90e2f9ad9227c0263724dae0457dfb2dc79d5f96b1.png",
+        "sha256": "7dc02c15ae5f90cfc402fb90e2f9ad9227c0263724dae0457dfb2dc79d5f96b1",
+        "source_image_result_id": null
+      },
+      {
+        "id": "37dddb5883b142aebd8fc6baaa2383f6",
+        "name": "03-scene-rain.png",
+        "path": "assets/d03672a4c3e5f95b2d2ba9e2e6d6c246b40dab09b8e233c0883c99edee49faaa.png",
+        "sha256": "d03672a4c3e5f95b2d2ba9e2e6d6c246b40dab09b8e233c0883c99edee49faaa",
+        "source_image_result_id": null
+      },
+      {
+        "id": "2b134cddea52420f817dea35e09ed57f",
+        "name": "FIXTURE SCENE_REFERENCE 5502ea89",
+        "path": "assets/b52917adc1335c3335c189ddebf624b37b1d66fc231ad2ab178b42fb9e5c13ca.png",
+        "sha256": "b52917adc1335c3335c189ddebf624b37b1d66fc231ad2ab178b42fb9e5c13ca",
+        "source_image_result_id": "5502ea8911234d9e8e7cf0a8298867ff"
+      }
+    ],
+    "identity_reference_ids": [
+      "acb8b601aa894428a9c5f93c85505d67"
+    ],
+    "states": [
+      {
+        "id": "b3ac1413b0bf4c9bafe035b7b32ad08e",
+        "name": "白天（示例）",
+        "description": "营业中的便利店门口",
+        "environment": "白天自然光，地面干燥",
+        "reference_ids": [
+          "55de852a607c4483a554baf0430ca1f4"
+        ]
+      },
+      {
+        "id": "8c3bc5fb50ce4dbf83941cede21cddae",
+        "name": "雨夜（示例）",
+        "description": "雨夜营业，路面反光",
+        "environment": "雨水，招牌霓虹反射",
+        "reference_ids": [
+          "37dddb5883b142aebd8fc6baaa2383f6",
+          "2b134cddea52420f817dea35e09ed57f"
+        ]
+      }
+    ]
+  },
+  "scene_state": {
+    "id": "b3ac1413b0bf4c9bafe035b7b32ad08e",
+    "name": "白天（示例）",
+    "description": "营业中的便利店门口",
+    "environment": "白天自然光，地面干燥",
+    "reference_ids": [
+      "55de852a607c4483a554baf0430ca1f4"
+    ]
+  },
+  "scene_references": [
+    {
+      "id": "acb8b601aa894428a9c5f93c85505d67",
+      "name": "01-scene-stable.png",
+      "path": "assets/5796bea3c8709e909ee4f9021b242d2e7e1b7a7c05077bf0acac7204d499f962.png",
+      "sha256": "5796bea3c8709e909ee4f9021b242d2e7e1b7a7c05077bf0acac7204d499f962",
+      "source_image_result_id": null
+    },
+    {
+      "id": "55de852a607c4483a554baf0430ca1f4",
+      "name": "02-scene-day.png",
+      "path": "assets/7dc02c15ae5f90cfc402fb90e2f9ad9227c0263724dae0457dfb2dc79d5f96b1.png",
+      "sha256": "7dc02c15ae5f90cfc402fb90e2f9ad9227c0263724dae0457dfb2dc79d5f96b1",
+      "source_image_result_id": null
+    }
+  ],
+  "shot": {
+    "schema_version": "0.2",
+    "id": "d8094901e03441f1bb9ad8696bb427c0",
+    "description": "A-03 示例镜头 fal 白天门口",
+    "character_id": "915567cdda674e0286aaab1db7a1cbde",
+    "look_id": "022b217ff1714ee99bf8f25ff09b41a0",
+    "scene_id": "8ebe68f860004bff9c383ef3ff643764",
+    "scene_state_id": "b3ac1413b0bf4c9bafe035b7b32ad08e",
+    "requirements": "固定中景，角色在便利店门口转身",
+    "generation_description": "自然日光，角色转身后停顿",
+    "is_example": true
+  },
+  "description": "自然日光，角色转身后停顿",
+  "final_prompt": "Purpose: SHOT_FIRST_FRAME\ncharacter: 测试角色 林夏 | 短黑发，椭圆脸；身份不随 Look 改变 | A-01 示例数据，仅用于流程验证 | A-06 历史快照变更测试\nlook: 日常装（示例） | 白天，干燥，平静 | 浅色衬衣\nscene: 示例便利店门口 | 玻璃双门，门右侧蓝色招牌，面向街道 | A-02 测试场景，非正式美术资产 | A-06 历史快照变更测试\nscene_state: 白天（示例） | 营业中的便利店门口 | 白天自然光，地面干燥\nshot: A-03 示例镜头 fal 白天门口 | 固定中景，角色在便利店门口转身\nGeneration description: 自然日光，角色转身后停顿",
+  "width": 768,
+  "height": 512,
+  "seed": 1,
+  "is_example": true,
+  "retry_of": null
+}

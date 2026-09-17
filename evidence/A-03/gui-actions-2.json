@@ -1,0 +1,1 @@
+[["fill", "review.reason", "A-03 示例：动作需要更明确的停顿"], ["click", "button:Reject 此 Take"], ["fill", "review.retry_prompt", "自然日光，转身后明确停顿两秒，保持角色与场景一致"], ["click", "button:Retry 已 Reject 的 Take"], ["wait", 10], ["click", "button:Select 此 Take"], ["shot", "04-retry-selected.png"], ["click", "review.details"], ["keys", "^{END}"], ["shot", "05-submitted-prompt.png"], ["keys", "%{F4}"]]

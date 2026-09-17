@@ -1,0 +1,169 @@
+{
+  "success": [
+    {
+      "http_status": 200,
+      "body": {
+        "request_id": "{request_id}",
+        "status_url": "{endpoint}/requests/{request_id}/status",
+        "response_url": "{endpoint}/requests/{request_id}/response",
+        "cancel_url": "{endpoint}/requests/{request_id}/cancel",
+        "queue_position": 0
+      }
+    },
+    {
+      "http_status": 200,
+      "body": {
+        "request_id": "{request_id}",
+        "status": "IN_QUEUE",
+        "queue_position": 0
+      }
+    },
+    {
+      "http_status": 200,
+      "body": {
+        "request_id": "{request_id}",
+        "status": "IN_PROGRESS",
+        "logs": []
+      }
+    },
+    {
+      "http_status": 200,
+      "body": {
+        "request_id": "{request_id}",
+        "status": "COMPLETED",
+        "logs": [],
+        "metrics": {
+          "inference_time": 0.01
+        }
+      }
+    },
+    {
+      "http_status": 200,
+      "body": {
+        "video": {
+          "url": "https://fixture.invalid/{request_id}.mp4",
+          "content_type": "video/mp4",
+          "file_name": "fixture.mp4"
+        }
+      }
+    }
+  ],
+  "unauthorized": [
+    {
+      "http_status": 401,
+      "body": {
+        "detail": "Fixture: authentication required"
+      }
+    }
+  ],
+  "validation": [
+    {
+      "http_status": 422,
+      "body": {
+        "detail": [
+          {
+            "loc": [
+              "body",
+              "prompt"
+            ],
+            "msg": "Fixture invalid prompt",
+            "type": "value_error"
+          }
+        ]
+      }
+    }
+  ],
+  "rate_limit": [
+    {
+      "http_status": 429,
+      "body": {
+        "detail": "Fixture rate limit"
+      }
+    }
+  ],
+  "timeout": [
+    {
+      "timeout": true
+    }
+  ],
+  "generation_error": [
+    {
+      "http_status": 200,
+      "body": {
+        "request_id": "{request_id}",
+        "status_url": "{endpoint}/requests/{request_id}/status",
+        "response_url": "{endpoint}/requests/{request_id}/response",
+        "cancel_url": "{endpoint}/requests/{request_id}/cancel",
+        "queue_position": 0
+      }
+    },
+    {
+      "http_status": 200,
+      "body": {
+        "request_id": "{request_id}",
+        "status": "IN_QUEUE",
+        "queue_position": 0
+      }
+    },
+    {
+      "http_status": 200,
+      "body": {
+        "request_id": "{request_id}",
+        "status": "IN_PROGRESS",
+        "logs": []
+      }
+    },
+    {
+      "http_status": 200,
+      "body": {
+        "request_id": "{request_id}",
+        "status": "COMPLETED",
+        "error": "Fixture runner failed",
+        "error_type": "runner_server_error"
+      }
+    }
+  ],
+  "missing_video": [
+    {
+      "http_status": 200,
+      "body": {
+        "request_id": "{request_id}",
+        "status_url": "{endpoint}/requests/{request_id}/status",
+        "response_url": "{endpoint}/requests/{request_id}/response",
+        "cancel_url": "{endpoint}/requests/{request_id}/cancel",
+        "queue_position": 0
+      }
+    },
+    {
+      "http_status": 200,
+      "body": {
+        "request_id": "{request_id}",
+        "status": "IN_QUEUE",
+        "queue_position": 0
+      }
+    },
+    {
+      "http_status": 200,
+      "body": {
+        "request_id": "{request_id}",
+        "status": "IN_PROGRESS",
+        "logs": []
+      }
+    },
+    {
+      "http_status": 200,
+      "body": {
+        "request_id": "{request_id}",
+        "status": "COMPLETED",
+        "logs": [],
+        "metrics": {
+          "inference_time": 0.01
+        }
+      }
+    },
+    {
+      "http_status": 200,
+      "body": {}
+    }
+  ]
+}

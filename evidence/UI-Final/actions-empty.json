@@ -1,0 +1,1 @@
+[["resize", 1366, 768], ["audit", "empty-shot-audit.json"], ["click", "button:视频选片"], ["audit", "empty-review-audit.json"], ["click", "button:图像 / 首帧"], ["audit", "empty-image-audit.json"], ["click", "button:粗剪 / 交接"], ["click", "button:Open Preview"], ["audit", "empty-error-audit.json"], ["shot", "after-empty.png"], ["close"]]

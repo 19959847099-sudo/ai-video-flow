@@ -1,0 +1,12 @@
+{
+  "id": "6ebaee3dab6c4a5fbe7bdea11a5b2a4b",
+  "name": "A-08 开发验证示例",
+  "shot_ids": [
+    "cda53866e184457587a2b671ff062482",
+    "d8094901e03441f1bb9ad8696bb427c0"
+  ],
+  "allow_missing_audio": true,
+  "allow_missing_subtitles": true,
+  "policy": "video-driven-trim; source-muted; dialogue-sequential; sidecar-srt",
+  "is_example": true
+}

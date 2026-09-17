@@ -1,0 +1,5 @@
+{
+  "physical_screen_width": 2560,
+  "physical_screen_height": 1600,
+  "note": "Windows physical primary display; Tk retains existing system DPI virtualization"
+}

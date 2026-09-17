@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "protected_files_unchanged": 45,
+  "characters": 1,
+  "scenes": 1,
+  "shots": 6,
+  "tasks": 10,
+  "executions": 6,
+  "fal_results": 2,
+  "selected_fal_result": "2cb8df46592b47f5a7284946e73ed280",
+  "gui_network_attempts": 0
+}

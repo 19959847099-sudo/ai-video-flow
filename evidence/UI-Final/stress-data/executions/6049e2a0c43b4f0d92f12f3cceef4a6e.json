@@ -1,0 +1,18 @@
+{
+  "id": "6049e2a0c43b4f0d92f12f3cceef4a6e",
+  "task_id": "93be2c69012b4644b9cc16c814581f71",
+  "shot_id": "cda53866e184457587a2b671ff062482",
+  "take_number": 1,
+  "provider": "local-mock",
+  "model": "mock-card-video-v0",
+  "simulation_only": true,
+  "status": "completed",
+  "history": [
+    "pending",
+    "processing",
+    "completed"
+  ],
+  "retry_of": null,
+  "result_id": "6049e2a0c43b4f0d92f12f3cceef4a6e",
+  "error": ""
+}

@@ -1,0 +1,18 @@
+{
+  "id": "746c2cd33f5d4c92a90793b9757806c6",
+  "task_id": "8f8666f8b0404e71bd7a097c56572d93",
+  "provider": "comfyui",
+  "simulation_only": true,
+  "status": "completed",
+  "history": [
+    "pending",
+    "processing",
+    "completed"
+  ],
+  "prompt_id": "746c2cd3-3f5d-4c92-a907-93b9757806c6",
+  "step": 4,
+  "result_id": "746c2cd33f5d4c92a90793b9757806c6",
+  "error": "",
+  "task_sha256": "e4fcee75baada8ead84576a2bc5d40d808c48bf0fc6abc1baaf0e8d0d03e2b83",
+  "workflow_sha256": "b666220d93dd7a4c99afda93f11c89487ddb740659d28a7fe1a6888e5111a170"
+}

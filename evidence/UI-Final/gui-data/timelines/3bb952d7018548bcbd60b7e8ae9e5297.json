@@ -1,0 +1,12 @@
+{
+  "id": "3bb952d7018548bcbd60b7e8ae9e5297",
+  "name": "A-08 示例 · 白天双镜头粗剪",
+  "shot_ids": [
+    "d8094901e03441f1bb9ad8696bb427c0",
+    "cda53866e184457587a2b671ff062482"
+  ],
+  "allow_missing_audio": true,
+  "allow_missing_subtitles": true,
+  "policy": "video-driven-trim; source-muted; dialogue-sequential; sidecar-srt",
+  "is_example": true
+}

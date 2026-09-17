@@ -1,0 +1,12 @@
+02:10:50 ['resize', 1366, 768]
+02:10:51 ['audit', 'empty-shot-audit.json']
+02:10:52 ['click', 'button:��ƵѡƬ']
+02:10:53 ['audit', 'empty-review-audit.json']
+02:10:54 ['click', 'button:ͼ�� / ��֡']
+02:10:55 ['audit', 'empty-image-audit.json']
+02:10:56 ['click', 'button:�ּ� / ����']
+02:10:57 ['click', 'button:Open Preview']
+02:10:59 ['audit', 'empty-error-audit.json']
+02:11:00 ['shot', 'after-empty.png']
+02:11:01 ['close']
+Desktop actions completed: 11

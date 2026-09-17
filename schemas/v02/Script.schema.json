@@ -1,0 +1,291 @@
+{
+  "$defs": {
+    "Cast": {
+      "properties": {
+        "person": {
+          "title": "Person",
+          "type": "string"
+        },
+        "age": {
+          "title": "Age",
+          "type": "string"
+        },
+        "costume": {
+          "title": "Costume",
+          "type": "string"
+        },
+        "voice": {
+          "title": "Voice",
+          "type": "string"
+        },
+        "complete_visual": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Complete Visual"
+        },
+        "line": {
+          "title": "Line",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "person",
+        "age",
+        "costume",
+        "voice",
+        "line"
+      ],
+      "title": "Cast",
+      "type": "object"
+    },
+    "Chapter": {
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "number": {
+          "title": "Number",
+          "type": "string"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "line": {
+          "title": "Line",
+          "type": "integer"
+        },
+        "shots": {
+          "items": {
+            "$ref": "#/$defs/Shot"
+          },
+          "title": "Shots",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "number",
+        "title",
+        "line"
+      ],
+      "title": "Chapter",
+      "type": "object"
+    },
+    "Diagnostic": {
+      "properties": {
+        "line": {
+          "title": "Line",
+          "type": "integer"
+        },
+        "column": {
+          "default": 1,
+          "title": "Column",
+          "type": "integer"
+        },
+        "message": {
+          "title": "Message",
+          "type": "string"
+        },
+        "code": {
+          "title": "Code",
+          "type": "string"
+        }
+      },
+      "required": [
+        "line",
+        "message",
+        "code"
+      ],
+      "title": "Diagnostic",
+      "type": "object"
+    },
+    "Requirement": {
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "title": "Kind",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "media": {
+          "title": "Media",
+          "type": "string"
+        },
+        "usages": {
+          "items": {
+            "$ref": "#/$defs/Usage"
+          },
+          "title": "Usages",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "name",
+        "media"
+      ],
+      "title": "Requirement",
+      "type": "object"
+    },
+    "Shot": {
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "number": {
+          "title": "Number",
+          "type": "string"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "line": {
+          "title": "Line",
+          "type": "integer"
+        },
+        "end_line": {
+          "default": 0,
+          "title": "End Line",
+          "type": "integer"
+        },
+        "cast": {
+          "items": {
+            "$ref": "#/$defs/Cast"
+          },
+          "title": "Cast",
+          "type": "array"
+        },
+        "environment": {
+          "default": "",
+          "title": "Environment",
+          "type": "string"
+        },
+        "ambience": {
+          "default": "",
+          "title": "Ambience",
+          "type": "string"
+        },
+        "environment_reference": {
+          "default": false,
+          "title": "Environment Reference",
+          "type": "boolean"
+        },
+        "sections": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "Sections",
+          "type": "object"
+        },
+        "text": {
+          "default": "",
+          "title": "Text",
+          "type": "string"
+        },
+        "requirement_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Requirement Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "number",
+        "title",
+        "line"
+      ],
+      "title": "Shot",
+      "type": "object"
+    },
+    "Usage": {
+      "properties": {
+        "chapter_id": {
+          "title": "Chapter Id",
+          "type": "string"
+        },
+        "shot_id": {
+          "title": "Shot Id",
+          "type": "string"
+        },
+        "line": {
+          "title": "Line",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "chapter_id",
+        "shot_id",
+        "line"
+      ],
+      "title": "Usage",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "project_id": {
+      "title": "Project Id",
+      "type": "string"
+    },
+    "title": {
+      "default": "",
+      "title": "Title",
+      "type": "string"
+    },
+    "source": {
+      "title": "Source",
+      "type": "string"
+    },
+    "revision": {
+      "title": "Revision",
+      "type": "string"
+    },
+    "chapters": {
+      "items": {
+        "$ref": "#/$defs/Chapter"
+      },
+      "title": "Chapters",
+      "type": "array"
+    },
+    "requirements": {
+      "items": {
+        "$ref": "#/$defs/Requirement"
+      },
+      "title": "Requirements",
+      "type": "array"
+    },
+    "diagnostics": {
+      "items": {
+        "$ref": "#/$defs/Diagnostic"
+      },
+      "title": "Diagnostics",
+      "type": "array"
+    }
+  },
+  "required": [
+    "project_id",
+    "source",
+    "revision"
+  ],
+  "title": "Script",
+  "type": "object"
+}

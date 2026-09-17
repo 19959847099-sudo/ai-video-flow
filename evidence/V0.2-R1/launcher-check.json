@@ -1,0 +1,7 @@
+{
+  "entry": "python -m app.preparation_gui --data-dir evidence/V0.2-R1/visual-project",
+  "window_title": "AI 视频工作流 · V0.2 章节准备",
+  "visible_window": true,
+  "normal_close_exit_code": 0,
+  "api_calls": 0
+}

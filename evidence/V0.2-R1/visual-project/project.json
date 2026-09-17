@@ -1,0 +1,451 @@
+{
+  "version": "preparation-0.2",
+  "project_id": "70f45e323ccd470ca8e945568a291e7d",
+  "draft": "雨停之前/名称\n01/章节/一把没有主人的伞\n\n001/雨夜，推门进入\n【林夏/-/深色雨衣】/低声\n【便利店/雨夜】/雨声、冰柜低鸣\n\n镜头：\n【门内后退跟拍】 保持中景，随着推门轻轻后移。\n\n动作：\n林夏推开玻璃门，停在暖光边缘。\n右手的【红伞.破损】还在滴水。\n\n表演：\n她想说些什么，却先望了一眼窗外。\n\n对白：\n林夏：这把伞，是不是有人来找过？\n\n连续性：\n雨衣肩部潮湿，伞柄朝向右侧。\n\n002/柜台后的目光\n【林夏/-/深色雨衣】/低声\n店员/-/米色围裙/-\n【便利店/雨夜】/冰柜低鸣\n\n镜头：\n越过林夏的肩膀，缓慢推向柜台后的店员。\n\n动作：\n店员看向【红伞.破损】，把手里的纸杯放下。\n\n表演：\n目光停顿，不急于回答。\n\n003/玻璃上的雨痕\n【便利店/雨夜】/雨声\n\n镜头：\n雨滴沿玻璃向下滑落，店内倒影渐渐模糊。\n\n备注：\n无人镜头，不需要人物或 Voice。\n\n02/章节/天亮以后\n\n001/街角的空位\n【林夏/-/深色雨衣】/-\n清晨的街角/远处车声\n\n镜头：\n固定远景，保留环境的空旷感。\n\n动作：\n林夏把【红伞.破损】留在门边，走出画面。\n",
+  "script": {
+    "project_id": "70f45e323ccd470ca8e945568a291e7d",
+    "title": "雨停之前",
+    "source": "雨停之前/名称\n01/章节/一把没有主人的伞\n\n001/雨夜，推门进入\n【林夏/-/深色雨衣】/低声\n【便利店/雨夜】/雨声、冰柜低鸣\n\n镜头：\n【门内后退跟拍】 保持中景，随着推门轻轻后移。\n\n动作：\n林夏推开玻璃门，停在暖光边缘。\n右手的【红伞.破损】还在滴水。\n\n表演：\n她想说些什么，却先望了一眼窗外。\n\n对白：\n林夏：这把伞，是不是有人来找过？\n\n连续性：\n雨衣肩部潮湿，伞柄朝向右侧。\n\n002/柜台后的目光\n【林夏/-/深色雨衣】/低声\n店员/-/米色围裙/-\n【便利店/雨夜】/冰柜低鸣\n\n镜头：\n越过林夏的肩膀，缓慢推向柜台后的店员。\n\n动作：\n店员看向【红伞.破损】，把手里的纸杯放下。\n\n表演：\n目光停顿，不急于回答。\n\n003/玻璃上的雨痕\n【便利店/雨夜】/雨声\n\n镜头：\n雨滴沿玻璃向下滑落，店内倒影渐渐模糊。\n\n备注：\n无人镜头，不需要人物或 Voice。\n\n02/章节/天亮以后\n\n001/街角的空位\n【林夏/-/深色雨衣】/-\n清晨的街角/远处车声\n\n镜头：\n固定远景，保留环境的空旷感。\n\n动作：\n林夏把【红伞.破损】留在门边，走出画面。\n",
+    "revision": "a311e44b94c750a1653b1f6054ee82e8c9700e22edd7a3fe40192f5fd97fb490",
+    "chapters": [
+      {
+        "id": "0fdd5081ae345aca8610fa779037bc68",
+        "number": "1",
+        "title": "一把没有主人的伞",
+        "line": 2,
+        "shots": [
+          {
+            "id": "9ed27beca96056979c25b8e85518e940",
+            "number": "001",
+            "title": "雨夜，推门进入",
+            "line": 4,
+            "end_line": 23,
+            "cast": [
+              {
+                "person": "林夏",
+                "age": "-",
+                "costume": "深色雨衣",
+                "voice": "低声",
+                "complete_visual": "林夏/-/深色雨衣",
+                "line": 5
+              }
+            ],
+            "environment": "便利店/雨夜",
+            "ambience": "雨声、冰柜低鸣",
+            "environment_reference": true,
+            "sections": {
+              "镜头": "【门内后退跟拍】 保持中景，随着推门轻轻后移。",
+              "动作": "林夏推开玻璃门，停在暖光边缘。\n右手的【红伞.破损】还在滴水。",
+              "表演": "她想说些什么，却先望了一眼窗外。",
+              "对白": "林夏：这把伞，是不是有人来找过？",
+              "连续性": "雨衣肩部潮湿，伞柄朝向右侧。"
+            },
+            "text": "001/雨夜，推门进入\n【林夏/-/深色雨衣】/低声\n【便利店/雨夜】/雨声、冰柜低鸣\n\n镜头：\n【门内后退跟拍】 保持中景，随着推门轻轻后移。\n\n动作：\n林夏推开玻璃门，停在暖光边缘。\n右手的【红伞.破损】还在滴水。\n\n表演：\n她想说些什么，却先望了一眼窗外。\n\n对白：\n林夏：这把伞，是不是有人来找过？\n\n连续性：\n雨衣肩部潮湿，伞柄朝向右侧。\n",
+            "requirement_ids": [
+              "ae1523a22aedbfcdead6035d1b469f0c",
+              "1e4ddcfc65cd9eab19305cb6fcc98cda",
+              "24bd009053a2aedb5d0b063632e9d906",
+              "4550c53ac3e62b8df4f9223cb7d99bfc",
+              "d0f6620969aa20fef565a9805844d8ea"
+            ]
+          },
+          {
+            "id": "2b12e7030be654e4900667f4fd54ba52",
+            "number": "002",
+            "title": "柜台后的目光",
+            "line": 24,
+            "end_line": 37,
+            "cast": [
+              {
+                "person": "林夏",
+                "age": "-",
+                "costume": "深色雨衣",
+                "voice": "低声",
+                "complete_visual": "林夏/-/深色雨衣",
+                "line": 25
+              },
+              {
+                "person": "店员",
+                "age": "-",
+                "costume": "米色围裙",
+                "voice": "-",
+                "complete_visual": null,
+                "line": 26
+              }
+            ],
+            "environment": "便利店/雨夜",
+            "ambience": "冰柜低鸣",
+            "environment_reference": true,
+            "sections": {
+              "镜头": "越过林夏的肩膀，缓慢推向柜台后的店员。",
+              "动作": "店员看向【红伞.破损】，把手里的纸杯放下。",
+              "表演": "目光停顿，不急于回答。"
+            },
+            "text": "002/柜台后的目光\n【林夏/-/深色雨衣】/低声\n店员/-/米色围裙/-\n【便利店/雨夜】/冰柜低鸣\n\n镜头：\n越过林夏的肩膀，缓慢推向柜台后的店员。\n\n动作：\n店员看向【红伞.破损】，把手里的纸杯放下。\n\n表演：\n目光停顿，不急于回答。\n",
+            "requirement_ids": [
+              "ae1523a22aedbfcdead6035d1b469f0c",
+              "1e4ddcfc65cd9eab19305cb6fcc98cda",
+              "27ad9d64ac81c8fcb14625cf38443c86",
+              "f5b9e4d7595ccd25034cde32b096e425",
+              "24bd009053a2aedb5d0b063632e9d906",
+              "d0f6620969aa20fef565a9805844d8ea"
+            ]
+          },
+          {
+            "id": "adf78a2a58e159f6bfc16b58e716e8eb",
+            "number": "003",
+            "title": "玻璃上的雨痕",
+            "line": 38,
+            "end_line": 46,
+            "cast": [],
+            "environment": "便利店/雨夜",
+            "ambience": "雨声",
+            "environment_reference": true,
+            "sections": {
+              "镜头": "雨滴沿玻璃向下滑落，店内倒影渐渐模糊。",
+              "备注": "无人镜头，不需要人物或 Voice。"
+            },
+            "text": "003/玻璃上的雨痕\n【便利店/雨夜】/雨声\n\n镜头：\n雨滴沿玻璃向下滑落，店内倒影渐渐模糊。\n\n备注：\n无人镜头，不需要人物或 Voice。\n",
+            "requirement_ids": [
+              "24bd009053a2aedb5d0b063632e9d906"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "3ab6392a7e555de5ba6f4cd90d8f54ae",
+        "number": "2",
+        "title": "天亮以后",
+        "line": 47,
+        "shots": [
+          {
+            "id": "e69ce38d4ff252c4a20ce945572f4207",
+            "number": "001",
+            "title": "街角的空位",
+            "line": 49,
+            "end_line": 57,
+            "cast": [
+              {
+                "person": "林夏",
+                "age": "-",
+                "costume": "深色雨衣",
+                "voice": "-",
+                "complete_visual": "林夏/-/深色雨衣",
+                "line": 50
+              }
+            ],
+            "environment": "清晨的街角",
+            "ambience": "远处车声",
+            "environment_reference": false,
+            "sections": {
+              "镜头": "固定远景，保留环境的空旷感。",
+              "动作": "林夏把【红伞.破损】留在门边，走出画面。"
+            },
+            "text": "001/街角的空位\n【林夏/-/深色雨衣】/-\n清晨的街角/远处车声\n\n镜头：\n固定远景，保留环境的空旷感。\n\n动作：\n林夏把【红伞.破损】留在门边，走出画面。",
+            "requirement_ids": [
+              "ae1523a22aedbfcdead6035d1b469f0c",
+              "d0f6620969aa20fef565a9805844d8ea"
+            ]
+          }
+        ]
+      }
+    ],
+    "requirements": [
+      {
+        "id": "ae1523a22aedbfcdead6035d1b469f0c",
+        "kind": "character_visual",
+        "name": "林夏/-/深色雨衣",
+        "media": "image",
+        "usages": [
+          {
+            "chapter_id": "0fdd5081ae345aca8610fa779037bc68",
+            "shot_id": "9ed27beca96056979c25b8e85518e940",
+            "line": 5
+          },
+          {
+            "chapter_id": "0fdd5081ae345aca8610fa779037bc68",
+            "shot_id": "2b12e7030be654e4900667f4fd54ba52",
+            "line": 25
+          },
+          {
+            "chapter_id": "3ab6392a7e555de5ba6f4cd90d8f54ae",
+            "shot_id": "e69ce38d4ff252c4a20ce945572f4207",
+            "line": 50
+          }
+        ]
+      },
+      {
+        "id": "1e4ddcfc65cd9eab19305cb6fcc98cda",
+        "kind": "voice",
+        "name": "林夏/低声",
+        "media": "audio",
+        "usages": [
+          {
+            "chapter_id": "0fdd5081ae345aca8610fa779037bc68",
+            "shot_id": "9ed27beca96056979c25b8e85518e940",
+            "line": 5
+          },
+          {
+            "chapter_id": "0fdd5081ae345aca8610fa779037bc68",
+            "shot_id": "2b12e7030be654e4900667f4fd54ba52",
+            "line": 25
+          }
+        ]
+      },
+      {
+        "id": "24bd009053a2aedb5d0b063632e9d906",
+        "kind": "environment",
+        "name": "便利店/雨夜",
+        "media": "image",
+        "usages": [
+          {
+            "chapter_id": "0fdd5081ae345aca8610fa779037bc68",
+            "shot_id": "9ed27beca96056979c25b8e85518e940",
+            "line": 6
+          },
+          {
+            "chapter_id": "0fdd5081ae345aca8610fa779037bc68",
+            "shot_id": "2b12e7030be654e4900667f4fd54ba52",
+            "line": 27
+          },
+          {
+            "chapter_id": "0fdd5081ae345aca8610fa779037bc68",
+            "shot_id": "adf78a2a58e159f6bfc16b58e716e8eb",
+            "line": 39
+          }
+        ]
+      },
+      {
+        "id": "4550c53ac3e62b8df4f9223cb7d99bfc",
+        "kind": "video_reference",
+        "name": "门内后退跟拍",
+        "media": "video",
+        "usages": [
+          {
+            "chapter_id": "0fdd5081ae345aca8610fa779037bc68",
+            "shot_id": "9ed27beca96056979c25b8e85518e940",
+            "line": 9
+          }
+        ]
+      },
+      {
+        "id": "d0f6620969aa20fef565a9805844d8ea",
+        "kind": "prop",
+        "name": "红伞.破损",
+        "media": "image",
+        "usages": [
+          {
+            "chapter_id": "0fdd5081ae345aca8610fa779037bc68",
+            "shot_id": "9ed27beca96056979c25b8e85518e940",
+            "line": 13
+          },
+          {
+            "chapter_id": "0fdd5081ae345aca8610fa779037bc68",
+            "shot_id": "2b12e7030be654e4900667f4fd54ba52",
+            "line": 33
+          },
+          {
+            "chapter_id": "3ab6392a7e555de5ba6f4cd90d8f54ae",
+            "shot_id": "e69ce38d4ff252c4a20ce945572f4207",
+            "line": 57
+          }
+        ]
+      },
+      {
+        "id": "27ad9d64ac81c8fcb14625cf38443c86",
+        "kind": "character",
+        "name": "店员",
+        "media": "image",
+        "usages": [
+          {
+            "chapter_id": "0fdd5081ae345aca8610fa779037bc68",
+            "shot_id": "2b12e7030be654e4900667f4fd54ba52",
+            "line": 26
+          }
+        ]
+      },
+      {
+        "id": "f5b9e4d7595ccd25034cde32b096e425",
+        "kind": "costume",
+        "name": "店员/米色围裙",
+        "media": "image",
+        "usages": [
+          {
+            "chapter_id": "0fdd5081ae345aca8610fa779037bc68",
+            "shot_id": "2b12e7030be654e4900667f4fd54ba52",
+            "line": 26
+          }
+        ]
+      }
+    ],
+    "diagnostics": []
+  },
+  "assets": {
+    "ae0db29db7ee421cba452b2873d31bb6": {
+      "id": "ae0db29db7ee421cba452b2873d31bb6",
+      "path": "library/character_visual/林夏/-/深色雨衣.png",
+      "name": "林夏/-/深色雨衣",
+      "kind": "character_visual",
+      "media": "image",
+      "sha256": "d8a78a6f393fc2d7bacafd9c905fdbd91a4303d23225cdfa6aa2b7594477e993",
+      "problem": "",
+      "snapshot": ".history/media/d8a78a6f393fc2d7bacafd9c905fdbd91a4303d23225cdfa6aa2b7594477e993.png",
+      "aliases": [
+        "林夏/-/深色雨衣"
+      ],
+      "missing": false,
+      "versions": [
+        {
+          "sha256": "d8a78a6f393fc2d7bacafd9c905fdbd91a4303d23225cdfa6aa2b7594477e993",
+          "snapshot": ".history/media/d8a78a6f393fc2d7bacafd9c905fdbd91a4303d23225cdfa6aa2b7594477e993.png",
+          "at": "2026-09-17T14:23:43.613171+00:00"
+        }
+      ]
+    },
+    "35efa2eccf0a48239e3e4eb438782bd3": {
+      "id": "35efa2eccf0a48239e3e4eb438782bd3",
+      "path": "library/environment/便利店/雨夜.png",
+      "name": "便利店/雨夜",
+      "kind": "environment",
+      "media": "image",
+      "sha256": "8daa154296cd65a5f38e72c1e1652fd300070f438327203190e6ebb45408e28a",
+      "problem": "",
+      "snapshot": ".history/media/8daa154296cd65a5f38e72c1e1652fd300070f438327203190e6ebb45408e28a.png",
+      "aliases": [
+        "便利店/雨夜"
+      ],
+      "missing": false,
+      "versions": [
+        {
+          "sha256": "8daa154296cd65a5f38e72c1e1652fd300070f438327203190e6ebb45408e28a",
+          "snapshot": ".history/media/8daa154296cd65a5f38e72c1e1652fd300070f438327203190e6ebb45408e28a.png",
+          "at": "2026-09-17T14:23:43.613195+00:00"
+        }
+      ]
+    },
+    "6a4f2939724b4f7cb42dcbb3880dbe8b": {
+      "id": "6a4f2939724b4f7cb42dcbb3880dbe8b",
+      "path": "library/prop/红伞.破损.png",
+      "name": "红伞.破损",
+      "kind": "prop",
+      "media": "image",
+      "sha256": "5ddaa875e6479ac392c75a42b0ae807e55963c9804518df05ecd8031406eec75",
+      "problem": "",
+      "snapshot": ".history/media/5ddaa875e6479ac392c75a42b0ae807e55963c9804518df05ecd8031406eec75.png",
+      "aliases": [
+        "红伞.破损"
+      ],
+      "missing": false,
+      "versions": [
+        {
+          "sha256": "5ddaa875e6479ac392c75a42b0ae807e55963c9804518df05ecd8031406eec75",
+          "snapshot": ".history/media/5ddaa875e6479ac392c75a42b0ae807e55963c9804518df05ecd8031406eec75.png",
+          "at": "2026-09-17T14:23:43.613206+00:00"
+        }
+      ]
+    }
+  },
+  "bindings": {
+    "ae1523a22aedbfcdead6035d1b469f0c": {
+      "asset_id": "ae0db29db7ee421cba452b2873d31bb6",
+      "sha256": "d8a78a6f393fc2d7bacafd9c905fdbd91a4303d23225cdfa6aa2b7594477e993",
+      "mode": "auto"
+    },
+    "24bd009053a2aedb5d0b063632e9d906": {
+      "asset_id": "35efa2eccf0a48239e3e4eb438782bd3",
+      "sha256": "8daa154296cd65a5f38e72c1e1652fd300070f438327203190e6ebb45408e28a",
+      "mode": "auto"
+    },
+    "d0f6620969aa20fef565a9805844d8ea": {
+      "asset_id": "6a4f2939724b4f7cb42dcbb3880dbe8b",
+      "sha256": "5ddaa875e6479ac392c75a42b0ae807e55963c9804518df05ecd8031406eec75",
+      "mode": "auto"
+    }
+  },
+  "history": [
+    {
+      "revision": "a311e44b94c750a1653b1f6054ee82e8c9700e22edd7a3fe40192f5fd97fb490",
+      "requirement_id": "ae1523a22aedbfcdead6035d1b469f0c",
+      "asset_id": "ae0db29db7ee421cba452b2873d31bb6",
+      "sha256": "d8a78a6f393fc2d7bacafd9c905fdbd91a4303d23225cdfa6aa2b7594477e993",
+      "usages": [
+        {
+          "chapter_id": "0fdd5081ae345aca8610fa779037bc68",
+          "shot_id": "9ed27beca96056979c25b8e85518e940",
+          "line": 5
+        },
+        {
+          "chapter_id": "0fdd5081ae345aca8610fa779037bc68",
+          "shot_id": "2b12e7030be654e4900667f4fd54ba52",
+          "line": 25
+        },
+        {
+          "chapter_id": "3ab6392a7e555de5ba6f4cd90d8f54ae",
+          "shot_id": "e69ce38d4ff252c4a20ce945572f4207",
+          "line": 50
+        }
+      ]
+    },
+    {
+      "revision": "a311e44b94c750a1653b1f6054ee82e8c9700e22edd7a3fe40192f5fd97fb490",
+      "requirement_id": "24bd009053a2aedb5d0b063632e9d906",
+      "asset_id": "35efa2eccf0a48239e3e4eb438782bd3",
+      "sha256": "8daa154296cd65a5f38e72c1e1652fd300070f438327203190e6ebb45408e28a",
+      "usages": [
+        {
+          "chapter_id": "0fdd5081ae345aca8610fa779037bc68",
+          "shot_id": "9ed27beca96056979c25b8e85518e940",
+          "line": 6
+        },
+        {
+          "chapter_id": "0fdd5081ae345aca8610fa779037bc68",
+          "shot_id": "2b12e7030be654e4900667f4fd54ba52",
+          "line": 27
+        },
+        {
+          "chapter_id": "0fdd5081ae345aca8610fa779037bc68",
+          "shot_id": "adf78a2a58e159f6bfc16b58e716e8eb",
+          "line": 39
+        }
+      ]
+    },
+    {
+      "revision": "a311e44b94c750a1653b1f6054ee82e8c9700e22edd7a3fe40192f5fd97fb490",
+      "requirement_id": "d0f6620969aa20fef565a9805844d8ea",
+      "asset_id": "6a4f2939724b4f7cb42dcbb3880dbe8b",
+      "sha256": "5ddaa875e6479ac392c75a42b0ae807e55963c9804518df05ecd8031406eec75",
+      "usages": [
+        {
+          "chapter_id": "0fdd5081ae345aca8610fa779037bc68",
+          "shot_id": "9ed27beca96056979c25b8e85518e940",
+          "line": 13
+        },
+        {
+          "chapter_id": "0fdd5081ae345aca8610fa779037bc68",
+          "shot_id": "2b12e7030be654e4900667f4fd54ba52",
+          "line": 33
+        },
+        {
+          "chapter_id": "3ab6392a7e555de5ba6f4cd90d8f54ae",
+          "shot_id": "e69ce38d4ff252c4a20ce945572f4207",
+          "line": 57
+        }
+      ]
+    }
+  ],
+  "events": [],
+  "revisions": [
+    {
+      "revision": "a311e44b94c750a1653b1f6054ee82e8c9700e22edd7a3fe40192f5fd97fb490",
+      "source": "雨停之前/名称\n01/章节/一把没有主人的伞\n\n001/雨夜，推门进入\n【林夏/-/深色雨衣】/低声\n【便利店/雨夜】/雨声、冰柜低鸣\n\n镜头：\n【门内后退跟拍】 保持中景，随着推门轻轻后移。\n\n动作：\n林夏推开玻璃门，停在暖光边缘。\n右手的【红伞.破损】还在滴水。\n\n表演：\n她想说些什么，却先望了一眼窗外。\n\n对白：\n林夏：这把伞，是不是有人来找过？\n\n连续性：\n雨衣肩部潮湿，伞柄朝向右侧。\n\n002/柜台后的目光\n【林夏/-/深色雨衣】/低声\n店员/-/米色围裙/-\n【便利店/雨夜】/冰柜低鸣\n\n镜头：\n越过林夏的肩膀，缓慢推向柜台后的店员。\n\n动作：\n店员看向【红伞.破损】，把手里的纸杯放下。\n\n表演：\n目光停顿，不急于回答。\n\n003/玻璃上的雨痕\n【便利店/雨夜】/雨声\n\n镜头：\n雨滴沿玻璃向下滑落，店内倒影渐渐模糊。\n\n备注：\n无人镜头，不需要人物或 Voice。\n\n02/章节/天亮以后\n\n001/街角的空位\n【林夏/-/深色雨衣】/-\n清晨的街角/远处车声\n\n镜头：\n固定远景，保留环境的空旷感。\n\n动作：\n林夏把【红伞.破损】留在门边，走出画面。\n",
+      "at": "2026-09-17T14:23:40.011948+00:00"
+    }
+  ],
+  "ui": {
+    "chapter_id": "0fdd5081ae345aca8610fa779037bc68",
+    "shot_id": "9ed27beca96056979c25b8e85518e940",
+    "cursor": 0
+  },
+  "updated_at": "2026-09-17T14:37:23.358501+00:00",
+  "is_example": true
+}

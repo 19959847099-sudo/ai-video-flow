@@ -1,0 +1,18 @@
+{
+  "date": "2026-09-17",
+  "command": "python -m unittest discover -s tests -p 'test_preparation*.py' -v",
+  "tests": 26,
+  "core_tests": 21,
+  "gui_tests": 5,
+  "seconds": 10.02,
+  "result": "OK",
+  "legacy_full_regression_run": false,
+  "real_api_calls": 0,
+  "baseline_commit": "0af6a85",
+  "screenshots": [
+    "preparation-workspace.png",
+    "preparation-compact.png",
+    "preparation-assets.png",
+    "asset-mapping.png"
+  ]
+}

@@ -6,3 +6,9 @@ __pycache__/
 .tools/
 node_modules/
 integrations/dsh/.runtime/
+
+workspace-v02/
+example-preparation/
+*.lock
+
+.v02-session.json

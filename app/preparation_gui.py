@@ -6,8 +6,8 @@ import json
 from pathlib import Path
 import sys
 
-from PySide6.QtCore import Qt, QTimer, QThread, Signal, QUrl, QLockFile
-from PySide6.QtGui import QFont, QPixmap, QDesktopServices, QShortcut, QKeySequence
+from PySide6.QtCore import Qt, QTimer, QThread, Signal, QUrl, QLockFile, QSize
+from PySide6.QtGui import QFont, QPixmap, QDesktopServices, QShortcut, QKeySequence, QIcon
 from PySide6.QtWidgets import (
     QApplication, QMainWindow, QWidget, QFrame, QLabel, QPushButton, QVBoxLayout,
     QHBoxLayout, QSplitter, QComboBox, QListWidget, QListWidgetItem, QScrollArea,
@@ -19,8 +19,8 @@ from .preparation.script import KINDS, parse
 from .preparation.workspace import Workspace, EXTENSIONS
 from .preparation.visuals import STYLE, ScriptEditor
 
-STATUS = {'resolved': ('已就绪', '#527341', '#eef4e6'), 'missing': ('待补齐', '#99733c', '#f7f0e4'),
-          'unresolved': ('待确认', '#8b6266', '#f6eceb'), 'changed': ('已变更', '#7c6699', '#f0eaf6')}
+STATUS = {'resolved': ('就绪', '#9bb7aa'), 'missing': ('缺失', '#d1ac72'),
+          'unresolved': ('待确认', '#dfa2a3'), 'changed': ('已变更', '#b4a8d8')}
 SYMBOLS = {'image': '▧', 'audio': '≋', 'video': '▷'}
 
 
@@ -121,7 +121,7 @@ class MappingDialog(QDialog):
         self.host, self.report = host, report
         req = report['requirement']
         self.setWindowTitle('参照资产 · ' + req['name'])
-        self.resize(680, 620)
+        self.resize(680, 510)
         layout = QVBoxLayout(self)
         layout.setContentsMargins(28, 24, 28, 24)
         layout.setSpacing(14)
@@ -132,11 +132,12 @@ class MappingDialog(QDialog):
         self.preview_image.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.preview_image.setMinimumHeight(145)
         self.preview_image.setMaximumHeight(180)
-        self.preview_image.setStyleSheet('background:#e9ede3;border-radius:8px;color:#70815f;font-size:24px;')
+        self.preview_image.setStyleSheet('background:#151b24;border:1px solid #465467;color:#93a7bc;font-size:20px;')
         self.preview_image.setText(SYMBOLS[req['media']])
         layout.addWidget(self.preview_image)
         self.choices = QListWidget()
         self.choices.setObjectName('mappingChoices')
+        self.choices.setMaximumHeight(158)
         choices = [a for a in host.workspace.state['assets'].values() if a['kind'] == req['kind'] and not a.get('missing')]
         choices.sort(key=lambda a: (a['id'] not in {x['id'] for x in report['candidates']}, a['name']))
         for asset in choices:
@@ -149,7 +150,7 @@ class MappingDialog(QDialog):
                 self.choices.setCurrentItem(item)
         if not choices:
             layout.addWidget(label('素材库还没有此类型的文件。导入后，系统会自动命名并关联当前需求。', 'muted', True))
-        layout.addWidget(self.choices, 1)
+        layout.addWidget(self.choices)
         self.message = label('', 'error', True)
         layout.addWidget(self.message)
         uses = req['usages']
@@ -158,7 +159,6 @@ class MappingDialog(QDialog):
         layout.addWidget(label('引用镜头  ·  ' + '、'.join(used), 'muted', True))
         self.confirm = button('确认使用这个版本', self.bind, 'primary')
         self.confirm.setObjectName('confirmMapping')
-        self.confirm.setStyleSheet('background:#354b36;color:white;padding:10px 17px;border:none;')
         self.confirm.setEnabled(self.choices.currentItem() is not None)
         self.choices.currentItemChanged.connect(lambda current, _: self.confirm.setEnabled(current is not None))
         self.choices.currentItemChanged.connect(self.update_preview)
@@ -203,6 +203,27 @@ class MappingDialog(QDialog):
         except Exception as exc: self.message.setText(str(exc))
 
 
+class ImageMonitor(QLabel):
+    """Aspect-fit actual asset pixels, even when production panels resize."""
+    def __init__(self, text=''):
+        super().__init__(text)
+        self.source = None
+
+    def set_source(self, pixmap):
+        self.source = pixmap if pixmap and not pixmap.isNull() else None
+        self.fit_source()
+
+    def fit_source(self):
+        if self.source:
+            self.setPixmap(self.source.scaled(max(1, self.width() - 12), max(1, self.height() - 12),
+                                             Qt.AspectRatioMode.KeepAspectRatio,
+                                             Qt.TransformationMode.SmoothTransformation))
+
+    def resizeEvent(self, event):
+        super().resizeEvent(event)
+        self.fit_source()
+
+
 class PreparationWindow(QMainWindow):
     def __init__(self, data_root, session_path=None):
         super().__init__()
@@ -233,66 +254,64 @@ class PreparationWindow(QMainWindow):
         root.setContentsMargins(0, 0, 0, 0)
         root.setSpacing(0)
         self.setCentralWidget(surface)
-        header, head = frame('header', (24, 16, 24, 16))
-        logo = label('映', 'logo')
+        header, head = frame('header', (15, 8, 15, 8), 0)
+        logo = label('AI', 'logo')
         logo.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        logo.setFixedSize(42, 42)
-        self.project_title = label('AI 视频工作流', 'brand')
+        logo.setFixedSize(32, 28)
+        self.project_title = label('AI VIDEO  /  PRODUCTION', 'brand')
         self.saved = label('本地工作区', 'status')
-        self.open_button = button('打开项目', self.choose_workspace)
-        self.scan_button = button('↻  同步素材库', self.scan)
+        self.open_button = button('项目…', self.choose_workspace)
+        self.scan_button = button('同步素材', self.scan)
         self.scan_button.setObjectName('scanLibrary')
-        self.apply_button = button('解析并更新需求  ↗', self.apply_script, 'primary')
+        self.apply_button = button('解析剧本  Ctrl+Enter', self.apply_script, 'primary')
         self.apply_button.setToolTip('Ctrl+Enter · 仅有效剧本进入生产需求')
-        head.addLayout(row(logo, self.project_title, label('V0.2 / 准备', 'pill'), None,
-                           self.saved, self.open_button, self.scan_button, self.apply_button, spacing=14))
+        head.addLayout(row(logo, self.project_title, label('PREP  /  V0.2', 'pill'), None,
+                           self.saved, self.open_button, self.scan_button, self.apply_button, spacing=10))
         root.addWidget(header)
         self.body = QWidget()
         body = QHBoxLayout(self.body)
         body.setContentsMargins(0, 0, 0, 0)
         body.setSpacing(0)
         root.addWidget(self.body, 1)
-        sidebar, side = frame('sidebar', (18, 24, 18, 18), 14)
-        sidebar.setFixedWidth(222)
-        side.addWidget(label('PROJECT / 影片', 'eyebrow'))
+        sidebar, side = frame('sidebar', (11, 13, 11, 11), 6)
+        sidebar.setFixedWidth(212)
+        side.addWidget(label('PROJECT BIN   /   影片', 'eyebrow'))
         self.sidebar_title = label('新的故事', 'sectionTitle', True)
         side.addWidget(self.sidebar_title)
         self.example_badge = label('示例剧本 · 示意资产', 'muted')
         side.addWidget(self.example_badge)
-        side.addSpacing(12)
-        side.addWidget(label('准备工作区', 'eyebrow'))
+        side.addSpacing(7)
+        side.addWidget(label('CHAPTERS  /  章节', 'eyebrow'))
         self.chapters = QComboBox()
         self.chapters.setObjectName('chapterChoice')
         self.chapters.currentIndexChanged.connect(self.chapter_changed)
         side.addWidget(self.chapters)
-        self.chapter_all = button('◎  整章资产需求', self.select_chapter, 'chapter')
+        self.chapter_all = button('整章  /  全部需求', self.select_chapter, 'chapter')
         side.addWidget(self.chapter_all)
         self.shots = QListWidget()
         self.shots.setObjectName('shots')
         self.shots.currentItemChanged.connect(self.shot_changed)
         side.addWidget(self.shots, 1)
-        side.addWidget(button('↗  打开素材文件夹', self.open_library, 'nav'))
+        side.addWidget(button('打开素材目录', self.open_library, 'nav'))
         side.addWidget(button('＋  导入规范剧本', self.import_script, 'nav'))
         side.addWidget(button('打开示例项目', self.open_example, 'nav'))
-        side.addWidget(button('剧本规则  /  5 分钟上手', self.show_help, 'nav'))
-        side.addWidget(label('本地保存  ·  创作由你决定', 'muted'))
+        side.addWidget(button('剧本规则', self.show_help, 'nav'))
+        side.addWidget(label('LOCAL WORKSPACE  /  本地保存', 'muted'))
         body.addWidget(sidebar)
         workspace = QWidget()
         work = QVBoxLayout(workspace)
-        work.setContentsMargins(26, 23, 26, 12)
-        work.setSpacing(16)
+        work.setContentsMargins(10, 7, 10, 6)
+        work.setSpacing(6)
         body.addWidget(workspace, 1)
         self.chapter_caption = label('PREPARATION / 章节准备', 'eyebrow')
-        work.addWidget(self.chapter_caption)
         self.heading = label('从剧本开始，让素材各就其位。', 'title')
         self.ready_label = label('等待剧本', 'pill')
-        work.addLayout(row(self.heading, None, self.ready_label))
-        self.subtitle = label('导入一份规范剧本，自动发现人物、音声、场景与镜头参照。', 'muted')
-        work.addWidget(self.subtitle)
-        summary, summary_layout = frame('metric', (18, 12, 18, 12), 7)
-        self.summary = label('剧本 → 需求 → 素材 → 章节就绪', 'sectionTitle')
+        work.addLayout(row(self.chapter_caption, self.heading, None, self.ready_label, spacing=12))
+        self.subtitle = label('导入规范剧本后，镜头与资产需求将在这里同步。', 'muted')
+        summary, summary_layout = frame('metric', (10, 6, 10, 6), 3)
+        self.summary = label('资产  0 / 0', 'sectionTitle')
         self.summary_right = label('先准备，再生产', 'muted')
-        summary_layout.addLayout(row(self.summary, None, self.summary_right))
+        summary_layout.addLayout(row(self.summary, None, self.subtitle, None, self.summary_right))
         self.progress = QProgressBar()
         self.progress.setTextVisible(False)
         self.progress.setRange(0, 100)
@@ -305,12 +324,12 @@ class PreparationWindow(QMainWindow):
         work.addWidget(self.draft_banner)
         self.splitter = QSplitter(Qt.Orientation.Horizontal)
         self.splitter.setChildrenCollapsible(False)
-        self.splitter.setHandleWidth(16)
+        self.splitter.setHandleWidth(5)
         work.addWidget(self.splitter, 1)
-        editor_panel, editor_layout = frame('editorPanel', (20, 16, 16, 10), 10)
-        editor_panel.setMinimumWidth(330)
-        self.editor_context = label('规范剧本', 'sectionTitle')
-        editor_layout.addLayout(row(self.editor_context, None, label(' /  字段    -  空位    【 】 参照', 'muted')))
+        editor_panel, editor_layout = frame('editorPanel', (11, 6, 7, 5), 5)
+        editor_panel.setMinimumWidth(340)
+        self.editor_context = label('SCRIPT  /  可执行剧本', 'sectionTitle')
+        editor_layout.addLayout(row(self.editor_context, None, label('TEXT + ASSET REFERENCES    /    Ctrl+Enter 应用', 'muted')))
         self.editor = ScriptEditor()
         self.editor.setPlaceholderText('影片名/名称\n01/章节/章节名\n\n001/镜头标题\n人物/-/服装/音声\n【环境参照】/背景音\n\n镜头：\n自由描述摄影、动作与表演。\n\n也可以从左下角打开示例项目。')
         self.editor.textChanged.connect(self.draft_changed)
@@ -321,18 +340,40 @@ class PreparationWindow(QMainWindow):
         self.diagnostics.itemClicked.connect(lambda item: self.editor.go_line(item.data(Qt.ItemDataRole.UserRole)))
         self.diagnostics.hide()
         editor_layout.addWidget(self.diagnostics)
-        self.editor_footer = label('自然语言保留创作自由；结构化信息负责稳定引用。', 'muted')
+        self.editor_footer = label('源文本  ·  结构行决定引用  /  自然语言保留创作意图', 'muted')
         editor_layout.addWidget(self.editor_footer)
         self.splitter.addWidget(editor_panel)
-        right, right_layout = frame('panel', (16, 16, 12, 12), 12)
-        right.setMinimumWidth(320)
-        self.requirement_title = label('资产需求', 'sectionTitle')
+        right, right_layout = frame('panel', (9, 8, 9, 7), 5)
+        right.setMinimumWidth(380)
+        self.requirement_title = label('REFERENCES  /  资产需求', 'sectionTitle')
         self.filter = QComboBox()
-        self.filter.setFixedWidth(100)
+        self.filter.setFixedWidth(92)
         for title, key in [('全部', 'all'), ('待处理', 'todo'), ('已就绪', 'resolved')]:
             self.filter.addItem(title, key)
         self.filter.currentIndexChanged.connect(self.render_requirements)
         right_layout.addLayout(row(self.requirement_title, None, self.filter))
+        self.viewer, viewer_layout = frame('viewer', (0, 0, 0, 0), 0)
+        self.viewer.setObjectName('viewer')
+        self.viewer_kind = label('SOURCE VIEWER  /  无参照', 'eyebrow')
+        self.viewer_kind.setStyleSheet('color:#adbacc;padding:5px 9px;background:#222a34;')
+        viewer_layout.addWidget(self.viewer_kind)
+        self.viewer_image = ImageMonitor('选择一项已入库资产以监看')
+        self.viewer_image.setObjectName('viewerImage')
+        self.viewer_image.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.viewer_image.setMinimumHeight(120)
+        self.viewer_image.setSizePolicy(QSizePolicy.Policy.Ignored, QSizePolicy.Policy.Expanding)
+        self.viewer_image.setStyleSheet('background:#121820;color:#798b9e;font-size:13px;')
+        viewer_layout.addWidget(self.viewer_image, 1)
+        self.viewer_caption = label('无媒体  /  资产入库后可监看', 'muted')
+        self.viewer_caption.setStyleSheet('background:#202832;color:#b9c5d4;padding:6px 9px;')
+        self.viewer_open = button('打开预览', self.inspect_viewed, 'quiet')
+        viewer_layout.addLayout(row(self.viewer_caption, None, self.viewer_open, spacing=4))
+        self.viewer.setMinimumHeight(200)
+        self.viewer.setMaximumHeight(225)
+        self.viewer_open.setEnabled(False)
+        right_layout.addWidget(self.viewer, 3)
+        self.viewed_asset_id = None
+        self.viewed_asset_sha = None
         self.requirement_hint = label('需求来自剧本，无需重新填写。', 'muted', True)
         right_layout.addWidget(self.requirement_hint)
         scroll = QScrollArea()
@@ -342,14 +383,14 @@ class PreparationWindow(QMainWindow):
         content.setStyleSheet('background:transparent;')
         self.cards = QVBoxLayout(content)
         self.cards.setContentsMargins(0, 0, 5, 0)
-        self.cards.setSpacing(10)
+        self.cards.setSpacing(0)
         scroll.setWidget(content)
         right_layout.addWidget(scroll, 1)
-        self.impact_button = button('变更记录与影响定位  ↗', self.show_impacts, 'quiet')
+        self.impact_button = button('版本与影响  /  0', self.show_impacts, 'quiet')
         right_layout.addWidget(self.impact_button)
         self.splitter.addWidget(right)
-        self.splitter.setSizes([670, 380])
-        self.feedback = label('准备工作区 · 不会自动生成或替你确认参照', 'muted')
+        self.splitter.setSizes([560, 650])
+        self.feedback = label('PREP  /  本地准备工作区', 'muted')
         self.feedback.setWordWrap(True)
         work.addWidget(self.feedback)
 
@@ -483,7 +524,7 @@ class PreparationWindow(QMainWindow):
             self.feedback.setText(self.scan_error)
         else:
             self.saved.setText('素材库已同步')
-            self.feedback.setText('已同步本地素材。改名保留身份；替换提示影响；有歧义时等待你的选择。')
+            self.feedback.setText('LIBRARY  /  素材库已同步   ·   变更与歧义保留人工确认')
 
     def shot_names(self):
         script = self.workspace.script
@@ -577,11 +618,11 @@ class PreparationWindow(QMainWindow):
             counts = self.workspace.chapter_status(chapter.id)
             self.heading.setText(chapter.title)
             self.chapter_caption.setText(f'CHAPTER {chapter.number.zfill(2)} / 准备工作区')
-            self.subtitle.setText(f'{len(chapter.shots)} 个镜头  ·  需求自动归集  ·  点击镜头查看引用，素材变更可追溯')
-            self.summary.setText(f'{counts["resolved"]} / {counts["total"]}  资产需求已就绪')
-            self.summary_right.setText(f'待补齐 {counts["missing"]}    待确认 {counts["unresolved"]}    已变更 {counts["changed"]}')
+            self.subtitle.setText(f'{len(chapter.shots)} SHOTS  /  需求自动归集')
+            self.summary.setText(f'ASSETS   {counts["resolved"]} / {counts["total"]}')
+            self.summary_right.setText(f'缺失 {counts["missing"]}   待确认 {counts["unresolved"]}   已变更 {counts["changed"]}')
             self.progress.setValue(round(100 * counts['resolved'] / counts['total']) if counts['total'] else 100)
-            self.ready_label.setText('准备就绪 · Ready' if counts['ready'] else '草稿待解析' if not applied else '准备中')
+            self.ready_label.setText('READY' if counts['ready'] else 'DRAFT' if not applied else 'PREP')
         else:
             self.heading.setText('从剧本开始，让素材各就其位。')
             self.ready_label.setText('等待有效剧本')
@@ -605,6 +646,11 @@ class PreparationWindow(QMainWindow):
         mode = self.filter.currentData()
         reports = [r for r in reports if mode == 'all' or (mode == 'todo' and r['status'] != 'resolved') or (mode == 'resolved' and r['status'] == 'resolved')]
         reports.sort(key=lambda r: (r['status'] == 'resolved', r['requirement']['media']))
+        all_reports = [r for r in self.workspace.report() if r['requirement']['id'] in ids]
+        if not any(r['asset'] and r['asset']['id'] == self.viewed_asset_id and r['asset']['sha256'] == self.viewed_asset_sha and r['status'] == 'resolved' for r in all_reports):
+            default = next((r for r in all_reports if r['status'] == 'resolved' and r['requirement']['kind'] == 'environment'), None)
+            default = default or next((r for r in all_reports if r['status'] == 'resolved'), None)
+            self.select_media(default) if default else self.select_media({'asset': None})
         for report in reports: self.cards.addWidget(self.requirement_card(report))
         if not reports:
             empty, layout = frame('info', (20, 26, 20, 26))
@@ -613,41 +659,92 @@ class PreparationWindow(QMainWindow):
             layout.addWidget(label('人物、环境、关键物件和镜头参照，从规范剧本中直接读取。' if not chapter else '可以切换筛选，或选择另一个镜头。', 'muted', True))
             self.cards.addWidget(empty)
         self.cards.addStretch()
-        self.impact_button.setText(f'变更记录与影响定位  ·  {len(self.workspace.state["events"])}  ↗')
+        self.impact_button.setText(f'版本与影响  /  {len(self.workspace.state["events"])}  ↗')
         self.set_mapping_enabled(self.applied())
+
+    def select_media(self, report):
+        asset = report['asset']
+        if not asset or asset.get('missing') or asset['problem']:
+            self.viewer_kind.setText('SOURCE VIEWER  /  无可用媒体')
+            self.viewer_image.set_source(None)
+            self.viewer_image.setText('选择一项已入库资产以监看')
+            self.viewer_caption.setText('素材待入库  /  需求仍可定位与处理')
+            self.viewer_open.setEnabled(False)
+            self.viewed_asset_id = None
+            self.viewed_asset_sha = None
+            return
+        self.viewed_asset_id = asset['id']
+        self.viewed_asset_sha = asset['sha256']
+        self.viewer_kind.setText(f'SOURCE VIEWER  /  {asset["media"].upper()}  /  {KINDS[asset["kind"]]}')
+        self.viewer_open.setEnabled(True)
+        suffix = Path(asset['path']).suffix[1:].upper()
+        if asset['media'] == 'image':
+            pix = QPixmap(str(self.workspace.path(asset['path'])))
+            if pix.isNull():
+                self.viewer_image.set_source(None)
+                self.viewer_image.setText('来源无法读取  /  请同步素材库')
+                self.viewer_caption.setText(asset['name'] + '  /  来源需重新扫描')
+                self.viewer_open.setEnabled(False)
+            else:
+                self.viewer_image.set_source(pix)
+                self.viewer_caption.setText(f'{asset["name"]}   /   {pix.width()} × {pix.height()}   /   {suffix}')
+        else:
+            self.viewer_caption.setText(f'{asset["name"]}   /   {suffix}')
+            self.viewer_image.set_source(None)
+            self.viewer_image.setText('视频参照 · 点击打开预览' if asset['media'] == 'video' else '音声参照 · 点击打开试听')
+
+    def inspect_viewed(self):
+        asset = self.workspace.state['assets'].get(self.viewed_asset_id)
+        if asset and not asset.get('missing') and not asset['problem']:
+            MediaDialog(self, asset).exec()
 
     def requirement_card(self, report):
         req, asset = report['requirement'], report['asset']
-        card, layout = frame('card', (12, 12, 12, 10), 9)
-        title = label(req['name'], None, True)
-        title.setStyleSheet('font-size:14px;font-weight:600;')
-        text, ink, bg = STATUS[report['status']]
-        badge = label(text)
-        badge.setStyleSheet(f'color:{ink};background:{bg};padding:3px 7px;border-radius:5px;font-size:11px;')
-        layout.addLayout(row(label(KINDS[req['kind']], 'eyebrow'), None, badge))
-        thumb = QLabel(SYMBOLS[req['media']])
-        thumb.setFixedSize(64, 57)
-        thumb.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        thumb.setStyleSheet('background:#f0f1e9;color:#929d81;border-radius:6px;font-size:27px;')
+        card, layout = frame('card', (5, 5, 5, 5), 3)
+        image = button(req['media'].upper()[:3], lambda: self.select_media(report), 'assetThumb')
+        image.setFixedSize(58, 49)
         if asset and asset['media'] == 'image' and not asset.get('missing') and not asset['problem']:
             pix = QPixmap(str(self.workspace.path(asset['path'])))
-            thumb.setPixmap(pix.scaled(64, 57, Qt.AspectRatioMode.KeepAspectRatio, Qt.TransformationMode.SmoothTransformation))
-        content = QVBoxLayout()
-        content.setSpacing(4)
-        content.addWidget(title)
+            image.setText('')
+            image.setIcon(QIcon(pix))
+            image.setIconSize(image.size() - QSize(3, 3))
+        text, ink = STATUS[report['status']]
+        state = label('● ' + text)
+        state.setStyleSheet(f'color:{ink};font-size:10px;')
+        name = button(req['name'], lambda: self.select_media(report), 'assetName')
+        name.setToolTip(req['name'] + '  /  ' + report['reason'])
+        name.setMinimumWidth(0)
+        name.setSizePolicy(QSizePolicy.Policy.Ignored, QSizePolicy.Policy.Fixed)
+        line = next((u['line'] for u in req['usages'] if not self.shot_id or u['shot_id'] == self.shot_id), req['usages'][0]['line'])
         used = len({u['shot_id'] for u in req['usages']})
-        content.addWidget(label(f'{req["media"].upper()}  ·  {used} 个镜头引用', 'muted'))
-        lead = row(thumb)
-        lead.addLayout(content, 1)
-        layout.addLayout(lead)
-        if report['status'] in ('unresolved', 'changed'):
-            layout.addWidget(label(report['reason'], 'muted', True))
-        first_line = next((u['line'] for u in req['usages'] if not self.shot_id or u['shot_id'] == self.shot_id), req['usages'][0]['line'])
-        source = button(f'第 {first_line} 行 ↗', lambda: self.editor.go_line(first_line), 'quiet')
-        action = button('查看 / 更换' if report['status'] == 'resolved' else '选择 / 导入  ＋' if report['status'] == 'missing' else '处理变更' if report['status'] == 'changed' else '明确选择', lambda: self.open_mapping(req['id']))
+        meta = label(f'{KINDS[req["kind"]]}  ·  {used} 镜头', 'muted')
+        content = QVBoxLayout()
+        content.setContentsMargins(0, 0, 0, 0)
+        content.setSpacing(1)
+        content.addWidget(name)
+        content.addWidget(meta)
+        action = button('查看' if report['status'] == 'resolved' else '导入' if report['status'] == 'missing' else '处理', lambda: self.open_mapping(req['id']))
         action.setProperty('mappingAction', True)
         action.setObjectName('map_' + req['id'])
-        layout.addLayout(row(source, None, action, spacing=4))
+        source = button(f'L{line:03d}', lambda: self.editor.go_line(line), 'quiet')
+        source.setToolTip('跳到剧本声明行')
+        controls = QVBoxLayout()
+        controls.setContentsMargins(0, 0, 0, 0)
+        controls.setSpacing(0)
+        controls.addWidget(state, 0, Qt.AlignmentFlag.AlignRight)
+        controls.addWidget(action, 0, Qt.AlignmentFlag.AlignRight)
+        controls.addWidget(source, 0, Qt.AlignmentFlag.AlignRight)
+        lead = QHBoxLayout()
+        lead.setContentsMargins(0, 0, 0, 0)
+        lead.setSpacing(8)
+        lead.addWidget(image)
+        lead.addLayout(content, 1)
+        lead.addLayout(controls)
+        layout.addLayout(lead)
+        if report['status'] in ('unresolved', 'changed'):
+            reason = label(report['reason'], 'muted', True)
+            layout.addWidget(reason)
+        image.setToolTip('监看真实素材  /  ' + req['name'])
         return card
 
     def open_mapping(self, rid):

@@ -83,7 +83,7 @@ class PreparationGuiTests(unittest.TestCase):
             action.click()
             self.assertFalse(errors, errors)
         self.assertTrue(self.window.workspace.chapter_status(self.window.chapter_id)['ready'])
-        self.assertIn('Ready', self.window.ready_label.text())
+        self.assertIn('READY', self.window.ready_label.text())
         self.window.shots.setCurrentRow(1)
         selected = self.window.shot_id
         project = self.window.workspace.root

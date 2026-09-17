@@ -1,6 +1,8 @@
 """Capture the real Qt preparation workspace; no independent mockup."""
 import sys
 import time
+from tempfile import TemporaryDirectory
+from shutil import copytree
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from PySide6.QtWidgets import QApplication
@@ -9,9 +11,11 @@ from app.preparation.example import create_example
 from app.preparation_gui import PreparationWindow, MappingDialog
 
 app = QApplication.instance() or QApplication(sys.argv)
-output = Path('evidence/V0.2-R1')
+output = Path('evidence/V0.2-Visual2')
 output.mkdir(parents=True, exist_ok=True)
-project = output / 'visual-project'
+sample = TemporaryDirectory()
+project = Path(sample.name) / 'visual-project'
+copytree(Path('evidence/V0.2-R1/visual-project'), project)
 create_example(project)
 window = PreparationWindow(project)
 window.show()
@@ -38,3 +42,5 @@ dialog.grab().save(str(output / 'asset-mapping.png'))
 dialog.reject()
 window.close()
 QTest.qWait(50)
+
+sample.cleanup()

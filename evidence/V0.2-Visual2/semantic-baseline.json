@@ -1,0 +1,6 @@
+{
+  "app/preparation/script.py": "65e8d4b444a6831ace2f0682d8cd80a0e734490650ab68ffb96b23f6b5be5572",
+  "app/preparation/workspace.py": "5a36bfb48b6b45a12bc672297e387f52422179615e2fd9b2c6d75b7be58c34e9",
+  "app/preparation/example.py": "9cc2c1794f3f80acf5a50530cfa3a12255277913a4133fef0931e8e6d0a45f7e",
+  "schemas/v02/Script.schema.json": "9a7e5d30423a8af61cbc7d50a62e105281638c5f88acb78f505371bf00eae2eb"
+}

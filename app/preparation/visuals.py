@@ -1,75 +1,178 @@
 """Shared visual language for the V0.2 desktop workspace."""
-from PySide6.QtCore import Qt, QRect, QSize
-from PySide6.QtGui import QColor, QPainter, QFont, QSyntaxHighlighter, QTextCharFormat, QTextFormat
-from PySide6.QtWidgets import QPlainTextEdit, QWidget, QTextEdit
+from PySide6.QtCore import Qt, QRect, QRectF, QSize
+from PySide6.QtGui import QColor, QPainter, QFont, QSyntaxHighlighter, QTextCharFormat, QTextFormat, QLinearGradient, QRadialGradient, QPen
+from PySide6.QtWidgets import QPlainTextEdit, QWidget, QTextEdit, QStyledItemDelegate, QStyle
 import re
 
 STYLE = '''
-QWidget { font-family: "Microsoft YaHei UI", "Segoe UI"; font-size: 12px; color: #cbd2dc; }
-QMainWindow, QWidget#surface { background: #1e232b; }
-QFrame#header { background: #292f38; border-bottom: 1px solid #12171e; }
-QFrame#sidebar { background: #252b34; border-right: 1px solid #11171e; }
+QWidget { font-family: "Segoe UI Variable", "Microsoft YaHei UI", "Segoe UI"; font-size: 12px; color: #d7e3f0; }
+QMainWindow { background: #081321; }
+QFrame#header { background: rgba(13, 26, 43, 235); border-bottom: 1px solid #29415c; }
+QFrame#sidebar { background: rgba(12, 26, 43, 225); border-right: 1px solid #223951; }
 QLabel { background: transparent; }
-QLabel#brand { font-size: 14px; font-weight: 600; color: #e7ebf1; }
-QLabel#logo { background: #384351; color: #dce6f2; border: 1px solid #617184; font-family: "Segoe UI"; font-size: 11px; font-weight: 700; }
-QLabel#title { font-size: 19px; font-weight: 600; color: #e5eaf1; }
-QLabel#sectionTitle { font-size: 12px; font-weight: 600; color: #e2e7ef; }
-QLabel#eyebrow { font-size: 10px; font-weight: 600; color: #94a1b2; letter-spacing: 1px; }
-QLabel#muted { color: #9ca8b8; font-size: 11px; }
-QLabel#pill { color: #acbfd5; padding: 2px 7px; border: 1px solid #4d5e72; border-radius: 2px; font-size: 10px; }
-QLabel#status { color: #9caabc; font-size: 11px; }
-QFrame#panel { background: #292f38; border: 1px solid #171d24; border-radius: 0; }
-QFrame#editorPanel { background: #e2e6eb; border: 1px solid #171d24; border-radius: 0; }
-QFrame#editorPanel QLabel { color: #586575; }
-QFrame#editorPanel QLabel#sectionTitle { color: #2b3a4d; }
-QFrame#metric { background: #262d36; border-top: 1px solid #39434e; border-bottom: 1px solid #151b22; border-radius: 0; }
-QFrame#card { background: #292f38; border: none; border-bottom: 1px solid #3c4652; border-radius: 0; }
-QFrame#card:hover { background: #33404e; }
-QFrame#callout { background: #373439; border-left: 2px solid #c4a36c; border-radius: 0; }
-QFrame#info { background: #242d38; border: 1px solid #3f4a58; border-radius: 0; }
+QLabel#brand { font-size: 15px; font-weight: 650; color: #f1f6fc; }
+QLabel#title { font-size: 23px; font-weight: 600; color: #f0f6fc; }
+QLabel#sectionTitle { font-size: 13px; font-weight: 600; color: #e9f1fa; }
+QLabel#eyebrow { font-size: 10px; font-weight: 600; color: #829ab3; letter-spacing: 1px; }
+QLabel#muted { color: #91a6bb; font-size: 11px; }
+QLabel#pill { color: #b9d0e8; padding: 3px 9px; border: 1px solid #34516e; border-radius: 8px; background: rgba(54, 90, 125, 52); font-size: 10px; }
+QLabel#status { color: #9bb0c5; font-size: 11px; }
+QFrame#panel { background: rgba(17, 34, 54, 225); border: 1px solid #29435b; border-radius: 10px; }
+QFrame#editorPanel { background: #14263a; border: 1px solid #34526e; border-radius: 10px; }
+QFrame#editorPanel QLabel { color: #91a8bf; }
+QFrame#editorPanel QLabel#sectionTitle { color: #e6f0fb; }
+QFrame#metric { background: transparent; border: none; }
+QFrame#card { background: transparent; border: none; border-bottom: 1px solid #2a4057; border-radius: 0; }
+QFrame#card:hover { background: rgba(99, 145, 190, 21); }
+QFrame#callout { background: #283348; border-left: 2px solid #c9a97a; border-radius: 5px; }
+QFrame#info { background: rgba(36, 58, 82, 110); border: 1px dashed #365572; border-radius: 9px; }
+QFrame#viewer { background: #091827; border: 1px solid #304b65; border-radius: 9px; }
+QLabel#viewerImage { background: #091827; color: #7790aa; font-size: 13px; }
+QLabel#viewerTop { background: rgba(23, 45, 66, 205); color: #a6bed5; padding: 8px 12px; border-bottom: 1px solid #29435b; font-size: 10px; font-weight: 600; }
+QLabel#viewerCaption { background: rgba(21, 42, 62, 225); color: #c8d9e9; padding: 7px 10px; font-size: 11px; }
 QLabel#error { color: #f0aaa3; }
-QPushButton { background: #343d48; border: 1px solid #4b5867; border-radius: 2px; padding: 5px 10px; font-weight: 400; }
-QPushButton:hover { background: #425164; border-color: #7290b0; }
-QPushButton:pressed { background: #29405a; }
-QPushButton:disabled { color: #788595; background: #2d343d; border-color: #3c4550; }
-QPushButton#primary, QPushButton#confirmMapping { background: #426d99; color: #f3f7fc; border: 1px solid #7197be; padding: 5px 12px; font-weight: 600; }
-QPushButton#primary:hover, QPushButton#confirmMapping:hover { background: #527faa; }
-QPushButton#primary:disabled { background: #394958; color: #9aabba; border-color: #4e6071; }
-QPushButton#quiet { background: transparent; border: 1px solid transparent; color: #aac1db; padding: 3px 5px; }
-QPushButton#quiet:hover { background: #344457; border-color: #51677e; }
-QPushButton#nav { background: transparent; color: #aab7c7; border: none; border-top: 1px solid #38414c; text-align: left; padding: 8px 2px; border-radius: 0; }
-QPushButton#nav:hover { background: #33404e; color: #e5edf7; }
-QPushButton#chapter { background: #303943; color: #d9e4f0; border: none; border-left: 2px solid #526171; text-align: left; padding: 7px 9px; border-radius: 0; }
-QPushButton#assetName { background: transparent; color: #e1e8f2; border: none; text-align: left; padding: 0; font-size: 12px; }
-QPushButton#assetName:hover { color: #9cc2ed; }
-QPushButton#assetThumb { background: #171e27; color: #8b9bb0; border: 1px solid #475566; border-radius: 0; padding: 0; }
-QPushButton#assetThumb:hover { border-color: #8bb1dc; }
-QComboBox { background: #313a45; color: #dce3ec; border: 1px solid #4b5868; border-radius: 2px; padding: 4px 7px; min-height: 16px; }
-QComboBox::drop-down { border: none; width: 15px; }
-QComboBox QAbstractItemView { background: #2c3541; selection-background-color: #3c5774; selection-color: #eef4fb; }
+QPushButton { background: rgba(69, 98, 127, 47); border: 1px solid #3c5873; border-radius: 7px; padding: 6px 11px; color: #d8e7f5; font-weight: 500; }
+QPushButton:hover { background: #263f59; border-color: #6a96bf; color: #f5faff; }
+QPushButton:focus { border-color: #9fc5e9; }
+QPushButton:pressed { background: #355878; }
+QPushButton:disabled { color: #667d93; background: #1d3042; border-color: #30475d; }
+QPushButton#primary, QPushButton#confirmMapping { background: #d7e9f9; color: #0b223a; border: 1px solid #e4f2ff; padding: 7px 14px; font-weight: 650; }
+QPushButton#primary:hover, QPushButton#confirmMapping:hover { background: #eff8ff; }
+QPushButton#primary:disabled { background: #334e67; color: #9ab1c5; border-color: #45617c; }
+QPushButton#quiet { background: transparent; border: 1px solid transparent; color: #a9c8e6; padding: 4px 6px; }
+QPushButton#quiet:hover { background: #203b57; border-color: transparent; color: #ebf6ff; }
+QPushButton#nav { background: transparent; color: #a4b9ce; border: none; text-align: left; padding: 8px 9px; border-radius: 6px; }
+QPushButton#importScript { background: transparent; color: #a4b9ce; border: none; text-align: left; padding: 8px 9px; border-radius: 6px; }
+QPushButton#importScript:hover { background: #233d58; color: #f1f8ff; }
+QPushButton#nav:hover { background: #233d58; color: #f1f8ff; }
+QPushButton#chapter { background: #1b344f; color: #d7eafd; border: 1px solid #365775; text-align: left; padding: 9px 11px; border-radius: 7px; }
+QPushButton#chapter:hover { background: #284865; }
+QPushButton#assetName { background: transparent; color: #e4f0fb; border: none; text-align: left; padding: 0; font-size: 12px; }
+QPushButton#assetName:hover { color: #a6d4ff; }
+QPushButton#assetThumb { background: rgba(14, 34, 54, 110); color: #93afca; border: 1px solid #344f68; border-radius: 7px; padding: 0; }
+QPushButton#assetThumb:hover { border-color: #88b7e2; }
+QComboBox { background: #1c344b; color: #e1ecf7; border: 1px solid #395873; border-radius: 7px; padding: 5px 9px; min-height: 19px; }
+QComboBox:hover { border-color: #719abd; }
+QComboBox::drop-down { border: none; width: 20px; }
+QComboBox QAbstractItemView { background: #152a40; border: 1px solid #41627f; selection-background-color: #345b7d; selection-color: #f6fbff; }
 QListWidget { background: transparent; border: none; outline: none; }
-QListWidget::item { padding: 5px; border-radius: 0; }
-QListWidget::item:selected { background: #39536f; color: #eff5fb; }
-QListWidget#shots { background: #222932; color: #b4c0d0; }
-QListWidget#shots::item { padding: 9px 8px; border-bottom: 1px solid #38424e; border-left: 2px solid transparent; margin: 0; }
-QListWidget#shots::item:selected { background: #36495e; color: #ecf4fc; border-left: 2px solid #91bae8; }
-QListWidget#shots::item:hover { background: #344250; }
-QPlainTextEdit { color: #2b394c; background: #e2e6eb; border: none; selection-background-color: #b8cde5; selection-color: #203751; padding: 7px; }
-QListWidget#diagnostics { background: #3e454e; color: #f2b6ae; }
+QListWidget::item { padding: 5px; border-radius: 5px; }
+QListWidget::item:selected { background: #294763; color: #f2f8ff; }
+QListWidget#shots { background: transparent; color: #bed0e1; }
+QListWidget#shots::item { padding: 0; border: none; }
+QListWidget#shots::item:selected { background: transparent; }
+QListWidget#shots::item:hover { background: transparent; }
+QPlainTextEdit { color: #e0ebf7; background: #172b40; border: none; selection-background-color: #466c91; selection-color: #f3f9ff; padding: 10px 7px 10px 11px; }
+QListWidget#diagnostics { background: #382f3a; color: #f4c0b9; }
 QScrollArea { background: transparent; border: none; }
-QScrollBar:vertical { background: #252d37; width: 7px; margin: 0; }
-QScrollBar::handle:vertical { background: #5c6b7e; border-radius: 1px; min-height: 25px; }
+QScrollBar:vertical { background: transparent; width: 8px; margin: 1px; }
+QScrollBar::handle:vertical { background: #46627e; border-radius: 4px; min-height: 27px; }
+QScrollBar::handle:vertical:hover { background: #7195b5; }
 QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical { height: 0px; }
 QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical { background: transparent; }
-QSplitter::handle { background: #161c23; width: 5px; }
-QSplitter::handle:hover { background: #5b83ad; }
-QProgressBar { background: #3d4a59; border: none; border-radius: 0; max-height: 3px; }
-QProgressBar::chunk { background: #7d9dbe; border-radius: 0; }
-QDialog, QMessageBox { background: #2b333e; }
-QLineEdit { background: #212b36; border: 1px solid #516173; border-radius: 2px; padding: 5px; color: #e0e8f1; }
-QToolTip { background: #212e3d; color: #edf4fc; border: 1px solid #5b7491; padding: 5px; }
+QSplitter::handle { background: transparent; width: 9px; }
+QSplitter::handle:hover { background: rgba(109, 155, 197, 65); }
+QProgressBar { background: #26405a; border: none; border-radius: 3px; max-height: 4px; }
+QProgressBar::chunk { background: #96c4ec; border-radius: 3px; }
+QDialog, QMessageBox { background: #102239; }
+QLineEdit { background: #152c42; border: 1px solid #456480; border-radius: 7px; padding: 7px; color: #e7f2fc; }
+QLineEdit:focus { border-color: #92bfe6; }
+QToolTip { background: #19344f; color: #edf6ff; border: 1px solid #6c98be; padding: 6px; }
 '''
 
+
+
+class Atmosphere(QWidget):
+    """A quiet blue-black field behind the actual production surfaces."""
+    def paintEvent(self, event):
+        painter = QPainter(self)
+        painter.setRenderHint(QPainter.RenderHint.Antialiasing)
+        base = QLinearGradient(0, 0, 0, self.height())
+        base.setColorAt(0, QColor('#0c1d32'))
+        base.setColorAt(0.52, QColor('#091827'))
+        base.setColorAt(1, QColor('#081321'))
+        painter.fillRect(self.rect(), base)
+        for x, y, radius, center in (
+            (0.75, 0.07, 660, QColor(57, 112, 174, 70)),
+            (0.30, 0.78, 520, QColor(32, 83, 141, 42)),
+        ):
+            glow = QRadialGradient(self.width() * x, self.height() * y, radius)
+            glow.setColorAt(0, center)
+            glow.setColorAt(0.58, QColor(center.red(), center.green(), center.blue(), 17))
+            glow.setColorAt(1, QColor(center.red(), center.green(), center.blue(), 0))
+            painter.fillRect(self.rect(), glow)
+        painter.setPen(QPen(QColor(145, 185, 223, 9), 1))
+        for x in range(44, self.width(), 88):
+            painter.drawLine(x, 0, x, self.height())
+        for y in range(36, self.height(), 88):
+            painter.drawLine(0, y, self.width(), y)
+        painter.end()
+
+
+class FilmMark(QWidget):
+    """Original frame-sequence mark; drawn locally, with no borrowed branding."""
+    def __init__(self):
+        super().__init__()
+        self.setFixedSize(32, 32)
+
+    def paintEvent(self, event):
+        painter = QPainter(self)
+        painter.setRenderHint(QPainter.RenderHint.Antialiasing)
+        painter.setPen(QPen(QColor('#aed3f3'), 1.5))
+        painter.setBrush(QColor(24, 54, 82))
+        painter.drawRoundedRect(QRectF(3, 6, 19, 19), 4, 4)
+        painter.setPen(QPen(QColor('#e7f5ff'), 1.5))
+        painter.setBrush(QColor(40, 85, 124))
+        painter.drawRoundedRect(QRectF(9, 9, 19, 19), 4, 4)
+        painter.setPen(QPen(QColor('#d8f0ff'), 2))
+        painter.drawLine(14, 15, 22, 15)
+        painter.drawLine(14, 20, 19, 20)
+        painter.end()
+
+
+class ShotDelegate(QStyledItemDelegate):
+    """A production shot strip, rather than a file-tree row."""
+    def sizeHint(self, option, index):
+        return QSize(0, 70)
+
+    def paint(self, painter, option, index):
+        data = index.data(Qt.ItemDataRole.UserRole + 1)
+        if not data:
+            return super().paint(painter, option, index)
+        number, title, done, total = data
+        selected = bool(option.state & QStyle.StateFlag.State_Selected)
+        hovered = bool(option.state & QStyle.StateFlag.State_MouseOver)
+        rect = QRectF(option.rect).adjusted(3, 3, -4, -3)
+        painter.save()
+        painter.setRenderHint(QPainter.RenderHint.Antialiasing)
+        if selected:
+            fill = QLinearGradient(rect.topLeft(), rect.bottomRight())
+            fill.setColorAt(0, QColor('#274a6c'))
+            fill.setColorAt(1, QColor('#1d3853'))
+            painter.setBrush(fill)
+            painter.setPen(QPen(QColor('#4d779d'), 1))
+            painter.drawRoundedRect(rect, 8, 8)
+            painter.fillRect(QRectF(rect.left(), rect.top() + 12, 2, rect.height() - 24), QColor('#a8d3f4'))
+        elif hovered:
+            painter.setBrush(QColor(32, 60, 86, 150))
+            painter.setPen(Qt.PenStyle.NoPen)
+            painter.drawRoundedRect(rect, 8, 8)
+        painter.setFont(QFont('Segoe UI', 10, QFont.Weight.DemiBold))
+        painter.setPen(QColor('#8fb9db' if selected else '#7294b1'))
+        painter.drawText(QRectF(rect.left() + 12, rect.top() + 12, 32, 20), Qt.AlignmentFlag.AlignLeft, str(number))
+        painter.setFont(QFont('Microsoft YaHei UI', 10, QFont.Weight.DemiBold if selected else QFont.Weight.Medium))
+        painter.setPen(QColor('#f1f8ff' if selected else '#d5e5f3'))
+        title_rect = QRectF(rect.left() + 48, rect.top() + 10, rect.width() - 59, 24)
+        title_text = option.fontMetrics.elidedText(str(title), Qt.TextElideMode.ElideRight, int(title_rect.width()))
+        painter.drawText(title_rect, Qt.AlignmentFlag.AlignVCenter, title_text)
+        painter.setFont(QFont('Microsoft YaHei UI', 9))
+        painter.setPen(QColor('#9eb8d0' if selected else '#819bb2'))
+        painter.drawText(QRectF(rect.left() + 48, rect.top() + 36, rect.width() - 66, 20),
+                         Qt.AlignmentFlag.AlignVCenter, f'{done} / {total}  参照就绪')
+        painter.setPen(Qt.PenStyle.NoPen)
+        painter.setBrush(QColor('#9bcbbd' if total and done == total else '#c9ae7f'))
+        painter.drawEllipse(QRectF(rect.right() - 17, rect.top() + 44, 5, 5))
+        painter.restore()
 
 
 class ScriptHighlighter(QSyntaxHighlighter):
@@ -79,14 +182,14 @@ class ScriptHighlighter(QSyntaxHighlighter):
             fmt.setForeground(QColor(color))
             if bold: fmt.setFontWeight(QFont.Weight.DemiBold)
             self.setFormat(start, size, fmt)
-        if re.match(r'^.+/名称\s*$', text): style(0, len(text), '#274667', True)
-        elif re.match(r'^\d+/(章节|集数)', text): style(0, len(text), '#536f91', True)
-        elif re.match(r'^\d{3,}/', text): style(0, len(text), '#315779', True)
+        if re.match(r'^.+/名称\s*$', text): style(0, len(text), '#c8dcf0', True)
+        elif re.match(r'^\d+/(章节|集数)', text): style(0, len(text), '#9ec8e7', True)
+        elif re.match(r'^\d{3,}/', text): style(0, len(text), '#d9ecff', True)
         elif re.match(r'^(镜头|动作|对白|表演|连续性|备注)[：:]', text):
-            style(0, text.find('：') + 1 if '：' in text else text.find(':') + 1, '#697a8c', True)
+            style(0, text.find('：') + 1 if '：' in text else text.find(':') + 1, '#92adc4', True)
         for match in re.finditer(r'【[^【】]*】', text):
-            style(match.start(), match.end() - match.start(), '#476e9c')
-        if text.strip().startswith('//'): style(0, len(text), '#84909e')
+            style(match.start(), match.end() - match.start(), '#8ec5f2')
+        if text.strip().startswith('//'): style(0, len(text), '#738da5')
 
 
 class Gutter(QWidget):
@@ -105,7 +208,10 @@ class ScriptEditor(QPlainTextEdit):
     def __init__(self):
         super().__init__()
         self.setObjectName('scriptEditor')
-        self.setFont(QFont('Microsoft YaHei UI', 10))
+        font = QFont('Microsoft YaHei UI')
+        font.setPointSizeF(11.5)
+        self.setFont(font)
+        self.setLineWrapMode(QPlainTextEdit.LineWrapMode.WidgetWidth)
         self.setTabStopDistance(32)
         self.gutter = Gutter(self)
         self.blockCountChanged.connect(self.update_margin)
@@ -133,7 +239,7 @@ class ScriptEditor(QPlainTextEdit):
 
     def highlight_line(self):
         selection = QTextEdit.ExtraSelection()
-        selection.format.setBackground(QColor('#ccd8e5'))
+        selection.format.setBackground(QColor('#1d3954'))
         selection.format.setProperty(QTextFormat.Property.FullWidthSelection, True)
         selection.cursor = self.textCursor()
         selection.cursor.clearSelection()
@@ -148,17 +254,20 @@ class ScriptEditor(QPlainTextEdit):
 
     def paint_gutter(self, event):
         painter = QPainter(self.gutter)
-        painter.fillRect(event.rect(), QColor('#e2e6eb'))
+        painter.fillRect(event.rect(), QColor('#14263a'))
         block = self.firstVisibleBlock()
         number = block.blockNumber()
         top = int(self.blockBoundingGeometry(block).translated(self.contentOffset()).top())
         while block.isValid() and top <= event.rect().bottom():
             height = int(self.blockBoundingRect(block).height())
             if block.isVisible() and top + height >= event.rect().top():
-                painter.setPen(QColor('#3d709f' if number == self.textCursor().blockNumber() else '#84909d'))
-                painter.setFont(QFont('Consolas', 9))
-                painter.drawText(0, top, self.gutter.width() - 12, self.fontMetrics().height(),
-                                 Qt.AlignmentFlag.AlignRight, str(number + 1))
+                shown = (number == self.textCursor().blockNumber()
+                         or bool(re.match(r'^\d{3,}/', block.text())))
+                if shown:
+                    painter.setPen(QColor('#90c2ed' if number == self.textCursor().blockNumber() else '#59738b'))
+                    painter.setFont(QFont('Segoe UI', 9))
+                    painter.drawText(0, top, self.gutter.width() - 12, self.fontMetrics().height(),
+                                     Qt.AlignmentFlag.AlignRight, str(number + 1))
             block = block.next()
             top += height
             number += 1

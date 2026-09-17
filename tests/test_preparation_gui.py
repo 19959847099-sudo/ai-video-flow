@@ -52,7 +52,7 @@ class PreparationGuiTests(unittest.TestCase):
         source = '测试准备/名称\n01/章节/共享参照\n001/进入\n【人/-/衣】/低声\n镜头：\n【跟拍】\n002/离开\n【人/-/衣】/-\n动作：\n离开。'
         script = self.root / 'script.md'
         script.write_text(source, encoding='utf-8')
-        import_button = next(b for b in self.window.findChildren(QPushButton) if b.text() == '＋  导入规范剧本')
+        import_button = self.window.findChild(QPushButton, 'importScript')
         with patch.object(QFileDialog, 'getOpenFileName', return_value=(str(script), '')):
             self.click(import_button)
         self.assertEqual(self.window.shots.count(), 2)

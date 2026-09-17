@@ -23,7 +23,7 @@ python -m app.preparation_gui
 python -m app.preparation_gui --data-dir evidence/V0.2-R1/visual-project
 ```
 
-![真实章节准备工作区：现代影视制作工具视觉方向](evidence/V0.2-Visual2/preparation-workspace.png)
+![真实章节准备工作区：深蓝黑影视创作工作台](evidence/V0.2-Visual3/preparation-workspace.png)
 
 ## 当前可用
 
@@ -38,13 +38,13 @@ python -m app.preparation_gui --data-dir evidence/V0.2-R1/visual-project
 
 ## 日常操作
 
-1. 编辑或导入剧本，点“解析并更新需求”（Ctrl+Enter）。草稿自动保存，Ctrl+S 可立即保存。
-2. 左侧选择章节或镜头，右侧定位缺失需求，点“选择 / 导入”。
+1. 编辑或导入剧本，点“应用剧本”（Ctrl+Enter）。草稿自动保存，Ctrl+S 可立即保存。
+2. 左侧选择章节或镜头，右侧定位缺失需求，点“导入素材”或“查看绑定”。
 3. 同名多候选时明确选择；外部替换文件后确认新版本。不会静默改绑。
-4. 外部增删或改名后点“同步素材库”，通过“变更记录与影响定位”返回相关镜头。
+4. 外部增删或改名后点“同步素材”，通过“变更记录与影响定位”返回相关镜头。
 5. 关闭重开继续当前项目；迁移时复制整个项目目录，包含 `.history`。
 
-[五分钟语法、文件夹约定与实现边界](docs/V0.2-准备工作区.md) · [视觉方向与实际窗口](evidence/V0.2-Visual2/视觉方向与验收.md) · [本轮施工回执](evidence/V0.2-R1/施工回执.md)
+[五分钟语法、文件夹约定与实现边界](docs/V0.2-准备工作区.md) · [视觉方向与实际窗口](evidence/V0.2-Visual3/视觉方向与验收.md) · [本轮施工回执](evidence/V0.2-R1/施工回执.md)
 
 ## 工程入口
 
@@ -52,7 +52,7 @@ python -m app.preparation_gui --data-dir evidence/V0.2-R1/visual-project
 app/preparation/script.py       Parser、章节镜头、资产需求与源行
 app/preparation/workspace.py    映射、文件同步、版本、历史、原子状态
 app/preparation/visuals.py      统一视觉语言、剧本编辑器
-app/preparation/example.py      示例剧本与原创矢量示意资产
+app/preparation/example.py      示例剧本、原创矢量与 AI 生成的 Demo 环境参照
 app/preparation_gui.py          Qt 准备工作区与参照预览
 workspace-v02/                  默认新工作区（运行数据，不提交 Git）
 ```

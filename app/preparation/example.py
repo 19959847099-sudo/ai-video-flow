@@ -1,4 +1,6 @@
-"""Original vector study assets. Illustrations, never AI generation evidence."""
+"""Clearly marked Demo reference assets; never generated-film evidence."""
+from pathlib import Path
+from shutil import copyfile
 from PySide6.QtCore import QByteArray, Qt
 from PySide6.QtGui import QImage, QPainter
 from PySide6.QtSvg import QSvgRenderer
@@ -63,19 +65,6 @@ SOURCE = '''雨停之前/名称
 林夏把【红伞.破损】留在门边，走出画面。
 '''
 
-SCENE = '''<svg xmlns="http://www.w3.org/2000/svg" width="960" height="600" viewBox="0 0 960 600">
-<defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#172c34"/><stop offset="1" stop-color="#465451"/></linearGradient><linearGradient id="glass" x2="0" y2="1"><stop stop-color="#e5b979"/><stop offset="1" stop-color="#8d9678"/></linearGradient></defs>
-<rect width="960" height="600" fill="url(#sky)"/><path d="M0 430L960 380V600H0Z" fill="#243c40"/>
-<path d="M160 160L820 140V435L160 465Z" fill="#263b3c"/><path d="M145 160L835 140V195L145 215Z" fill="#d9d4ad"/>
-<text x="205" y="190" fill="#3b4d47" font-size="25" letter-spacing="15" font-family="sans-serif">NIGHT STORE</text>
-<path d="M190 230L790 210V415L190 440Z" fill="url(#glass)"/>
-<path d="M215 285L765 266M210 341L763 320M211 396L765 375" stroke="#6c7661" stroke-width="15"/>
-<g stroke="#364944" stroke-width="12"><path d="M390 220V432M590 216V424M700 213V421"/></g>
-<path d="M450 232L565 229V425L450 430Z" fill="#263e3f" opacity=".7"/><path d="M547 310V346" stroke="#e4d09a" stroke-width="5"/>
-<g stroke="#a4b9b3" stroke-width="2" opacity=".32"><path d="M40 20L-5 170M140 0L50 290M245 0L205 125M367 0L322 130M475 0L438 123M603 0L565 120M755 0L716 115M905 0L860 126M912 248L865 389M129 332L55 547M882 427L832 591M644 475L609 593M346 481L322 585"/></g>
-<path d="M196 466L770 437L848 527L129 558Z" fill="#c5b47e" opacity=".15"/>
-<text x="40" y="553" fill="#d3dfd4" font-size="16" font-family="sans-serif" letter-spacing="3">VISUAL STUDY / ORIGINAL VECTOR / NOT GENERATED FOOTAGE</text></svg>'''
-
 CHARACTER = '''<svg xmlns="http://www.w3.org/2000/svg" width="600" height="760" viewBox="0 0 600 760">
 <rect width="600" height="760" fill="#c2c5b2"/><rect x="32" y="32" width="536" height="696" fill="#d7d8c8"/>
 <path d="M32 565L568 470V728H32Z" fill="#afb7a5"/>
@@ -116,7 +105,10 @@ def create_example(root):
     workspace.state['is_example'] = True
     workspace.apply(SOURCE)
     for source, relative in [(CHARACTER, 'character_visual/林夏/-/深色雨衣.png'),
-                             (SCENE, 'environment/便利店/雨夜.png'), (UMBRELLA, 'prop/红伞.破损.png')]:
+                             (UMBRELLA, 'prop/红伞.破损.png')]:
         render_svg(source, workspace.root / 'library' / relative)
+    environment = workspace.root / 'library/environment/便利店/雨夜.png'
+    environment.parent.mkdir(parents=True, exist_ok=True)
+    copyfile(Path(__file__).parent / 'demo_assets/convenience-store-night.png', environment)
     workspace.scan()
     return workspace

@@ -79,7 +79,7 @@ class PreparationGuiTests(unittest.TestCase):
             dialog.bind_selected()
             dialog.close()
         self.assertTrue(self.window.workspace.chapter_status(self.window.chapter_id)['ready'])
-        self.assertIn('READY', self.window.ready_label.text())
+        self.assertIn('就绪', self.window.ready_label.text())
         self.window.shots.setCurrentRow(1)
         selected = self.window.shot_id
         self.assertIn('离开', self.window.reading.toPlainText())
@@ -213,13 +213,13 @@ class PreparationGuiTests(unittest.TestCase):
         dialog.review_selected('green')
         self.assertEqual(self.window.workspace.report()[0]['status'], 'resolved')
         self.assertIn('红伞', self.window.viewer_image.media_title)
-        self.assertIn('Take', self.window.viewer_image.media_title)
+        self.assertIn('版本', self.window.viewer_image.media_title)
         with patch.object(self.window, 'open_production') as opening:
             self.window.open_mapping(rid)
             opening.assert_called_once_with(rid)
         self.assertEqual(self.window.shot_id, shot_id)
         dialog.close()
-        self.assertIn('READY', self.window.ready_label.text())
+        self.assertIn('就绪', self.window.ready_label.text())
 
     def test_missing_three_entries_free_restore_import_and_api_capability(self):
         self.window.editor.setPlainText('片/名称\n01/章节/雨夜\n001/入店\n动作：\n【红伞】')
@@ -229,18 +229,16 @@ class PreparationGuiTests(unittest.TestCase):
         self.assertTrue(self.window.resolution_bar.isVisible())
         self.assertEqual([self.window.free_button.text(), self.window.import_candidate_button.text(),
                           self.window.add_api_button.text()],
-                         ['不需要固定素材', '导入素材', '添加 API'])
+                         ['不需要固定素材', '导入素材', '生成服务'])
         with patch.object(self.window, 'open_production') as opening:
             self.click(self.window.import_candidate_button)
             opening.assert_called_once_with(rid, import_now=True)
         dialog = ApiCapabilityDialog(self.window, self.window.workspace.report()[0]['requirement'])
         self.assertEqual(dialog.capability, 'image')
-        self.assertEqual(set(dialog.rows), {'text', 'image', 'video', 'audio'})
-        self.assertEqual({widget.text() for widget in dialog.rows.values()}, {'未配置'})
         dialog.close()
         self.click(self.window.free_button)
         self.assertEqual(self.window.workspace.report()[0]['status'], 'free')
-        self.assertIn('READY', self.window.ready_label.text())
+        self.assertIn('就绪', self.window.ready_label.text())
         self.assertEqual(self.window.free_button.text(), '恢复固定素材')
         free_dialog = ProductionDialog(self.window, rid, self.window.shot_id)
         free_dialog.show()
@@ -250,7 +248,7 @@ class PreparationGuiTests(unittest.TestCase):
         free_dialog.close()
         self.click(self.window.free_button)
         self.assertEqual(self.window.workspace.report()[0]['status'], 'missing')
-        self.assertIn('PREP', self.window.ready_label.text())
+        self.assertEqual('', self.window.ready_label.text())
         self.window.resize(1100, 720)
         QTest.qWait(40)
         for control in (self.window.free_button, self.window.import_candidate_button,

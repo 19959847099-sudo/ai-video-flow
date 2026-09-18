@@ -20,6 +20,7 @@ from PySide6.QtWidgets import (
 from .core import write_json
 from .preparation.script import KINDS, parse
 from .preparation.workspace import Workspace, EXTENSIONS
+from .preparation.ui_copy import asset_message, operation_message
 from .preparation.visuals import STYLE, ScriptEditor, Atmosphere, FilmMark, ShotDelegate, ProgressSegments
 
 STATUS = {'resolved': ('就绪', '#8fbdac'), 'free': ('无需固定素材', '#9aafc1'), 'missing': ('缺失', '#d7ad79'),
@@ -119,10 +120,9 @@ class MediaDialog(QDialog):
                 waveform.setAlignment(Qt.AlignmentFlag.AlignCenter)
                 layout.addWidget(waveform, 1)
             self.player.setSource(QUrl.fromLocalFile(str(path)))
-            playback = label('点击播放试听', 'muted')
-            self.player.errorOccurred.connect(lambda *_: playback.setText(self.player.errorString()))
+            playback = label('', 'muted')
+            self.player.errorOccurred.connect(lambda *_: playback.setText('无法播放此文件'))
             layout.addLayout(row(button('播放', self.player.play, 'primary'), button('暂停', self.player.pause), playback, None))
-        layout.addWidget(label(asset['path'], 'muted', True))
         layout.addWidget(button('关闭', self.accept))
         self.finished.connect(lambda *_: self.player.stop() if self.player else None)
 
@@ -137,10 +137,10 @@ class MappingDialog(QDialog):
         layout = QVBoxLayout(self)
         layout.setContentsMargins(28, 24, 28, 24)
         layout.setSpacing(14)
-        demo = 'DEMO  ·  ' if host.workspace.state.get('is_example') else ''
-        layout.addWidget(label(demo + KINDS[req['kind']] + ' / ' + req['media'].upper(), 'eyebrow'))
         layout.addWidget(label(req['name'], 'title', True))
-        layout.addWidget(label(report['reason'], 'muted', True))
+        self.reason = label(asset_message(report), 'muted', True)
+        self.reason.setVisible(bool(asset_message(report)))
+        layout.addWidget(self.reason)
         self.preview_image = QLabel()
         self.preview_image.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.preview_image.setMinimumHeight(145)
@@ -157,22 +157,22 @@ class MappingDialog(QDialog):
         choices.sort(key=lambda a: (a['id'] not in {x['id'] for x in report['candidates']}, a['name']))
         for asset in choices:
             marker = '不可用 · ' if asset['problem'] else ''
-            item = QListWidgetItem(f'{marker}{asset["name"]}\n{asset["path"]}')
+            item = QListWidgetItem(f'{marker}{asset["name"]}')
             item.setData(Qt.ItemDataRole.UserRole, asset['id'])
-            item.setToolTip(asset['problem'] or asset['sha256'])
+            item.setToolTip(asset['problem'] or '')
             self.choices.addItem(item)
             if report['asset'] and asset['id'] == report['asset']['id']:
                 self.choices.setCurrentItem(item)
         if not choices:
-            layout.addWidget(label('素材库还没有此类型的文件。导入后，系统会自动命名并关联当前需求。', 'muted', True))
+            layout.addWidget(label('暂无可选素材', 'muted', True))
         layout.addWidget(self.choices)
         self.message = label('', 'error', True)
         layout.addWidget(self.message)
         uses = req['usages']
         names = host.shot_names()
         used = list(dict.fromkeys(names.get(u['shot_id'], u['shot_id'][:8]) for u in uses))
-        layout.addWidget(label('引用镜头  ·  ' + '、'.join(used), 'muted', True))
-        self.confirm = button('确认使用这个版本', self.bind, 'primary')
+        layout.addWidget(label('用于镜头：' + '、'.join(used), 'muted', True))
+        self.confirm = button('设为当前', self.bind, 'primary')
         self.confirm.setObjectName('confirmMapping')
         self.confirm.setEnabled(self.choices.currentItem() is not None)
         self.choices.currentItemChanged.connect(lambda current, _: self.confirm.setEnabled(current is not None))
@@ -184,14 +184,14 @@ class MappingDialog(QDialog):
     def update_preview(self, current, previous):
         self.preview_image.clear()
         if not current:
-            self.preview_image.setText('导入参照，让需求落到真实素材。')
+            self.preview_image.setText('暂无素材')
             return
         asset = self.host.workspace.state['assets'][current.data(Qt.ItemDataRole.UserRole)]
         if asset['media'] == 'image' and not asset['problem']:
             pix = QPixmap(str(self.host.workspace.path(asset['path'])))
             self.preview_image.setPixmap(pix.scaled(560, 180, Qt.AspectRatioMode.KeepAspectRatio, Qt.TransformationMode.SmoothTransformation))
         else:
-            self.preview_image.setText(SYMBOLS[asset['media']] + '  ' + ('文件不可用' if asset['problem'] else '点击预览播放媒体'))
+            self.preview_image.setText(SYMBOLS[asset['media']] + '  ' + ('文件不可用' if asset['problem'] else '可预览'))
 
     def bind(self):
         current = self.choices.currentItem()
@@ -199,7 +199,7 @@ class MappingDialog(QDialog):
         try:
             self.host.workspace.bind(self.report['requirement']['id'], current.data(Qt.ItemDataRole.UserRole))
             self.accept()
-        except Exception as exc: self.message.setText(str(exc))
+        except Exception as exc: self.message.setText(operation_message(str(exc)))
 
     def preview(self):
         current = self.choices.currentItem()
@@ -215,39 +215,23 @@ class MappingDialog(QDialog):
         try:
             self.host.workspace.import_asset(req['id'], filename)
             self.accept()
-        except Exception as exc: self.message.setText(str(exc))
+        except Exception as exc: self.message.setText(operation_message(str(exc)))
 
 
 class ApiCapabilityDialog(QDialog):
     """Truthful entry point for internal capabilities; no provider or credential is implied."""
-    CAPABILITIES = (('text', 'Text'), ('image', 'Image'), ('video', 'Video'), ('audio', 'Audio'))
 
     def __init__(self, host, requirement):
         super().__init__(host)
         self.capability = requirement['media']
-        self.setWindowTitle('生成能力  ·  ' + self.capability.upper())
+        self.setWindowTitle('生成服务')
         self.setStyleSheet(host.styleSheet())
-        self.resize(500, 370)
+        self.resize(440, 190)
         layout = QVBoxLayout(self)
         layout.setContentsMargins(28, 24, 28, 22)
         layout.setSpacing(12)
-        layout.addWidget(label('INTERNAL GENERATION  /  API', 'eyebrow'))
-        layout.addWidget(label('生成能力', 'title'))
-        layout.addWidget(label(f'{KINDS[requirement["kind"]]} · {requirement["name"]}  →  {self.capability.upper()}',
-                               'muted', True))
-        self.rows = {}
-        for key, title in self.CAPABILITIES:
-            line, box = hframe('capabilitySelected' if key == self.capability else 'capabilityRow',
-                               (13, 9, 13, 9), 0)
-            name = label(title, 'sectionTitle')
-            state = label('未配置', 'muted')
-            box.addWidget(name)
-            box.addStretch()
-            box.addWidget(state)
-            layout.addWidget(line)
-            self.rows[key] = state
-        layout.addWidget(label('当前无可用内部 Provider。接入真实 Adapter 后，对应能力将在这里配置；'
-                               '本轮不保存 API Key，也不发起模型请求。', 'muted', True))
+        layout.addWidget(label('生成服务', 'title'))
+        layout.addWidget(label('尚未配置生成服务 · 可先导入本地素材', 'muted'))
         layout.addStretch()
         layout.addWidget(button('返回当前镜头', self.accept, 'quiet'))
 
@@ -372,7 +356,7 @@ class PreparationWindow(QMainWindow):
         project.setFixedHeight(104)
         film = QVBoxLayout()
         film.setSpacing(3)
-        self.example_badge = label('DEMO  ·  示例项目', 'eyebrow')
+        self.example_badge = label('示例项目', 'eyebrow')
         self.project_title = label('AI 视频工作流', 'projectTitle')
         film.addWidget(self.example_badge)
         film.addWidget(self.project_title)
@@ -384,7 +368,7 @@ class PreparationWindow(QMainWindow):
         chapter_context.addWidget(self.chapter_number)
         chapter_text = QVBoxLayout()
         chapter_text.setSpacing(4)
-        self.chapter_caption = label('CHAPTER  /  准备阶段', 'eyebrow')
+        self.chapter_caption = label('章节', 'eyebrow')
         self.heading = label('尚未建立章节', 'chapterHeading')
         chapter_text.addWidget(self.chapter_caption)
         chapter_text.addWidget(self.heading)
@@ -400,7 +384,7 @@ class PreparationWindow(QMainWindow):
         metric.setSpacing(3)
         self.summary = label('0 / 0', 'summaryCount')
         self.summary_right = label('等待剧本', 'muted')
-        self.ready_label = label('PREP', 'readiness')
+        self.ready_label = label('', 'readiness')
         metric.addLayout(row(self.summary, self.ready_label, spacing=12))
         self.progress_bar = ProgressSegments()
         metric.addWidget(self.progress_bar)
@@ -428,7 +412,7 @@ class PreparationWindow(QMainWindow):
         media_layout.setSpacing(0)
         media_head = QHBoxLayout()
         media_head.setContentsMargins(0, 0, 0, 0)
-        media_head.addWidget(label('MEDIA  /  当前镜头参照', 'eyebrow'))
+        media_head.addWidget(label('镜头参照', 'eyebrow'))
         media_head.addStretch()
         self.viewer_open = button('查看媒体  ↗', self.inspect_viewed, 'quiet')
         self.viewer_open.setEnabled(False)
@@ -440,14 +424,14 @@ class PreparationWindow(QMainWindow):
         self.viewer_image.setSizePolicy(QSizePolicy.Policy.Ignored, QSizePolicy.Policy.Expanding)
         viewer_layout.addWidget(self.viewer_image, 1)
         media_layout.addWidget(self.viewer, 1)
-        self.viewer_caption = label('等待真实媒体参照', 'muted')
+        self.viewer_caption = label('', 'muted')
         self.viewer_caption.setFixedHeight(26)
         media_layout.addWidget(self.viewer_caption)
         self.viewed_asset_id = None
         self.viewed_asset_sha = None
         assets_head = QHBoxLayout()
         assets_head.setContentsMargins(0, 8, 0, 6)
-        self.requirement_title = label('当前镜头资产需求', 'sectionTitle')
+        self.requirement_title = label('所需素材', 'sectionTitle')
         assets_head.addWidget(self.requirement_title)
         self.production_button = button('制作 / 判断  ↗', self.open_production, 'quiet')
         assets_head.addWidget(self.production_button)
@@ -485,7 +469,7 @@ class PreparationWindow(QMainWindow):
         self.free_button.setObjectName('freeRequirement')
         self.import_candidate_button = button('导入素材', self.import_for_requirement, 'resolutionAction')
         self.import_candidate_button.setObjectName('importRequirement')
-        self.add_api_button = button('添加 API', self.open_api_settings, 'resolutionAction')
+        self.add_api_button = button('生成服务', self.open_api_settings, 'resolutionAction')
         self.add_api_button.setObjectName('addApiRequirement')
         for control in (self.free_button, self.import_candidate_button, self.add_api_button):
             control.setProperty('mappingAction', True)
@@ -503,13 +487,12 @@ class PreparationWindow(QMainWindow):
         self.rework_import_button.setObjectName('reworkImport')
         for control in (self.rework_generate_button, self.rework_import_button):
             control.setProperty('mappingAction', True)
-            control.setToolTip('当前素材继续使用；新结果先作为 Candidate，审核后才能明确更换 Current。')
             rework.addWidget(control)
         media_layout.addWidget(self.rework_bar)
         self.rework_bar.hide()
         attention = QHBoxLayout()
         attention.setContentsMargins(0, 7, 0, 5)
-        self.attention = label('资产状态基于当前已应用剧本', 'muted')
+        self.attention = label('', 'muted')
         attention.addWidget(self.attention, 1)
         self.impact_button = button('版本与影响  ↗', self.show_impacts, 'quiet')
         attention.addWidget(self.impact_button)
@@ -519,8 +502,8 @@ class PreparationWindow(QMainWindow):
         script, script_layout = frame('scriptSurface', (0, 0, 0, 0), 0)
         script_head, sh = frame('scriptHeader', (25, 0, 22, 0), 0)
         script_head.setFixedHeight(48)
-        self.editor_context = label('PRODUCTION SCRIPT', 'sectionTitle')
-        self.script_context = label('当前镜头  /  可执行生产剧本', 'muted')
+        self.editor_context = label('制作剧本', 'sectionTitle')
+        self.script_context = label('', 'muted')
         sh.addLayout(row(self.editor_context, self.script_context, None, spacing=14))
         script_layout.addWidget(script_head)
         self.draft_banner, banner = frame('callout', (12, 7, 12, 7), 0)
@@ -546,7 +529,7 @@ class PreparationWindow(QMainWindow):
         script_layout.addWidget(self.diagnostics)
         script_foot, sf = frame('scriptFooter', (20, 2, 18, 2), 0)
         script_foot.setFixedHeight(40)
-        self.script_footnote = label('原文驱动  ·  镜头与资产需求保持关联', 'muted')
+        self.script_footnote = label('', 'muted')
         self.edit_button = button('编辑剧本  ↗', self.toggle_edit, 'quiet')
         sf.addLayout(row(self.script_footnote, None, self.edit_button))
         script_layout.addWidget(script_foot)
@@ -558,7 +541,7 @@ class PreparationWindow(QMainWindow):
         rail.setFixedHeight(130)
         intro = QVBoxLayout()
         intro.setSpacing(5)
-        intro.addWidget(label('SHOT INDEX', 'eyebrow'))
+        intro.addWidget(label('镜头', 'eyebrow'))
         self.shot_count = label('0 个镜头', 'sectionTitle')
         intro.addWidget(self.shot_count)
         intro.addStretch()
@@ -579,7 +562,7 @@ class PreparationWindow(QMainWindow):
         body.addWidget(rail)
         foot = QHBoxLayout()
         foot.setContentsMargins(0, 0, 0, 0)
-        self.feedback = label('本地工作区  /  准备阶段', 'muted')
+        self.feedback = label('', 'muted')
         self.feedback.setWordWrap(False)
         self.saved = label('本地保存', 'status')
         self.example_button = button('打开示例', self.open_example, 'quiet')
@@ -654,7 +637,7 @@ class PreparationWindow(QMainWindow):
     def guard(self, operation):
         try: return operation()
         except Exception as exc:
-            self.feedback.setText('操作未完成 · ' + str(exc))
+            self.feedback.setText('操作未完成 · ' + operation_message(str(exc)))
             return None
 
     def choose_workspace(self):
@@ -711,8 +694,8 @@ class PreparationWindow(QMainWindow):
             self.show_diagnostics(parsed)
             self.refresh()
             self.set_edit_mode(not parsed.valid)
-            self.saved.setText('需求已更新' if parsed.valid else '草稿已保存 · 请修正错误')
-            self.feedback.setText('剧本已解析，资产需求已更新。' if parsed.valid else '解析未通过；上一次有效需求与素材关联保持不变。点击错误可定位原文。')
+            self.saved.setText('已应用' if parsed.valid else '请修正错误')
+            self.feedback.setText('' if parsed.valid else '解析失败 · 已保留上次有效版本；点击错误可定位。')
         self.guard(apply)
 
     def show_diagnostics(self, parsed):
@@ -747,8 +730,8 @@ class PreparationWindow(QMainWindow):
             self.saved.setText('同步未完成')
             self.feedback.setText(self.scan_error)
         else:
-            self.saved.setText('素材库已同步')
-            self.feedback.setText('LIBRARY  /  素材库已同步   ·   变更与歧义保留人工确认')
+            self.saved.setText('已同步')
+            self.feedback.setText('')
         self.reading.setFocus()
 
     def shot_names(self):
@@ -855,19 +838,19 @@ class PreparationWindow(QMainWindow):
             counts = self.workspace.chapter_status(chapter.id)
             self.heading.setText(chapter.title)
             self.chapter_number.setText(chapter.number.zfill(2))
-            self.chapter_caption.setText('CHAPTER  /  准备阶段')
+            self.chapter_caption.setText('章节')
             self.summary.setText(f'{counts["resolved"] + counts["free"]} / {counts["total"]}')
             self.progress_bar.set_counts(counts['resolved'] + counts['free'], counts['total'])
             pending = counts['missing'] + counts['unresolved'] + counts['changed']
-            self.summary_right.setText(f'{pending} 项待处理  ·  固定参照' if pending else '本章需求已处理')
-            self.ready_label.setText('READY' if counts['ready'] and applied else 'DRAFT' if not applied else 'PREP')
+            self.summary_right.setText(f'{pending} 项待处理' if pending else '')
+            self.ready_label.setText('就绪' if counts['ready'] and applied else '待应用' if not applied else '')
         else:
             self.heading.setText('从剧本开始')
             self.chapter_number.setText('—')
             self.ready_label.setText('等待有效剧本')
             self.summary.setText('0 / 0')
             self.progress_bar.set_counts(0, 0)
-            self.summary_right.setText('参照就绪')
+            self.summary_right.setText('')
 
     def set_mapping_enabled(self, enabled):
         for control in self.findChildren(QPushButton):
@@ -879,7 +862,7 @@ class PreparationWindow(QMainWindow):
         chapter = self.current_chapter()
         selected = next((s for s in chapter.shots if s.id == self.shot_id), None) if chapter else None
         ids = set(selected.requirement_ids) if selected else {r for s in chapter.shots for r in s.requirement_ids} if chapter else set()
-        self.requirement_title.setText('当前镜头资产需求' if selected else '整章资产需求')
+        self.requirement_title.setText('所需素材' if selected else '本章素材')
         reports = [r for r in self.workspace.report() if r['requirement']['id'] in ids]
         active = next((r for r in reports if r['requirement']['id'] == self.active_requirement_id), None)
         if active is None:
@@ -907,7 +890,7 @@ class PreparationWindow(QMainWindow):
         if not visible:
             empty, layout = frame('info', (13, 20, 13, 20))
             empty.setMinimumWidth(250)
-            layout.addWidget(label('暂无匹配的参照需求' if chapter else '导入剧本后，参照会出现在这里', 'muted', True))
+            layout.addWidget(label('暂无匹配的参照需求' if chapter else '暂无素材', 'muted', True))
             self.cards.addWidget(empty)
         self.cards.addStretch()
         self.active_requirement_id = desired_requirement
@@ -916,10 +899,10 @@ class PreparationWindow(QMainWindow):
         self.impact_button.setText(f'版本与影响  ·  {count}' if count else '版本与影响  ↗')
         pending = [r for r in reports if r['status'] not in ('resolved', 'free')]
         if pending:
-            self.attention.setText(f'{len(pending)} 项需求待处理  ·  ' +
+            self.attention.setText(f'{len(pending)} 项待处理  ·  ' +
                                    '、'.join(dict.fromkeys(STATUS[r['status']][0] for r in pending)))
         else:
-            self.attention.setText('当前镜头需求已处理' if reports else '当前范围暂无参照需求')
+            self.attention.setText('')
         self.update_resolution_bar(reports)
         self.update_rework_bar(reports)
         self.set_mapping_enabled(self.applied())
@@ -931,9 +914,9 @@ class PreparationWindow(QMainWindow):
         asset = report['asset']
         if not asset or asset.get('missing') or asset['problem']:
             self.viewer_image.set_source(None)
-            self.viewer_image.setText('当前镜头尚无已绑定媒体')
+            self.viewer_image.setText('暂无镜头参照')
             self.viewer_image.set_media_caption('', '')
-            self.viewer_caption.setText('绑定真实素材后，在这里监看参照')
+            self.viewer_caption.setText('')
             self.viewer_caption.show()
             self.viewer_open.setEnabled(False)
             self.viewed_asset_id = None
@@ -946,17 +929,17 @@ class PreparationWindow(QMainWindow):
         self.viewed_asset_sha = asset['sha256']
         self.viewer_open.setEnabled(True)
         suffix = Path(asset['path']).suffix[1:].upper()
-        demo = 'DEMO  ·  ' if self.workspace.state.get('is_example') else ''
+        demo = '示例 · ' if self.workspace.state.get('is_example') else ''
         binding = report.get('binding') or {}
         candidate = self.workspace.state['candidates'].get(binding.get('candidate_id'))
-        media_name = (f'{report["requirement"]["name"]}  ·  Take {candidate["take_number"]:02d}'
+        media_name = (f'{report["requirement"]["name"]}  ·  版本 {candidate["take_number"]:02d}'
                       if candidate else asset['name'])
         if asset['media'] == 'image':
             pix = QPixmap(str(self.workspace.path(asset['path'])))
             if pix.isNull():
                 self.viewer_image.set_source(None)
-                self.viewer_image.setText('来源无法读取  /  请同步素材库')
-                self.viewer_caption.setText(demo + asset['name'] + '  /  来源需重新扫描')
+                self.viewer_image.setText('文件无法读取 · 请同步素材')
+                self.viewer_caption.setText(asset['name'])
                 self.viewer_open.setEnabled(False)
             else:
                 self.viewer_image.set_source(pix)
@@ -989,7 +972,7 @@ class PreparationWindow(QMainWindow):
         card, layout = frame('assetCard', (0, 0, 0, 0), 1)
         image = button('', lambda: self.select_media(report), 'assetThumb')
         image.setFixedHeight(64 if self.height() < 800 else 78)
-        image.setToolTip('监看真实素材  /  ' + req['name'])
+        image.setToolTip(req['name'])
         if asset and asset['media'] == 'image' and not asset.get('missing') and not asset['problem']:
             pix = QPixmap(str(self.workspace.path(asset['path'])))
             if not pix.isNull():
@@ -1002,21 +985,21 @@ class PreparationWindow(QMainWindow):
             self.asset_thumbs[asset['id']] = image
         layout.addWidget(image)
         name = button(req['name'], lambda: self.select_media(report), 'assetName')
-        name.setToolTip(req['name'] + '  /  ' + report['reason'])
+        name.setToolTip(req['name'] + (' · ' + asset_message(report) if asset_message(report) else ''))
         layout.addWidget(name)
         kind = label(KINDS[req['kind']], 'muted')
         source_line = next((u['line'] for u in req['usages']
                             if not self.shot_id or u['shot_id'] == self.shot_id), req['usages'][0]['line'])
         source = button(f'L{source_line:03d}', lambda: self.show_source_line(source_line), 'quiet')
-        source.setToolTip('定位到可执行剧本中的需求声明')
+        source.setToolTip('定位剧本')
         source.setStyleSheet('font-size:10px;padding:0;color:#8198ad;')
         layout.addLayout(row(kind, None, source, spacing=1))
         text, ink = STATUS[report['status']]
         state = label('●  ' + text)
         state.setStyleSheet(f'color:{ink};font-size:10px;')
-        action = button('查看绑定  ↗' if report['status'] == 'resolved' else
-                        '选择处理方式  ↓' if report['status'] in ('missing', 'free')
-                        else '处理需求  ↗',
+        action = button('查看素材  ↗' if report['status'] == 'resolved' else
+                        '处理  ↓' if report['status'] in ('missing', 'free')
+                        else '处理  ↗',
                         (lambda: self.select_media(report)) if report['status'] in ('missing', 'free')
                         else (lambda: self.open_mapping(req['id'])), 'mapAction')
         action.setProperty('mappingAction', True)
@@ -1030,9 +1013,9 @@ class PreparationWindow(QMainWindow):
         if not shot and chapter and chapter.shots: shot = chapter.shots[0]
         if not shot:
             self.reading.setHtml('<div style="color:#9aacc0;font-size:14px;margin:35px;">导入或编辑规范剧本，从第一个镜头开始。</div>')
-            self.script_context.setText('当前镜头  /  可执行生产剧本')
+            self.script_context.setText('')
             return
-        self.script_context.setText(f'{chapter.number.zfill(2)}  /  SHOT {shot.number}')
+        self.script_context.setText(f'镜头 {shot.number}')
         lines = shot.text.splitlines()
         cast_lines = {c.line-shot.line for c in shot.cast}
         if shot.environment:
@@ -1076,7 +1059,7 @@ class PreparationWindow(QMainWindow):
             self.resolution_bar.hide()
             return
         req = selected['requirement']
-        self.resolution_label.setText(f'{KINDS[req["kind"]]} · {req["name"]}')
+        self.resolution_label.setText(req['name'])
         self.resolution_label.setToolTip(req['name'])
         free = selected['status'] == 'free'
         self.free_button.setText('恢复固定素材' if free else '不需要固定素材')
@@ -1090,8 +1073,7 @@ class PreparationWindow(QMainWindow):
         if not selected or selected['status'] != 'resolved' or not selected['binding'] or not self.applied():
             self.rework_bar.hide()
             return
-        self.rework_label.setText('CURRENT  ·  ' + selected['requirement']['name'])
-        self.rework_label.setToolTip('当前素材继续使用；新增 Candidate 不会替换 Current。')
+        self.rework_label.setText(selected['requirement']['name'])
         self.rework_bar.show()
 
     def rework_generate(self):
@@ -1141,7 +1123,7 @@ class PreparationWindow(QMainWindow):
             self.feedback.setText('素材同步完成后再进入生成。')
             return
         if not self.workspace.script or not self.applied():
-            self.feedback.setText('先应用有效剧本，再创建 Prompt Draft。')
+            self.feedback.setText('请先应用剧本')
             return
         chapter = self.current_chapter()
         if not chapter or not chapter.shots:
@@ -1174,7 +1156,7 @@ class PreparationWindow(QMainWindow):
             requirement_id = None
         script = self.workspace.script if self.workspace else None
         if not script or not self.applied():
-            self.feedback.setText('先应用有效剧本，再进入生产与判断。')
+            self.feedback.setText('请先应用剧本')
             return
         chapter = self.current_chapter()
         selected = next((s for s in chapter.shots if s.id == self.shot_id), None) if chapter else None
@@ -1186,7 +1168,7 @@ class PreparationWindow(QMainWindow):
             missing = next((r for r in reports if r['status'] == 'missing'), None)
             rid = (missing or reports[0])['requirement']['id'] if reports else None
         if not rid:
-            self.feedback.setText('当前章节没有可生产的资产需求。')
+            self.feedback.setText('当前章节暂无所需素材')
             return
         self.active_requirement_id = rid
         from .preparation.production_gui import ProductionDialog
@@ -1220,8 +1202,7 @@ class PreparationWindow(QMainWindow):
         dialog.setWindowTitle('变更记录与影响定位')
         dialog.resize(760, 540)
         layout = QVBoxLayout(dialog)
-        layout.addWidget(label('知道改动影响哪里，再决定下一步。', 'sectionTitle'))
-        layout.addWidget(label('历史版本保留；不会删除结果，也不会自动重生成。双击镜头定位当前剧本。', 'muted', True))
+        layout.addWidget(label('变更与影响', 'sectionTitle'))
         listing = QListWidget()
         names = self.shot_names()
         for event in reversed(self.workspace.state['events']):
@@ -1231,7 +1212,7 @@ class PreparationWindow(QMainWindow):
                 child = QListWidgetItem('    ↳  ' + names.get(sid, '历史镜头（已移出当前剧本） · ' + sid[:8]))
                 child.setData(Qt.ItemDataRole.UserRole, sid)
                 listing.addItem(child)
-        if not listing.count(): listing.addItem('尚无变更。素材替换、改名、缺失与剧本修改会显示在这里。')
+        if not listing.count(): listing.addItem('暂无变更')
         def locate(item):
             sid = item.data(Qt.ItemDataRole.UserRole)
             if not sid: return
@@ -1321,9 +1302,9 @@ HELP = '''影片名/名称
 
 // 修改后草稿自动保存，Ctrl+Enter 解析并应用。
 // 解析错误不会覆盖上次有效需求。Ctrl+S 立即保存草稿。
-// Ready 仅表示本章参照已准备，不代表生成质量或成片完成。
+// 就绪仅表示本章参照已准备。
 // 后续候选审核：绿=可用，黄=待定，红=废弃。
-// 轻剪使用明确选用的镜头视频 Current；可在章节工作区中预览与输出。
+// 轻剪使用已选定的镜头视频。
 '''
 
 

@@ -12,6 +12,7 @@ from PySide6.QtWidgets import (
 
 from .production import ProductionService
 from .workspace import EXTENSIONS
+from .ui_copy import asset_message, operation_message
 
 
 REVIEW = {
@@ -112,14 +113,11 @@ class CandidateDelegate(QStyledItemDelegate):
             painter.drawPixmap(rect.left()+10, rect.top()+7, 154, 60, pix)
         painter.setFont(QFont('Segoe UI', 9))
         painter.setPen(QColor('#dce8f0'))
-        painter.drawText(rect.left()+10, rect.top()+89, f'TAKE {take:02d}')
+        painter.drawText(rect.left()+10, rect.top()+89, f'版本 {take:02d}')
         painter.setPen(QColor(REVIEW[state][1]))
         painter.setBrush(QColor(REVIEW[state][1]))
         painter.setPen(Qt.PenStyle.NoPen)
         painter.drawEllipse(rect.left()+84, rect.top()+83, 9, 9)
-        if is_current:
-            painter.setPen(QColor('#bcd4e6'))
-            painter.drawText(rect.left()+119, rect.top()+89, 'CURRENT')
         painter.restore()
 
 
@@ -159,10 +157,9 @@ class ProductionDialog(QDialog):
         top.setSpacing(18)
         title = QVBoxLayout()
         title.setSpacing(4)
-        title.addWidget(text(('DEMO  ·  ' if self.host.workspace.state.get('is_example') else '') +
-                             'PRODUCTION  /  CANDIDATE REVIEW', 'eyebrow'))
+        title.addWidget(text('示例项目' if self.host.workspace.state.get('is_example') else '素材', 'eyebrow'))
         title.addWidget(text(self.req.name, 'productionTitle'))
-        title.addWidget(text(f'{self.host.workspace.script.title}   /   {self.chapter.number.zfill(2)} {self.chapter.title}   /   SHOT {self.shot.number} {self.shot.title}',
+        title.addWidget(text(f'{self.chapter.number.zfill(2)} {self.chapter.title}  ·  镜头 {self.shot.number} {self.shot.title}',
                              'productionSmall'))
         top.addLayout(title, 1)
         self.status = text('', 'productionStatus')
@@ -177,17 +174,17 @@ class ProductionDialog(QDialog):
         left_layout.setContentsMargins(0, 0, 0, 0)
         left_layout.setSpacing(10)
         preview_header = QHBoxLayout()
-        self.preview_title = text('等待 Candidate', 'sectionTitle')
+        self.preview_title = text('', 'sectionTitle')
         self.preview_state = text('', 'productionSmall')
         preview_header.addWidget(self.preview_title)
         preview_header.addStretch()
         preview_header.addWidget(self.preview_state)
         left_layout.addLayout(preview_header)
         self.preview = CandidatePreview()
-        self.preview.setText('生成或导入后，Candidate 在这里接受判断')
+        self.preview.setText('暂无素材')
         left_layout.addWidget(self.preview, 1)
         preview_footer = QHBoxLayout()
-        self.path_note = text('媒体归档由系统管理', 'productionSmall')
+        self.path_note = text('', 'productionSmall')
         self.play_button = action('打开媒体  ↗', self.open_media)
         self.play_button.setEnabled(False)
         preview_footer.addWidget(self.path_note, 1)
@@ -201,29 +198,19 @@ class ProductionDialog(QDialog):
         side = QVBoxLayout(right)
         side.setContentsMargins(18, 14, 18, 11)
         side.setSpacing(7)
-        side.addWidget(text('当前需求  /  状态与上下文', 'eyebrow'))
         self.reason = text('', 'productionStatus', True)
         side.addWidget(self.reason)
         self.bound = text('', 'productionSmall', True)
         side.addWidget(self.bound)
-        separator = QFrame()
-        separator.setFixedHeight(1)
-        separator.setStyleSheet('background:rgba(220,238,250,18);')
-        side.addWidget(separator)
-        side.addWidget(text('产生新 Candidate', 'sectionTitle'))
         self.fixture_button = action('生成本地示意图  ↗', self.generate_fixture, 'tool')
         self.fixture_button.setEnabled(self.req.media == 'image')
         # The zero-call fixture is evidence tooling, not a fourth formal Missing path.
         self.fixture_button.setVisible(bool(self.host.workspace.state.get('is_example')))
         side.addWidget(self.fixture_button)
-        self.import_button = action('导入为 Candidate  ↗', self.import_candidate, 'tool')
+        self.import_button = action('导入素材  ↗', self.import_candidate, 'tool')
         side.addWidget(self.import_button)
-        side.addWidget(text('LOCAL FIXTURE  ·  零 API 调用  ·  不自动审核或绑定'
-                            if self.host.workspace.state.get('is_example') and self.req.media == 'image'
-                            else '导入后先判断 Candidate，再明确选用 Current。',
-                            'productionSmall', True))
         side.addSpacing(3)
-        side.addWidget(text('判断当前 Candidate', 'sectionTitle'))
+        side.addWidget(text('判断', 'sectionTitle'))
         reviews = QHBoxLayout()
         reviews.setSpacing(4)
         self.review_buttons = {}
@@ -237,21 +224,19 @@ class ProductionDialog(QDialog):
         self.note.setObjectName('reviewNote')
         self.note.setPlaceholderText('审核备注（可选）')
         side.addWidget(self.note)
-        self.history = text('尚无审核记录', 'productionSmall', True)
+        self.history = text('', 'productionSmall', True)
         side.addWidget(self.history)
         side.addStretch()
-        self.bind_button = action('用于当前 Requirement  ↗', self.bind_selected, 'primary')
+        self.bind_button = action('设为当前  ↗', self.bind_selected, 'primary')
         side.addWidget(self.bind_button)
-        self.unbind_button = action('解除当前绑定', self.unbind_current)
+        self.unbind_button = action('取消选用', self.unbind_current)
         side.addWidget(self.unbind_button, 0, Qt.AlignmentFlag.AlignRight)
         body.addWidget(right, 2)
         root.addLayout(body, 1)
 
         strip_header = QHBoxLayout()
-        strip_header.addWidget(text('CANDIDATES  /  历次 Take', 'eyebrow'))
+        strip_header.addWidget(text('历史版本', 'eyebrow'))
         strip_header.addStretch()
-        self.count = text('0 个 Candidate', 'productionSmall')
-        strip_header.addWidget(self.count)
         root.addLayout(strip_header)
         self.list = QListWidget()
         self.list.setObjectName('candidateStrip')
@@ -272,17 +257,20 @@ class ProductionDialog(QDialog):
         try:
             return operation()
         except Exception as exc:
-            QMessageBox.warning(self, '操作未完成', str(exc))
+            QMessageBox.warning(self, '操作未完成', operation_message(str(exc)))
             return None
 
     def refresh(self, prefer=None):
         report = next(r for r in self.host.workspace.report() if r['requirement']['id'] == self.req.id)
-        self.reason.setText(report['reason'])
+        self.reason.setText(asset_message(report))
+        self.reason.setVisible(bool(asset_message(report)) and asset_message(report) != '缺少素材')
         current = self.service.current(self.req.id)
-        self.bound.setText('CURRENT  /  ' + (f'Take {self.service.candidate(current).take_number:02d}' if current else '尚未绑定'))
-        self.status.setText({'resolved': '●  Resolved', 'free': '◇  无需固定素材', 'missing': '○  Missing',
-                             'unresolved': '◇  待确认', 'changed': '△  已变更'}[report['status']])
+        self.bound.setText(f'当前使用 · 版本 {self.service.candidate(current).take_number:02d}' if current else '')
+        self.bound.setVisible(bool(current))
         candidates = self.service.candidates(self.req.id)
+        self.status.setText(('尚未选用' if candidates else '缺少素材') if report['status'] == 'missing' else
+                            {'resolved': '', 'free': '无需固定素材', 'unresolved': '待确认',
+                             'changed': '文件已变化'}[report['status']])
         candidates.sort(key=lambda c: (c.review_state == 'red', c.take_number))
         self.list.blockSignals(True)
         self.list.clear()
@@ -304,11 +292,9 @@ class ProductionDialog(QDialog):
                                  '≋' if candidate.media == 'audio' else '▷' if candidate.media == 'video' else '▧')
                 painter.end()
                 icon = QIcon(frame)
-            marker = '  CURRENT' if candidate.id == current else ''
-            item = QListWidgetItem(icon, f'Take {candidate.take_number:02d}{marker}')
+            item = QListWidgetItem(icon, f'版本 {candidate.take_number:02d}')
             item.setData(Qt.ItemDataRole.UserRole, candidate.id)
             item.setData(Qt.ItemDataRole.UserRole + 1, (candidate.take_number, candidate.review_state, candidate.id == current))
-            item.setToolTip(f'{candidate.source_type}  ·  {candidate.created_at}\n{candidate.media_path}')
             self.list.addItem(item)
         target = prefer or self.selected_id
         index = next((i for i in range(self.list.count())
@@ -316,18 +302,17 @@ class ProductionDialog(QDialog):
         if index is None and self.list.count(): index = 0
         self.list.setCurrentRow(index if index is not None else -1)
         self.list.blockSignals(False)
-        self.count.setText(f'{self.list.count()} 个 Candidate')
         self.selection_changed(self.list.currentItem(), None)
 
     def selection_changed(self, current, previous):
         self.selected_id = current.data(Qt.ItemDataRole.UserRole) if current else None
         if not self.selected_id:
             self.preview.set_source(None)
-            self.preview.setText('生成或导入后，Candidate 在这里接受判断')
-            self.preview_title.setText('等待 Candidate')
+            self.preview.setText('暂无素材')
+            self.preview_title.setText('')
             self.preview_state.setText('')
-            self.path_note.setText('媒体归档由系统管理')
-            self.history.setText('尚无审核记录')
+            self.path_note.setText('')
+            self.history.setText('')
             self.note.setText('')
             self.play_button.setEnabled(False)
             self.bind_button.setEnabled(False)
@@ -338,29 +323,27 @@ class ProductionDialog(QDialog):
             return
         candidate = self.service.candidate(self.selected_id)
         path = self.service.preview_path(candidate.id)
-        self.preview_title.setText(f'TAKE {candidate.take_number:02d}   /   {candidate.source_type.upper()}')
+        self.preview_title.setText(f'版本 {candidate.take_number:02d}')
         state_label, color, symbol = REVIEW[candidate.review_state]
-        current_label = '   ·   CURRENT' if candidate.id == self.service.current(self.req.id) else ''
-        self.preview_state.setText(current_label.strip('   ·') if current_label else '')
+        self.preview_state.setText('')
         self.preview_state.setStyleSheet(f'color:{color};')
         self.preview.set_source(QPixmap(str(path)) if path and candidate.media == 'image' else None)
         if candidate.media != 'image':
-            self.preview.setText('≋  音频 Candidate · 打开媒体试听' if candidate.media == 'audio'
-                                 else '▷  视频 Candidate · 打开媒体预览')
+            self.preview.setText('≋  打开媒体试听' if candidate.media == 'audio'
+                                 else '▷  打开媒体预览')
         elif not path:
             self.preview.setText('媒体与历史快照均不可用')
         available = self.service.available(candidate.id)
-        self.path_note.setText(('本地有效' if available else '来源变化或丢失 · 显示历史快照')
-                               + f'  ·  {candidate.sha256[:12]}  ·  {candidate.created_at[:16]}')
+        self.path_note.setText('来源已变化 · 仅可查看历史版本' if not available else '')
         self.play_button.setEnabled(bool(path) and candidate.media != 'image')
         self.note.setText(candidate.note)
         reviews = [e for e in candidate.history if e['event'] == 'review']
-        self.history.setText(f'{len(reviews)} 次判断' if reviews else '尚未判断')
+        self.history.setText(f'已判断 {len(reviews)} 次' if len(reviews) > 1 else '')
         for state, control in self.review_buttons.items():
             control.setEnabled(True)
             control.setChecked(state == candidate.review_state)
         already_current = candidate.id == self.service.current(self.req.id)
-        self.bind_button.setText('已用于当前 Requirement' if already_current else '用于当前 Requirement  ↗')
+        self.bind_button.setText('已设为当前' if already_current else '设为当前  ↗')
         self.bind_button.setEnabled(candidate.review_state == 'green' and available and not already_current)
         self.unbind_button.setEnabled(bool(self.service.current(self.req.id)))
 
@@ -370,13 +353,13 @@ class ProductionDialog(QDialog):
             self.service.poll_job(job.id)
             result = self.service.poll_job(job.id)
             if result.status != 'completed':
-                raise ValueError(result.error or '本地 Fixture 未完成')
+                raise ValueError(result.error or '生成未完成')
             self.refresh(result.candidate_id)
         self._guard(run)
 
     def import_candidate(self):
         patterns = ' '.join('*' + ext for ext in sorted(EXTENSIONS[self.req.media]))
-        filename, _ = QFileDialog.getOpenFileName(self, '导入为 Candidate', '', f'媒体文件 ({patterns})')
+        filename, _ = QFileDialog.getOpenFileName(self, '导入素材', '', f'媒体文件 ({patterns})')
         if not filename: return
         def run():
             candidate = self.service.import_candidate(self.req.id, self.shot.id, filename)
@@ -414,7 +397,7 @@ class ProductionDialog(QDialog):
         if not path: return
         asset = dict(self.host.workspace.state['assets'][candidate.asset_id])
         asset['path'] = path.relative_to(self.host.workspace.root).as_posix()
-        asset['name'] = f'Take {candidate.take_number:02d}  ·  {self.req.name}'
+        asset['name'] = f'版本 {candidate.take_number:02d}  ·  {self.req.name}'
         from app.preparation_gui import MediaDialog
         MediaDialog(self.host, asset).exec()
 

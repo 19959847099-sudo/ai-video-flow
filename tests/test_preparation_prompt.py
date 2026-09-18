@@ -128,7 +128,7 @@ class PromptDraftTests(unittest.TestCase):
         self.assertNotIn('红伞：缺失', image['text'])
         video = create_draft(self.workspace, shot.id, 'video')
         self.assertIn('红伞：缺失', video['text'])
-        self.assertIn('不可视作已提供素材', video['text'])
+        self.assertIn('尚未提供', video['text'])
         self.workspace.apply(SOURCE.replace('从门内缓慢后退', '从门内快速后退'))
         self.assertTrue(get_draft(self.workspace, shot.id, 'video')[2])
         self.assertEqual(get_draft(self.workspace, shot.id, 'video')[0]['text'], video['text'])

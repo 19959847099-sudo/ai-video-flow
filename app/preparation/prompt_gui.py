@@ -8,8 +8,9 @@ from PySide6.QtWidgets import (
     QPlainTextEdit, QPushButton, QScrollArea, QVBoxLayout, QWidget,
 )
 
-from .prompt import MEDIA_NAMES, create_draft, get_draft, save_draft, targets
+from .prompt import create_draft, get_draft, save_draft, targets
 from .visuals import Atmosphere, STYLE
+from .ui_copy import operation_message
 
 
 def note(value='', name='promptMuted', wrap=False):
@@ -38,7 +39,7 @@ class PromptDialog(QDialog):
         self.current_key = None
         self.loading = False
         self.shot_id = shot_id
-        self.setWindowTitle('生成 · Prompt Draft')
+        self.setWindowTitle('提示词')
         self.resize(min(1180, max(1000, host.width()-55)), min(790, max(650, host.height()-45)))
         self.setMinimumSize(920, 620)
         self.setStyleSheet(STYLE + """
@@ -80,13 +81,11 @@ class PromptDialog(QDialog):
         top.setContentsMargins(0, 0, 0, 15)
         top.setSpacing(7)
         context = self.workspace.script
-        top.addWidget(note(('DEMO  ·  ' if self.workspace.state.get('is_example') else '') +
-                           'GENERATE  /  PROMPT COMPOSER', 'promptKicker'))
+        top.addWidget(note('示例项目' if self.workspace.state.get('is_example') else '生成', 'promptKicker'))
         bar = QHBoxLayout()
         title = QVBoxLayout()
         title.setSpacing(4)
         title.addWidget(note(context.title, 'promptTitle'))
-        title.addWidget(note('规则式语义转译 · Draft 只供编辑与保存，尚未提交任何模型', 'promptMuted'))
         bar.addLayout(title, 1)
         bar.addWidget(action('返回工作区  ↗', self.accept))
         top.addLayout(bar)
@@ -100,7 +99,7 @@ class PromptDialog(QDialog):
         control.addWidget(self.shots, 1)
         self.media_buttons = {}
         for medium in ('image', 'video', 'audio'):
-            btn = action(MEDIA_NAMES[medium].upper(), lambda _=False, m=medium: self.change_media(m), 'promptMedia')
+            btn = action({'image': '图片', 'video': '视频', 'audio': '声音'}[medium], lambda _=False, m=medium: self.change_media(m), 'promptMedia')
             btn.setCheckable(True)
             self.media_buttons[medium] = btn
             control.addWidget(btn)
@@ -109,8 +108,6 @@ class PromptDialog(QDialog):
         self.target.currentIndexChanged.connect(self.change_target)
         control.addWidget(self.target, 1)
         layout.addLayout(control)
-        self.subtitle = note('', 'promptContext')
-        layout.addWidget(self.subtitle)
         body = QHBoxLayout()
         body.setSpacing(14)
         left = QFrame()
@@ -118,7 +115,7 @@ class PromptDialog(QDialog):
         side = QVBoxLayout(left)
         side.setContentsMargins(16, 17, 16, 15)
         side.setSpacing(10)
-        side.addWidget(note('CURRENT SHOT  /  生产上下文', 'promptKicker'))
+        side.addWidget(note('镜头参考', 'promptKicker'))
         self.preview = note('当前无图片参照', 'promptPreview')
         self.preview.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.preview.setFixedHeight(145)
@@ -142,21 +139,21 @@ class PromptDialog(QDialog):
         editor_layout.setContentsMargins(18, 16, 18, 15)
         editor_layout.setSpacing(8)
         edit_header = QHBoxLayout()
-        edit_header.addWidget(note('PROMPT DRAFT', 'promptKicker'))
+        edit_header.addWidget(note('提示词', 'promptKicker'))
         edit_header.addStretch()
         self.state_label = note('', 'promptState')
         edit_header.addWidget(self.state_label)
         editor_layout.addLayout(edit_header)
         self.text = QPlainTextEdit()
         self.text.setObjectName('promptText')
-        self.text.setPlaceholderText('选择当前任务，创建第一版 Prompt Draft。')
+        self.text.setPlaceholderText('创建提示词')
         self.text.textChanged.connect(self.mark_dirty)
         editor_layout.addWidget(self.text, 1)
-        editor_layout.addWidget(note('NEGATIVE / CONSTRAINTS  ·  可选', 'promptKicker'))
+        editor_layout.addWidget(note('限制条件', 'promptKicker'))
         self.constraints = QPlainTextEdit()
         self.constraints.setObjectName('promptConstraints')
         self.constraints.setFixedHeight(70)
-        self.constraints.setPlaceholderText('仅写对当前任务有帮助的限制。')
+        self.constraints.setPlaceholderText('可选')
         self.constraints.textChanged.connect(self.mark_dirty)
         editor_layout.addWidget(self.constraints)
         body.addWidget(right, 7)
@@ -165,17 +162,16 @@ class PromptDialog(QDialog):
         footer.setObjectName('promptFooter')
         bottom = QHBoxLayout(footer)
         bottom.setContentsMargins(0, 13, 0, 0)
-        self.provenance = note('', 'promptMuted')
-        bottom.addWidget(self.provenance, 1)
-        self.provider_hint = note('当前无真实内部 Provider', 'promptMuted')
+        bottom.addStretch(1)
+        self.provider_hint = note('未配置生成服务', 'promptMuted')
         self.provider_hint.setVisible(self.rework_context)
         bottom.addWidget(self.provider_hint)
-        self.add_api_button = action('添加 API  ↗', self.show_add_api)
+        self.add_api_button = action('查看  ↗', self.show_add_api)
         self.add_api_button.setVisible(self.rework_context)
         bottom.addWidget(self.add_api_button)
-        self.rebuild_button = action('明确重建', self.rebuild)
-        self.create_button = action('创建 Draft', self.create)
-        self.save_button = action('保存 Draft  ↗', self.save, 'primary')
+        self.rebuild_button = action('重新生成', self.rebuild)
+        self.create_button = action('创建', self.create)
+        self.save_button = action('保存  ↗', self.save, 'primary')
         bottom.addWidget(self.rebuild_button)
         bottom.addWidget(self.create_button)
         bottom.addWidget(self.save_button)
@@ -232,7 +228,7 @@ class PromptDialog(QDialog):
             btn.setChecked(medium == self.media)
         self.target.clear()
         for rid, title in targets(self.workspace, self.shot_id, self.media):
-            self.target.addItem(title, rid)
+            self.target.addItem(title.replace('SHOT ', '镜头 '), rid)
         if self.initial_requirement_id:
             index = self.target.findData(self.initial_requirement_id)
             if index >= 0:
@@ -249,15 +245,11 @@ class PromptDialog(QDialog):
         self.text.setPlainText(record['text'] if record else '')
         self.constraints.setPlainText(record['constraints'] if record else '')
         self.loading = False
-        self.subtitle.setText(f"{facts['chapter']}   /   SHOT {facts['shot']}   /   {facts['target']}")
         if record:
-            status = '上下文已变化 · 请核对' if stale else '人工已修改' if record['edited'] else '已保存'
+            status = '参考已变化 · 请核对' if stale else '已保存'
             self.state_label.setText(status)
-            self.provenance.setText('来源  /  规则式转译' + ('  ·  人工修改' if record['edited'] else '') +
-                                    ('  ·  当前上下文已变化' if stale else ''))
         else:
-            self.state_label.setText('尚无 Draft')
-            self.provenance.setText('来源  /  规则式转译 · 未调用模型')
+            self.state_label.setText('')
         self.create_button.setVisible(not bool(record))
         self.rebuild_button.setVisible(bool(record))
         self.save_button.setEnabled(bool(record))
@@ -285,15 +277,16 @@ class PromptDialog(QDialog):
         if facts['ambience'] and facts['ambience'] != '-' and facts['media'] != 'image':
             parts.append(('背景音', facts['ambience'], 'promptContext'))
         for ref in facts['references']:
-            parts.append(('CURRENT REFERENCE', ref['name'] + '\n' + ref['path'], 'promptContext'))
-        for item in facts['free']:
-            parts.append(('FREE · 无固定参照', item, 'promptMuted'))
-        for item in facts['issues']:
-            parts.append(('待解决', item, 'promptIssue'))
+            parts.append(('参考素材', ref['name'], 'promptContext'))
+        if facts['free']:
+            parts.append(('无需固定素材', '、'.join(facts['free']), 'promptMuted'))
+        if facts['issues']:
+            parts.append(('待处理', '\n'.join(facts['issues']), 'promptIssue'))
         if not parts:
-            parts.append(('生产上下文', '当前镜头没有额外的固定参照。', 'promptMuted'))
+            parts.append(('', '暂无固定参考', 'promptMuted'))
         for heading, value, role in parts:
-            self.context_layout.addWidget(note(heading, 'promptKicker'))
+            if heading:
+                self.context_layout.addWidget(note(heading, 'promptKicker'))
             self.context_layout.addWidget(note(value, role, True))
         self.context_layout.addStretch()
 
@@ -301,7 +294,6 @@ class PromptDialog(QDialog):
         if self.loading or not self.current_key:
             return
         self.state_label.setText('尚未保存')
-        self.provenance.setText('人工修改尚未保存')
 
     def dirty(self):
         if not self.current_key:
@@ -313,8 +305,8 @@ class PromptDialog(QDialog):
     def maybe_leave(self):
         if not self.dirty():
             return True
-        response = QMessageBox.question(self, '未保存的 Prompt Draft',
-                                        '当前 Prompt 有未保存修改。保存后切换？',
+        response = QMessageBox.question(self, '修改未保存',
+                                        '保存后再切换？',
                                         QMessageBox.StandardButton.Save |
                                         QMessageBox.StandardButton.Discard |
                                         QMessageBox.StandardButton.Cancel,
@@ -330,13 +322,13 @@ class PromptDialog(QDialog):
             create_draft(self.workspace, self.shot_id, self.media, self.current_requirement)
             self.load_draft()
         except Exception as exc:
-            QMessageBox.warning(self, '创建失败', str(exc))
+            QMessageBox.warning(self, '创建失败', operation_message(str(exc)))
 
     def rebuild(self):
         if not self.current_key:
             return
-        response = QMessageBox.question(self, '明确重建 Prompt Draft',
-                                        '将用当前 Production Truth 重建此 Draft，覆盖保存过的人工文本。继续？',
+        response = QMessageBox.question(self, '重新生成提示词',
+                                        '这会覆盖已保存的手工修改。继续？',
                                         QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
                                         QMessageBox.StandardButton.No)
         if response != QMessageBox.StandardButton.Yes:
@@ -345,7 +337,7 @@ class PromptDialog(QDialog):
             create_draft(self.workspace, self.shot_id, self.media, self.current_requirement, replace=True)
             self.load_draft()
         except Exception as exc:
-            QMessageBox.warning(self, '重建失败', str(exc))
+            QMessageBox.warning(self, '重建失败', operation_message(str(exc)))
 
     def show_add_api(self):
         rid = self.current_requirement
@@ -363,7 +355,7 @@ class PromptDialog(QDialog):
             self.load_draft()
             return True
         except Exception as exc:
-            QMessageBox.warning(self, '保存失败', str(exc))
+            QMessageBox.warning(self, '保存失败', operation_message(str(exc)))
             return False
 
     def accept(self):

@@ -10,7 +10,7 @@ from .script import KINDS
 from .workspace import now
 
 
-MEDIA_NAMES = {'image': 'Image', 'video': 'Video', 'audio': 'Audio'}
+MEDIA_NAMES = {'image': '图片', 'video': '视频', 'audio': '声音'}
 
 
 def _plain(value: str) -> str:
@@ -87,7 +87,7 @@ def context(workspace, shot_id, media, requirement_id=None):
 
 def compose(facts):
     media = facts['media']
-    lines = [f"{MEDIA_NAMES[media]} · {facts['target']}"]
+    lines = [f"{MEDIA_NAMES[media]} · {facts['target'].replace('SHOT ', '镜头 ')}"]
     if media == 'image':
         if facts['target_kind']:
             lines.append(f"制作目标：{facts['target_kind']}「{facts['target']}」的视觉素材。")
@@ -128,12 +128,12 @@ def compose(facts):
         if facts['ambience'] and facts['ambience'] != '-':
             lines.append('环境声：' + facts['ambience'] + '。')
     if facts['free']:
-        lines.append('自由语义（无固定参照素材）：' + '；'.join(facts['free']) + '。')
+        lines.append('无固定参照素材：' + '；'.join(facts['free']) + '。')
     if facts['references']:
-        lines.append('当前正式参照（待下游任务按能力接入，尚未发送模型）：')
+        lines.append('参考素材：')
         lines.extend(f"· {r['name']} — {r['path']}" for r in facts['references'])
     if facts['issues']:
-        lines.append('待解决的固定参照（不可视作已提供素材）：')
+        lines.append('待补充参考素材（尚未提供）：')
         lines.extend(f'· {item}' for item in facts['issues'])
     return '\n\n'.join(lines)
 

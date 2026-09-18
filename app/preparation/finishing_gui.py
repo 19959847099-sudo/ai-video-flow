@@ -18,6 +18,7 @@ from .finishing import ChapterFinishing
 from .production import ProductionService
 from .production_gui import ReviewDot
 from .workspace import EXTENSIONS, sha
+from .ui_copy import finishing_message, operation_message
 
 
 def button(caption, callback, role='quiet'):
@@ -70,7 +71,7 @@ class SegmentDelegate(QStyledItemDelegate):
         painter.setPen(QColor('#e4eef4' if selected else '#c9d9e5'))
         painter.drawText(rect.left()+9, rect.top()+91, f'{number}  {title[:11]}')
         painter.setFont(QFont('Segoe UI', 8))
-        painter.setPen(QColor('#d6ae78' if status == 'BLOCKED' else '#90a8ba'))
+        painter.setPen(QColor('#d6ae78' if status in ('未选视频', '裁切无效', '文件不可用', '无法使用') else '#90a8ba'))
         painter.drawText(rect.left()+9, rect.top()+108, status)
         painter.restore()
 
@@ -97,7 +98,7 @@ class ShotCandidateDialog(QDialog):
         self.service = ProductionService(host.workspace)
         self.preview_source = QPixmap()
         self.chapter, self.shot = self.service.shot_context(shot_id)
-        self.setWindowTitle(f'Shot {self.shot.number} · Candidate')
+        self.setWindowTitle(f'镜头 {self.shot.number} · 视频')
         self.resize(760, 610)
         self.setMinimumSize(650, 520)
         self.setStyleSheet(host.styleSheet() + """
@@ -111,9 +112,8 @@ class ShotCandidateDialog(QDialog):
         root = QVBoxLayout(self)
         root.setContentsMargins(26, 21, 26, 18)
         root.setSpacing(13)
-        root.addWidget(label(f'SHOT {self.shot.number}  /  {self.shot.title}', 'candidateHero'))
-        root.addWidget(label('导入的视频先成为 Candidate；审核不会自动替换 Current。', 'candidateMuted'))
-        root.addWidget(label('视频 Provider 未配置  /  本地导入为零调用路径', 'candidateMuted'))
+        root.addWidget(label(f'{self.shot.number}  {self.shot.title}', 'candidateHero'))
+        root.addWidget(label('未配置视频生成服务', 'candidateMuted'))
         self.current_text = label('', 'candidateMuted')
         root.addWidget(self.current_text)
         self.preview = QLabel('尚无镜头视频')
@@ -134,7 +134,7 @@ class ShotCandidateDialog(QDialog):
             actions.addWidget(dot)
             self.dots[state] = dot
         actions.addSpacing(10)
-        self.bind_button = button('设为 Current  ↗', self.bind, 'primary')
+        self.bind_button = button('设为当前  ↗', self.bind, 'primary')
         actions.addWidget(self.bind_button)
         root.addLayout(actions)
         self.list = QListWidget()
@@ -152,19 +152,19 @@ class ShotCandidateDialog(QDialog):
         try:
             return operation()
         except Exception as exc:
-            QMessageBox.warning(self, '操作未完成', str(exc))
+            QMessageBox.warning(self, '操作未完成', finishing_message(operation_message(str(exc))))
             return None
 
     def refresh(self, prefer=None):
         candidates = self.service.shot_candidates(self.shot.id)
         current = self.service.current_shot(self.shot.id)
         self.current_text.setText(
-            f'CURRENT  /  TAKE {self.service.candidate(current).take_number:02d}' if current else
-            'CURRENT  /  尚未选用')
+            f'当前使用 · 版本 {self.service.candidate(current).take_number:02d}' if current else
+            '尚未选用视频')
         self.list.blockSignals(True)
         self.list.clear()
         for candidate in candidates:
-            item = QListWidgetItem(f'TAKE {candidate.take_number:02d}    '+('CURRENT' if candidate.id == current else ''))
+            item = QListWidgetItem(f'版本 {candidate.take_number:02d}')
             item.setData(Qt.ItemDataRole.UserRole, candidate.id)
             color = ReviewDot.COLORS.get(candidate.review_state, '#91a6b9')
             pix = QPixmap(11, 11)
@@ -284,7 +284,7 @@ class ChapterFinishingDialog(QDialog):
         top = QHBoxLayout()
         chapter = self.finishing.chapter()
         title = QVBoxLayout()
-        title.addWidget(label(f'{self.host.workspace.script.title}  /  CHAPTER {chapter.number}', 'finishingMuted'))
+        title.addWidget(label(f'第 {chapter.number} 章', 'finishingMuted'))
         title.addWidget(label(chapter.title, 'finishingTitle'))
         top.addLayout(title, 1)
         self.status = label('', 'finishingMuted')
@@ -324,13 +324,13 @@ class ChapterFinishingDialog(QDialog):
         side = QVBoxLayout(inspector)
         side.setContentsMargins(18, 16, 18, 14)
         side.setSpacing(9)
-        side.addWidget(label('CURRENT SHOT', 'finishingMuted'))
+        side.addWidget(label('当前镜头', 'finishingMuted'))
         self.shot_title = label('选择片段', 'finishingShot')
         side.addWidget(self.shot_title)
         self.take = label('', 'finishingMuted')
         side.addWidget(self.take)
         side.addSpacing(10)
-        side.addWidget(label('HEAD  /  TAIL', 'finishingMuted'))
+        side.addWidget(label('起点 / 终点', 'finishingMuted'))
         ranges = QHBoxLayout()
         self.trim_in = QDoubleSpinBox()
         self.trim_out = QDoubleSpinBox()
@@ -342,9 +342,9 @@ class ChapterFinishingDialog(QDialog):
             ranges.addWidget(control)
         self.trim_out.setSpecialValueText('片尾')
         side.addLayout(ranges)
-        side.addWidget(button('应用 Trim', self.apply_trim, 'tool'))
+        side.addWidget(button('应用裁切', self.apply_trim, 'tool'))
         side.addSpacing(8)
-        side.addWidget(label('SPLIT  /  VOLUME', 'finishingMuted'))
+        side.addWidget(label('切分 / 声音', 'finishingMuted'))
         splitrow = QHBoxLayout()
         self.split_at = QDoubleSpinBox()
         self.split_at.setRange(0, 9999)
@@ -369,9 +369,8 @@ class ChapterFinishingDialog(QDialog):
         side.addWidget(self.mute)
         side.addWidget(self.enabled)
         side.addSpacing(10)
-        side.addWidget(label('REWORK', 'finishingMuted'))
-        side.addWidget(button('换候选 / 导入视频  ↗', self.open_candidate, 'tool'))
-        side.addWidget(button('修改 Prompt  ↗', self.open_prompt, 'quiet'))
+        side.addWidget(button('更换视频  ↗', self.open_candidate, 'tool'))
+        side.addWidget(button('修改提示词  ↗', self.open_prompt, 'quiet'))
         side.addWidget(button('修改镜头  ↗', self.open_script, 'quiet'))
         side.addStretch()
         self.inspector_scroll = QScrollArea()
@@ -383,11 +382,11 @@ class ChapterFinishingDialog(QDialog):
         body.addWidget(self.inspector_scroll)
         root.addLayout(body, 1)
         strip_head = QHBoxLayout()
-        strip_head.addWidget(label('CHAPTER ASSEMBLY', 'finishingMuted'))
+        strip_head.addWidget(label('本章镜头', 'finishingMuted'))
         strip_head.addStretch()
         strip_head.addWidget(button('向前', lambda: self.move(-1), 'quiet'))
         strip_head.addWidget(button('向后', lambda: self.move(1), 'quiet'))
-        strip_head.addWidget(button('移出装配', self.remove, 'quiet'))
+        strip_head.addWidget(button('移出章节', self.remove, 'quiet'))
         root.addLayout(strip_head)
         self.strip = QListWidget()
         self.strip.setObjectName('segmentStrip')
@@ -403,11 +402,11 @@ class ChapterFinishingDialog(QDialog):
         self.strip.currentItemChanged.connect(lambda *_: self.selection_changed())
         root.addWidget(self.strip)
         foot = QHBoxLayout()
-        self.message = label('本地章节装配  ·  非破坏性轻剪', 'finishingMuted')
+        self.message = label('', 'finishingMuted')
         foot.addWidget(self.message, 1)
-        self.output_button = button('输出章节  ↗', self.build_output, 'tool')
+        self.output_button = button('导出成片  ↗', self.build_output, 'tool')
         foot.addWidget(self.output_button)
-        self.handoff_button = button('交接 NLE  ↗', self.build_handoff, 'quiet')
+        self.handoff_button = button('交给专业剪辑  ↗', self.build_handoff, 'quiet')
         foot.addWidget(self.handoff_button)
         root.addLayout(foot)
 
@@ -422,7 +421,7 @@ class ChapterFinishingDialog(QDialog):
         try:
             return operation()
         except Exception as exc:
-            QMessageBox.warning(self, '操作未完成', str(exc))
+            QMessageBox.warning(self, '操作未完成', finishing_message(operation_message(str(exc))))
             return None
 
     def refresh(self, prefer=None):
@@ -440,8 +439,17 @@ class ChapterFinishingDialog(QDialog):
             clip = clips.get(segment['id'])
             number = shot.number if shot else '—'
             title = shot.title if shot else '剧本已移除'
-            status = ('DISABLED' if not segment['enabled'] else
-                      f'TAKE {clip["take_number"]:02d}  /  {clip["duration"]:.1f}s' if clip else 'BLOCKED')
+            if not segment['enabled']:
+                status = '已移出'
+            elif clip:
+                status = f'版本 {clip["take_number"]:02d}  ·  {clip["duration"]:.1f}秒'
+            else:
+                problem = next((message for message in resolved['errors']
+                                if message.startswith(f'Shot {number}:')), '')
+                status = ('未选视频' if '没有正式 Current 视频' in problem else
+                          '裁切无效' if 'Trim' in problem else
+                          '文件不可用' if '不可用' in problem or '不存在' in problem else
+                          '无法使用')
             item = QListWidgetItem(f'{number}  {title[:10]}\n{status}')
             item.setData(Qt.ItemDataRole.UserRole, segment['id'])
             item.setData(Qt.ItemDataRole.UserRole + 1, (number, title, status))
@@ -457,19 +465,19 @@ class ChapterFinishingDialog(QDialog):
                       if self.strip.item(i).data(Qt.ItemDataRole.UserRole) == target), 0)
         self.strip.setCurrentRow(index if self.strip.count() else -1)
         self.strip.blockSignals(False)
-        self.status.setText(f'{len(clips)} 段  ·  {resolved["duration"]:.1f}s  ·  '
-                            + ('BLOCKED' if resolved['errors'] else 'READY')
-                            + ('  ·  预览需更新' if resolved['stale'] else ''))
+        self.status.setText(f'{len(clips)} 段  ·  {resolved["duration"]:.1f}秒'
+                            + ('  ·  无法预览' if resolved['errors'] else '')
+                            + ('  ·  预览待更新' if resolved['stale'] and not resolved['errors'] else ''))
         self.preview_button.setEnabled(not resolved['errors'])
         self.output_button.setEnabled(not resolved['errors'])
         self.handoff_button.setEnabled(not resolved['errors'])
         self.selection_changed()
         if resolved['errors']:
-            self.message.setText('  /  '.join(resolved['errors'][:2]))
+            self.message.setText('  /  '.join(list(dict.fromkeys(finishing_message(item) for item in resolved['errors']))[:2]))
         elif resolved['warnings']:
-            self.message.setText('  /  '.join(resolved['warnings'][:2]))
+            self.message.setText('  /  '.join(list(dict.fromkeys(finishing_message(item) for item in resolved['warnings']))[:2]))
         else:
-            self.message.setText('Current → Assembly → Preview  ·  本地媒体')
+            self.message.setText('')
 
     def selection_changed(self):
         segment = self.selected_segment()
@@ -483,7 +491,8 @@ class ChapterFinishingDialog(QDialog):
         shot = next((s for s in self.finishing.chapter().shots if s.id == segment['shot_id']), None)
         self.shot_title.setText(f'{shot.number}  {shot.title}' if shot else '历史镜头')
         clip = next((c for c in self.finishing.resolve()['clips'] if c['segment_id'] == segment['id']), None)
-        self.take.setText(f'CURRENT  /  TAKE {clip["take_number"]:02d}' if clip else 'CURRENT  /  NOT READY')
+        self.take.setText(f'版本 {clip["take_number"]:02d}' if clip else
+                          '尚未选用视频' if not self.finishing.service.current_shot(segment['shot_id']) else '视频不可用')
         self.trim_in.setValue(float(segment['trim_in']))
         self.trim_out.setValue(float(segment['trim_out'] or 0))
         self.split_at.setValue((float(segment['trim_in']) + (clip['source_out'] if clip else 0))/2
@@ -495,13 +504,12 @@ class ChapterFinishingDialog(QDialog):
             pix = poster(self.host.workspace.path(clip['path']), clip['source_in'], 900)
             self.poster_source = pix
             self.fit_poster()
-            self.caption.setText(f'SHOT {clip["shot_number"]}  /  TAKE {clip["take_number"]:02d}'
-                                 f'  /  {clip["source_in"]:.2f}–{clip["source_out"]:.2f}s')
+            self.caption.setText(f'{clip["source_in"]:.2f}–{clip["source_out"]:.2f}秒')
         else:
             self.poster_source = QPixmap()
             self.poster.setPixmap(QPixmap())
-            self.poster.setText('镜头结果尚未准备')
-            self.caption.setText('导入视频 Candidate，审核后明确设为 Current')
+            self.poster.setText('尚未选用视频' if not self.finishing.service.current_shot(segment['shot_id']) else '视频不可用')
+            self.caption.setText('')
         self.show_video = False
         self.player.stop()
         self._updating = False
@@ -608,25 +616,25 @@ class ChapterFinishingDialog(QDialog):
         callback(Path(result))
 
     def _failed(self, reason):
-        QMessageBox.warning(self, '媒体构建未完成', reason)
+        QMessageBox.warning(self, '媒体构建未完成', finishing_message(reason))
         self.refresh(self.finishing.selected())
 
     def build_preview(self):
-        self._start('正在构建真实本地预览…', self.finishing.preview, self._preview_ready)
+        self._start('正在生成预览…', self.finishing.preview, self._preview_ready)
 
     def _preview_ready(self, path):
         self.player.setSource(QUrl.fromLocalFile(str(path)))
         self.show_video = True
         self.player.play()
-        self.message.setText('预览已生成  /  '+path.name)
+        self.message.setText('预览已生成')
 
     def build_output(self):
         self._start('正在输出章节…', self.finishing.output,
-                    lambda path: self.message.setText('章节已输出  /  '+str(path)))
+                    lambda path: self.message.setText('成片已导出'))
 
     def build_handoff(self):
-        self._start('正在打包 NLE 交接…', self.finishing.handoff,
-                    lambda path: self.message.setText('交接包已创建  /  '+str(path)))
+        self._start('正在准备剪辑交接…', self.finishing.handoff,
+                    lambda path: self.message.setText('剪辑交接文件已创建'))
 
     def play(self):
         if self.player.source().isEmpty():

@@ -163,7 +163,7 @@ class ShotDelegate(QStyledItemDelegate):
             painter.drawText(thumb, Qt.AlignmentFlag.AlignCenter, str(number))
         painter.setFont(QFont('Segoe UI', 9))
         painter.setPen(QColor('#8198ae'))
-        painter.drawText(QRectF(r.left()+85, r.top()+11, r.width()-92, 14), Qt.AlignmentFlag.AlignLeft, 'SHOT  ' + str(number))
+        painter.drawText(QRectF(r.left()+85, r.top()+11, r.width()-92, 14), Qt.AlignmentFlag.AlignLeft, '镜头  ' + str(number))
         painter.setFont(QFont('Microsoft YaHei UI', 11, QFont.Weight.Medium))
         painter.setPen(QColor('#e2eaf1' if selected else '#bdcbd7'))
         name = option.fontMetrics.elidedText(str(title), Qt.TextElideMode.ElideRight, int(r.width()-95))
@@ -171,7 +171,7 @@ class ShotDelegate(QStyledItemDelegate):
         painter.setFont(QFont('Microsoft YaHei UI', 9))
         painter.setPen(QColor('#91bca9' if total and done == total else '#a3aeb9'))
         painter.drawText(QRectF(r.left()+85, r.top()+55, r.width()-95, 15), Qt.AlignmentFlag.AlignLeft,
-                         f'{done}/{total} 需求已处理')
+                         f'{done}/{total} 已处理')
         painter.restore()
 
 class ScriptEditor(QPlainTextEdit):

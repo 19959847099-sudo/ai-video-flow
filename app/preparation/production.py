@@ -175,6 +175,13 @@ class ProductionService:
                 history=[{'at': stamp, 'event': 'created', 'source_type': source_type}]
             )
             self.workspace.state['candidates'][candidate.id] = candidate.model_dump()
+            if self.workspace.state['reference_decisions'].pop(req.id, None):
+                # A successful import reopens the fixed-reference path; review/binding remain explicit.
+                if req.id not in self.workspace.state['unbound_requirements']:
+                    self.workspace.state['unbound_requirements'].append(req.id)
+                self.workspace._event('reference_decision', f'恢复固定素材要求：{req.name}',
+                                      [u.shot_id for u in req.usages], requirement_id=req.id,
+                                      previous='not_required', current='required')
             self.workspace._event('candidate', f'Take {take:02d} 已归档：{req.name}', [shot.id],
                                   requirement_id=req.id, candidate_id=candidate.id)
             self.workspace._save()

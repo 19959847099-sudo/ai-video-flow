@@ -32,6 +32,12 @@ QFrame#callout { background: #283243; border-left: 2px solid #c9a779; border-rad
 QFrame#viewer { background: #111b28; border-radius: 4px; }
 QFrame#assetCard { background: transparent; border: none; }
 QFrame#assetCard:hover { background: rgba(207,229,246,7); }
+QFrame#resolutionBar { border-top: 1px solid rgba(221,237,251,18); }
+QFrame#capabilityRow { background: rgba(221,237,251,5); }
+QFrame#capabilitySelected { background: rgba(106,151,188,25); border-left: 2px solid #a9c6dc; }
+QLabel#resolutionContext { color: #c5d5e2; font-size: 11px; }
+QPushButton#resolutionQuiet { color: #9fb1c0; font-size: 11px; }
+QPushButton#resolutionAction { color: #d7e4ec; font-size: 11px; }
 QFrame#info { background: #14202d; border-radius: 4px; }
 QPushButton { background: transparent; border: 1px solid transparent; border-radius: 4px; padding: 6px 9px; color: #aebfce; }
 QPushButton:hover { background: rgba(209,232,249,13); color: #e9f2f8; }
@@ -164,7 +170,7 @@ class ShotDelegate(QStyledItemDelegate):
         painter.setFont(QFont('Microsoft YaHei UI', 9))
         painter.setPen(QColor('#91bca9' if total and done == total else '#a3aeb9'))
         painter.drawText(QRectF(r.left()+85, r.top()+55, r.width()-95, 15), Qt.AlignmentFlag.AlignLeft,
-                         f'{done}/{total} 参照就绪')
+                         f'{done}/{total} 需求已处理')
         painter.restore()
 
 class ScriptEditor(QPlainTextEdit):

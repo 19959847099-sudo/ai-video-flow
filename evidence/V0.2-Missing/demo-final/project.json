@@ -1,0 +1,240 @@
+{
+  "version": "preparation-0.2",
+  "project_id": "37c069a99e7144deb18cf04d27c66bb8",
+  "draft": "雨夜便利店/名称\n01/章节/入店\n001/雨夜进入\n【便利店/雨夜】/-\n动作：\n她把【红伞】靠在门边，水滴落在地砖上。",
+  "script": {
+    "project_id": "37c069a99e7144deb18cf04d27c66bb8",
+    "title": "雨夜便利店",
+    "source": "雨夜便利店/名称\n01/章节/入店\n001/雨夜进入\n【便利店/雨夜】/-\n动作：\n她把【红伞】靠在门边，水滴落在地砖上。",
+    "revision": "0f1fe6bf5fecad6367aef3403bab7df5018ffaa457ce4e37b45cb1a47b5d685b",
+    "chapters": [
+      {
+        "id": "d2241e22679e5a72ae597684060f1583",
+        "number": "1",
+        "title": "入店",
+        "line": 2,
+        "shots": [
+          {
+            "id": "1750bb60646a56369c8dcbe3f575ef96",
+            "number": "001",
+            "title": "雨夜进入",
+            "line": 3,
+            "end_line": 6,
+            "cast": [],
+            "environment": "便利店/雨夜",
+            "ambience": "-",
+            "environment_reference": true,
+            "sections": {
+              "动作": "她把【红伞】靠在门边，水滴落在地砖上。"
+            },
+            "text": "001/雨夜进入\n【便利店/雨夜】/-\n动作：\n她把【红伞】靠在门边，水滴落在地砖上。",
+            "requirement_ids": [
+              "24bd009053a2aedb5d0b063632e9d906",
+              "ed94e9773dde261b5922c7a38f4831cc"
+            ]
+          }
+        ]
+      }
+    ],
+    "requirements": [
+      {
+        "id": "24bd009053a2aedb5d0b063632e9d906",
+        "kind": "environment",
+        "name": "便利店/雨夜",
+        "media": "image",
+        "usages": [
+          {
+            "chapter_id": "d2241e22679e5a72ae597684060f1583",
+            "shot_id": "1750bb60646a56369c8dcbe3f575ef96",
+            "line": 4
+          }
+        ]
+      },
+      {
+        "id": "ed94e9773dde261b5922c7a38f4831cc",
+        "kind": "prop",
+        "name": "红伞",
+        "media": "image",
+        "usages": [
+          {
+            "chapter_id": "d2241e22679e5a72ae597684060f1583",
+            "shot_id": "1750bb60646a56369c8dcbe3f575ef96",
+            "line": 6
+          }
+        ]
+      }
+    ],
+    "diagnostics": []
+  },
+  "assets": {
+    "855b14bc1ddb43c1be98f53429f53fb6": {
+      "id": "855b14bc1ddb43c1be98f53429f53fb6",
+      "path": "library/environment/take_001_f85ee67d.png",
+      "name": "take_001_f85ee67d",
+      "kind": "environment",
+      "media": "image",
+      "sha256": "95e643d104fc6ca90718e441af2a239967969e107f5cfb02f70024eff0cd2f08",
+      "problem": "",
+      "snapshot": ".history/media/95e643d104fc6ca90718e441af2a239967969e107f5cfb02f70024eff0cd2f08.png",
+      "aliases": [
+        "take_001_f85ee67d"
+      ],
+      "missing": false,
+      "versions": [
+        {
+          "sha256": "95e643d104fc6ca90718e441af2a239967969e107f5cfb02f70024eff0cd2f08",
+          "snapshot": ".history/media/95e643d104fc6ca90718e441af2a239967969e107f5cfb02f70024eff0cd2f08.png",
+          "at": "2026-09-18T11:51:51.418151+00:00"
+        }
+      ]
+    }
+  },
+  "bindings": {
+    "24bd009053a2aedb5d0b063632e9d906": {
+      "asset_id": "855b14bc1ddb43c1be98f53429f53fb6",
+      "sha256": "95e643d104fc6ca90718e441af2a239967969e107f5cfb02f70024eff0cd2f08",
+      "mode": "candidate",
+      "candidate_id": "f85ee67dc0cb478ba395edf544fc8479"
+    }
+  },
+  "history": [
+    {
+      "revision": "0f1fe6bf5fecad6367aef3403bab7df5018ffaa457ce4e37b45cb1a47b5d685b",
+      "requirement_id": "24bd009053a2aedb5d0b063632e9d906",
+      "asset_id": "855b14bc1ddb43c1be98f53429f53fb6",
+      "sha256": "95e643d104fc6ca90718e441af2a239967969e107f5cfb02f70024eff0cd2f08",
+      "usages": [
+        {
+          "chapter_id": "d2241e22679e5a72ae597684060f1583",
+          "shot_id": "1750bb60646a56369c8dcbe3f575ef96",
+          "line": 4
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "id": "7967d26c536f483cabc56495284c0c19",
+      "at": "2026-09-18T11:51:51.424228+00:00",
+      "kind": "candidate",
+      "message": "Take 01 已归档：便利店/雨夜",
+      "shots": [
+        "1750bb60646a56369c8dcbe3f575ef96"
+      ],
+      "requirement_id": "24bd009053a2aedb5d0b063632e9d906",
+      "candidate_id": "f85ee67dc0cb478ba395edf544fc8479"
+    },
+    {
+      "id": "69cdc1afc5e047a5ad4a1cf7e704ccc6",
+      "at": "2026-09-18T11:51:51.431058+00:00",
+      "kind": "candidate_review",
+      "message": "Take 01 → GREEN",
+      "shots": [
+        "1750bb60646a56369c8dcbe3f575ef96"
+      ],
+      "requirement_id": "24bd009053a2aedb5d0b063632e9d906",
+      "candidate_id": "f85ee67dc0cb478ba395edf544fc8479"
+    },
+    {
+      "id": "0e66d21976f6404c8b47407314aeeb38",
+      "at": "2026-09-18T11:51:51.447002+00:00",
+      "kind": "binding",
+      "message": "已确认新的参照：便利店/雨夜",
+      "shots": [
+        "1750bb60646a56369c8dcbe3f575ef96"
+      ],
+      "requirement_id": "24bd009053a2aedb5d0b063632e9d906",
+      "previous": null,
+      "current": {
+        "asset_id": "855b14bc1ddb43c1be98f53429f53fb6",
+        "sha256": "95e643d104fc6ca90718e441af2a239967969e107f5cfb02f70024eff0cd2f08",
+        "mode": "candidate",
+        "candidate_id": "f85ee67dc0cb478ba395edf544fc8479"
+      }
+    },
+    {
+      "id": "322b6bd1ceb6412bb42c7900584abaf9",
+      "at": "2026-09-18T11:51:57.105391+00:00",
+      "kind": "reference_decision",
+      "message": "不需要固定素材：红伞",
+      "shots": [
+        "1750bb60646a56369c8dcbe3f575ef96"
+      ],
+      "requirement_id": "ed94e9773dde261b5922c7a38f4831cc",
+      "previous": "required",
+      "current": "not_required"
+    },
+    {
+      "id": "030ea4fb12c845a79590271cb311df4a",
+      "at": "2026-09-18T11:52:01.697619+00:00",
+      "kind": "reference_decision",
+      "message": "恢复固定素材要求：红伞",
+      "shots": [
+        "1750bb60646a56369c8dcbe3f575ef96"
+      ],
+      "requirement_id": "ed94e9773dde261b5922c7a38f4831cc",
+      "previous": "not_required",
+      "current": "required"
+    }
+  ],
+  "revisions": [
+    {
+      "revision": "0f1fe6bf5fecad6367aef3403bab7df5018ffaa457ce4e37b45cb1a47b5d685b",
+      "source": "雨夜便利店/名称\n01/章节/入店\n001/雨夜进入\n【便利店/雨夜】/-\n动作：\n她把【红伞】靠在门边，水滴落在地砖上。",
+      "at": "2026-09-18T11:51:51.283452+00:00"
+    }
+  ],
+  "ui": {
+    "cursor": 0
+  },
+  "updated_at": "2026-09-18T11:52:02.283496+00:00",
+  "candidates": {
+    "f85ee67dc0cb478ba395edf544fc8479": {
+      "id": "f85ee67dc0cb478ba395edf544fc8479",
+      "project_id": "37c069a99e7144deb18cf04d27c66bb8",
+      "requirement_id": "24bd009053a2aedb5d0b063632e9d906",
+      "chapter_id": "d2241e22679e5a72ae597684060f1583",
+      "shot_id": "1750bb60646a56369c8dcbe3f575ef96",
+      "kind": "environment",
+      "media": "image",
+      "take_number": 1,
+      "media_path": "library/environment/take_001_f85ee67d.png",
+      "snapshot_path": ".history/media/95e643d104fc6ca90718e441af2a239967969e107f5cfb02f70024eff0cd2f08.png",
+      "asset_id": "855b14bc1ddb43c1be98f53429f53fb6",
+      "sha256": "95e643d104fc6ca90718e441af2a239967969e107f5cfb02f70024eff0cd2f08",
+      "created_at": "2026-09-18T11:51:51.424125+00:00",
+      "source_type": "imported",
+      "provider": null,
+      "job_id": null,
+      "provider_metadata": {},
+      "generation_metadata": {},
+      "review_state": "green",
+      "note": "",
+      "history": [
+        {
+          "at": "2026-09-18T11:51:51.424125+00:00",
+          "event": "created",
+          "source_type": "imported"
+        },
+        {
+          "at": "2026-09-18T11:51:51.431019+00:00",
+          "event": "review",
+          "from": "unreviewed",
+          "to": "green",
+          "note": ""
+        },
+        {
+          "at": "2026-09-18T11:51:51.446950+00:00",
+          "event": "bound",
+          "previous_candidate_id": null
+        }
+      ]
+    }
+  },
+  "production_jobs": {},
+  "unbound_requirements": [
+    "ed94e9773dde261b5922c7a38f4831cc"
+  ],
+  "reference_decisions": {},
+  "is_example": true
+}

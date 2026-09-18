@@ -49,12 +49,14 @@ class Workspace:
             self.state = dict(version='preparation-0.2', project_id=uuid4().hex,
                               draft='', script=None, assets={}, bindings={}, history=[],
                               events=[], revisions=[], ui={}, updated_at=now(),
-                              candidates={}, production_jobs={}, unbound_requirements=[])
+                              candidates={}, production_jobs={}, unbound_requirements=[],
+                              reference_decisions={})
             self._save()
         # Additive V0.2 production records keep existing Preparation projects readable.
         self.state.setdefault('candidates', {})
         self.state.setdefault('production_jobs', {})
         self.state.setdefault('unbound_requirements', [])
+        self.state.setdefault('reference_decisions', {})
         for kind in KINDS:
             (self.root / 'library' / kind).mkdir(parents=True, exist_ok=True)
 
@@ -227,13 +229,19 @@ class Workspace:
         rows = []
         candidate_assets = {c['asset_id'] for c in self.state['candidates'].values()}
         for req in script.requirements:
+            decision = self.state['reference_decisions'].get(req.id)
             matches = [a for a in self.state['assets'].values() if a['kind'] == req.kind and
                        req.name in a['aliases'] and not a.get('missing') and a['id'] not in candidate_assets
                        and not re.fullmatch(r'take_\d{3}_[0-9a-f]{8}', a['name'])]
             binding = self.state['bindings'].get(req.id)
-            if not binding and req.id not in self.state['unbound_requirements'] and len(matches) == 1 and not matches[0]['problem'] and record:
+            if not binding and not decision and req.id not in self.state['unbound_requirements'] and len(matches) == 1 and not matches[0]['problem'] and record:
                 binding = dict(asset_id=matches[0]['id'], sha256=matches[0]['sha256'], mode='auto')
                 self.state['bindings'][req.id] = binding
+            if decision and not binding:
+                rows.append(dict(requirement=req.model_dump(), status='free',
+                                 reason='已决定不需要固定素材；剧本需求仍参与后续生产',
+                                 asset=None, candidates=[deepcopy(a) for a in matches], binding=None))
+                continue
             asset = self.state['assets'].get(binding['asset_id']) if binding else None
             status, reason = 'missing', '素材库中还没有对应文件'
             if binding and binding['mode'] == 'auto' and len(matches) > 1:
@@ -273,6 +281,37 @@ class Workspace:
     def report(self):
         return self._resolve()
 
+    def set_reference_required(self, requirement_id, required):
+        req = next((r for r in self.script.requirements if r.id == requirement_id), None) if self.script else None
+        if not req:
+            raise ValueError('当前剧本中没有此需求')
+        decision = self.state['reference_decisions'].get(requirement_id)
+        if required:
+            if not decision:
+                raise ValueError('当前需求未设置为不需要固定素材')
+        elif decision or self.state['bindings'].get(requirement_id) or next(
+                r for r in self.report() if r['requirement']['id'] == requirement_id)['status'] != 'missing':
+            raise ValueError('仅可对未绑定的缺失需求选择不需要固定素材')
+        before = deepcopy(self.state)
+        try:
+            if required:
+                del self.state['reference_decisions'][requirement_id]
+                # Explicit restoration must return to Missing, never silently auto-map.
+                if requirement_id not in self.state['unbound_requirements']:
+                    self.state['unbound_requirements'].append(requirement_id)
+            else:
+                self.state['reference_decisions'][requirement_id] = dict(
+                    policy='not_required', kind=req.kind, name=req.name, at=now())
+            self._event('reference_decision',
+                        f'{"恢复固定素材要求" if required else "不需要固定素材"}：{req.name}',
+                        [u.shot_id for u in req.usages], requirement_id=requirement_id,
+                        previous='not_required' if required else 'required',
+                        current='required' if required else 'not_required')
+            self._save()
+        except Exception:
+            self.state = before
+            raise
+
     def bind(self, requirement_id, asset_id, candidate_id=None):
         req = next((r for r in self.script.requirements if r.id == requirement_id), None) if self.script else None
         asset = self.state['assets'].get(asset_id)
@@ -294,6 +333,7 @@ class Workspace:
             self.state['bindings'][req.id] = dict(asset_id=asset_id, sha256=asset['sha256'],
                                                   mode='candidate' if candidate_id else 'manual',
                                                   **({'candidate_id': candidate_id} if candidate_id else {}))
+            self.state['reference_decisions'].pop(req.id, None)
             if req.id in self.state['unbound_requirements']:
                 self.state['unbound_requirements'].remove(req.id)
             previous_candidate = old.get('candidate_id') if old else None
@@ -367,9 +407,9 @@ class Workspace:
         script = self.script
         chapter = next((c for c in script.chapters if c.id == chapter_id), None) if script else None
         if chapter is None:
-            return dict(ready=False, resolved=0, total=0, missing=0, unresolved=0, changed=0)
+            return dict(ready=False, resolved=0, free=0, total=0, missing=0, unresolved=0, changed=0)
         rids = {rid for shot in chapter.shots for rid in shot.requirement_ids}
         rows = [r for r in self.report() if r['requirement']['id'] in rids]
-        counts = {status: sum(r['status'] == status for r in rows) for status in ('resolved', 'missing', 'unresolved', 'changed')}
+        counts = {status: sum(r['status'] == status for r in rows) for status in ('resolved', 'free', 'missing', 'unresolved', 'changed')}
         applied = self.draft_result.revision == script.revision and self.draft_result.valid
-        return dict(ready=applied and all(r['status'] == 'resolved' for r in rows), total=len(rows), **counts)
+        return dict(ready=applied and all(r['status'] in ('resolved', 'free') for r in rows), total=len(rows), **counts)

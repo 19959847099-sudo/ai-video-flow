@@ -184,11 +184,14 @@ class ProductionDialog(QDialog):
         side.addWidget(text('产生新 Candidate', 'sectionTitle'))
         self.fixture_button = action('生成本地示意图  ↗', self.generate_fixture, 'tool')
         self.fixture_button.setEnabled(self.req.media == 'image')
+        # The zero-call fixture is evidence tooling, not a fourth formal Missing path.
+        self.fixture_button.setVisible(bool(self.host.workspace.state.get('is_example')))
         side.addWidget(self.fixture_button)
         self.import_button = action('导入为 Candidate  ↗', self.import_candidate, 'tool')
         side.addWidget(self.import_button)
         side.addWidget(text('LOCAL FIXTURE  ·  零 API 调用  ·  不自动审核或绑定'
-                            if self.req.media == 'image' else '此媒体类型当前通过导入接入审核链',
+                            if self.host.workspace.state.get('is_example') and self.req.media == 'image'
+                            else '导入后先判断 Candidate，再明确选用 Current。',
                             'productionSmall', True))
         side.addSpacing(3)
         side.addWidget(text('判断当前 Candidate', 'sectionTitle'))
@@ -251,7 +254,7 @@ class ProductionDialog(QDialog):
         self.reason.setText(report['reason'])
         current = self.service.current(self.req.id)
         self.bound.setText('CURRENT  /  ' + (f'Take {self.service.candidate(current).take_number:02d}' if current else '尚未绑定'))
-        self.status.setText({'resolved': '●  Resolved', 'missing': '○  Missing',
+        self.status.setText({'resolved': '●  Resolved', 'free': '◇  无需固定素材', 'missing': '○  Missing',
                              'unresolved': '◇  待确认', 'changed': '△  已变更'}[report['status']])
         candidates = self.service.candidates(self.req.id)
         candidates.sort(key=lambda c: (c.review_state == 'red', c.take_number))

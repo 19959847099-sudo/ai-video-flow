@@ -11,7 +11,7 @@ from PySide6.QtCore import Qt, QTimer
 from PySide6.QtTest import QTest
 from PySide6.QtWidgets import QApplication, QPushButton, QFileDialog
 
-from app.preparation_gui import PreparationWindow, MappingDialog
+from app.preparation_gui import PreparationWindow, MappingDialog, ApiCapabilityDialog
 from app.preparation.production_gui import ProductionDialog
 from app.preparation.script import requirement_id
 
@@ -69,21 +69,15 @@ class PreparationGuiTests(unittest.TestCase):
         self.window.filter.setCurrentIndex(1)
         for _ in range(3):
             report = next(r for r in self.window.workspace.report() if r['status'] == 'missing')
-            action = self.window.findChild(QPushButton, 'map_' + report['requirement']['id'])
-            self.assertIsNotNone(action)
-            errors = []
-            def import_in_dialog():
-                try:
-                    dialog = self.app.activeModalWidget()
-                    self.assertIsInstance(dialog, MappingDialog)
-                    with patch.object(QFileDialog, 'getOpenFileName', return_value=(str(files[report['requirement']['media']]), '')):
-                        dialog.import_file()
-                except Exception as exc:
-                    errors.append(exc)
-                    self.app.activeModalWidget().reject()
-            QTimer.singleShot(0, import_in_dialog)
-            action.click()
-            self.assertFalse(errors, errors)
+            rid = report['requirement']['id']
+            dialog = ProductionDialog(self.window, rid, report['requirement']['usages'][0]['shot_id'])
+            dialog.show()
+            with patch.object(QFileDialog, 'getOpenFileName', return_value=(str(files[report['requirement']['media']]), '')):
+                dialog.import_candidate()
+            self.assertEqual(dialog.service.candidate(dialog.selected_id).review_state, 'unreviewed')
+            dialog.review_selected('green')
+            dialog.bind_selected()
+            dialog.close()
         self.assertTrue(self.window.workspace.chapter_status(self.window.chapter_id)['ready'])
         self.assertIn('READY', self.window.ready_label.text())
         self.window.shots.setCurrentRow(1)
@@ -186,7 +180,9 @@ class PreparationGuiTests(unittest.TestCase):
         rid = report['requirement']['id']
         shot_id = self.window.shot_id
         self.assertEqual(report['status'], 'missing')
-        self.assertIsNotNone(self.window.findChild(QPushButton, 'produce_' + rid))
+        self.assertEqual(self.window.free_button.text(), '不需要固定素材')
+        for name in ('freeRequirement', 'importRequirement', 'addApiRequirement'):
+            self.assertTrue(self.window.findChild(QPushButton, name).isVisible())
         dialog = ProductionDialog(self.window, rid, shot_id)
         dialog.show()
         dialog.generate_fixture()
@@ -224,6 +220,49 @@ class PreparationGuiTests(unittest.TestCase):
         self.assertEqual(self.window.shot_id, shot_id)
         dialog.close()
         self.assertIn('READY', self.window.ready_label.text())
+
+    def test_missing_three_entries_free_restore_import_and_api_capability(self):
+        self.window.editor.setPlainText('片/名称\n01/章节/雨夜\n001/入店\n动作：\n【红伞】')
+        self.click(self.window.apply_button)
+        rid = self.window.workspace.report()[0]['requirement']['id']
+        self.assertEqual(self.window.active_requirement_id, rid)
+        self.assertTrue(self.window.resolution_bar.isVisible())
+        self.assertEqual([self.window.free_button.text(), self.window.import_candidate_button.text(),
+                          self.window.add_api_button.text()],
+                         ['不需要固定素材', '导入素材', '添加 API'])
+        with patch.object(self.window, 'open_production') as opening:
+            self.click(self.window.import_candidate_button)
+            opening.assert_called_once_with(rid, import_now=True)
+        dialog = ApiCapabilityDialog(self.window, self.window.workspace.report()[0]['requirement'])
+        self.assertEqual(dialog.capability, 'image')
+        self.assertEqual(set(dialog.rows), {'text', 'image', 'video', 'audio'})
+        self.assertEqual({widget.text() for widget in dialog.rows.values()}, {'未配置'})
+        dialog.close()
+        self.click(self.window.free_button)
+        self.assertEqual(self.window.workspace.report()[0]['status'], 'free')
+        self.assertIn('READY', self.window.ready_label.text())
+        self.assertEqual(self.window.free_button.text(), '恢复固定素材')
+        free_dialog = ProductionDialog(self.window, rid, self.window.shot_id)
+        free_dialog.show()
+        QTest.qWait(20)
+        self.assertFalse(free_dialog.fixture_button.isVisible())
+        self.assertIn('无需固定素材', free_dialog.status.text())
+        free_dialog.close()
+        self.click(self.window.free_button)
+        self.assertEqual(self.window.workspace.report()[0]['status'], 'missing')
+        self.assertIn('PREP', self.window.ready_label.text())
+        self.window.resize(1100, 720)
+        QTest.qWait(40)
+        for control in (self.window.free_button, self.window.import_candidate_button,
+                        self.window.add_api_button):
+            self.assertTrue(self.window.rect().contains(
+                control.mapTo(self.window, control.rect().center())))
+        self.window.editor.setPlainText('片/名称\n01/章节/雨夜\n001/入店\n人物/-/-/低声')
+        self.click(self.window.apply_button)
+        audio_req = next(r for r in self.window.workspace.report() if r['requirement']['media'] == 'audio')
+        audio_dialog = ApiCapabilityDialog(self.window, audio_req['requirement'])
+        self.assertEqual(audio_dialog.capability, 'audio')
+        audio_dialog.close()
 
     def test_workspace_lock_and_compact_primary_controls(self):
         with self.assertRaisesRegex(ValueError, '另一个窗口'):

@@ -43,12 +43,12 @@ python -m app.preparation_gui --data-dir evidence/V0.2-C-Qt/demo-project
 ## 日常操作
 
 1. 在右侧阅读当前镜头剧本；点“编辑剧本”修改，或从顶栏导入，然后点“应用剧本”（Ctrl+Enter）。草稿自动保存，Ctrl+S 可立即保存。
-2. 顶部切换章节、底部切换镜头；在左侧缺失需求点“制作”，或点“制作 / 判断”进入当前需求。
-3. 生成本地示意图或导入媒体形成新 Candidate；逐个标 Green / Yellow / Red，再将有效 Green 明确设为 Current。
-4. 返回镜头后，Preparation 立即显示绑定媒体与 Resolved；素材变化后点“同步素材”，不会静默改绑。
+2. 顶部切换章节、底部切换镜头；左侧缺失需求直接选择“不需要固定素材 / 导入素材 / 添加 API”。
+3. 不需要固定素材会保留需求语义、解除固定参照阻塞，可随时恢复；导入则进入现有 Candidate → Green / Yellow / Red → 明确选用 Current 链。
+4. “添加 API”定位到对应的 Image / Audio / Video 能力；当前无真实内部 Provider，明确显示未配置。返回镜头后，素材变化可点“同步素材”，不会静默改绑。
 5. 关闭重开继续当前项目；迁移时复制整个项目目录，包含 `.history`。
 
-[五分钟语法、文件夹约定与实现边界](docs/V0.2-准备工作区.md) · [C 母版 Qt 实现与截图](evidence/V0.2-C-Qt/实现回执.md) · [Production 施工回执与截图](evidence/V0.2-Production/施工回执.md)
+[五分钟语法、文件夹约定与实现边界](docs/V0.2-准备工作区.md) · [C 母版 Qt 实现与截图](evidence/V0.2-C-Qt/实现回执.md) · [Production 施工回执与截图](evidence/V0.2-Production/施工回执.md) · [Missing Resolution 回执与截图](evidence/V0.2-Missing/施工回执.md)
 
 ## 工程入口
 
@@ -68,9 +68,9 @@ workspace-v02/                  默认新工作区（运行数据，不提交 Gi
 ## 本轮聚焦验证
 
 ```powershell
-python -m unittest tests.test_preparation_production tests.test_preparation_gui tests.test_preparation -v
+python -m unittest tests.test_missing_resolution tests.test_preparation_production tests.test_preparation_gui tests.test_preparation -v
 ```
 
-本轮聚焦 Candidate 生命周期、绑定状态、项目恢复、代表性 Qt 主路径和 Workspace 受影响逻辑；未重复历史生成、FFmpeg、OTIO 的大规模回归。
+聚焦验证 Missing 决策、Candidate 生命周期、绑定与恢复、代表性 Qt 主路径和 Workspace 受影响逻辑；未重复历史生成、FFmpeg、OTIO 的大规模回归。
 
-本轮施工前 Git 基线：`bc13613`。无远程仓库配置或发布动作。
+Missing Requirement Resolution 施工基线：`8979715`。无远程仓库配置或发布动作。

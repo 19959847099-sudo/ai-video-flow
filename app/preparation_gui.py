@@ -349,8 +349,8 @@ class PreparationWindow(QMainWindow):
         self.production_stages = []
         for title, active in [('准备', True), ('生成', False), ('判断', False), ('轻剪', False), ('输出', False)]:
             if title in ('生成', '判断'):
-                stage = button(title, self.open_production, 'stageEnabled')
-                stage.setToolTip('进入当前需求的 Candidate 生产与判断')
+                stage = button(title, self.open_prompt if title == '生成' else self.open_production, 'stageEnabled')
+                stage.setToolTip('编写当前镜头的 Prompt Draft' if title == '生成' else '进入当前需求的 Candidate 生产与判断')
                 self.production_stages.append(stage)
             else:
                 stage = label(title, 'stageActive' if active else 'stageFuture')
@@ -1082,6 +1082,21 @@ class PreparationWindow(QMainWindow):
                        if r['requirement']['id'] == self.active_requirement_id), None)
         if report:
             ApiCapabilityDialog(self, report['requirement']).exec()
+
+    def open_prompt(self):
+        if self.worker and self.worker.isRunning():
+            self.feedback.setText('素材同步完成后再进入生成。')
+            return
+        if not self.workspace.script or not self.applied():
+            self.feedback.setText('先应用有效剧本，再创建 Prompt Draft。')
+            return
+        chapter = self.current_chapter()
+        if not chapter or not chapter.shots:
+            self.feedback.setText('当前章节没有镜头。')
+            return
+        from .preparation.prompt_gui import PromptDialog
+        PromptDialog(self, self.shot_id).exec()
+        self.refresh()
 
     def open_production(self, requirement_id=None, *, import_now=False):
         if self.worker and self.worker.isRunning():

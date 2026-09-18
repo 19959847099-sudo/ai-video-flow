@@ -50,13 +50,14 @@ class Workspace:
                               draft='', script=None, assets={}, bindings={}, history=[],
                               events=[], revisions=[], ui={}, updated_at=now(),
                               candidates={}, production_jobs={}, unbound_requirements=[],
-                              reference_decisions={})
+                              reference_decisions={}, prompt_drafts={})
             self._save()
         # Additive V0.2 production records keep existing Preparation projects readable.
         self.state.setdefault('candidates', {})
         self.state.setdefault('production_jobs', {})
         self.state.setdefault('unbound_requirements', [])
         self.state.setdefault('reference_decisions', {})
+        self.state.setdefault('prompt_drafts', {})
         for kind in KINDS:
             (self.root / 'library' / kind).mkdir(parents=True, exist_ok=True)
 

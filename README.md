@@ -23,7 +23,7 @@ python -m app.preparation_gui
 python -m app.preparation_gui --data-dir evidence/V0.2-R1/visual-project
 ```
 
-![真实章节准备工作区：深蓝黑影视创作工作台](evidence/V0.2-Visual3/preparation-workspace.png)
+![V0.2 准备工作区：剧本与媒体优先的减法精修](evidence/V0.2-Visual4/preparation-workspace.png)
 
 ## 当前可用
 
@@ -44,7 +44,7 @@ python -m app.preparation_gui --data-dir evidence/V0.2-R1/visual-project
 4. 外部增删或改名后点“同步素材”，通过“变更记录与影响定位”返回相关镜头。
 5. 关闭重开继续当前项目；迁移时复制整个项目目录，包含 `.history`。
 
-[五分钟语法、文件夹约定与实现边界](docs/V0.2-准备工作区.md) · [视觉方向与实际窗口](evidence/V0.2-Visual3/视觉方向与验收.md) · [本轮施工回执](evidence/V0.2-R1/施工回执.md)
+[五分钟语法、文件夹约定与实现边界](docs/V0.2-准备工作区.md) · [视觉方向与实际窗口](evidence/V0.2-Visual4/视觉精修与验收.md) · [本轮施工回执](evidence/V0.2-R1/施工回执.md)
 
 ## 工程入口
 

@@ -10,7 +10,7 @@ from app.preparation.example import create_example
 from app.preparation_gui import PreparationWindow, MappingDialog
 
 app = QApplication.instance() or QApplication(sys.argv)
-output = Path('evidence/V0.2-Visual3')
+output = Path('evidence/V0.2-Visual4')
 output.mkdir(parents=True, exist_ok=True)
 sample = TemporaryDirectory()
 project = Path(sample.name) / 'visual-project'

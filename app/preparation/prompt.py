@@ -78,7 +78,9 @@ def context(workspace, shot_id, media, requirement_id=None):
                  target_kind=KINDS[goal.kind] if goal else '', target_state=target_state,
                  cast=[c.model_dump(exclude={'line'}) for c in shot.cast],
                  environment=shot.environment, ambience=shot.ambience,
-                 sections=shot.sections, references=references, free=free, issues=issues)
+                 sections=shot.sections, references=references, free=free, issues=issues,
+                 current_shot_result=(workspace.state.get('shot_bindings', {}).get(shot_id)
+                                      if media == 'video' else None))
     fingerprint = hashlib.sha256(json.dumps(facts, ensure_ascii=False, sort_keys=True).encode('utf-8')).hexdigest()
     return dict(**facts, fingerprint=fingerprint)
 

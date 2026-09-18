@@ -1,0 +1,63 @@
+{
+  "status": "Ready",
+  "errors": [],
+  "warnings": [
+    "Shot 003: 源视频无音轨；预览使用静音"
+  ],
+  "clips": [
+    {
+      "segment_id": "846f1e0b48914197baacab0d393a69b0",
+      "shot_id": "c8956539c34e50ce81078118e61e6f87",
+      "shot_number": "001",
+      "shot_title": "雨夜，推门进入",
+      "shot_text": "001/雨夜，推门进入\n【林夏/-/深色雨衣】/低声\n【便利店/雨夜】/雨声、冰柜低鸣\n\n镜头：\n【门内后退跟拍】 保持中景，随着推门轻轻后移。\n\n动作：\n林夏推开玻璃门，停在暖光边缘，随后望向柜台。\n右手的【红伞.破损】还在滴水。\n\n表演：\n她想说些什么，却先望了一眼窗外。\n\n对白：\n林夏：这把伞，是不是有人来找过？\n\n连续性：\n雨衣肩部潮湿，伞柄朝向右侧。\n",
+      "candidate_id": "59d18287de124c0bbcef932ebe66d6f8",
+      "take_number": 2,
+      "path": "library/shot_video/001_take_002_59d18287.mp4",
+      "sha256": "1bbb44cbc5a199b56276b75c6e52c009054768ecf518d03dcaae86e3e976f6be",
+      "source_in": 0.2,
+      "source_out": 1.2,
+      "duration": 1.0,
+      "volume": 1.0,
+      "mute": false,
+      "has_audio": true
+    },
+    {
+      "segment_id": "a82fe69b681e4645a95a75e5caded511",
+      "shot_id": "c8956539c34e50ce81078118e61e6f87",
+      "shot_number": "001",
+      "shot_title": "雨夜，推门进入",
+      "shot_text": "001/雨夜，推门进入\n【林夏/-/深色雨衣】/低声\n【便利店/雨夜】/雨声、冰柜低鸣\n\n镜头：\n【门内后退跟拍】 保持中景，随着推门轻轻后移。\n\n动作：\n林夏推开玻璃门，停在暖光边缘，随后望向柜台。\n右手的【红伞.破损】还在滴水。\n\n表演：\n她想说些什么，却先望了一眼窗外。\n\n对白：\n林夏：这把伞，是不是有人来找过？\n\n连续性：\n雨衣肩部潮湿，伞柄朝向右侧。\n",
+      "candidate_id": "59d18287de124c0bbcef932ebe66d6f8",
+      "take_number": 2,
+      "path": "library/shot_video/001_take_002_59d18287.mp4",
+      "sha256": "1bbb44cbc5a199b56276b75c6e52c009054768ecf518d03dcaae86e3e976f6be",
+      "source_in": 1.2,
+      "source_out": 2.7,
+      "duration": 1.5000000000000002,
+      "volume": 1.0,
+      "mute": false,
+      "has_audio": true
+    },
+    {
+      "segment_id": "7fee967441e644cc8e87184c26dd4ec8",
+      "shot_id": "1527b6135df75e72ad4655b322fa270b",
+      "shot_number": "003",
+      "shot_title": "玻璃上的雨痕",
+      "shot_text": "003/玻璃上的雨痕\n【便利店/雨夜】/雨声\n\n镜头：\n雨滴沿玻璃向下滑落，店内倒影渐渐模糊。\n\n备注：\n无人镜头，不需要人物或 Voice。\n",
+      "candidate_id": "afe0e07a2c4540c9bc41cabdbd9c2c23",
+      "take_number": 1,
+      "path": "library/shot_video/003_take_001_afe0e07a.mp4",
+      "sha256": "a35e8211231ed28a436de9fd5244101dcda6faf9420f05078a3a7fa543786ae2",
+      "source_in": 0.0,
+      "source_out": 3.0,
+      "duration": 3.0,
+      "volume": 1.0,
+      "mute": false,
+      "has_audio": false
+    }
+  ],
+  "fingerprint": "cb3852f6fee485f59ad805251e11335ae359e5d9b82d4c1e5b1ab96972460dc6",
+  "stale": false,
+  "duration": 5.5
+}

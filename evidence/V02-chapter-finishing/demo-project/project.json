@@ -1,0 +1,872 @@
+{
+  "version": "preparation-0.2",
+  "project_id": "65b7a7d182744b6e99d1b70646d8c85f",
+  "draft": "雨停之前/名称\n01/章节/一把没有主人的伞\n\n001/雨夜，推门进入\n【林夏/-/深色雨衣】/低声\n【便利店/雨夜】/雨声、冰柜低鸣\n\n镜头：\n【门内后退跟拍】 保持中景，随着推门轻轻后移。\n\n动作：\n林夏推开玻璃门，停在暖光边缘，随后望向柜台。\n右手的【红伞.破损】还在滴水。\n\n表演：\n她想说些什么，却先望了一眼窗外。\n\n对白：\n林夏：这把伞，是不是有人来找过？\n\n连续性：\n雨衣肩部潮湿，伞柄朝向右侧。\n\n002/柜台后的目光\n【林夏/-/深色雨衣】/低声\n店员/-/米色围裙/-\n【便利店/雨夜】/冰柜低鸣\n\n镜头：\n越过林夏的肩膀，缓慢推向柜台后的店员。\n\n动作：\n店员看向【红伞.破损】，把手里的纸杯放下。\n\n表演：\n目光停顿，不急于回答。\n\n003/玻璃上的雨痕\n【便利店/雨夜】/雨声\n\n镜头：\n雨滴沿玻璃向下滑落，店内倒影渐渐模糊。\n\n备注：\n无人镜头，不需要人物或 Voice。\n\n02/章节/天亮以后\n\n001/街角的空位\n【林夏/-/深色雨衣】/-\n清晨的街角/远处车声\n\n镜头：\n固定远景，保留环境的空旷感。\n\n动作：\n林夏把【红伞.破损】留在门边，走出画面。\n",
+  "script": {
+    "project_id": "65b7a7d182744b6e99d1b70646d8c85f",
+    "title": "雨停之前",
+    "source": "雨停之前/名称\n01/章节/一把没有主人的伞\n\n001/雨夜，推门进入\n【林夏/-/深色雨衣】/低声\n【便利店/雨夜】/雨声、冰柜低鸣\n\n镜头：\n【门内后退跟拍】 保持中景，随着推门轻轻后移。\n\n动作：\n林夏推开玻璃门，停在暖光边缘，随后望向柜台。\n右手的【红伞.破损】还在滴水。\n\n表演：\n她想说些什么，却先望了一眼窗外。\n\n对白：\n林夏：这把伞，是不是有人来找过？\n\n连续性：\n雨衣肩部潮湿，伞柄朝向右侧。\n\n002/柜台后的目光\n【林夏/-/深色雨衣】/低声\n店员/-/米色围裙/-\n【便利店/雨夜】/冰柜低鸣\n\n镜头：\n越过林夏的肩膀，缓慢推向柜台后的店员。\n\n动作：\n店员看向【红伞.破损】，把手里的纸杯放下。\n\n表演：\n目光停顿，不急于回答。\n\n003/玻璃上的雨痕\n【便利店/雨夜】/雨声\n\n镜头：\n雨滴沿玻璃向下滑落，店内倒影渐渐模糊。\n\n备注：\n无人镜头，不需要人物或 Voice。\n\n02/章节/天亮以后\n\n001/街角的空位\n【林夏/-/深色雨衣】/-\n清晨的街角/远处车声\n\n镜头：\n固定远景，保留环境的空旷感。\n\n动作：\n林夏把【红伞.破损】留在门边，走出画面。\n",
+    "revision": "2854bc1b03bf02bcdfeb6a57379873f7ff71005dc3845ef567b46e519b56d4f1",
+    "chapters": [
+      {
+        "id": "6e04290f05375fe4ab65455693c6c7e4",
+        "number": "1",
+        "title": "一把没有主人的伞",
+        "line": 2,
+        "shots": [
+          {
+            "id": "c8956539c34e50ce81078118e61e6f87",
+            "number": "001",
+            "title": "雨夜，推门进入",
+            "line": 4,
+            "end_line": 23,
+            "cast": [
+              {
+                "person": "林夏",
+                "age": "-",
+                "costume": "深色雨衣",
+                "voice": "低声",
+                "complete_visual": "林夏/-/深色雨衣",
+                "line": 5
+              }
+            ],
+            "environment": "便利店/雨夜",
+            "ambience": "雨声、冰柜低鸣",
+            "environment_reference": true,
+            "sections": {
+              "镜头": "【门内后退跟拍】 保持中景，随着推门轻轻后移。",
+              "动作": "林夏推开玻璃门，停在暖光边缘，随后望向柜台。\n右手的【红伞.破损】还在滴水。",
+              "表演": "她想说些什么，却先望了一眼窗外。",
+              "对白": "林夏：这把伞，是不是有人来找过？",
+              "连续性": "雨衣肩部潮湿，伞柄朝向右侧。"
+            },
+            "text": "001/雨夜，推门进入\n【林夏/-/深色雨衣】/低声\n【便利店/雨夜】/雨声、冰柜低鸣\n\n镜头：\n【门内后退跟拍】 保持中景，随着推门轻轻后移。\n\n动作：\n林夏推开玻璃门，停在暖光边缘，随后望向柜台。\n右手的【红伞.破损】还在滴水。\n\n表演：\n她想说些什么，却先望了一眼窗外。\n\n对白：\n林夏：这把伞，是不是有人来找过？\n\n连续性：\n雨衣肩部潮湿，伞柄朝向右侧。\n",
+            "requirement_ids": [
+              "ae1523a22aedbfcdead6035d1b469f0c",
+              "1e4ddcfc65cd9eab19305cb6fcc98cda",
+              "24bd009053a2aedb5d0b063632e9d906",
+              "4550c53ac3e62b8df4f9223cb7d99bfc",
+              "d0f6620969aa20fef565a9805844d8ea"
+            ]
+          },
+          {
+            "id": "61d4965269f35a7a9f12567469776803",
+            "number": "002",
+            "title": "柜台后的目光",
+            "line": 24,
+            "end_line": 37,
+            "cast": [
+              {
+                "person": "林夏",
+                "age": "-",
+                "costume": "深色雨衣",
+                "voice": "低声",
+                "complete_visual": "林夏/-/深色雨衣",
+                "line": 25
+              },
+              {
+                "person": "店员",
+                "age": "-",
+                "costume": "米色围裙",
+                "voice": "-",
+                "complete_visual": null,
+                "line": 26
+              }
+            ],
+            "environment": "便利店/雨夜",
+            "ambience": "冰柜低鸣",
+            "environment_reference": true,
+            "sections": {
+              "镜头": "越过林夏的肩膀，缓慢推向柜台后的店员。",
+              "动作": "店员看向【红伞.破损】，把手里的纸杯放下。",
+              "表演": "目光停顿，不急于回答。"
+            },
+            "text": "002/柜台后的目光\n【林夏/-/深色雨衣】/低声\n店员/-/米色围裙/-\n【便利店/雨夜】/冰柜低鸣\n\n镜头：\n越过林夏的肩膀，缓慢推向柜台后的店员。\n\n动作：\n店员看向【红伞.破损】，把手里的纸杯放下。\n\n表演：\n目光停顿，不急于回答。\n",
+            "requirement_ids": [
+              "ae1523a22aedbfcdead6035d1b469f0c",
+              "1e4ddcfc65cd9eab19305cb6fcc98cda",
+              "27ad9d64ac81c8fcb14625cf38443c86",
+              "f5b9e4d7595ccd25034cde32b096e425",
+              "24bd009053a2aedb5d0b063632e9d906",
+              "d0f6620969aa20fef565a9805844d8ea"
+            ]
+          },
+          {
+            "id": "1527b6135df75e72ad4655b322fa270b",
+            "number": "003",
+            "title": "玻璃上的雨痕",
+            "line": 38,
+            "end_line": 46,
+            "cast": [],
+            "environment": "便利店/雨夜",
+            "ambience": "雨声",
+            "environment_reference": true,
+            "sections": {
+              "镜头": "雨滴沿玻璃向下滑落，店内倒影渐渐模糊。",
+              "备注": "无人镜头，不需要人物或 Voice。"
+            },
+            "text": "003/玻璃上的雨痕\n【便利店/雨夜】/雨声\n\n镜头：\n雨滴沿玻璃向下滑落，店内倒影渐渐模糊。\n\n备注：\n无人镜头，不需要人物或 Voice。\n",
+            "requirement_ids": [
+              "24bd009053a2aedb5d0b063632e9d906"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ad774f89bd285de69ec127f364d66a01",
+        "number": "2",
+        "title": "天亮以后",
+        "line": 47,
+        "shots": [
+          {
+            "id": "f071d6eac8cb5858ac13e740f336c5ae",
+            "number": "001",
+            "title": "街角的空位",
+            "line": 49,
+            "end_line": 57,
+            "cast": [
+              {
+                "person": "林夏",
+                "age": "-",
+                "costume": "深色雨衣",
+                "voice": "-",
+                "complete_visual": "林夏/-/深色雨衣",
+                "line": 50
+              }
+            ],
+            "environment": "清晨的街角",
+            "ambience": "远处车声",
+            "environment_reference": false,
+            "sections": {
+              "镜头": "固定远景，保留环境的空旷感。",
+              "动作": "林夏把【红伞.破损】留在门边，走出画面。"
+            },
+            "text": "001/街角的空位\n【林夏/-/深色雨衣】/-\n清晨的街角/远处车声\n\n镜头：\n固定远景，保留环境的空旷感。\n\n动作：\n林夏把【红伞.破损】留在门边，走出画面。",
+            "requirement_ids": [
+              "ae1523a22aedbfcdead6035d1b469f0c",
+              "d0f6620969aa20fef565a9805844d8ea"
+            ]
+          }
+        ]
+      }
+    ],
+    "requirements": [
+      {
+        "id": "ae1523a22aedbfcdead6035d1b469f0c",
+        "kind": "character_visual",
+        "name": "林夏/-/深色雨衣",
+        "media": "image",
+        "usages": [
+          {
+            "chapter_id": "6e04290f05375fe4ab65455693c6c7e4",
+            "shot_id": "c8956539c34e50ce81078118e61e6f87",
+            "line": 5
+          },
+          {
+            "chapter_id": "6e04290f05375fe4ab65455693c6c7e4",
+            "shot_id": "61d4965269f35a7a9f12567469776803",
+            "line": 25
+          },
+          {
+            "chapter_id": "ad774f89bd285de69ec127f364d66a01",
+            "shot_id": "f071d6eac8cb5858ac13e740f336c5ae",
+            "line": 50
+          }
+        ]
+      },
+      {
+        "id": "1e4ddcfc65cd9eab19305cb6fcc98cda",
+        "kind": "voice",
+        "name": "林夏/低声",
+        "media": "audio",
+        "usages": [
+          {
+            "chapter_id": "6e04290f05375fe4ab65455693c6c7e4",
+            "shot_id": "c8956539c34e50ce81078118e61e6f87",
+            "line": 5
+          },
+          {
+            "chapter_id": "6e04290f05375fe4ab65455693c6c7e4",
+            "shot_id": "61d4965269f35a7a9f12567469776803",
+            "line": 25
+          }
+        ]
+      },
+      {
+        "id": "24bd009053a2aedb5d0b063632e9d906",
+        "kind": "environment",
+        "name": "便利店/雨夜",
+        "media": "image",
+        "usages": [
+          {
+            "chapter_id": "6e04290f05375fe4ab65455693c6c7e4",
+            "shot_id": "c8956539c34e50ce81078118e61e6f87",
+            "line": 6
+          },
+          {
+            "chapter_id": "6e04290f05375fe4ab65455693c6c7e4",
+            "shot_id": "61d4965269f35a7a9f12567469776803",
+            "line": 27
+          },
+          {
+            "chapter_id": "6e04290f05375fe4ab65455693c6c7e4",
+            "shot_id": "1527b6135df75e72ad4655b322fa270b",
+            "line": 39
+          }
+        ]
+      },
+      {
+        "id": "4550c53ac3e62b8df4f9223cb7d99bfc",
+        "kind": "video_reference",
+        "name": "门内后退跟拍",
+        "media": "video",
+        "usages": [
+          {
+            "chapter_id": "6e04290f05375fe4ab65455693c6c7e4",
+            "shot_id": "c8956539c34e50ce81078118e61e6f87",
+            "line": 9
+          }
+        ]
+      },
+      {
+        "id": "d0f6620969aa20fef565a9805844d8ea",
+        "kind": "prop",
+        "name": "红伞.破损",
+        "media": "image",
+        "usages": [
+          {
+            "chapter_id": "6e04290f05375fe4ab65455693c6c7e4",
+            "shot_id": "c8956539c34e50ce81078118e61e6f87",
+            "line": 13
+          },
+          {
+            "chapter_id": "6e04290f05375fe4ab65455693c6c7e4",
+            "shot_id": "61d4965269f35a7a9f12567469776803",
+            "line": 33
+          },
+          {
+            "chapter_id": "ad774f89bd285de69ec127f364d66a01",
+            "shot_id": "f071d6eac8cb5858ac13e740f336c5ae",
+            "line": 57
+          }
+        ]
+      },
+      {
+        "id": "27ad9d64ac81c8fcb14625cf38443c86",
+        "kind": "character",
+        "name": "店员",
+        "media": "image",
+        "usages": [
+          {
+            "chapter_id": "6e04290f05375fe4ab65455693c6c7e4",
+            "shot_id": "61d4965269f35a7a9f12567469776803",
+            "line": 26
+          }
+        ]
+      },
+      {
+        "id": "f5b9e4d7595ccd25034cde32b096e425",
+        "kind": "costume",
+        "name": "店员/米色围裙",
+        "media": "image",
+        "usages": [
+          {
+            "chapter_id": "6e04290f05375fe4ab65455693c6c7e4",
+            "shot_id": "61d4965269f35a7a9f12567469776803",
+            "line": 26
+          }
+        ]
+      }
+    ],
+    "diagnostics": []
+  },
+  "assets": {
+    "2173f9596ae64a51bcd8df320e2560d6": {
+      "id": "2173f9596ae64a51bcd8df320e2560d6",
+      "path": "library/shot_video/001_take_001_db4ff146.mp4",
+      "name": "001_take_001_db4ff146",
+      "kind": "shot_video",
+      "media": "video",
+      "sha256": "f75dd83b145ac4b88c553175ac6269d17494d1f99db4235cb69c03faaa8498ab",
+      "problem": "",
+      "snapshot": ".history/media/f75dd83b145ac4b88c553175ac6269d17494d1f99db4235cb69c03faaa8498ab.mp4",
+      "aliases": [
+        "001_take_001_db4ff146"
+      ],
+      "missing": false,
+      "versions": [
+        {
+          "sha256": "f75dd83b145ac4b88c553175ac6269d17494d1f99db4235cb69c03faaa8498ab",
+          "snapshot": ".history/media/f75dd83b145ac4b88c553175ac6269d17494d1f99db4235cb69c03faaa8498ab.mp4",
+          "at": "2026-09-18T14:12:06.975223+00:00"
+        }
+      ]
+    },
+    "8b684760889d4925b54021ae499ecae6": {
+      "id": "8b684760889d4925b54021ae499ecae6",
+      "path": "library/shot_video/002_take_001_c0ab50c5.mp4",
+      "name": "002_take_001_c0ab50c5",
+      "kind": "shot_video",
+      "media": "video",
+      "sha256": "81d748f9fcfe58fb2ee4ea3f4bc0faf2acf8e7511bcd77544cb110af12fab557",
+      "problem": "",
+      "snapshot": ".history/media/81d748f9fcfe58fb2ee4ea3f4bc0faf2acf8e7511bcd77544cb110af12fab557.mp4",
+      "aliases": [
+        "002_take_001_c0ab50c5"
+      ],
+      "missing": false,
+      "versions": [
+        {
+          "sha256": "81d748f9fcfe58fb2ee4ea3f4bc0faf2acf8e7511bcd77544cb110af12fab557",
+          "snapshot": ".history/media/81d748f9fcfe58fb2ee4ea3f4bc0faf2acf8e7511bcd77544cb110af12fab557.mp4",
+          "at": "2026-09-18T14:12:07.368360+00:00"
+        }
+      ]
+    },
+    "5c9965bc42304c1c956f7c29c3d40877": {
+      "id": "5c9965bc42304c1c956f7c29c3d40877",
+      "path": "library/shot_video/003_take_001_afe0e07a.mp4",
+      "name": "003_take_001_afe0e07a",
+      "kind": "shot_video",
+      "media": "video",
+      "sha256": "a35e8211231ed28a436de9fd5244101dcda6faf9420f05078a3a7fa543786ae2",
+      "problem": "",
+      "snapshot": ".history/media/a35e8211231ed28a436de9fd5244101dcda6faf9420f05078a3a7fa543786ae2.mp4",
+      "aliases": [
+        "003_take_001_afe0e07a"
+      ],
+      "missing": false,
+      "versions": [
+        {
+          "sha256": "a35e8211231ed28a436de9fd5244101dcda6faf9420f05078a3a7fa543786ae2",
+          "snapshot": ".history/media/a35e8211231ed28a436de9fd5244101dcda6faf9420f05078a3a7fa543786ae2.mp4",
+          "at": "2026-09-18T14:12:07.783342+00:00"
+        }
+      ]
+    },
+    "edc6073da7f241ec9318b51e2640e5a7": {
+      "id": "edc6073da7f241ec9318b51e2640e5a7",
+      "path": "library/shot_video/001_take_002_59d18287.mp4",
+      "name": "001_take_002_59d18287",
+      "kind": "shot_video",
+      "media": "video",
+      "sha256": "1bbb44cbc5a199b56276b75c6e52c009054768ecf518d03dcaae86e3e976f6be",
+      "problem": "",
+      "snapshot": ".history/media/1bbb44cbc5a199b56276b75c6e52c009054768ecf518d03dcaae86e3e976f6be.mp4",
+      "aliases": [
+        "001_take_002_59d18287"
+      ],
+      "missing": false,
+      "versions": [
+        {
+          "sha256": "1bbb44cbc5a199b56276b75c6e52c009054768ecf518d03dcaae86e3e976f6be",
+          "snapshot": ".history/media/1bbb44cbc5a199b56276b75c6e52c009054768ecf518d03dcaae86e3e976f6be.mp4",
+          "at": "2026-09-18T14:24:47.332792+00:00"
+        }
+      ]
+    },
+    "2c6f8455be5e4658bb7c8e8bd94b7bb7": {
+      "id": "2c6f8455be5e4658bb7c8e8bd94b7bb7",
+      "path": "library/character_visual/take_001_f85a8b9f.png",
+      "name": "take_001_f85a8b9f",
+      "kind": "character_visual",
+      "media": "image",
+      "sha256": "98dc2ca1034fbe3192a48cd5d782c9d808531af06ba46ffaba7f5c1f9044c37e",
+      "problem": "",
+      "snapshot": ".history/media/98dc2ca1034fbe3192a48cd5d782c9d808531af06ba46ffaba7f5c1f9044c37e.png",
+      "aliases": [
+        "take_001_f85a8b9f"
+      ],
+      "missing": false,
+      "versions": [
+        {
+          "sha256": "98dc2ca1034fbe3192a48cd5d782c9d808531af06ba46ffaba7f5c1f9044c37e",
+          "snapshot": ".history/media/98dc2ca1034fbe3192a48cd5d782c9d808531af06ba46ffaba7f5c1f9044c37e.png",
+          "at": "2026-09-18T14:43:04.610879+00:00"
+        }
+      ]
+    }
+  },
+  "bindings": {},
+  "history": [],
+  "events": [
+    {
+      "id": "4d48fe17eb174b7a873f7859451d2a41",
+      "at": "2026-09-18T14:12:06.982674+00:00",
+      "kind": "candidate",
+      "message": "Shot 001 Take 01 已归档",
+      "shots": [
+        "c8956539c34e50ce81078118e61e6f87"
+      ],
+      "candidate_id": "db4ff146ddd34ccabb413974306c8c88"
+    },
+    {
+      "id": "99ce87f074e047be8707c1b30b833e99",
+      "at": "2026-09-18T14:12:06.991760+00:00",
+      "kind": "candidate_review",
+      "message": "Take 01 → GREEN",
+      "shots": [
+        "c8956539c34e50ce81078118e61e6f87"
+      ],
+      "requirement_id": null,
+      "candidate_id": "db4ff146ddd34ccabb413974306c8c88"
+    },
+    {
+      "id": "864f64c51f294ff49a4c15edfbd652f6",
+      "at": "2026-09-18T14:12:07.002882+00:00",
+      "kind": "shot_current",
+      "message": "Shot 当前结果 → Take 01",
+      "shots": [
+        "c8956539c34e50ce81078118e61e6f87"
+      ],
+      "candidate_id": "db4ff146ddd34ccabb413974306c8c88",
+      "previous": null
+    },
+    {
+      "id": "af0d7c6a23a745b889baefb59142e75f",
+      "at": "2026-09-18T14:12:07.383364+00:00",
+      "kind": "candidate",
+      "message": "Shot 002 Take 01 已归档",
+      "shots": [
+        "61d4965269f35a7a9f12567469776803"
+      ],
+      "candidate_id": "c0ab50c5b4cf48be9484728e2b31ea77"
+    },
+    {
+      "id": "314242ad4339488db4883db323147d62",
+      "at": "2026-09-18T14:12:07.393476+00:00",
+      "kind": "candidate_review",
+      "message": "Take 01 → GREEN",
+      "shots": [
+        "61d4965269f35a7a9f12567469776803"
+      ],
+      "requirement_id": null,
+      "candidate_id": "c0ab50c5b4cf48be9484728e2b31ea77"
+    },
+    {
+      "id": "cda78059b5e4414ca32a66eb4ba1a2ec",
+      "at": "2026-09-18T14:12:07.405814+00:00",
+      "kind": "shot_current",
+      "message": "Shot 当前结果 → Take 01",
+      "shots": [
+        "61d4965269f35a7a9f12567469776803"
+      ],
+      "candidate_id": "c0ab50c5b4cf48be9484728e2b31ea77",
+      "previous": null
+    },
+    {
+      "id": "03f56b3917f14f7082487e15a728a10f",
+      "at": "2026-09-18T14:12:07.790548+00:00",
+      "kind": "candidate",
+      "message": "Shot 003 Take 01 已归档",
+      "shots": [
+        "1527b6135df75e72ad4655b322fa270b"
+      ],
+      "candidate_id": "afe0e07a2c4540c9bc41cabdbd9c2c23"
+    },
+    {
+      "id": "a9e11ce329df4e949803f8e9cae9a656",
+      "at": "2026-09-18T14:12:07.799366+00:00",
+      "kind": "candidate_review",
+      "message": "Take 01 → GREEN",
+      "shots": [
+        "1527b6135df75e72ad4655b322fa270b"
+      ],
+      "requirement_id": null,
+      "candidate_id": "afe0e07a2c4540c9bc41cabdbd9c2c23"
+    },
+    {
+      "id": "03cc1fb3ecc741ae9c729c4d5bf85734",
+      "at": "2026-09-18T14:12:07.811143+00:00",
+      "kind": "shot_current",
+      "message": "Shot 当前结果 → Take 01",
+      "shots": [
+        "1527b6135df75e72ad4655b322fa270b"
+      ],
+      "candidate_id": "afe0e07a2c4540c9bc41cabdbd9c2c23",
+      "previous": null
+    },
+    {
+      "id": "57a24ea382b24979b4c1e762c4d09a48",
+      "at": "2026-09-18T14:24:47.344722+00:00",
+      "kind": "candidate",
+      "message": "Shot 001 Take 02 已归档",
+      "shots": [
+        "c8956539c34e50ce81078118e61e6f87"
+      ],
+      "candidate_id": "59d18287de124c0bbcef932ebe66d6f8"
+    },
+    {
+      "id": "6949af869b66498191dd638931eb3ce1",
+      "at": "2026-09-18T14:24:48.112509+00:00",
+      "kind": "candidate_review",
+      "message": "Take 02 → GREEN",
+      "shots": [
+        "c8956539c34e50ce81078118e61e6f87"
+      ],
+      "requirement_id": null,
+      "candidate_id": "59d18287de124c0bbcef932ebe66d6f8"
+    },
+    {
+      "id": "307d4409dbef4f5b9c369bbf5a6b9cc4",
+      "at": "2026-09-18T14:24:48.939829+00:00",
+      "kind": "shot_current",
+      "message": "Shot 当前结果 → Take 02",
+      "shots": [
+        "c8956539c34e50ce81078118e61e6f87"
+      ],
+      "candidate_id": "59d18287de124c0bbcef932ebe66d6f8",
+      "previous": "db4ff146ddd34ccabb413974306c8c88"
+    },
+    {
+      "id": "5732828d632d472981f614bb0fcfa7e2",
+      "at": "2026-09-18T14:24:53.346890+00:00",
+      "kind": "script",
+      "message": "剧本已更新",
+      "shots": [
+        "c8956539c34e50ce81078118e61e6f87"
+      ],
+      "revision": "a311e44b94c750a1653b1f6054ee82e8c9700e22edd7a3fe40192f5fd97fb490"
+    },
+    {
+      "id": "78c4105736e249f8b61b3f07aa360ab8",
+      "at": "2026-09-18T14:43:04.620651+00:00",
+      "kind": "candidate",
+      "message": "Take 01 已归档：林夏/-/深色雨衣",
+      "shots": [
+        "c8956539c34e50ce81078118e61e6f87"
+      ],
+      "requirement_id": "ae1523a22aedbfcdead6035d1b469f0c",
+      "candidate_id": "f85a8b9ffc28418c9d5774f2b3e1410a"
+    },
+    {
+      "id": "7def0bf312a6468caf70038a61f6aa2c",
+      "at": "2026-09-18T14:43:05.040981+00:00",
+      "kind": "candidate_review",
+      "message": "Take 01 → GREEN",
+      "shots": [
+        "c8956539c34e50ce81078118e61e6f87"
+      ],
+      "requirement_id": "ae1523a22aedbfcdead6035d1b469f0c",
+      "candidate_id": "f85a8b9ffc28418c9d5774f2b3e1410a"
+    }
+  ],
+  "revisions": [
+    {
+      "revision": "a311e44b94c750a1653b1f6054ee82e8c9700e22edd7a3fe40192f5fd97fb490",
+      "source": "雨停之前/名称\n01/章节/一把没有主人的伞\n\n001/雨夜，推门进入\n【林夏/-/深色雨衣】/低声\n【便利店/雨夜】/雨声、冰柜低鸣\n\n镜头：\n【门内后退跟拍】 保持中景，随着推门轻轻后移。\n\n动作：\n林夏推开玻璃门，停在暖光边缘。\n右手的【红伞.破损】还在滴水。\n\n表演：\n她想说些什么，却先望了一眼窗外。\n\n对白：\n林夏：这把伞，是不是有人来找过？\n\n连续性：\n雨衣肩部潮湿，伞柄朝向右侧。\n\n002/柜台后的目光\n【林夏/-/深色雨衣】/低声\n店员/-/米色围裙/-\n【便利店/雨夜】/冰柜低鸣\n\n镜头：\n越过林夏的肩膀，缓慢推向柜台后的店员。\n\n动作：\n店员看向【红伞.破损】，把手里的纸杯放下。\n\n表演：\n目光停顿，不急于回答。\n\n003/玻璃上的雨痕\n【便利店/雨夜】/雨声\n\n镜头：\n雨滴沿玻璃向下滑落，店内倒影渐渐模糊。\n\n备注：\n无人镜头，不需要人物或 Voice。\n\n02/章节/天亮以后\n\n001/街角的空位\n【林夏/-/深色雨衣】/-\n清晨的街角/远处车声\n\n镜头：\n固定远景，保留环境的空旷感。\n\n动作：\n林夏把【红伞.破损】留在门边，走出画面。\n",
+      "at": "2026-09-18T14:11:19.856916+00:00"
+    },
+    {
+      "revision": "2854bc1b03bf02bcdfeb6a57379873f7ff71005dc3845ef567b46e519b56d4f1",
+      "source": "雨停之前/名称\n01/章节/一把没有主人的伞\n\n001/雨夜，推门进入\n【林夏/-/深色雨衣】/低声\n【便利店/雨夜】/雨声、冰柜低鸣\n\n镜头：\n【门内后退跟拍】 保持中景，随着推门轻轻后移。\n\n动作：\n林夏推开玻璃门，停在暖光边缘，随后望向柜台。\n右手的【红伞.破损】还在滴水。\n\n表演：\n她想说些什么，却先望了一眼窗外。\n\n对白：\n林夏：这把伞，是不是有人来找过？\n\n连续性：\n雨衣肩部潮湿，伞柄朝向右侧。\n\n002/柜台后的目光\n【林夏/-/深色雨衣】/低声\n店员/-/米色围裙/-\n【便利店/雨夜】/冰柜低鸣\n\n镜头：\n越过林夏的肩膀，缓慢推向柜台后的店员。\n\n动作：\n店员看向【红伞.破损】，把手里的纸杯放下。\n\n表演：\n目光停顿，不急于回答。\n\n003/玻璃上的雨痕\n【便利店/雨夜】/雨声\n\n镜头：\n雨滴沿玻璃向下滑落，店内倒影渐渐模糊。\n\n备注：\n无人镜头，不需要人物或 Voice。\n\n02/章节/天亮以后\n\n001/街角的空位\n【林夏/-/深色雨衣】/-\n清晨的街角/远处车声\n\n镜头：\n固定远景，保留环境的空旷感。\n\n动作：\n林夏把【红伞.破损】留在门边，走出画面。\n",
+      "at": "2026-09-18T14:24:53.347004+00:00"
+    }
+  ],
+  "ui": {
+    "cursor": 0
+  },
+  "updated_at": "2026-09-18T17:06:20.293570+00:00",
+  "candidates": {
+    "db4ff146ddd34ccabb413974306c8c88": {
+      "id": "db4ff146ddd34ccabb413974306c8c88",
+      "project_id": "65b7a7d182744b6e99d1b70646d8c85f",
+      "requirement_id": null,
+      "chapter_id": "6e04290f05375fe4ab65455693c6c7e4",
+      "shot_id": "c8956539c34e50ce81078118e61e6f87",
+      "kind": "shot_video",
+      "media": "video",
+      "take_number": 1,
+      "media_path": "library/shot_video/001_take_001_db4ff146.mp4",
+      "snapshot_path": ".history/media/f75dd83b145ac4b88c553175ac6269d17494d1f99db4235cb69c03faaa8498ab.mp4",
+      "asset_id": "2173f9596ae64a51bcd8df320e2560d6",
+      "sha256": "f75dd83b145ac4b88c553175ac6269d17494d1f99db4235cb69c03faaa8498ab",
+      "created_at": "2026-09-18T14:12:06.982553+00:00",
+      "source_type": "imported",
+      "provider": null,
+      "job_id": null,
+      "provider_metadata": {},
+      "generation_metadata": {},
+      "review_state": "green",
+      "note": "",
+      "history": [
+        {
+          "at": "2026-09-18T14:12:06.982553+00:00",
+          "event": "created",
+          "source_type": "imported"
+        },
+        {
+          "at": "2026-09-18T14:12:06.991719+00:00",
+          "event": "review",
+          "from": "unreviewed",
+          "to": "green",
+          "note": ""
+        },
+        {
+          "at": "2026-09-18T14:24:48.939773+00:00",
+          "event": "unbound",
+          "replaced_by": "59d18287de124c0bbcef932ebe66d6f8"
+        }
+      ]
+    },
+    "c0ab50c5b4cf48be9484728e2b31ea77": {
+      "id": "c0ab50c5b4cf48be9484728e2b31ea77",
+      "project_id": "65b7a7d182744b6e99d1b70646d8c85f",
+      "requirement_id": null,
+      "chapter_id": "6e04290f05375fe4ab65455693c6c7e4",
+      "shot_id": "61d4965269f35a7a9f12567469776803",
+      "kind": "shot_video",
+      "media": "video",
+      "take_number": 1,
+      "media_path": "library/shot_video/002_take_001_c0ab50c5.mp4",
+      "snapshot_path": ".history/media/81d748f9fcfe58fb2ee4ea3f4bc0faf2acf8e7511bcd77544cb110af12fab557.mp4",
+      "asset_id": "8b684760889d4925b54021ae499ecae6",
+      "sha256": "81d748f9fcfe58fb2ee4ea3f4bc0faf2acf8e7511bcd77544cb110af12fab557",
+      "created_at": "2026-09-18T14:12:07.383254+00:00",
+      "source_type": "imported",
+      "provider": null,
+      "job_id": null,
+      "provider_metadata": {},
+      "generation_metadata": {},
+      "review_state": "green",
+      "note": "",
+      "history": [
+        {
+          "at": "2026-09-18T14:12:07.383254+00:00",
+          "event": "created",
+          "source_type": "imported"
+        },
+        {
+          "at": "2026-09-18T14:12:07.393428+00:00",
+          "event": "review",
+          "from": "unreviewed",
+          "to": "green",
+          "note": ""
+        }
+      ]
+    },
+    "afe0e07a2c4540c9bc41cabdbd9c2c23": {
+      "id": "afe0e07a2c4540c9bc41cabdbd9c2c23",
+      "project_id": "65b7a7d182744b6e99d1b70646d8c85f",
+      "requirement_id": null,
+      "chapter_id": "6e04290f05375fe4ab65455693c6c7e4",
+      "shot_id": "1527b6135df75e72ad4655b322fa270b",
+      "kind": "shot_video",
+      "media": "video",
+      "take_number": 1,
+      "media_path": "library/shot_video/003_take_001_afe0e07a.mp4",
+      "snapshot_path": ".history/media/a35e8211231ed28a436de9fd5244101dcda6faf9420f05078a3a7fa543786ae2.mp4",
+      "asset_id": "5c9965bc42304c1c956f7c29c3d40877",
+      "sha256": "a35e8211231ed28a436de9fd5244101dcda6faf9420f05078a3a7fa543786ae2",
+      "created_at": "2026-09-18T14:12:07.790473+00:00",
+      "source_type": "imported",
+      "provider": null,
+      "job_id": null,
+      "provider_metadata": {},
+      "generation_metadata": {},
+      "review_state": "green",
+      "note": "",
+      "history": [
+        {
+          "at": "2026-09-18T14:12:07.790473+00:00",
+          "event": "created",
+          "source_type": "imported"
+        },
+        {
+          "at": "2026-09-18T14:12:07.799321+00:00",
+          "event": "review",
+          "from": "unreviewed",
+          "to": "green",
+          "note": ""
+        }
+      ]
+    },
+    "59d18287de124c0bbcef932ebe66d6f8": {
+      "id": "59d18287de124c0bbcef932ebe66d6f8",
+      "project_id": "65b7a7d182744b6e99d1b70646d8c85f",
+      "requirement_id": null,
+      "chapter_id": "6e04290f05375fe4ab65455693c6c7e4",
+      "shot_id": "c8956539c34e50ce81078118e61e6f87",
+      "kind": "shot_video",
+      "media": "video",
+      "take_number": 2,
+      "media_path": "library/shot_video/001_take_002_59d18287.mp4",
+      "snapshot_path": ".history/media/1bbb44cbc5a199b56276b75c6e52c009054768ecf518d03dcaae86e3e976f6be.mp4",
+      "asset_id": "edc6073da7f241ec9318b51e2640e5a7",
+      "sha256": "1bbb44cbc5a199b56276b75c6e52c009054768ecf518d03dcaae86e3e976f6be",
+      "created_at": "2026-09-18T14:24:47.344572+00:00",
+      "source_type": "imported",
+      "provider": null,
+      "job_id": null,
+      "provider_metadata": {},
+      "generation_metadata": {},
+      "review_state": "green",
+      "note": "",
+      "history": [
+        {
+          "at": "2026-09-18T14:24:47.344572+00:00",
+          "event": "created",
+          "source_type": "imported"
+        },
+        {
+          "at": "2026-09-18T14:24:48.112445+00:00",
+          "event": "review",
+          "from": "unreviewed",
+          "to": "green",
+          "note": ""
+        },
+        {
+          "at": "2026-09-18T14:24:48.939793+00:00",
+          "event": "bound",
+          "previous_candidate_id": "db4ff146ddd34ccabb413974306c8c88"
+        }
+      ]
+    },
+    "f85a8b9ffc28418c9d5774f2b3e1410a": {
+      "id": "f85a8b9ffc28418c9d5774f2b3e1410a",
+      "project_id": "65b7a7d182744b6e99d1b70646d8c85f",
+      "requirement_id": "ae1523a22aedbfcdead6035d1b469f0c",
+      "chapter_id": "6e04290f05375fe4ab65455693c6c7e4",
+      "shot_id": "c8956539c34e50ce81078118e61e6f87",
+      "kind": "character_visual",
+      "media": "image",
+      "take_number": 1,
+      "media_path": "library/character_visual/take_001_f85a8b9f.png",
+      "snapshot_path": ".history/media/98dc2ca1034fbe3192a48cd5d782c9d808531af06ba46ffaba7f5c1f9044c37e.png",
+      "asset_id": "2c6f8455be5e4658bb7c8e8bd94b7bb7",
+      "sha256": "98dc2ca1034fbe3192a48cd5d782c9d808531af06ba46ffaba7f5c1f9044c37e",
+      "created_at": "2026-09-18T14:43:04.620546+00:00",
+      "source_type": "generated",
+      "provider": "local-fixture",
+      "job_id": "1e5e8883413c4160902a954d6fdeab51",
+      "provider_metadata": {
+        "simulation_only": true,
+        "api_called": false
+      },
+      "generation_metadata": {
+        "width": 960,
+        "height": 600,
+        "simulation_only": true,
+        "api_called": false,
+        "fixture": "local-card-v0"
+      },
+      "review_state": "green",
+      "note": "",
+      "history": [
+        {
+          "at": "2026-09-18T14:43:04.620546+00:00",
+          "event": "created",
+          "source_type": "generated"
+        },
+        {
+          "at": "2026-09-18T14:43:05.040930+00:00",
+          "event": "review",
+          "from": "unreviewed",
+          "to": "green",
+          "note": ""
+        }
+      ]
+    }
+  },
+  "production_jobs": {
+    "1e5e8883413c4160902a954d6fdeab51": {
+      "id": "1e5e8883413c4160902a954d6fdeab51",
+      "project_id": "65b7a7d182744b6e99d1b70646d8c85f",
+      "requirement_id": "ae1523a22aedbfcdead6035d1b469f0c",
+      "chapter_id": "6e04290f05375fe4ab65455693c6c7e4",
+      "shot_id": "c8956539c34e50ce81078118e61e6f87",
+      "media": "image",
+      "provider": "local-fixture",
+      "status": "completed",
+      "created_at": "2026-09-18T14:43:04.383946+00:00",
+      "history": [
+        {
+          "at": "2026-09-18T14:43:04.383946+00:00",
+          "status": "queued"
+        },
+        {
+          "at": "2026-09-18T14:43:04.400582+00:00",
+          "status": "running"
+        },
+        {
+          "at": "2026-09-18T14:43:04.630811+00:00",
+          "status": "completed"
+        }
+      ],
+      "candidate_id": "f85a8b9ffc28418c9d5774f2b3e1410a",
+      "error": "",
+      "provider_metadata": {
+        "simulation_only": true,
+        "api_called": false
+      }
+    }
+  },
+  "unbound_requirements": [],
+  "reference_decisions": {},
+  "prompt_drafts": {},
+  "shot_bindings": {
+    "c8956539c34e50ce81078118e61e6f87": "59d18287de124c0bbcef932ebe66d6f8",
+    "61d4965269f35a7a9f12567469776803": "c0ab50c5b4cf48be9484728e2b31ea77",
+    "1527b6135df75e72ad4655b322fa270b": "afe0e07a2c4540c9bc41cabdbd9c2c23"
+  },
+  "assemblies": {
+    "6e04290f05375fe4ab65455693c6c7e4": {
+      "segments": [
+        {
+          "id": "846f1e0b48914197baacab0d393a69b0",
+          "shot_id": "c8956539c34e50ce81078118e61e6f87",
+          "enabled": true,
+          "trim_in": 0.2,
+          "trim_out": 1.2,
+          "volume": 1.0,
+          "mute": false
+        },
+        {
+          "id": "a82fe69b681e4645a95a75e5caded511",
+          "shot_id": "c8956539c34e50ce81078118e61e6f87",
+          "enabled": true,
+          "trim_in": 1.2,
+          "trim_out": 2.7,
+          "volume": 1.0,
+          "mute": false
+        },
+        {
+          "id": "7fee967441e644cc8e87184c26dd4ec8",
+          "shot_id": "1527b6135df75e72ad4655b322fa270b",
+          "enabled": true,
+          "trim_in": 0.0,
+          "trim_out": null,
+          "volume": 1.0,
+          "mute": false
+        },
+        {
+          "id": "3349d96945184d95951378e466871073",
+          "shot_id": "61d4965269f35a7a9f12567469776803",
+          "enabled": false,
+          "trim_in": 0.0,
+          "trim_out": null,
+          "volume": 1.0,
+          "mute": false
+        }
+      ],
+      "selected": "846f1e0b48914197baacab0d393a69b0",
+      "version": 5,
+      "preview": {
+        "path": "finishing/6e04290f05375fe4ab65455693c6c7e4/preview/cb3852f6fee485f59ad805251e11335ae359e5d9b82d4c1e5b1ab96972460dc6/chapter-preview.mp4",
+        "fingerprint": "cb3852f6fee485f59ad805251e11335ae359e5d9b82d4c1e5b1ab96972460dc6",
+        "sha256": "6c0c6ec3e9d081b57c505c12ca7d1db4b1f5f69871da64aedd147b3b8b055b09"
+      },
+      "output": {
+        "path": "finishing/6e04290f05375fe4ab65455693c6c7e4/output/cb3852f6fee485f59ad805251e11335ae359e5d9b82d4c1e5b1ab96972460dc6/chapter-output.mp4",
+        "fingerprint": "cb3852f6fee485f59ad805251e11335ae359e5d9b82d4c1e5b1ab96972460dc6",
+        "sha256": "97509c8b99f8b6895250a8c5a509b80f18a81f26e90508a813c33228adcdae83"
+      },
+      "known_shots": [
+        "c8956539c34e50ce81078118e61e6f87",
+        "61d4965269f35a7a9f12567469776803",
+        "1527b6135df75e72ad4655b322fa270b"
+      ]
+    }
+  },
+  "is_example": true
+}

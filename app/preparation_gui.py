@@ -348,9 +348,10 @@ class PreparationWindow(QMainWindow):
         stages.setSpacing(24)
         self.production_stages = []
         for title, active in [('准备', True), ('生成', False), ('判断', False), ('轻剪', False), ('输出', False)]:
-            if title in ('生成', '判断'):
-                stage = button(title, self.open_prompt if title == '生成' else self.open_production, 'stageEnabled')
-                stage.setToolTip('编写当前镜头的 Prompt Draft' if title == '生成' else '进入当前需求的 Candidate 生产与判断')
+            if title in ('生成', '判断', '轻剪', '输出'):
+                callback = {'生成': self.open_prompt, '判断': self.open_production,
+                            '轻剪': self.open_finishing, '输出': self.open_finishing}[title]
+                stage = button(title, callback, 'stageEnabled')
                 self.production_stages.append(stage)
             else:
                 stage = label(title, 'stageActive' if active else 'stageFuture')
@@ -1195,6 +1196,17 @@ class PreparationWindow(QMainWindow):
         dialog.exec()
         self.refresh()
 
+    def open_finishing(self, *_):
+        if self.worker and self.worker.isRunning():
+            self.feedback.setText('素材同步完成后再进入章节轻剪。')
+            return
+        if not self.workspace or not self.current_chapter() or not self.applied():
+            self.feedback.setText('先应用有效剧本，再进入章节轻剪。')
+            return
+        from .preparation.finishing_gui import ChapterFinishingDialog
+        ChapterFinishingDialog(self, self.chapter_id, self.shot_id).exec()
+        self.refresh()
+
     def open_mapping(self, rid):
         report = next(r for r in self.workspace.report() if r['requirement']['id'] == rid)
         if (report.get('binding') or {}).get('candidate_id'):
@@ -1311,7 +1323,7 @@ HELP = '''影片名/名称
 // 解析错误不会覆盖上次有效需求。Ctrl+S 立即保存草稿。
 // Ready 仅表示本章参照已准备，不代表生成质量或成片完成。
 // 后续候选审核：绿=可用，黄=待定，红=废弃。
-// 本轮只做准备；生成、审核、轻剪和输出在后续施工。
+// 轻剪使用明确选用的镜头视频 Current；可在章节工作区中预览与输出。
 '''
 
 

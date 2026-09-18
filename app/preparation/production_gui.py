@@ -1,10 +1,10 @@
 """Media-first Candidate production and review for one V0.2 requirement."""
 from __future__ import annotations
 
-from PySide6.QtCore import Qt, QSize
+from PySide6.QtCore import Qt, QSize, QPointF
 from PySide6.QtGui import QIcon, QPixmap, QColor, QPainter, QFont, QShortcut, QKeySequence
 from PySide6.QtWidgets import (
-    QDialog, QFrame, QLabel, QPushButton, QVBoxLayout, QHBoxLayout,
+    QDialog, QFrame, QLabel, QPushButton, QAbstractButton, QVBoxLayout, QHBoxLayout,
     QListWidget, QListWidgetItem, QListView, QFileDialog, QMessageBox, QLineEdit,
     QStyledItemDelegate, QStyle,
     QSizePolicy,
@@ -16,9 +16,9 @@ from .workspace import EXTENSIONS
 
 REVIEW = {
     'unreviewed': ('待判断', '#91a6b9', '○'),
-    'green': ('Green · 可用', '#8fbdac', '●'),
-    'yellow': ('Yellow · 暂缓', '#d7ad79', '●'),
-    'red': ('Red · 拒绝', '#d09b87', '●'),
+    'green': ('', '#8fbdac', '●'),
+    'yellow': ('', '#d7ad79', '●'),
+    'red': ('', '#d09b87', '●'),
 }
 
 
@@ -35,6 +35,39 @@ def action(value, handler, role='quiet'):
     control.setCursor(Qt.CursorShape.PointingHandCursor)
     control.clicked.connect(handler)
     return control
+
+
+class ReviewDot(QAbstractButton):
+    COLORS = {'green': '#8fbdac', 'yellow': '#d7ad79', 'red': '#d09b87'}
+
+    def __init__(self, state, parent=None):
+        super().__init__(parent)
+        self.state = state
+        self.setCheckable(True)
+        self.setFixedSize(31, 31)
+        self.setCursor(Qt.CursorShape.PointingHandCursor)
+        self.setAccessibleName(state)
+        self.setToolTip('')
+
+    def paintEvent(self, event):
+        painter = QPainter(self)
+        painter.setRenderHint(QPainter.RenderHint.Antialiasing)
+        color = QColor(self.COLORS[self.state])
+        if not self.isEnabled():
+            color.setAlpha(145)
+        elif self.underMouse():
+            color = color.lighter(118)
+        painter.setPen(Qt.PenStyle.NoPen)
+        painter.setBrush(color)
+        radius = 6.0 if self.underMouse() else 5.4
+        painter.drawEllipse(QPointF(self.rect().center()), radius, radius)
+        if self.isChecked():
+            ring = QColor(self.COLORS[self.state])
+            ring.setAlpha(210)
+            painter.setPen(ring)
+            painter.setBrush(Qt.BrushStyle.NoBrush)
+            painter.drawEllipse(QPointF(self.rect().center()), 10.2, 10.2)
+        painter.end()
 
 
 class CandidatePreview(QLabel):
@@ -81,7 +114,9 @@ class CandidateDelegate(QStyledItemDelegate):
         painter.setPen(QColor('#dce8f0'))
         painter.drawText(rect.left()+10, rect.top()+89, f'TAKE {take:02d}')
         painter.setPen(QColor(REVIEW[state][1]))
-        painter.drawText(rect.left()+69, rect.top()+89, state.upper())
+        painter.setBrush(QColor(REVIEW[state][1]))
+        painter.setPen(Qt.PenStyle.NoPen)
+        painter.drawEllipse(rect.left()+84, rect.top()+83, 9, 9)
         if is_current:
             painter.setPen(QColor('#bcd4e6'))
             painter.drawText(rect.left()+119, rect.top()+89, 'CURRENT')
@@ -108,12 +143,6 @@ class ProductionDialog(QDialog):
             QListWidget#candidateStrip::item { border-top:1px solid rgba(220,238,250,15); padding:4px; }
             QListWidget#candidateStrip::item:selected { background:#1e3042; border-top:2px solid #bad0df; }
             QLineEdit#reviewNote { background:#101c29; }
-            QPushButton#reviewGreen { color:#9fcbb8; }
-            QPushButton#reviewYellow { color:#dfbc8f; }
-            QPushButton#reviewRed { color:#dba896; }
-            QPushButton#reviewGreen:checked { background:#244337; border:1px solid #668f7b; }
-            QPushButton#reviewYellow:checked { background:#493d2c; border:1px solid #a28861; }
-            QPushButton#reviewRed:checked { background:#49352f; border:1px solid #9d7062; }
         """)
         self.build()
         self.refresh()
@@ -198,10 +227,9 @@ class ProductionDialog(QDialog):
         reviews = QHBoxLayout()
         reviews.setSpacing(4)
         self.review_buttons = {}
-        for state, caption in [('green', '1  Green'), ('yellow', '2  Yellow'), ('red', '3  Red')]:
-            control = action(caption, lambda checked=False, choice=state: self.review_selected(choice),
-                             'review'+state.capitalize())
-            control.setCheckable(True)
+        for state in ('green', 'yellow', 'red'):
+            control = ReviewDot(state)
+            control.clicked.connect(lambda checked=False, choice=state: self.review_selected(choice))
             reviews.addWidget(control)
             self.review_buttons[state] = control
         side.addLayout(reviews)
@@ -239,8 +267,6 @@ class ProductionDialog(QDialog):
         self.list.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         self.list.currentItemChanged.connect(self.selection_changed)
         root.addWidget(self.list)
-        root.addWidget(text('Green 表示可用；Current 是另一次明确选择。Yellow 与 Red 保留历史，不进入正常生产。',
-                            'productionSmall'))
 
     def _guard(self, operation):
         try:
@@ -279,8 +305,7 @@ class ProductionDialog(QDialog):
                 painter.end()
                 icon = QIcon(frame)
             marker = '  CURRENT' if candidate.id == current else ''
-            state = REVIEW[candidate.review_state][0]
-            item = QListWidgetItem(icon, f'Take {candidate.take_number:02d}{marker}\n{state}')
+            item = QListWidgetItem(icon, f'Take {candidate.take_number:02d}{marker}')
             item.setData(Qt.ItemDataRole.UserRole, candidate.id)
             item.setData(Qt.ItemDataRole.UserRole + 1, (candidate.take_number, candidate.review_state, candidate.id == current))
             item.setToolTip(f'{candidate.source_type}  ·  {candidate.created_at}\n{candidate.media_path}')
@@ -291,7 +316,7 @@ class ProductionDialog(QDialog):
         if index is None and self.list.count(): index = 0
         self.list.setCurrentRow(index if index is not None else -1)
         self.list.blockSignals(False)
-        self.count.setText(f'{self.list.count()} 个 Candidate  ·  Red 保留在末尾')
+        self.count.setText(f'{self.list.count()} 个 Candidate')
         self.selection_changed(self.list.currentItem(), None)
 
     def selection_changed(self, current, previous):
@@ -316,7 +341,7 @@ class ProductionDialog(QDialog):
         self.preview_title.setText(f'TAKE {candidate.take_number:02d}   /   {candidate.source_type.upper()}')
         state_label, color, symbol = REVIEW[candidate.review_state]
         current_label = '   ·   CURRENT' if candidate.id == self.service.current(self.req.id) else ''
-        self.preview_state.setText(f'{symbol}  {state_label}{current_label}')
+        self.preview_state.setText(current_label.strip('   ·') if current_label else '')
         self.preview_state.setStyleSheet(f'color:{color};')
         self.preview.set_source(QPixmap(str(path)) if path and candidate.media == 'image' else None)
         if candidate.media != 'image':
@@ -330,8 +355,7 @@ class ProductionDialog(QDialog):
         self.play_button.setEnabled(bool(path) and candidate.media != 'image')
         self.note.setText(candidate.note)
         reviews = [e for e in candidate.history if e['event'] == 'review']
-        self.history.setText(f'{len(reviews)} 次判断  ·  ' +
-                             (f'最近：{reviews[-1]["from"]} → {reviews[-1]["to"]}' if reviews else '尚未判断'))
+        self.history.setText(f'{len(reviews)} 次判断' if reviews else '尚未判断')
         for state, control in self.review_buttons.items():
             control.setEnabled(True)
             control.setChecked(state == candidate.review_state)

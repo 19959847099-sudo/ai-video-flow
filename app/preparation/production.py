@@ -24,7 +24,7 @@ JobStatus = Literal['queued', 'running', 'completed', 'failed']
 class Candidate(BaseModel):
     id: str
     project_id: str
-    requirement_id: str
+    requirement_id: str | None
     chapter_id: str
     shot_id: str
     kind: str
@@ -111,6 +111,88 @@ class ProductionService:
         return sorted((Candidate.model_validate(value) for value in self.workspace.state['candidates'].values()
                        if value['requirement_id'] == requirement_id),
                       key=lambda c: c.take_number)
+
+    def shot_context(self, shot_id: str):
+        script = self.workspace.script
+        if script:
+            for chapter in script.chapters:
+                for shot in chapter.shots:
+                    if shot.id == shot_id:
+                        return chapter, shot
+        raise ValueError('当前剧本中没有此镜头')
+
+    def shot_candidates(self, shot_id: str):
+        self.shot_context(shot_id)
+        return sorted((Candidate.model_validate(value) for value in self.workspace.state['candidates'].values()
+                       if value.get('kind') == 'shot_video' and value['shot_id'] == shot_id),
+                      key=lambda candidate: candidate.take_number)
+
+    def current_shot(self, shot_id: str):
+        return self.workspace.state['shot_bindings'].get(shot_id)
+
+    def import_shot_candidate(self, shot_id: str, source):
+        chapter, shot = self.shot_context(shot_id)
+        source = Path(source).resolve()
+        if not source.is_file() or source.suffix.lower() not in EXTENSIONS['video']:
+            raise ValueError('请选择可读取的视频文件')
+        take = max((c.take_number for c in self.shot_candidates(shot_id)), default=0) + 1
+        candidate_id = uuid4().hex
+        target = self.workspace.path(f'library/shot_video/{shot.number}_take_{take:03d}_{candidate_id[:8]}{source.suffix.lower()}')
+        partial = target.with_name(target.name + '.partial')
+        before = deepcopy(self.workspace.state)
+        try:
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(source, partial)
+            os.replace(partial, target)
+            checksum = sha(target)
+            self.workspace.scan()
+            asset = next((a for a in self.workspace.state['assets'].values()
+                          if a['path'] == target.relative_to(self.workspace.root).as_posix()), None)
+            if not asset or asset['problem'] or asset['sha256'] != checksum:
+                raise ValueError(asset['problem'] if asset else '镜头结果入库失败')
+            stamp = now()
+            candidate = Candidate(
+                id=candidate_id, project_id=self.workspace.state['project_id'], requirement_id=None,
+                chapter_id=chapter.id, shot_id=shot.id, kind='shot_video', media='video', take_number=take,
+                media_path=asset['path'], snapshot_path=asset['snapshot'], asset_id=asset['id'],
+                sha256=checksum, created_at=stamp, source_type='imported',
+                history=[{'at': stamp, 'event': 'created', 'source_type': 'imported'}])
+            self.workspace.state['candidates'][candidate.id] = candidate.model_dump()
+            self.workspace._event('candidate', f'Shot {shot.number} Take {take:02d} 已归档',
+                                  [shot.id], candidate_id=candidate.id)
+            self.workspace._save()
+            return candidate
+        except Exception:
+            partial.unlink(missing_ok=True)
+            target.unlink(missing_ok=True)
+            self.workspace.state = before
+            self.workspace._save()
+            raise
+
+    def bind_shot(self, candidate_id: str):
+        candidate = self.candidate(candidate_id)
+        if candidate.kind != 'shot_video' or candidate.review_state != 'green' or not self.available(candidate_id):
+            raise ValueError('仅可选用仍然有效的镜头视频 Candidate')
+        chapter, _ = self.shot_context(candidate.shot_id)
+        if candidate.chapter_id != chapter.id or candidate.project_id != self.workspace.state['project_id']:
+            raise ValueError('Candidate 与当前项目镜头不匹配')
+        before = deepcopy(self.workspace.state)
+        try:
+            previous = self.current_shot(candidate.shot_id)
+            if previous and previous != candidate.id and previous in self.workspace.state['candidates']:
+                self.workspace.state['candidates'][previous]['history'].append(
+                    {'at': now(), 'event': 'unbound', 'replaced_by': candidate.id})
+            if previous != candidate.id:
+                self.workspace.state['candidates'][candidate.id]['history'].append(
+                    {'at': now(), 'event': 'bound', 'previous_candidate_id': previous})
+            self.workspace.state['shot_bindings'][candidate.shot_id] = candidate.id
+            self.workspace._event('shot_current', f'Shot 当前结果 → Take {candidate.take_number:02d}',
+                                  [candidate.shot_id], candidate_id=candidate.id, previous=previous)
+            self.workspace._save()
+        except Exception:
+            self.workspace.state = before
+            raise
+        return candidate
 
     def candidate(self, candidate_id: str):
         value = self.workspace.state['candidates'].get(candidate_id)

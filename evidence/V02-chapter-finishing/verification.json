@@ -1,0 +1,46 @@
+{
+  "start_commit": "da31fd8",
+  "chapter": "一把没有主人的伞",
+  "assembly_status": "Ready",
+  "enabled_segments": 3,
+  "stored_segments": 4,
+  "shot_order": [
+    "001",
+    "001",
+    "003"
+  ],
+  "selected_current_take": [
+    2,
+    2,
+    1
+  ],
+  "preview": {
+    "path": "finishing/6e04290f05375fe4ab65455693c6c7e4/preview/cb3852f6fee485f59ad805251e11335ae359e5d9b82d4c1e5b1ab96972460dc6/chapter-preview.mp4",
+    "sha256": "6c0c6ec3e9d081b57c505c12ca7d1db4b1f5f69871da64aedd147b3b8b055b09",
+    "duration": 5.5,
+    "audio": "aac"
+  },
+  "output": {
+    "path": "finishing/6e04290f05375fe4ab65455693c6c7e4/output/cb3852f6fee485f59ad805251e11335ae359e5d9b82d4c1e5b1ab96972460dc6/chapter-output.mp4",
+    "sha256": "97509c8b99f8b6895250a8c5a509b80f18a81f26e90508a813c33228adcdae83",
+    "duration": 5.5,
+    "audio": "aac"
+  },
+  "handoff": {
+    "path": "finishing/6e04290f05375fe4ab65455693c6c7e4/handoff/cb3852f6fee485f59ad805251e11335ae359e5d9b82d4c1e5b1ab96972460dc6",
+    "video_clips": 3,
+    "audio_clips": 3,
+    "round_trip": true,
+    "all_media_present": true
+  },
+  "gui": [
+    "finishing-desktop.png",
+    "finishing-compact.png",
+    "finishing-playback.png",
+    "shot-candidates.png",
+    "candidate-review-dots.png"
+  ],
+  "real_model_calls": 0,
+  "paid_calls": 0,
+  "model_cost": 0
+}

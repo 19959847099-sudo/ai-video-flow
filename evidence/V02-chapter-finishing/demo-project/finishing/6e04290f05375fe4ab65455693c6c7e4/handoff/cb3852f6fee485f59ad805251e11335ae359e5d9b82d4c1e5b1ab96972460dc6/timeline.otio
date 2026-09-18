@@ -1,0 +1,277 @@
+{
+    "OTIO_SCHEMA": "Timeline.1",
+    "metadata": {
+        "aigc": {
+            "audio_policy": "embedded source; inspect track routing in NLE",
+            "chapter_id": "6e04290f05375fe4ab65455693c6c7e4",
+            "fixture_or_user_media": true
+        }
+    },
+    "name": "一把没有主人的伞",
+    "global_start_time": null,
+    "tracks": {
+        "OTIO_SCHEMA": "Stack.1",
+        "metadata": {},
+        "name": "tracks",
+        "source_range": null,
+        "effects": [],
+        "markers": [],
+        "enabled": true,
+        "color": null,
+        "children": [
+            {
+                "OTIO_SCHEMA": "Track.1",
+                "metadata": {},
+                "name": "Current Shot Video",
+                "source_range": null,
+                "effects": [],
+                "markers": [],
+                "enabled": true,
+                "color": null,
+                "children": [
+                    {
+                        "OTIO_SCHEMA": "Clip.2",
+                        "metadata": {
+                            "aigc": {
+                                "candidate_id": "59d18287de124c0bbcef932ebe66d6f8",
+                                "mute": false,
+                                "segment_id": "846f1e0b48914197baacab0d393a69b0",
+                                "shot_id": "c8956539c34e50ce81078118e61e6f87",
+                                "volume": 1.0
+                            }
+                        },
+                        "name": "001 雨夜，推门进入",
+                        "source_range": {
+                            "OTIO_SCHEMA": "TimeRange.1",
+                            "duration": {
+                                "OTIO_SCHEMA": "RationalTime.1",
+                                "rate": 24.0,
+                                "value": 24.0
+                            },
+                            "start_time": {
+                                "OTIO_SCHEMA": "RationalTime.1",
+                                "rate": 24.0,
+                                "value": 4.800000000000001
+                            }
+                        },
+                        "effects": [],
+                        "markers": [],
+                        "enabled": true,
+                        "color": null,
+                        "media_references": {
+                            "DEFAULT_MEDIA": {
+                                "OTIO_SCHEMA": "ExternalReference.1",
+                                "metadata": {},
+                                "name": "",
+                                "available_range": null,
+                                "available_image_bounds": null,
+                                "target_url": "media/1bbb44cbc5a199b56276b75c6e52c009054768ecf518d03dcaae86e3e976f6be.mp4"
+                            }
+                        },
+                        "active_media_reference_key": "DEFAULT_MEDIA"
+                    },
+                    {
+                        "OTIO_SCHEMA": "Clip.2",
+                        "metadata": {
+                            "aigc": {
+                                "candidate_id": "59d18287de124c0bbcef932ebe66d6f8",
+                                "mute": false,
+                                "segment_id": "a82fe69b681e4645a95a75e5caded511",
+                                "shot_id": "c8956539c34e50ce81078118e61e6f87",
+                                "volume": 1.0
+                            }
+                        },
+                        "name": "001 雨夜，推门进入",
+                        "source_range": {
+                            "OTIO_SCHEMA": "TimeRange.1",
+                            "duration": {
+                                "OTIO_SCHEMA": "RationalTime.1",
+                                "rate": 24.0,
+                                "value": 36.00000000000001
+                            },
+                            "start_time": {
+                                "OTIO_SCHEMA": "RationalTime.1",
+                                "rate": 24.0,
+                                "value": 28.799999999999997
+                            }
+                        },
+                        "effects": [],
+                        "markers": [],
+                        "enabled": true,
+                        "color": null,
+                        "media_references": {
+                            "DEFAULT_MEDIA": {
+                                "OTIO_SCHEMA": "ExternalReference.1",
+                                "metadata": {},
+                                "name": "",
+                                "available_range": null,
+                                "available_image_bounds": null,
+                                "target_url": "media/1bbb44cbc5a199b56276b75c6e52c009054768ecf518d03dcaae86e3e976f6be.mp4"
+                            }
+                        },
+                        "active_media_reference_key": "DEFAULT_MEDIA"
+                    },
+                    {
+                        "OTIO_SCHEMA": "Clip.2",
+                        "metadata": {
+                            "aigc": {
+                                "candidate_id": "afe0e07a2c4540c9bc41cabdbd9c2c23",
+                                "mute": false,
+                                "segment_id": "7fee967441e644cc8e87184c26dd4ec8",
+                                "shot_id": "1527b6135df75e72ad4655b322fa270b",
+                                "volume": 1.0
+                            }
+                        },
+                        "name": "003 玻璃上的雨痕",
+                        "source_range": {
+                            "OTIO_SCHEMA": "TimeRange.1",
+                            "duration": {
+                                "OTIO_SCHEMA": "RationalTime.1",
+                                "rate": 24.0,
+                                "value": 72.0
+                            },
+                            "start_time": {
+                                "OTIO_SCHEMA": "RationalTime.1",
+                                "rate": 24.0,
+                                "value": 0.0
+                            }
+                        },
+                        "effects": [],
+                        "markers": [],
+                        "enabled": true,
+                        "color": null,
+                        "media_references": {
+                            "DEFAULT_MEDIA": {
+                                "OTIO_SCHEMA": "ExternalReference.1",
+                                "metadata": {},
+                                "name": "",
+                                "available_range": null,
+                                "available_image_bounds": null,
+                                "target_url": "media/a35e8211231ed28a436de9fd5244101dcda6faf9420f05078a3a7fa543786ae2.mp4"
+                            }
+                        },
+                        "active_media_reference_key": "DEFAULT_MEDIA"
+                    }
+                ],
+                "kind": "Video"
+            },
+            {
+                "OTIO_SCHEMA": "Track.1",
+                "metadata": {},
+                "name": "Source Audio",
+                "source_range": null,
+                "effects": [],
+                "markers": [],
+                "enabled": true,
+                "color": null,
+                "children": [
+                    {
+                        "OTIO_SCHEMA": "Clip.2",
+                        "metadata": {
+                            "aigc": {
+                                "candidate_id": "59d18287de124c0bbcef932ebe66d6f8",
+                                "mute": false,
+                                "segment_id": "846f1e0b48914197baacab0d393a69b0",
+                                "shot_id": "c8956539c34e50ce81078118e61e6f87",
+                                "volume": 1.0
+                            }
+                        },
+                        "name": "001 audio",
+                        "source_range": {
+                            "OTIO_SCHEMA": "TimeRange.1",
+                            "duration": {
+                                "OTIO_SCHEMA": "RationalTime.1",
+                                "rate": 24.0,
+                                "value": 24.0
+                            },
+                            "start_time": {
+                                "OTIO_SCHEMA": "RationalTime.1",
+                                "rate": 24.0,
+                                "value": 4.800000000000001
+                            }
+                        },
+                        "effects": [],
+                        "markers": [],
+                        "enabled": true,
+                        "color": null,
+                        "media_references": {
+                            "DEFAULT_MEDIA": {
+                                "OTIO_SCHEMA": "ExternalReference.1",
+                                "metadata": {},
+                                "name": "",
+                                "available_range": null,
+                                "available_image_bounds": null,
+                                "target_url": "media/1bbb44cbc5a199b56276b75c6e52c009054768ecf518d03dcaae86e3e976f6be.mp4"
+                            }
+                        },
+                        "active_media_reference_key": "DEFAULT_MEDIA"
+                    },
+                    {
+                        "OTIO_SCHEMA": "Clip.2",
+                        "metadata": {
+                            "aigc": {
+                                "candidate_id": "59d18287de124c0bbcef932ebe66d6f8",
+                                "mute": false,
+                                "segment_id": "a82fe69b681e4645a95a75e5caded511",
+                                "shot_id": "c8956539c34e50ce81078118e61e6f87",
+                                "volume": 1.0
+                            }
+                        },
+                        "name": "001 audio",
+                        "source_range": {
+                            "OTIO_SCHEMA": "TimeRange.1",
+                            "duration": {
+                                "OTIO_SCHEMA": "RationalTime.1",
+                                "rate": 24.0,
+                                "value": 36.00000000000001
+                            },
+                            "start_time": {
+                                "OTIO_SCHEMA": "RationalTime.1",
+                                "rate": 24.0,
+                                "value": 28.799999999999997
+                            }
+                        },
+                        "effects": [],
+                        "markers": [],
+                        "enabled": true,
+                        "color": null,
+                        "media_references": {
+                            "DEFAULT_MEDIA": {
+                                "OTIO_SCHEMA": "ExternalReference.1",
+                                "metadata": {},
+                                "name": "",
+                                "available_range": null,
+                                "available_image_bounds": null,
+                                "target_url": "media/1bbb44cbc5a199b56276b75c6e52c009054768ecf518d03dcaae86e3e976f6be.mp4"
+                            }
+                        },
+                        "active_media_reference_key": "DEFAULT_MEDIA"
+                    },
+                    {
+                        "OTIO_SCHEMA": "Gap.1",
+                        "metadata": {},
+                        "name": "",
+                        "source_range": {
+                            "OTIO_SCHEMA": "TimeRange.1",
+                            "duration": {
+                                "OTIO_SCHEMA": "RationalTime.1",
+                                "rate": 24.0,
+                                "value": 72.0
+                            },
+                            "start_time": {
+                                "OTIO_SCHEMA": "RationalTime.1",
+                                "rate": 24.0,
+                                "value": 0.0
+                            }
+                        },
+                        "effects": [],
+                        "markers": [],
+                        "enabled": true,
+                        "color": null
+                    }
+                ],
+                "kind": "Audio"
+            }
+        ]
+    }
+}

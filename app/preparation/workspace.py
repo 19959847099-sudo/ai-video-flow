@@ -50,7 +50,7 @@ class Workspace:
                               draft='', script=None, assets={}, bindings={}, history=[],
                               events=[], revisions=[], ui={}, updated_at=now(),
                               candidates={}, production_jobs={}, unbound_requirements=[],
-                              reference_decisions={}, prompt_drafts={})
+                              reference_decisions={}, prompt_drafts={}, shot_bindings={}, assemblies={})
             self._save()
         # Additive V0.2 production records keep existing Preparation projects readable.
         self.state.setdefault('candidates', {})
@@ -58,7 +58,9 @@ class Workspace:
         self.state.setdefault('unbound_requirements', [])
         self.state.setdefault('reference_decisions', {})
         self.state.setdefault('prompt_drafts', {})
-        for kind in KINDS:
+        self.state.setdefault('shot_bindings', {})
+        self.state.setdefault('assemblies', {})
+        for kind in (*KINDS, 'shot_video'):
             (self.root / 'library' / kind).mkdir(parents=True, exist_ok=True)
 
     def _save(self):
@@ -129,7 +131,7 @@ class Workspace:
         return target.relative_to(self.root).as_posix()
 
     def _inspect(self, path, kind):
-        media = MEDIA[kind]
+        media = 'video' if kind == 'shot_video' else MEDIA[kind]
         if path.suffix.lower() not in EXTENSIONS[media]:
             return None
         name = path.relative_to(self.root / 'library' / kind).with_suffix('').as_posix()
@@ -163,7 +165,7 @@ class Workspace:
         before = deepcopy(self.state)
         try:
             discovered = {}
-            for kind in KINDS:
+            for kind in (*KINDS, 'shot_video'):
                 for path in sorted((self.root / 'library' / kind).rglob('*')):
                     if not path.is_file():
                         continue

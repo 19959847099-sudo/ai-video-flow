@@ -8,6 +8,8 @@ QWidget { font-family: "Segoe UI", "Microsoft YaHei UI"; font-size: 13px; color:
 QMainWindow, QDialog, QMessageBox { background: #0b111a; }
 QLabel { background: transparent; }
 QLabel#brand { font-size: 17px; font-weight: 600; letter-spacing: 2px; color: #edf3f8; }
+QPushButton#stageEnabled { font-size: 12px; color:#9cabbc; border:0; border-radius:0; padding:0 2px; }
+QPushButton#stageEnabled:hover { color:#e5edf4; background:transparent; border-bottom:2px solid #809db5; }
 QLabel#stageFuture { font-size: 12px; color: #758597; }
 QLabel#stageActive { font-size: 12px; color: #e6edf4; border-bottom: 2px solid #b6cfe4; }
 QLabel#brandSub, QLabel#eyebrow { font-size: 10px; letter-spacing: 1px; color: #879bb0; }

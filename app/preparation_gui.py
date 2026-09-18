@@ -151,7 +151,9 @@ class MappingDialog(QDialog):
         self.choices = QListWidget()
         self.choices.setObjectName('mappingChoices')
         self.choices.setMaximumHeight(158)
-        choices = [a for a in host.workspace.state['assets'].values() if a['kind'] == req['kind'] and not a.get('missing')]
+        candidate_assets = {c['asset_id'] for c in host.workspace.state['candidates'].values()}
+        choices = [a for a in host.workspace.state['assets'].values()
+                   if a['kind'] == req['kind'] and not a.get('missing') and a['id'] not in candidate_assets]
         choices.sort(key=lambda a: (a['id'] not in {x['id'] for x in report['candidates']}, a['name']))
         for asset in choices:
             marker = '不可用 · ' if asset['problem'] else ''
@@ -278,6 +280,7 @@ class PreparationWindow(QMainWindow):
         self.chapter_id = None
         self.shot_id = None
         self.loading = True
+        self.active_requirement_id = None
         self.setWindowTitle('AI 视频工作流 · V0.2 章节准备')
         self.resize(1480, 940)
         self.setMinimumSize(1120, 720)
@@ -309,9 +312,14 @@ class PreparationWindow(QMainWindow):
         stages = QHBoxLayout()
         stages.setContentsMargins(0, 0, 0, 0)
         stages.setSpacing(24)
+        self.production_stages = []
         for title, active in [('准备', True), ('生成', False), ('判断', False), ('轻剪', False), ('输出', False)]:
-            stage = label(title, 'stageActive' if active else 'stageFuture')
-            stage.setAlignment(Qt.AlignmentFlag.AlignCenter)
+            if title in ('生成', '判断'):
+                stage = button(title, self.open_production, 'stageEnabled')
+                stage.setToolTip('进入当前需求的 Candidate 生产与判断')
+                self.production_stages.append(stage)
+            else:
+                stage = label(title, 'stageActive' if active else 'stageFuture')
             stage.setFixedHeight(57)
             stages.addWidget(stage)
         top_layout.addLayout(stages)
@@ -406,6 +414,8 @@ class PreparationWindow(QMainWindow):
         assets_head.setContentsMargins(0, 8, 0, 6)
         self.requirement_title = label('当前镜头资产需求', 'sectionTitle')
         assets_head.addWidget(self.requirement_title)
+        self.production_button = button('制作 / 判断  ↗', self.open_production, 'quiet')
+        assets_head.addWidget(self.production_button)
         assets_head.addStretch()
         self.filter = QComboBox()
         self.filter.setFixedWidth(83)
@@ -646,7 +656,7 @@ class PreparationWindow(QMainWindow):
         try: self.save_draft()
         except Exception: return
         self.body.setEnabled(False)
-        for control in (self.open_button, self.scan_button, self.apply_button): control.setEnabled(False)
+        for control in (self.open_button, self.scan_button, self.apply_button, *self.production_stages): control.setEnabled(False)
         self.saved.setText('正在扫描与校验素材…')
         self.scan_error = None
         self.worker = ScanThread(self.workspace)
@@ -659,7 +669,7 @@ class PreparationWindow(QMainWindow):
 
     def scan_finished(self):
         self.body.setEnabled(True)
-        for control in (self.open_button, self.scan_button, self.apply_button): control.setEnabled(True)
+        for control in (self.open_button, self.scan_button, self.apply_button, *self.production_stages): control.setEnabled(True)
         self.refresh()
         if self.scan_error:
             self.saved.setText('同步未完成')
@@ -799,11 +809,16 @@ class PreparationWindow(QMainWindow):
         ids = set(selected.requirement_ids) if selected else {r for s in chapter.shots for r in s.requirement_ids} if chapter else set()
         self.requirement_title.setText('当前镜头资产需求' if selected else '整章资产需求')
         reports = [r for r in self.workspace.report() if r['requirement']['id'] in ids]
+        if self.active_requirement_id not in ids:
+            preferred = next((r for r in reports if r['status'] == 'missing'), None)
+            self.active_requirement_id = (preferred or (reports[0] if reports else None))['requirement']['id'] if reports else None
+        self.production_button.setEnabled(bool(reports) and self.applied())
         mode = self.filter.currentData()
         visible = [r for r in reports if mode == 'all' or (mode == 'todo' and r['status'] != 'resolved')
                    or (mode == 'resolved' and r['status'] == 'resolved')]
         # Preserve declaration order: the media strip follows the executable script.
-        available = [r for r in reports if r['asset'] and not r['asset'].get('missing') and not r['asset']['problem']]
+        available = [r for r in reports if r['status'] == 'resolved' and r['asset']
+                     and not r['asset'].get('missing') and not r['asset']['problem']]
         if not any(r['asset']['id'] == self.viewed_asset_id and r['asset']['sha256'] == self.viewed_asset_sha
                    for r in available):
             default = next((r for r in available if r['requirement']['kind'] == 'environment'), None)
@@ -833,6 +848,8 @@ class PreparationWindow(QMainWindow):
         self.render_script_view()
 
     def select_media(self, report):
+        if 'requirement' in report:
+            self.active_requirement_id = report['requirement']['id']
         asset = report['asset']
         if not asset or asset.get('missing') or asset['problem']:
             self.viewer_image.set_source(None)
@@ -850,6 +867,10 @@ class PreparationWindow(QMainWindow):
         self.viewer_open.setEnabled(True)
         suffix = Path(asset['path']).suffix[1:].upper()
         demo = 'DEMO  ·  ' if self.workspace.state.get('is_example') else ''
+        binding = report.get('binding') or {}
+        candidate = self.workspace.state['candidates'].get(binding.get('candidate_id'))
+        media_name = (f'{report["requirement"]["name"]}  ·  Take {candidate["take_number"]:02d}'
+                      if candidate else asset['name'])
         if asset['media'] == 'image':
             pix = QPixmap(str(self.workspace.path(asset['path'])))
             if pix.isNull():
@@ -859,14 +880,14 @@ class PreparationWindow(QMainWindow):
                 self.viewer_open.setEnabled(False)
             else:
                 self.viewer_image.set_source(pix)
-                self.viewer_image.set_media_caption(asset['name'], f'{demo}{pix.width()} × {pix.height()}  /  {suffix}')
-                self.viewer_caption.setText(f'{demo}{asset["name"]}  ·  {suffix}')
+                self.viewer_image.set_media_caption(media_name, f'{demo}{pix.width()} × {pix.height()}  /  {suffix}')
+                self.viewer_caption.setText(f'{demo}{media_name}  ·  {suffix}')
                 self.viewer_caption.hide()
         else:
             self.viewer_image.set_source(None)
             self.viewer_image.setText('▷  视频参照 · 打开预览' if asset['media'] == 'video' else '≋  音声参照 · 打开试听')
             self.viewer_image.set_media_caption('', '')
-            self.viewer_caption.setText(f'{demo}{asset["name"]}  ·  {suffix}')
+            self.viewer_caption.setText(f'{demo}{media_name}  ·  {suffix}')
             self.viewer_caption.show()
         self.update_asset_selection()
 
@@ -907,7 +928,14 @@ class PreparationWindow(QMainWindow):
         source = button(f'L{source_line:03d}', lambda: self.show_source_line(source_line), 'quiet')
         source.setToolTip('定位到可执行剧本中的需求声明')
         source.setStyleSheet('font-size:10px;padding:0;color:#8198ad;')
-        layout.addLayout(row(kind, None, source, spacing=1))
+        if report['status'] == 'missing':
+            produce = button('制作', lambda: self.open_production(req['id']), 'quiet')
+            produce.setObjectName('produce_' + req['id'])
+            produce.setToolTip('进入当前需求的 Candidate 生产与判断')
+            produce.setStyleSheet('font-size:10px;padding:0;color:#a9c4d7;')
+            layout.addLayout(row(kind, source, produce, spacing=1))
+        else:
+            layout.addLayout(row(kind, None, source, spacing=1))
         text, ink = STATUS[report['status']]
         state = label('●  ' + text)
         state.setStyleSheet(f'color:{ink};font-size:10px;')
@@ -962,8 +990,38 @@ class PreparationWindow(QMainWindow):
                              'margin:23px 29px 18px;background:transparent;">' + ''.join(parts) + '</body></html>')
         self.reading.verticalScrollBar().setValue(0)
 
+    def open_production(self, requirement_id=None):
+        if self.worker and self.worker.isRunning():
+            self.feedback.setText('素材同步完成后再进入生产。')
+            return
+        if isinstance(requirement_id, bool):
+            requirement_id = None
+        script = self.workspace.script if self.workspace else None
+        if not script or not self.applied():
+            self.feedback.setText('先应用有效剧本，再进入生产与判断。')
+            return
+        chapter = self.current_chapter()
+        selected = next((s for s in chapter.shots if s.id == self.shot_id), None) if chapter else None
+        ids = (selected.requirement_ids if selected else
+               list(dict.fromkeys(r for shot in chapter.shots for r in shot.requirement_ids))) if chapter else []
+        reports = [r for r in self.workspace.report() if r['requirement']['id'] in ids]
+        rid = requirement_id or self.active_requirement_id
+        if rid not in ids:
+            missing = next((r for r in reports if r['status'] == 'missing'), None)
+            rid = (missing or reports[0])['requirement']['id'] if reports else None
+        if not rid:
+            self.feedback.setText('当前章节没有可生产的资产需求。')
+            return
+        self.active_requirement_id = rid
+        from .preparation.production_gui import ProductionDialog
+        ProductionDialog(self, rid, self.shot_id if selected and rid in selected.requirement_ids else None).exec()
+        self.refresh()
+
     def open_mapping(self, rid):
         report = next(r for r in self.workspace.report() if r['requirement']['id'] == rid)
+        if (report.get('binding') or {}).get('candidate_id'):
+            self.open_production(rid)
+            return
         MappingDialog(self, report).exec()
         self.refresh()
 

@@ -12,6 +12,7 @@ from PySide6.QtTest import QTest
 from PySide6.QtWidgets import QApplication, QPushButton, QFileDialog
 
 from app.preparation_gui import PreparationWindow, MappingDialog
+from app.preparation.production_gui import ProductionDialog
 from app.preparation.script import requirement_id
 
 
@@ -177,6 +178,52 @@ class PreparationGuiTests(unittest.TestCase):
         self.window.open_workspace(other)
         self.wait_scan()
         self.assertEqual(self.window.editor.textCursor().position(), cursor)
+
+    def test_missing_requirement_production_review_bind_returns_to_shot(self):
+        self.window.editor.setPlainText('片/名称\n01/章节/雨夜\n001/入店\n动作：\n【红伞】')
+        self.click(self.window.apply_button)
+        report = self.window.workspace.report()[0]
+        rid = report['requirement']['id']
+        shot_id = self.window.shot_id
+        self.assertEqual(report['status'], 'missing')
+        self.assertIsNotNone(self.window.findChild(QPushButton, 'produce_' + rid))
+        dialog = ProductionDialog(self.window, rid, shot_id)
+        dialog.show()
+        dialog.generate_fixture()
+        self.assertEqual(dialog.list.count(), 1)
+        first = dialog.selected_id
+        self.assertEqual(dialog.service.candidate(first).review_state, 'unreviewed')
+        dialog.activateWindow()
+        dialog.list.setFocus()
+        QTest.qWait(20)
+        QTest.keyClick(dialog.list, Qt.Key.Key_2)
+        self.assertEqual(dialog.service.candidate(first).review_state, 'yellow')
+        dialog.note.setFocus()
+        QTest.keyClicks(dialog.note, '1')
+        self.assertEqual(dialog.service.candidate(first).review_state, 'yellow')
+        dialog.note.clear()
+        self.assertEqual(self.window.workspace.report()[0]['status'], 'missing')
+        dialog.generate_fixture()
+        second = dialog.selected_id
+        self.assertNotEqual(first, second)
+        dialog.review_selected('green')
+        self.assertIsNone(dialog.service.current(rid))
+        dialog.bind_selected()
+        self.assertEqual(dialog.service.current(rid), second)
+        self.assertEqual(self.window.workspace.report()[0]['status'], 'resolved')
+        dialog.review_selected('red')
+        self.assertEqual(self.window.workspace.report()[0]['status'], 'unresolved')
+        self.assertIsNone(self.window.viewer_image.source)
+        dialog.review_selected('green')
+        self.assertEqual(self.window.workspace.report()[0]['status'], 'resolved')
+        self.assertIn('红伞', self.window.viewer_image.media_title)
+        self.assertIn('Take', self.window.viewer_image.media_title)
+        with patch.object(self.window, 'open_production') as opening:
+            self.window.open_mapping(rid)
+            opening.assert_called_once_with(rid)
+        self.assertEqual(self.window.shot_id, shot_id)
+        dialog.close()
+        self.assertIn('READY', self.window.ready_label.text())
 
     def test_workspace_lock_and_compact_primary_controls(self):
         with self.assertRaisesRegex(ValueError, '另一个窗口'):

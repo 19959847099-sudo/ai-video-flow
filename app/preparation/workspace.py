@@ -5,6 +5,7 @@ from copy import deepcopy
 from datetime import datetime, timezone
 import hashlib
 import json
+import re
 import shutil
 from pathlib import Path
 from uuid import uuid4
@@ -47,8 +48,13 @@ class Workspace:
         else:
             self.state = dict(version='preparation-0.2', project_id=uuid4().hex,
                               draft='', script=None, assets={}, bindings={}, history=[],
-                              events=[], revisions=[], ui={}, updated_at=now())
+                              events=[], revisions=[], ui={}, updated_at=now(),
+                              candidates={}, production_jobs={}, unbound_requirements=[])
             self._save()
+        # Additive V0.2 production records keep existing Preparation projects readable.
+        self.state.setdefault('candidates', {})
+        self.state.setdefault('production_jobs', {})
+        self.state.setdefault('unbound_requirements', [])
         for kind in KINDS:
             (self.root / 'library' / kind).mkdir(parents=True, exist_ok=True)
 
@@ -197,6 +203,10 @@ class Workspace:
                 elif asset.get('missing'):
                     self._event('restore', f'文件已恢复：{asset["name"]}', self.affected(asset['id']), asset_id=asset['id'])
                 asset.update(sha256=found['sha256'], snapshot=found['snapshot'], problem=found['problem'], missing=False)
+            for candidate in self.state['candidates'].values():
+                asset = assets.get(candidate['asset_id'])
+                if asset:
+                    candidate['media_path'] = asset['path']
             report = self._resolve(record=True)
             self._save()
             return report
@@ -215,11 +225,13 @@ class Workspace:
         if not script:
             return []
         rows = []
+        candidate_assets = {c['asset_id'] for c in self.state['candidates'].values()}
         for req in script.requirements:
             matches = [a for a in self.state['assets'].values() if a['kind'] == req.kind and
-                       req.name in a['aliases'] and not a.get('missing')]
+                       req.name in a['aliases'] and not a.get('missing') and a['id'] not in candidate_assets
+                       and not re.fullmatch(r'take_\d{3}_[0-9a-f]{8}', a['name'])]
             binding = self.state['bindings'].get(req.id)
-            if not binding and len(matches) == 1 and not matches[0]['problem'] and record:
+            if not binding and req.id not in self.state['unbound_requirements'] and len(matches) == 1 and not matches[0]['problem'] and record:
                 binding = dict(asset_id=matches[0]['id'], sha256=matches[0]['sha256'], mode='auto')
                 self.state['bindings'][req.id] = binding
             asset = self.state['assets'].get(binding['asset_id']) if binding else None
@@ -238,12 +250,20 @@ class Workspace:
                 elif asset['sha256'] != binding['sha256']:
                     status, reason = 'changed', '内容已替换，确认后才使用新版本；历史版本保留'
                 else:
-                    status, reason = 'resolved', '已明确绑定' if binding['mode'] == 'manual' else '按类型与完整名称匹配'
+                    status, reason = 'resolved', ('已选用 Green Candidate' if binding['mode'] == 'candidate'
+                                             else '已明确绑定' if binding['mode'] == 'manual'
+                                             else '按类型与完整名称匹配')
+            elif req.id in self.state['unbound_requirements']:
+                status, reason = 'missing', '当前绑定已解除；请选择一个可用 Candidate 或素材'
             elif len(matches) > 1:
                 status, reason = 'unresolved', '同一需求有多个同名素材，请明确选择'
             elif len(matches) == 1:
                 status, reason = ('unresolved', matches[0]['problem']) if matches[0]['problem'] else ('resolved', '按类型与完整名称匹配')
                 asset = matches[0]
+            if binding and binding.get('candidate_id'):
+                candidate = self.state['candidates'].get(binding['candidate_id'])
+                if status == 'resolved' and (not candidate or candidate['review_state'] != 'green'):
+                    status, reason = 'unresolved', '当前 Candidate 不再是 Green，请重新审核或更换绑定'
             if record and asset and status == 'resolved' and binding:
                 self._remember(req, asset, binding)
             rows.append(dict(requirement=req.model_dump(), status=status, reason=reason,
@@ -253,21 +273,63 @@ class Workspace:
     def report(self):
         return self._resolve()
 
-    def bind(self, requirement_id, asset_id):
+    def bind(self, requirement_id, asset_id, candidate_id=None):
         req = next((r for r in self.script.requirements if r.id == requirement_id), None) if self.script else None
         asset = self.state['assets'].get(asset_id)
         if req is None or asset is None or asset['kind'] != req.kind or asset.get('missing') or asset['problem']:
             raise ValueError('不可绑定：需求、素材类型或文件状态不匹配')
         if sha(self.path(asset['path'])) != asset['sha256']:
             raise ValueError('文件已变化，请先重新扫描')
+        if not candidate_id and any(c['asset_id'] == asset_id for c in self.state['candidates'].values()):
+            raise ValueError('Candidate 需先审核为 Green，再明确绑定')
+        if candidate_id:
+            candidate = self.state['candidates'].get(candidate_id)
+            if (not candidate or candidate['requirement_id'] != requirement_id
+                    or candidate['asset_id'] != asset_id or candidate['sha256'] != asset['sha256']
+                    or candidate['review_state'] != 'green'):
+                raise ValueError('仅可绑定当前需求下有效的 Green Candidate')
         before = deepcopy(self.state)
         try:
             old = self.state['bindings'].get(req.id)
-            self.state['bindings'][req.id] = dict(asset_id=asset_id, sha256=asset['sha256'], mode='manual')
-            if old and (old['asset_id'] != asset_id or old['sha256'] != asset['sha256']):
+            self.state['bindings'][req.id] = dict(asset_id=asset_id, sha256=asset['sha256'],
+                                                  mode='candidate' if candidate_id else 'manual',
+                                                  **({'candidate_id': candidate_id} if candidate_id else {}))
+            if req.id in self.state['unbound_requirements']:
+                self.state['unbound_requirements'].remove(req.id)
+            previous_candidate = old.get('candidate_id') if old else None
+            if previous_candidate and previous_candidate != candidate_id:
+                previous = self.state['candidates'].get(previous_candidate)
+                if previous:
+                    previous['history'].append(dict(at=now(), event='unbound',
+                                                    replaced_by=candidate_id))
+            if candidate_id and previous_candidate != candidate_id:
+                self.state['candidates'][candidate_id]['history'].append(
+                    dict(at=now(), event='bound', previous_candidate_id=previous_candidate))
+            if old != self.state['bindings'][req.id]:
                 self._event('binding', f'已确认新的参照：{req.name}', [u.shot_id for u in req.usages],
-                            requirement_id=req.id, previous=old)
+                            requirement_id=req.id, previous=old, current=deepcopy(self.state['bindings'][req.id]))
             self._resolve(record=True)
+            self._save()
+        except Exception:
+            self.state = before
+            raise
+
+    def unbind_candidate(self, requirement_id):
+        binding = self.state['bindings'].get(requirement_id)
+        req = next((r for r in self.script.requirements if r.id == requirement_id), None) if self.script else None
+        if not req or not binding or not binding.get('candidate_id'):
+            raise ValueError('当前需求没有 Candidate 绑定')
+        before = deepcopy(self.state)
+        try:
+            del self.state['bindings'][requirement_id]
+            if requirement_id not in self.state['unbound_requirements']:
+                self.state['unbound_requirements'].append(requirement_id)
+            previous = self.state['candidates'].get(binding['candidate_id'])
+            if previous:
+                previous['history'].append(dict(at=now(), event='unbound', replaced_by=None))
+            self._event('binding', f'已解除当前 Candidate：{req.name}',
+                        [u.shot_id for u in req.usages], requirement_id=requirement_id,
+                        previous=binding, current=None)
             self._save()
         except Exception:
             self.state = before

@@ -1,8 +1,8 @@
 # AI 视频个人生产工作流 · V0.2
 
-当前交付：**剧本驱动准备闭环 + 已通过 C「镜头上下文」母版的真实 Qt 工作区**。
+当前交付：**V0.2 准备工作区 + Production / Candidate / Review 最小完整闭环**。C「镜头上下文」仍是正式视觉基线。
 
-规范剧本 → 解析 → 资产需求 → 扫描素材库 → 导入 / 明确绑定 → 章节 Ready。
+规范剧本 → 资产需求 → 缺失项生产 / 导入 → Candidate → Green / Yellow / Red → 明确选用 Current → Requirement Resolved。
 
 正式依据为 `重要文档` 中的项目定义 V0.2、项目路线 V0.2、AI 协作规则 V0.1。旧 A-01～A-08 / UI-Final 是技术底座与历史证据，不定义当前产品结构。
 
@@ -25,6 +25,8 @@ python -m app.preparation_gui --data-dir evidence/V0.2-C-Qt/demo-project
 
 ![V0.2 准备工作区：C 镜头上下文真实 Qt 实现](evidence/V0.2-C-Qt/preparation-desktop.png)
 
+![V0.2 Production：Candidate 审核与明确绑定](evidence/V0.2-Production/production-review.png)
+
 ## 当前可用
 
 - 影片 → 章节 → 镜头，支持多人物、完整视觉组合、独立 Voice、环境/背景音、关键物件、视频镜头参照和自然语言创作区。
@@ -33,18 +35,20 @@ python -m app.preparation_gui --data-dir evidence/V0.2-C-Qt/demo-project
 - 开放素材文件夹；新增、替换、改名、删除后重新扫描，提示受影响镜头。
 - 草稿自动保存、源行错误定位、有效版本保护、资产历史与绑定恢复。
 - 章节/镜头和编辑位置恢复，同项目单窗口写入。
+- 缺失需求可进入 Production：图像使用零调用本地 Fixture，图像 / 音频 / 视频均可导入为 Candidate。
+- Candidate 独立保留 Take、媒体哈希、来源、Job、审核与绑定历史；多个 Green 可共存，Current 需另行明确选用。
 
-准备就绪仅表示必需参照已映射，不表示模型质量或成片完成。新主链的生成、红黄绿审核、轻剪和输出将在后续轮次接入；本轮未调用真实 API。
+准备就绪仅表示必需参照已映射，不表示模型质量或成片完成。当前图像 Fixture 不调用真实 API；轻剪和输出仍在后续轮次接入。
 
 ## 日常操作
 
 1. 在右侧阅读当前镜头剧本；点“编辑剧本”修改，或从顶栏导入，然后点“应用剧本”（Ctrl+Enter）。草稿自动保存，Ctrl+S 可立即保存。
-2. 顶部切换章节、底部切换镜头；左侧查看真实媒体及当前镜头资产需求，点“导入素材”或“查看绑定”。
-3. 同名多候选时明确选择；外部替换文件后确认新版本。不会静默改绑。
-4. 外部增删或改名后点“同步素材”，通过“变更记录与影响定位”返回相关镜头。
+2. 顶部切换章节、底部切换镜头；在左侧缺失需求点“制作”，或点“制作 / 判断”进入当前需求。
+3. 生成本地示意图或导入媒体形成新 Candidate；逐个标 Green / Yellow / Red，再将有效 Green 明确设为 Current。
+4. 返回镜头后，Preparation 立即显示绑定媒体与 Resolved；素材变化后点“同步素材”，不会静默改绑。
 5. 关闭重开继续当前项目；迁移时复制整个项目目录，包含 `.history`。
 
-[五分钟语法、文件夹约定与实现边界](docs/V0.2-准备工作区.md) · [C 母版 Qt 实现与截图](evidence/V0.2-C-Qt/实现回执.md) · [本轮施工回执](evidence/V0.2-R1/施工回执.md)
+[五分钟语法、文件夹约定与实现边界](docs/V0.2-准备工作区.md) · [C 母版 Qt 实现与截图](evidence/V0.2-C-Qt/实现回执.md) · [Production 施工回执与截图](evidence/V0.2-Production/施工回执.md)
 
 ## 工程入口
 
@@ -52,6 +56,8 @@ python -m app.preparation_gui --data-dir evidence/V0.2-C-Qt/demo-project
 app/preparation/script.py       Parser、章节镜头、资产需求与源行
 app/preparation/workspace.py    映射、文件同步、版本、历史、原子状态
 app/preparation/visuals.py      统一视觉语言、剧本编辑器
+app/preparation/production.py   Job、Candidate、审核与明确绑定
+app/preparation/production_gui.py  Qt 生产与判断工作区
 app/preparation/example.py      示例剧本、原创矢量与 AI 生成的 Demo 环境参照
 app/preparation_gui.py          Qt 准备工作区与参照预览
 workspace-v02/                  默认新工作区（运行数据，不提交 Git）
@@ -62,9 +68,9 @@ workspace-v02/                  默认新工作区（运行数据，不提交 Gi
 ## 本轮聚焦验证
 
 ```powershell
-python -m unittest discover -s tests -p 'test_preparation*.py' -v
+python -m unittest tests.test_preparation_production tests.test_preparation_gui tests.test_preparation -v
 ```
 
-本次 C 母版 Qt 施工只聚焦代表性 GUI 主路径与实际窗口截图；Parser、FFmpeg、OTIO 等未修改能力没有重复大规模回归。
+本轮聚焦 Candidate 生命周期、绑定状态、项目恢复、代表性 Qt 主路径和 Workspace 受影响逻辑；未重复历史生成、FFmpeg、OTIO 的大规模回归。
 
-施工前 Git 基线：`0af6a85`。无远程仓库配置或发布动作。
+本轮施工前 Git 基线：`bc13613`。无远程仓库配置或发布动作。

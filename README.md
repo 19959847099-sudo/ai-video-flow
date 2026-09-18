@@ -1,6 +1,6 @@
 # AI 视频个人生产工作流 · V0.2
 
-当前交付：**剧本驱动准备闭环 + 章节工作区视觉母版**。
+当前交付：**剧本驱动准备闭环 + 已通过 C「镜头上下文」母版的真实 Qt 工作区**。
 
 规范剧本 → 解析 → 资产需求 → 扫描素材库 → 导入 / 明确绑定 → 章节 Ready。
 
@@ -15,15 +15,15 @@ python -m app.preparation_gui
 
 或双击 `start.cmd`。使用 Python 3.11+、PySide6 6.10.2，以及 PATH 中已有的 FFmpeg 工具（音视频参照校验使用 ffprobe）。
 
-首次进入空工作区：可直接编辑、导入 `.md/.txt` 规范剧本，或点左下角“打开示例项目”。“打开项目”可选择新空文件夹或已有 V0.2 项目。
+首次进入空工作区：在右侧点“编辑剧本”、从顶栏导入 `.md/.txt` 规范剧本，或点底栏“打开示例”。“打开项目”可选择新空文件夹或已有 V0.2 项目。
 
 默认启动恢复上次打开的项目；指定项目：
 
 ```powershell
-python -m app.preparation_gui --data-dir evidence/V0.2-R1/visual-project
+python -m app.preparation_gui --data-dir evidence/V0.2-C-Qt/demo-project
 ```
 
-![V0.2 准备工作区：剧本与媒体优先的减法精修](evidence/V0.2-Visual4/preparation-workspace.png)
+![V0.2 准备工作区：C 镜头上下文真实 Qt 实现](evidence/V0.2-C-Qt/preparation-desktop.png)
 
 ## 当前可用
 
@@ -38,13 +38,13 @@ python -m app.preparation_gui --data-dir evidence/V0.2-R1/visual-project
 
 ## 日常操作
 
-1. 编辑或导入剧本，点“应用剧本”（Ctrl+Enter）。草稿自动保存，Ctrl+S 可立即保存。
-2. 左侧选择章节或镜头，右侧定位缺失需求，点“导入素材”或“查看绑定”。
+1. 在右侧阅读当前镜头剧本；点“编辑剧本”修改，或从顶栏导入，然后点“应用剧本”（Ctrl+Enter）。草稿自动保存，Ctrl+S 可立即保存。
+2. 顶部切换章节、底部切换镜头；左侧查看真实媒体及当前镜头资产需求，点“导入素材”或“查看绑定”。
 3. 同名多候选时明确选择；外部替换文件后确认新版本。不会静默改绑。
 4. 外部增删或改名后点“同步素材”，通过“变更记录与影响定位”返回相关镜头。
 5. 关闭重开继续当前项目；迁移时复制整个项目目录，包含 `.history`。
 
-[五分钟语法、文件夹约定与实现边界](docs/V0.2-准备工作区.md) · [视觉方向与实际窗口](evidence/V0.2-Visual4/视觉精修与验收.md) · [本轮施工回执](evidence/V0.2-R1/施工回执.md)
+[五分钟语法、文件夹约定与实现边界](docs/V0.2-准备工作区.md) · [C 母版 Qt 实现与截图](evidence/V0.2-C-Qt/实现回执.md) · [本轮施工回执](evidence/V0.2-R1/施工回执.md)
 
 ## 工程入口
 
@@ -65,6 +65,6 @@ workspace-v02/                  默认新工作区（运行数据，不提交 Gi
 python -m unittest discover -s tests -p 'test_preparation*.py' -v
 ```
 
-覆盖 Parser、Mapping、文件同步、歧义、变更影响、保存/恢复及代表性 Qt 主路径。没有重复执行未改动的 FFmpeg、OTIO 或历史 GUI 全套回归。
+本次 C 母版 Qt 施工只聚焦代表性 GUI 主路径与实际窗口截图；Parser、FFmpeg、OTIO 等未修改能力没有重复大规模回归。
 
 施工前 Git 基线：`0af6a85`。无远程仓库配置或发布动作。

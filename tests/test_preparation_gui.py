@@ -56,6 +56,7 @@ class PreparationGuiTests(unittest.TestCase):
         with patch.object(QFileDialog, 'getOpenFileName', return_value=(str(script), '')):
             self.click(import_button)
         self.assertEqual(self.window.shots.count(), 2)
+        self.assertIn('进入', self.window.reading.toPlainText())
         self.assertEqual(len(self.window.workspace.report()), 3)
         self.assertFalse(self.window.workspace.chapter_status(self.window.chapter_id)['ready'])
         image = self.root / 'external.png'
@@ -86,6 +87,7 @@ class PreparationGuiTests(unittest.TestCase):
         self.assertIn('READY', self.window.ready_label.text())
         self.window.shots.setCurrentRow(1)
         selected = self.window.shot_id
+        self.assertIn('离开', self.window.reading.toPlainText())
         project = self.window.workspace.root
         self.window.close()
         self.window.deleteLater()
@@ -181,10 +183,12 @@ class PreparationGuiTests(unittest.TestCase):
             duplicate = PreparationWindow(self.window.workspace.root)
         self.window.resize(1100, 720)
         QTest.qWait(50)
-        for widget in [self.window.apply_button, self.window.scan_button, self.window.open_button, self.window.editor]:
+        for widget in [self.window.apply_button, self.window.scan_button, self.window.open_button, self.window.reading]:
             self.assertTrue(widget.isVisible())
             point = widget.mapTo(self.window, widget.rect().center())
             self.assertTrue(self.window.rect().contains(point))
+        self.window.toggle_edit()
+        self.assertTrue(self.window.editor.isVisible())
 
 
 if __name__ == '__main__': unittest.main()

@@ -33,6 +33,7 @@ QFrame#viewer { background: #111b28; border-radius: 4px; }
 QFrame#assetCard { background: transparent; border: none; }
 QFrame#assetCard:hover { background: rgba(207,229,246,7); }
 QFrame#resolutionBar { border-top: 1px solid rgba(221,237,251,18); }
+QFrame#reworkBar { border-top: 1px solid rgba(221,237,251,13); }
 QFrame#capabilityRow { background: rgba(221,237,251,5); }
 QFrame#capabilitySelected { background: rgba(106,151,188,25); border-left: 2px solid #a9c6dc; }
 QLabel#resolutionContext { color: #c5d5e2; font-size: 11px; }

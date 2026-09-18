@@ -28,11 +28,13 @@ def action(value, handler, name='promptQuiet'):
 
 
 class PromptDialog(QDialog):
-    def __init__(self, host, shot_id=None):
+    def __init__(self, host, shot_id=None, *, media='image', requirement_id=None):
         super().__init__(host)
         self.workspace = host.workspace
         self.host = host
-        self.media = 'image'
+        self.media = media
+        self.initial_requirement_id = requirement_id
+        self.rework_context = requirement_id is not None
         self.current_key = None
         self.loading = False
         self.shot_id = shot_id
@@ -165,6 +167,12 @@ class PromptDialog(QDialog):
         bottom.setContentsMargins(0, 13, 0, 0)
         self.provenance = note('', 'promptMuted')
         bottom.addWidget(self.provenance, 1)
+        self.provider_hint = note('当前无真实内部 Provider', 'promptMuted')
+        self.provider_hint.setVisible(self.rework_context)
+        bottom.addWidget(self.provider_hint)
+        self.add_api_button = action('添加 API  ↗', self.show_add_api)
+        self.add_api_button.setVisible(self.rework_context)
+        bottom.addWidget(self.add_api_button)
         self.rebuild_button = action('明确重建', self.rebuild)
         self.create_button = action('创建 Draft', self.create)
         self.save_button = action('保存 Draft  ↗', self.save, 'primary')
@@ -225,6 +233,11 @@ class PromptDialog(QDialog):
         self.target.clear()
         for rid, title in targets(self.workspace, self.shot_id, self.media):
             self.target.addItem(title, rid)
+        if self.initial_requirement_id:
+            index = self.target.findData(self.initial_requirement_id)
+            if index >= 0:
+                self.target.setCurrentIndex(index)
+            self.initial_requirement_id = None
         self.loading = False
         self.load_draft()
 
@@ -333,6 +346,14 @@ class PromptDialog(QDialog):
             self.load_draft()
         except Exception as exc:
             QMessageBox.warning(self, '重建失败', str(exc))
+
+    def show_add_api(self):
+        rid = self.current_requirement
+        if not rid:
+            return
+        req = next(r for r in self.workspace.script.requirements if r.id == rid)
+        from app.preparation_gui import ApiCapabilityDialog
+        ApiCapabilityDialog(self.host, req.model_dump()).exec()
 
     def save(self):
         try:

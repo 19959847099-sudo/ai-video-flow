@@ -491,6 +491,21 @@ class PreparationWindow(QMainWindow):
             resolution.addWidget(control)
         media_layout.addWidget(self.resolution_bar)
         self.resolution_bar.hide()
+        self.rework_bar, rework = hframe('reworkBar', (0, 7, 0, 3), 7)
+        self.rework_label = label('', 'resolutionContext')
+        self.rework_label.setMaximumWidth(220)
+        rework.addWidget(self.rework_label)
+        rework.addStretch()
+        self.rework_generate_button = button('重新生成', self.rework_generate, 'resolutionQuiet')
+        self.rework_generate_button.setObjectName('reworkGenerate')
+        self.rework_import_button = button('导入新素材', self.rework_import, 'resolutionAction')
+        self.rework_import_button.setObjectName('reworkImport')
+        for control in (self.rework_generate_button, self.rework_import_button):
+            control.setProperty('mappingAction', True)
+            control.setToolTip('当前素材继续使用；新结果先作为 Candidate，审核后才能明确更换 Current。')
+            rework.addWidget(control)
+        media_layout.addWidget(self.rework_bar)
+        self.rework_bar.hide()
         attention = QHBoxLayout()
         attention.setContentsMargins(0, 7, 0, 5)
         self.attention = label('资产状态基于当前已应用剧本', 'muted')
@@ -866,11 +881,10 @@ class PreparationWindow(QMainWindow):
         self.requirement_title.setText('当前镜头资产需求' if selected else '整章资产需求')
         reports = [r for r in self.workspace.report() if r['requirement']['id'] in ids]
         active = next((r for r in reports if r['requirement']['id'] == self.active_requirement_id), None)
-        if active is None or active['status'] not in ('missing', 'free'):
+        if active is None:
             preferred = (next((r for r in reports if r['status'] == 'missing'), None) or
                          next((r for r in reports if r['status'] == 'free'), None))
-            if preferred or active is None:
-                self.active_requirement_id = (preferred or (reports[0] if reports else None))['requirement']['id'] if reports else None
+            self.active_requirement_id = (preferred or (reports[0] if reports else None))['requirement']['id'] if reports else None
         self.production_button.setEnabled(bool(reports) and self.applied())
         mode = self.filter.currentData()
         visible = [r for r in reports if mode == 'all' or (mode == 'todo' and r['status'] not in ('resolved', 'free'))
@@ -906,6 +920,7 @@ class PreparationWindow(QMainWindow):
         else:
             self.attention.setText('当前镜头需求已处理' if reports else '当前范围暂无参照需求')
         self.update_resolution_bar(reports)
+        self.update_rework_bar(reports)
         self.set_mapping_enabled(self.applied())
         self.render_script_view()
 
@@ -924,6 +939,7 @@ class PreparationWindow(QMainWindow):
             self.viewed_asset_sha = None
             self.update_asset_selection()
             if hasattr(self, 'resolution_bar'): self.update_resolution_bar()
+            if hasattr(self, 'rework_bar'): self.update_rework_bar()
             return
         self.viewed_asset_id = asset['id']
         self.viewed_asset_sha = asset['sha256']
@@ -954,6 +970,7 @@ class PreparationWindow(QMainWindow):
             self.viewer_caption.show()
         self.update_asset_selection()
         if hasattr(self, 'resolution_bar'): self.update_resolution_bar()
+        if hasattr(self, 'rework_bar'): self.update_rework_bar()
 
     def update_asset_selection(self):
         for aid, thumb in getattr(self, 'asset_thumbs', {}).items():
@@ -1064,6 +1081,39 @@ class PreparationWindow(QMainWindow):
         self.free_button.setText('恢复固定素材' if free else '不需要固定素材')
         self.resolution_bar.show()
 
+    def update_rework_bar(self, reports=None):
+        if not self.workspace or not hasattr(self, 'rework_bar'):
+            return
+        reports = reports if reports is not None else self.workspace.report()
+        selected = next((r for r in reports if r['requirement']['id'] == self.active_requirement_id), None)
+        if not selected or selected['status'] != 'resolved' or not selected['binding'] or not self.applied():
+            self.rework_bar.hide()
+            return
+        self.rework_label.setText('CURRENT  ·  ' + selected['requirement']['name'])
+        self.rework_label.setToolTip('当前素材继续使用；新增 Candidate 不会替换 Current。')
+        self.rework_bar.show()
+
+    def rework_generate(self):
+        report = next((r for r in self.workspace.report()
+                       if r['requirement']['id'] == self.active_requirement_id), None)
+        if not report or report['status'] != 'resolved' or not report['binding']:
+            self.update_rework_bar()
+            return
+        rid = report['requirement']['id']
+        # Demo image Fixture is the only executable internal production capability today.
+        if self.workspace.state.get('is_example') and report['requirement']['media'] == 'image':
+            self.open_production(rid)
+        else:
+            self.open_prompt(rid)
+
+    def rework_import(self):
+        report = next((r for r in self.workspace.report()
+                       if r['requirement']['id'] == self.active_requirement_id), None)
+        if not report or report['status'] != 'resolved' or not report['binding']:
+            self.update_rework_bar()
+            return
+        self.open_production(report['requirement']['id'], import_now=True)
+
     def toggle_reference_requirement(self):
         rid = self.active_requirement_id
         status = next((r['status'] for r in self.workspace.report()
@@ -1083,7 +1133,9 @@ class PreparationWindow(QMainWindow):
         if report:
             ApiCapabilityDialog(self, report['requirement']).exec()
 
-    def open_prompt(self):
+    def open_prompt(self, requirement_id=None):
+        if isinstance(requirement_id, bool):
+            requirement_id = None
         if self.worker and self.worker.isRunning():
             self.feedback.setText('素材同步完成后再进入生成。')
             return
@@ -1094,8 +1146,23 @@ class PreparationWindow(QMainWindow):
         if not chapter or not chapter.shots:
             self.feedback.setText('当前章节没有镜头。')
             return
+        chosen_shot = self.shot_id
+        media = 'image'
+        if requirement_id:
+            req = next((r for r in self.workspace.script.requirements if r.id == requirement_id), None)
+            if not req:
+                self.feedback.setText('当前剧本中没有此需求。')
+                return
+            media = req.media
+            selected = next((shot for shot in chapter.shots
+                             if shot.id == chosen_shot and requirement_id in shot.requirement_ids), None)
+            chosen_shot = selected.id if selected else next(
+                (shot.id for shot in chapter.shots if requirement_id in shot.requirement_ids), None)
+            if not chosen_shot:
+                self.feedback.setText('当前章节中没有此需求。')
+                return
         from .preparation.prompt_gui import PromptDialog
-        PromptDialog(self, self.shot_id).exec()
+        PromptDialog(self, chosen_shot, media=media, requirement_id=requirement_id).exec()
         self.refresh()
 
     def open_production(self, requirement_id=None, *, import_now=False):

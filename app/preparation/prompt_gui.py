@@ -1,14 +1,16 @@
 """Prompt work surface for the V0.2 generation stage."""
 from __future__ import annotations
 
-from PySide6.QtCore import Qt
+from PySide6.QtCore import Qt, QThread, Signal
 from PySide6.QtGui import QPixmap
 from PySide6.QtWidgets import (
     QComboBox, QDialog, QFrame, QHBoxLayout, QLabel, QMessageBox,
-    QPlainTextEdit, QPushButton, QScrollArea, QVBoxLayout, QWidget,
+    QPlainTextEdit, QPushButton, QScrollArea, QVBoxLayout, QWidget, QListWidget,
+    QSpinBox, QDoubleSpinBox, QCheckBox,
 )
 
 from .prompt import create_draft, get_draft, save_draft, targets
+from .runtime import ProductionRuntime
 from .visuals import Atmosphere, STYLE
 from .ui_copy import operation_message
 
@@ -28,6 +30,22 @@ def action(value, handler, name='promptQuiet'):
     return widget
 
 
+class RuntimeWorker(QThread):
+    completed = Signal()
+    failed = Signal(str)
+
+    def __init__(self, runtime, parent=None):
+        super().__init__(parent)
+        self.runtime = runtime
+
+    def run(self):
+        try:
+            self.runtime.run_until_idle()
+            self.completed.emit()
+        except Exception as exc:
+            self.failed.emit(str(exc))
+
+
 class PromptDialog(QDialog):
     def __init__(self, host, shot_id=None, *, media='image', requirement_id=None):
         super().__init__(host)
@@ -39,6 +57,8 @@ class PromptDialog(QDialog):
         self.current_key = None
         self.loading = False
         self.shot_id = shot_id
+        self.runtime = ProductionRuntime(self.workspace)
+        self.worker = None
         self.setWindowTitle('提示词')
         self.resize(min(1180, max(1000, host.width()-55)), min(790, max(650, host.height()-45)))
         self.setMinimumSize(920, 620)
@@ -61,6 +81,11 @@ class PromptDialog(QDialog):
             QPushButton#promptMedia:checked { color:#e9f2f8; background:#273c50; }
             QPushButton#promptQuiet { color:#aabccb; }
             QLabel#promptPreview { background:#0f1b28; border-radius:3px; color:#8198ac; }
+            QListWidget#runtimeQueue { background:rgba(12,22,33,145); border-radius:4px; padding:4px; }
+            QListWidget#runtimeQueue::item { padding:5px 8px; color:#aebfce; }
+            QListWidget#runtimeQueue::item:selected { background:#263b50; color:#edf4f9; }
+            QLabel#capabilityOk { color:#93bbaa; font-size:11px; }
+            QLabel#capabilityIssue { color:#d5a097; font-size:11px; }
             QScrollArea#promptContextList, QScrollArea#promptContextList QWidget { background:transparent; border:none; }
         """)
         self.build()
@@ -104,10 +129,46 @@ class PromptDialog(QDialog):
             self.media_buttons[medium] = btn
             control.addWidget(btn)
         self.target = QComboBox()
-        self.target.setMinimumWidth(225)
+        self.target.setMinimumWidth(210)
         self.target.currentIndexChanged.connect(self.change_target)
         control.addWidget(self.target, 1)
+        self.model = QComboBox()
+        self.model.setMinimumWidth(220)
+        self.model.currentIndexChanged.connect(self.model_changed)
+        control.addWidget(self.model)
+        self.output_count = QSpinBox()
+        self.output_count.setRange(1, 8)
+        self.output_count.setValue(1)
+        self.output_count.setPrefix('版本  ')
+        self.output_count.valueChanged.connect(self.update_capability)
+        control.addWidget(self.output_count)
+        self.chapter_batch = QCheckBox('本章镜头')
+        self.chapter_batch.setToolTip('为本章每个镜头创建独立任务')
+        control.addWidget(self.chapter_batch)
         layout.addLayout(control)
+        settings = QHBoxLayout()
+        settings.setSpacing(8)
+        settings.addWidget(note('参数', 'promptMuted'))
+        self.aspect = QComboBox()
+        for label, value in [('自动比例', None), ('16:9', '16:9'), ('9:16', '9:16'), ('1:1', '1:1')]:
+            self.aspect.addItem(label, value)
+        self.resolution = QComboBox()
+        for label, value in [('自动分辨率', None), ('1280 × 720', '1280x720'), ('1920 × 1080', '1920x1080')]:
+            self.resolution.addItem(label, value)
+        self.duration = QDoubleSpinBox(); self.duration.setRange(.5, 30); self.duration.setValue(3)
+        self.duration.setSuffix(' 秒')
+        self.frame_rate = QSpinBox(); self.frame_rate.setRange(12, 60); self.frame_rate.setValue(24)
+        self.frame_rate.setSuffix(' fps')
+        self.seed = QSpinBox(); self.seed.setRange(-1, 2147483647); self.seed.setValue(-1)
+        self.seed.setSpecialValueText('随机 Seed')
+        for widget in (self.aspect, self.resolution, self.duration, self.frame_rate, self.seed):
+            settings.addWidget(widget)
+            if hasattr(widget, 'currentIndexChanged'):
+                widget.currentIndexChanged.connect(self.update_capability)
+            else:
+                widget.valueChanged.connect(self.update_capability)
+        settings.addStretch()
+        layout.addLayout(settings)
         body = QHBoxLayout()
         body.setSpacing(14)
         left = QFrame()
@@ -158,23 +219,41 @@ class PromptDialog(QDialog):
         editor_layout.addWidget(self.constraints)
         body.addWidget(right, 7)
         layout.addLayout(body, 1)
+        queue_bar = QHBoxLayout()
+        queue_bar.addWidget(note('生产队列', 'promptKicker'))
+        self.capability_label = note('', 'capabilityOk')
+        queue_bar.addWidget(self.capability_label)
+        queue_bar.addStretch()
+        layout.addLayout(queue_bar)
+        self.queue = QListWidget()
+        self.queue.setObjectName('runtimeQueue')
+        self.queue.setFixedHeight(104)
+        layout.addWidget(self.queue)
         footer = QFrame()
         footer.setObjectName('promptFooter')
         bottom = QHBoxLayout(footer)
         bottom.setContentsMargins(0, 13, 0, 0)
         bottom.addStretch(1)
-        self.provider_hint = note('未配置生成服务', 'promptMuted')
-        self.provider_hint.setVisible(self.rework_context)
+        self.provider_hint = note('本地 Fixture · ZERO-CALL', 'promptMuted')
+        self.provider_hint.setVisible(True)
         bottom.addWidget(self.provider_hint)
         self.add_api_button = action('查看  ↗', self.show_add_api)
-        self.add_api_button.setVisible(self.rework_context)
+        self.add_api_button.setVisible(False)
         bottom.addWidget(self.add_api_button)
         self.rebuild_button = action('重新生成', self.rebuild)
         self.create_button = action('创建', self.create)
-        self.save_button = action('保存  ↗', self.save, 'primary')
+        self.save_button = action('保存', self.save, 'promptQuiet')
+        self.cancel_button = action('取消任务', self.cancel_job)
+        self.retry_button = action('重试', self.retry_job)
+        self.review_button = action('查看结果  ↗', self.open_results)
+        self.generate_button = action('开始生成', self.submit_generation, 'primary')
         bottom.addWidget(self.rebuild_button)
         bottom.addWidget(self.create_button)
         bottom.addWidget(self.save_button)
+        bottom.addWidget(self.cancel_button)
+        bottom.addWidget(self.retry_button)
+        bottom.addWidget(self.review_button)
+        bottom.addWidget(self.generate_button)
         layout.addWidget(footer)
 
     def load_shots(self):
@@ -216,6 +295,7 @@ class PromptDialog(QDialog):
             self.target.setCurrentIndex(self.target.findData(self.selected_requirement))
             self.loading = False
             return
+        self.load_models()
         self.load_draft()
 
     @property
@@ -235,7 +315,58 @@ class PromptDialog(QDialog):
                 self.target.setCurrentIndex(index)
             self.initial_requirement_id = None
         self.loading = False
+        self.load_models()
         self.load_draft()
+
+    def load_models(self):
+        if not hasattr(self, 'model'):
+            return
+        current = self.model.currentData()
+        self.model.blockSignals(True)
+        self.model.clear()
+        task = ('shot_video' if self.media == 'video' and not self.current_requirement else
+                'video_reference' if self.media == 'video' else
+                'asset_audio' if self.media == 'audio' else 'asset_image')
+        self.chapter_batch.setVisible(task == 'shot_video')
+        if task != 'shot_video':
+            self.chapter_batch.setChecked(False)
+        for manifest in self.runtime.registry.models_for(task, self.media):
+            self.model.addItem(manifest.display_name, manifest.id)
+        index = self.model.findData(current)
+        self.model.setCurrentIndex(index if index >= 0 else 0)
+        self.model.blockSignals(False)
+        self.model_changed()
+
+    def model_changed(self):
+        if not self.model.currentData():
+            return
+        controls = self.runtime.registry.model(self.model.currentData()).common_controls
+        self.aspect.setVisible(self.media in ('image', 'video') and 'aspect_ratio' in controls)
+        self.resolution.setVisible(self.media in ('image', 'video') and 'resolution' in controls)
+        self.duration.setVisible(self.media in ('audio', 'video') and 'duration' in controls)
+        self.frame_rate.setVisible(self.media == 'video' and 'frame_rate' in controls)
+        self.seed.setVisible('seed' in controls)
+        self.update_capability()
+
+    def update_capability(self):
+        if self.loading or not self.model.currentData() or not self.shot_id:
+            return
+        try:
+            request = self.runtime.build_request(self.shot_id, self.media, self.current_requirement,
+                                                 self.model.currentData(), output_count=self.output_count.value(),
+                                                 common=self.common_controls())
+            report = self.runtime.capability(request)
+            self.capability_label.setText('原生支持' if report.state == 'NATIVE' else
+                                          '已明确转换' if report.state == 'TRANSLATED' else
+                                          ' · '.join(report.reasons))
+            self.capability_label.setObjectName('capabilityOk' if report.state != 'UNSUPPORTED' else 'capabilityIssue')
+            self.capability_label.style().unpolish(self.capability_label)
+            self.capability_label.style().polish(self.capability_label)
+            self.generate_button.setEnabled(report.state != 'UNSUPPORTED')
+        except Exception as exc:
+            self.capability_label.setText(str(exc))
+            self.generate_button.setEnabled(False)
+        self.refresh_queue()
 
     def load_draft(self):
         record, facts, stale = get_draft(self.workspace, self.shot_id, self.media, self.current_requirement)
@@ -357,6 +488,110 @@ class PromptDialog(QDialog):
         except Exception as exc:
             QMessageBox.warning(self, '保存失败', operation_message(str(exc)))
             return False
+
+    def common_controls(self):
+        return {'aspect_ratio': self.aspect.currentData() if self.aspect.isVisible() else None,
+                'resolution': self.resolution.currentData() if self.resolution.isVisible() else None,
+                'duration': self.duration.value() if self.duration.isVisible() else None,
+                'frame_rate': self.frame_rate.value() if self.frame_rate.isVisible() else None,
+                'seed': None if self.seed.value() < 0 else self.seed.value()}
+
+    def submit_generation(self):
+        try:
+            if not self.current_key:
+                create_draft(self.workspace, self.shot_id, self.media, self.current_requirement)
+                self.load_draft()
+            if self.dirty() and not self.save():
+                return
+            request = self.runtime.build_request(
+                self.shot_id, self.media, self.current_requirement, self.model.currentData(),
+                output_count=self.output_count.value(), prompt_text=self.text.toPlainText(),
+                constraints=self.constraints.toPlainText(),
+                common=self.common_controls())
+            if self.chapter_batch.isChecked() and request.task == 'shot_video':
+                requests = [self.runtime.build_request(
+                    shot.id, 'video', None, self.model.currentData(),
+                    output_count=self.output_count.value(),
+                    common=self.common_controls())
+                    for shot in self.host.current_chapter().shots]
+                self.runtime.enqueue_many(requests, user_intent='本章镜头批量生成')
+            else:
+                self.runtime.enqueue(request, user_intent='当前目标生成')
+            self.refresh_queue()
+            self.start_worker()
+        except Exception as exc:
+            QMessageBox.warning(self, '无法开始生成', operation_message(str(exc)))
+
+    def start_worker(self):
+        if self.worker and self.worker.isRunning():
+            return
+        self.generate_button.setEnabled(False)
+        self.worker = RuntimeWorker(self.runtime, self.host)
+        self.worker.completed.connect(self.worker_done)
+        self.worker.failed.connect(self.worker_failed)
+        self.worker.start()
+
+    def worker_done(self):
+        self.generate_button.setEnabled(True)
+        self.refresh_queue()
+        self.host.refresh()
+
+    def worker_failed(self, message):
+        self.generate_button.setEnabled(True)
+        self.refresh_queue()
+        QMessageBox.warning(self, '生产队列异常', operation_message(message))
+
+    def refresh_queue(self):
+        if not hasattr(self, 'queue'):
+            return
+        selected = self.queue.currentItem().data(Qt.ItemDataRole.UserRole) if self.queue.currentItem() else None
+        self.queue.clear()
+        jobs = [self.runtime.job(jid) for jid in self.workspace.state.get('runtime_jobs', {})]
+        jobs = [job for job in jobs if job.shot_id == self.shot_id]
+        labels = {'queued': '等待', 'running': '生成中', 'succeeded': '已完成',
+                  'failed': '失败', 'canceled': '已取消'}
+        for job in reversed(jobs[-12:]):
+            suffix = f' · {job.error}' if job.error else f' · {len(job.candidate_ids)} 个结果' if job.candidate_ids else ''
+            from PySide6.QtWidgets import QListWidgetItem
+            item = QListWidgetItem(f'{labels[job.status]}  {job.model_id}  ·  第 {job.attempt} 次{suffix}')
+            item.setData(Qt.ItemDataRole.UserRole, job.id)
+            self.queue.addItem(item)
+            if job.id == selected:
+                self.queue.setCurrentItem(item)
+        if not self.queue.currentItem() and self.queue.count():
+            self.queue.setCurrentRow(0)
+
+    def selected_job(self):
+        item = self.queue.currentItem()
+        return self.runtime.job(item.data(Qt.ItemDataRole.UserRole)) if item else None
+
+    def cancel_job(self):
+        job = self.selected_job()
+        if job:
+            self.runtime.cancel(job.id)
+            self.refresh_queue()
+
+    def retry_job(self):
+        job = self.selected_job()
+        if not job:
+            return
+        try:
+            self.runtime.retry(job.id, model_settings={'fixture_mode': 'success'})
+            self.refresh_queue(); self.start_worker()
+        except Exception as exc:
+            QMessageBox.warning(self, '无法重试', operation_message(str(exc)))
+
+    def open_results(self):
+        job = self.selected_job()
+        if not job or not job.candidate_ids:
+            return
+        if job.requirement_id:
+            from .production_gui import ProductionDialog
+            ProductionDialog(self.host, job.requirement_id, job.shot_id).exec()
+        else:
+            from .finishing_gui import ShotCandidateDialog
+            ShotCandidateDialog(self.host, job.shot_id).exec()
+        self.refresh_queue()
 
     def accept(self):
         if self.maybe_leave():

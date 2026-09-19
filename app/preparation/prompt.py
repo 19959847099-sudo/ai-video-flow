@@ -26,11 +26,11 @@ def targets(workspace, shot_id, media):
     for chapter in script.chapters:
         for shot in chapter.shots:
             if shot.id == shot_id:
-                if media == 'video':
-                    return [(None, f'SHOT {shot.number} · {shot.title}')]
                 reqs = {r.id: r for r in script.requirements}
                 choices = [(rid, f'{KINDS[reqs[rid].kind]} · {reqs[rid].name}')
                            for rid in shot.requirement_ids if reqs[rid].media == media]
+                if media == 'video':
+                    return [(None, f'SHOT {shot.number} · {shot.title}'), *choices]
                 return choices or [(None, '镜头首帧' if media == 'image' else '镜头声音')]
     raise ValueError('当前剧本中没有此镜头')
 

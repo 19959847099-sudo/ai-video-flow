@@ -202,10 +202,11 @@ class ProductionDialog(QDialog):
         side.addWidget(self.reason)
         self.bound = text('', 'productionSmall', True)
         side.addWidget(self.bound)
-        self.fixture_button = action('生成本地示意图  ↗', self.generate_fixture, 'tool')
-        self.fixture_button.setEnabled(self.req.media == 'image')
-        # The zero-call fixture is evidence tooling, not a fourth formal Missing path.
-        self.fixture_button.setVisible(bool(self.host.workspace.state.get('is_example')))
+        self.fixture_button = action('生成素材  ↗', self.open_generation, 'tool')
+        self.fixture_button.setEnabled(True)
+        initial_status = next(r['status'] for r in self.host.workspace.report()
+                              if r['requirement']['id'] == self.req.id)
+        self.fixture_button.setVisible(initial_status != 'free')
         side.addWidget(self.fixture_button)
         self.import_button = action('导入素材  ↗', self.import_candidate, 'tool')
         side.addWidget(self.import_button)
@@ -347,14 +348,26 @@ class ProductionDialog(QDialog):
         self.bind_button.setEnabled(candidate.review_state == 'green' and available and not already_current)
         self.unbind_button.setEnabled(bool(self.service.current(self.req.id)))
 
+    def open_generation(self):
+        from .prompt_gui import PromptDialog
+        PromptDialog(self.host, self.shot.id, media=self.req.media, requirement_id=self.req.id).exec()
+        self.refresh()
+
     def generate_fixture(self):
+        # Compatibility helper used by focused GUI tests; the visible action opens the
+        # non-blocking generation workspace above.  It still uses the formal runtime.
         def run():
-            job = self.service.create_job(self.req.id, self.shot.id)
-            self.service.poll_job(job.id)
-            result = self.service.poll_job(job.id)
-            if result.status != 'completed':
+            from .runtime import ProductionRuntime
+            runtime = ProductionRuntime(self.host.workspace)
+            model = {'image': 'fixture-image-v1', 'audio': 'fixture-audio-v1',
+                     'video': 'fixture-video-v1'}[self.req.media]
+            request = runtime.build_request(self.shot.id, self.req.media, self.req.id, model)
+            job, _ = runtime.enqueue(request, user_intent='素材生成')
+            runtime.run_until_idle()
+            result = runtime.job(job.id)
+            if result.status != 'succeeded':
                 raise ValueError(result.error or '生成未完成')
-            self.refresh(result.candidate_id)
+            self.refresh(result.candidate_ids[0])
         self._guard(run)
 
     def import_candidate(self):

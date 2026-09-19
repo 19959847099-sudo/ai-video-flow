@@ -1,0 +1,134 @@
+{
+  "provider": [
+    {
+      "id": "fixture-local",
+      "display_name": "本地 Fixture · ZERO-CALL",
+      "enabled": true,
+      "credentials_available": true,
+      "models": [
+        "fixture-image-v1",
+        "fixture-audio-v1",
+        "fixture-video-v1",
+        "fixture-video-text-v1"
+      ]
+    }
+  ],
+  "batch": {
+    "id": "b0a17f086a8441c5823dd2a4d6f3387f",
+    "job_ids": [
+      "eb59800cca2f4055b8448711e1f89aa0"
+    ],
+    "created_at": "2026-09-19T05:16:55.137425+00:00",
+    "user_intent": "三版图像素材",
+    "source_context": {
+      "project_id": "c0f5d90b7533472d879772f8f14bc164",
+      "chapter_id": "f09d83382df75f84b466e395ee6d925e",
+      "shot_id": "73954521430053cba4716bff3974a13f"
+    },
+    "summary": {
+      "queued": 0,
+      "running": 0,
+      "succeeded": 1,
+      "failed": 0,
+      "canceled": 0
+    }
+  },
+  "jobs": [
+    {
+      "id": "eb59800cca2f4055b8448711e1f89aa0",
+      "task": "asset_image",
+      "media": "image",
+      "provider_id": "fixture-local",
+      "model_id": "fixture-image-v1",
+      "status": "succeeded",
+      "attempt": 1,
+      "candidate_ids": [
+        "320f3a3262e04872b7186dfba805cc50",
+        "ff127ddfb9fe4e8ab1ba2693f4a84e0b",
+        "e32010d719e54d209a63ebe11562dcc5"
+      ],
+      "error_code": "",
+      "retryable": false,
+      "cost_metadata": {
+        "currency": null,
+        "amount": 0
+      }
+    },
+    {
+      "id": "1cb49d11cf134572bf7705803d1e9057",
+      "task": "asset_image",
+      "media": "image",
+      "provider_id": "fixture-local",
+      "model_id": "fixture-image-v1",
+      "status": "failed",
+      "attempt": 1,
+      "candidate_ids": [],
+      "error_code": "provider_error",
+      "retryable": true,
+      "cost_metadata": {}
+    },
+    {
+      "id": "849c8d5b9ff448a4811b7f0ed06f4671",
+      "task": "asset_audio",
+      "media": "audio",
+      "provider_id": "fixture-local",
+      "model_id": "fixture-audio-v1",
+      "status": "succeeded",
+      "attempt": 1,
+      "candidate_ids": [
+        "2b782d915fc441a5a39204ef8f6d9243"
+      ],
+      "error_code": "",
+      "retryable": false,
+      "cost_metadata": {
+        "currency": null,
+        "amount": 0
+      }
+    },
+    {
+      "id": "00b55a1a4a004b65871b0bb5132a928e",
+      "task": "shot_video",
+      "media": "video",
+      "provider_id": "fixture-local",
+      "model_id": "fixture-video-v1",
+      "status": "succeeded",
+      "attempt": 1,
+      "candidate_ids": [
+        "560ff9df13ac419a9a2b195c3d8b24a8"
+      ],
+      "error_code": "",
+      "retryable": false,
+      "cost_metadata": {
+        "currency": null,
+        "amount": 0
+      }
+    }
+  ],
+  "candidate_reviews": {
+    "320f3a3262e04872b7186dfba805cc50": "unreviewed",
+    "ff127ddfb9fe4e8ab1ba2693f4a84e0b": "unreviewed",
+    "e32010d719e54d209a63ebe11562dcc5": "unreviewed",
+    "2b782d915fc441a5a39204ef8f6d9243": "unreviewed",
+    "560ff9df13ac419a9a2b195c3d8b24a8": "unreviewed"
+  },
+  "current_bindings": {
+    "ae1523a22aedbfcdead6035d1b469f0c": {
+      "asset_id": "3a7bf64dd9024b4c91781439acaa4354",
+      "sha256": "d8a78a6f393fc2d7bacafd9c905fdbd91a4303d23225cdfa6aa2b7594477e993",
+      "mode": "auto"
+    },
+    "24bd009053a2aedb5d0b063632e9d906": {
+      "asset_id": "4a411ab0b19144b5a8ffe764e553fe7c",
+      "sha256": "95e643d104fc6ca90718e441af2a239967969e107f5cfb02f70024eff0cd2f08",
+      "mode": "auto"
+    },
+    "d0f6620969aa20fef565a9805844d8ea": {
+      "asset_id": "94ad8125373740e588968299346fb09b",
+      "sha256": "5ddaa875e6479ac392c75a42b0ae807e55963c9804518df05ecd8031406eec75",
+      "mode": "auto"
+    }
+  },
+  "shot_current": {},
+  "commercial_api_calls": 0,
+  "actual_cost": 0
+}

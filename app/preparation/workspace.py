@@ -49,12 +49,15 @@ class Workspace:
             self.state = dict(version='preparation-0.2', project_id=uuid4().hex,
                               draft='', script=None, assets={}, bindings={}, history=[],
                               events=[], revisions=[], ui={}, updated_at=now(),
-                              candidates={}, production_jobs={}, unbound_requirements=[],
+                              candidates={}, runtime_requests={}, runtime_jobs={},
+                              runtime_batches={}, unbound_requirements=[],
                               reference_decisions={}, prompt_drafts={}, shot_bindings={}, assemblies={})
             self._save()
         # Additive V0.2 production records keep existing Preparation projects readable.
         self.state.setdefault('candidates', {})
-        self.state.setdefault('production_jobs', {})
+        self.state.setdefault('runtime_requests', {})
+        self.state.setdefault('runtime_jobs', {})
+        self.state.setdefault('runtime_batches', {})
         self.state.setdefault('unbound_requirements', [])
         self.state.setdefault('reference_decisions', {})
         self.state.setdefault('prompt_drafts', {})

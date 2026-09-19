@@ -2,17 +2,14 @@
 from __future__ import annotations
 
 from copy import deepcopy
-from datetime import datetime, timezone
 import os
 from pathlib import Path
 import shutil
 from typing import Literal
 from uuid import uuid4
 
-from PIL import Image, ImageDraw, ImageFont
 from pydantic import BaseModel, Field
 
-from .script import MEDIA
 from .workspace import EXTENSIONS, Workspace, now, sha
 
 
@@ -61,37 +58,10 @@ class ProductionJob(BaseModel):
     provider_metadata: dict = Field(default_factory=dict)
 
 
-class LocalFixtureProvider:
-    """Zero-call image fixture. Its output is visibly marked as non-AI demo media."""
-    name = 'local-fixture'
-
-    def produce(self, job: ProductionJob, requirement: dict, output: Path) -> dict:
-        output.parent.mkdir(parents=True, exist_ok=True)
-        image = Image.new('RGB', (960, 600), '#202d3b')
-        draw = ImageDraw.Draw(image)
-        colors = ['#698ca0', '#988072', '#69887d', '#8c7893']
-        accent = colors[int(job.id[:2], 16) % len(colors)]
-        draw.rectangle((50, 50, 910, 550), outline=accent, width=2)
-        draw.rectangle((50, 50, 910, 152), fill='#172330')
-        draw.ellipse((515, 205, 795, 485), outline=accent, width=18)
-        draw.line((114, 475, 508, 240), fill=accent, width=23)
-        draw.line((245, 500, 540, 325), fill='#304d5d', width=28)
-        font_path = Path(os.environ.get('WINDIR', 'C:/Windows')) / 'Fonts' / 'msyh.ttc'
-        font = ImageFont.truetype(str(font_path), 31) if font_path.exists() else ImageFont.load_default(size=31)
-        small = ImageFont.truetype(str(font_path), 21) if font_path.exists() else ImageFont.load_default(size=21)
-        draw.text((80, 82), 'LOCAL FIXTURE  /  NOT AI GENERATED', font=small, fill='#d6e3ea')
-        draw.text((80, 209), requirement['name'][:35], font=font, fill='#edf3f6')
-        draw.text((80, 257), 'PRODUCTION STUDY  ·  REVIEW REQUIRED', font=small, fill='#a9becd')
-        draw.text((80, 502), f'JOB {job.id[:8]}  /  ZERO API CALLS', font=small, fill='#9cafbd')
-        image.save(output)
-        return {'width': image.width, 'height': image.height, 'simulation_only': True,
-                'api_called': False, 'fixture': 'local-card-v0'}
-
 
 class ProductionService:
     def __init__(self, workspace: Workspace):
         self.workspace = workspace
-        self.providers = {'local-fixture': LocalFixtureProvider()}
 
     def context(self, requirement_id: str, shot_id: str | None = None):
         script = self.workspace.script
@@ -131,6 +101,10 @@ class ProductionService:
         return self.workspace.state['shot_bindings'].get(shot_id)
 
     def import_shot_candidate(self, shot_id: str, source):
+        return self._ingest_shot(shot_id, Path(source), 'imported')
+
+    def _ingest_shot(self, shot_id: str, source: Path, source_type: SourceType,
+                     *, job=None, provider_metadata=None, generation_metadata=None):
         chapter, shot = self.shot_context(shot_id)
         source = Path(source).resolve()
         if not source.is_file() or source.suffix.lower() not in EXTENSIONS['video']:
@@ -155,8 +129,11 @@ class ProductionService:
                 id=candidate_id, project_id=self.workspace.state['project_id'], requirement_id=None,
                 chapter_id=chapter.id, shot_id=shot.id, kind='shot_video', media='video', take_number=take,
                 media_path=asset['path'], snapshot_path=asset['snapshot'], asset_id=asset['id'],
-                sha256=checksum, created_at=stamp, source_type='imported',
-                history=[{'at': stamp, 'event': 'created', 'source_type': 'imported'}])
+                sha256=checksum, created_at=stamp, source_type=source_type,
+                provider=(getattr(job, 'provider_id', None) or getattr(job, 'provider', None)) if job else None,
+                job_id=job.id if job else None, provider_metadata=provider_metadata or {},
+                generation_metadata=generation_metadata or {},
+                history=[{'at': stamp, 'event': 'created', 'source_type': source_type}])
             self.workspace.state['candidates'][candidate.id] = candidate.model_dump()
             self.workspace._event('candidate', f'Shot {shot.number} Take {take:02d} 已归档',
                                   [shot.id], candidate_id=candidate.id)
@@ -251,7 +228,8 @@ class ProductionService:
                 kind=req.kind, media=req.media, take_number=take,
                 media_path=asset['path'], snapshot_path=asset['snapshot'],
                 asset_id=asset['id'], sha256=checksum, created_at=stamp, source_type=source_type,
-                provider=job.provider if job else None, job_id=job.id if job else None,
+                provider=((getattr(job, 'provider_id', None) or getattr(job, 'provider', None))
+                          if job else None), job_id=job.id if job else None,
                 provider_metadata=provider_metadata or {},
                 generation_metadata=generation_metadata or {},
                 history=[{'at': stamp, 'event': 'created', 'source_type': source_type}]
@@ -278,61 +256,55 @@ class ProductionService:
     def import_candidate(self, requirement_id: str, shot_id: str, source):
         return self._ingest(requirement_id, shot_id, Path(source), 'imported')
 
-    def create_job(self, requirement_id: str, shot_id: str, provider='local-fixture'):
-        req, chapter, shot = self.context(requirement_id, shot_id)
-        if provider not in self.providers or req.media != 'image':
-            raise ValueError('当前本地 Fixture 仅支持图像；音频和视频可导入为 Candidate')
-        stamp = now()
-        job = ProductionJob(
-            id=uuid4().hex, project_id=self.workspace.state['project_id'],
-            requirement_id=req.id, chapter_id=chapter.id, shot_id=shot.id,
-            media=req.media, provider=provider, status='queued', created_at=stamp,
-            history=[{'at': stamp, 'status': 'queued'}],
-            provider_metadata={'simulation_only': True, 'api_called': False}
-        )
-        before = deepcopy(self.workspace.state)
-        try:
-            self.workspace.state['production_jobs'][job.id] = job.model_dump()
-            self.workspace._save()
-        except Exception:
-            self.workspace.state = before
-            raise
-        return job
+    def ingest_generated(self, source, job, provider_metadata=None, generation_metadata=None):
+        """Merge a validated runtime output into the existing Candidate model."""
+        if job.requirement_id:
+            return self._ingest(job.requirement_id, job.shot_id, Path(source), 'generated',
+                                job=job, provider_metadata=provider_metadata,
+                                generation_metadata=generation_metadata)
+        return self._ingest_shot(job.shot_id, Path(source), 'generated', job=job,
+                                 provider_metadata=provider_metadata,
+                                 generation_metadata=generation_metadata)
+
+    def _legacy_job(self, runtime_job):
+        status = {'queued': 'queued', 'running': 'running', 'succeeded': 'completed',
+                  'failed': 'failed', 'canceled': 'failed'}[runtime_job.status]
+        return ProductionJob(
+            id=runtime_job.id, project_id=runtime_job.project_id,
+            requirement_id=runtime_job.requirement_id, chapter_id=runtime_job.chapter_id,
+            shot_id=runtime_job.shot_id, media=runtime_job.media,
+            provider=runtime_job.provider_id, status=status, created_at=runtime_job.created_at,
+            history=deepcopy(runtime_job.history),
+            candidate_id=runtime_job.candidate_ids[0] if runtime_job.candidate_ids else None,
+            error=runtime_job.error,
+            provider_metadata={'provider_job_id': runtime_job.provider_job_id,
+                               'simulation_only': runtime_job.provider_id == 'fixture-local',
+                               'api_called': False})
+
+    def create_job(self, requirement_id: str, shot_id: str, provider='fixture-local'):
+        """Compatibility facade; all execution is owned by ProductionRuntime."""
+        from .runtime import ProductionRuntime
+        req, _, _ = self.context(requirement_id, shot_id)
+        if req.media != 'image' or provider not in ('fixture-local', 'local-fixture'):
+            raise ValueError('兼容入口仅支持本地 Fixture 图像；请使用统一生成工作面')
+        runtime = ProductionRuntime(self.workspace)
+        request = runtime.build_request(shot_id, req.media, requirement_id, 'fixture-image-v1')
+        job, _ = runtime.enqueue(request, user_intent='兼容生成入口')
+        return self._legacy_job(job)
 
     def job(self, job_id: str):
-        value = self.workspace.state['production_jobs'].get(job_id)
-        if not value:
-            raise ValueError('Production Job 不存在')
-        return ProductionJob.model_validate(value)
+        from .runtime import ProductionRuntime
+        return self._legacy_job(ProductionRuntime(self.workspace).job(job_id))
 
     def poll_job(self, job_id: str):
-        job = self.job(job_id)
+        from .runtime import ProductionRuntime
+        runtime = ProductionRuntime(self.workspace)
+        job = runtime.job(job_id)
         if job.status == 'queued':
-            job.status = 'running'
-            job.history.append({'at': now(), 'status': 'running'})
-            self.workspace.state['production_jobs'][job.id] = job.model_dump()
-            self.workspace._save()
-            return job
-        if job.status != 'running':
-            return job
-        req, _, _ = self.context(job.requirement_id, job.shot_id)
-        output = self.workspace.path(f'production/jobs/{job.id}/result.png')
-        try:
-            metadata = self.providers[job.provider].produce(job, req.model_dump(), output)
-            candidate = self._ingest(job.requirement_id, job.shot_id, output, 'generated',
-                                     job=job, provider_metadata=job.provider_metadata,
-                                     generation_metadata=metadata)
-            job.candidate_id = candidate.id
-            job.status = 'completed'
-            output.unlink(missing_ok=True)
-        except Exception as exc:
-            job.status = 'failed'
-            job.error = str(exc)
-        job.history.append({'at': now(), 'status': job.status,
-                            **({'error': job.error} if job.error else {})})
-        self.workspace.state['production_jobs'][job.id] = job.model_dump()
-        self.workspace._save()
-        return job
+            runtime._start(job, runtime.registry.provider(job.provider_id))
+        elif job.status == 'running':
+            runtime._poll(job)
+        return self._legacy_job(runtime.job(job_id))
 
     def review(self, candidate_id: str, state: ReviewState, note=''):
         if state not in ('green', 'yellow', 'red'):

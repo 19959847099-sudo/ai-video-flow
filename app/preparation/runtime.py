@@ -26,7 +26,8 @@ from .prompt import context as prompt_context, compose, get_draft
 from .workspace import now
 
 MediaType = Literal['image', 'audio', 'video']
-TaskType = Literal['asset_image', 'asset_audio', 'video_reference', 'shot_video']
+TaskType = Literal['asset_image', 'asset_audio', 'dialogue_audio', 'background_audio',
+                   'video_reference', 'shot_video']
 InputRole = Literal['reference_image', 'source_image', 'start_frame', 'end_frame',
                     'reference_video', 'source_video', 'reference_audio', 'source_audio',
                     'voice_identity', 'mask', 'style_reference', 'character_reference']
@@ -37,9 +38,11 @@ JobStatus = Literal['queued', 'running', 'succeeded', 'failed', 'canceled']
 class ProductionInput(BaseModel):
     role: InputRole
     purpose: str = 'reference'
-    asset_id: str
-    path: str
-    sha256: str
+    asset_id: str | None = None
+    path: str | None = None
+    sha256: str | None = None
+    value: str | None = None
+    metadata: dict[str, Any] = Field(default_factory=dict)
 
 
 class ProductionRequest(BaseModel):
@@ -48,6 +51,13 @@ class ProductionRequest(BaseModel):
     chapter_id: str
     shot_id: str
     requirement_id: str | None = None
+    dialogue_id: str | None = None
+    background_id: str | None = None
+    purpose: str = 'asset'
+    speaker: str | None = None
+    text: str | None = None
+    language: str | None = None
+    performance: str | None = None
     task: TaskType
     media: MediaType
     prompt: str
@@ -104,6 +114,8 @@ class RuntimeJob(BaseModel):
     chapter_id: str
     shot_id: str
     requirement_id: str | None = None
+    dialogue_id: str | None = None
+    background_id: str | None = None
     task: TaskType
     media: MediaType
     provider_id: str
@@ -225,6 +237,27 @@ def match_capability(request: ProductionRequest, manifest: ModelManifest) -> Cap
     unsupported_controls = sorted(used_controls - manifest.common_controls)
     if unsupported_controls:
         reasons.append('当前模型不支持设置：' + '、'.join(unsupported_controls))
+    declared_settings = manifest.model_settings
+    semantic_settings = {
+        'language': request.language,
+        'performance': request.performance,
+        **{key: value for key, value in request.model_settings.items() if key != 'fixture_mode'},
+    }
+    unsupported_settings = []
+    for name, value in semantic_settings.items():
+        if value in (None, ''):
+            continue
+        support = declared_settings.get(name)
+        if support is None or support is False:
+            unsupported_settings.append(name)
+            continue
+        if isinstance(support, list) and len(support) == 2 and all(isinstance(item, (int, float)) for item in support):
+            if not isinstance(value, (int, float)) or not support[0] <= value <= support[1]:
+                reasons.append(f'设置 {name} 超出模型范围')
+        elif isinstance(support, (list, set, tuple)) and value not in support:
+            reasons.append(f'设置 {name} 的值不受当前模型支持')
+    if unsupported_settings:
+        reasons.append('当前模型不支持设置：' + '、'.join(sorted(unsupported_settings)))
     if reasons:
         return CapabilityReport(state='UNSUPPORTED', accepted=accepted, translated=translated,
                                 unsupported=unsupported, missing_roles=missing, reasons=reasons)
@@ -271,7 +304,7 @@ class FixtureProvider:
                 self._video(path, request, index)
             outputs.append(RuntimeOutput(path=path.as_posix(), media=request.media,
                                          metadata={'fixture': True, 'zero_call': True,
-                                                   'output_index': index + 1}))
+                                                   'output_index': index + 1, 'purpose': request.purpose}))
         return 'succeeded', outputs
 
     def download(self, output: RuntimeOutput, job_dir: Path) -> RuntimeOutput:
@@ -379,6 +412,13 @@ class ProductionRuntime:
                                                      if r.id == item['requirement_id'])],
                                   purpose=item['kind'], asset_id=item['asset_id'], path=item['path'],
                                   sha256=item['sha256']) for item in facts['references']]
+        if media == 'video':
+            for dialogue_id, candidate_id in self.workspace.state.get('dialogue_bindings', {}).items():
+                value = self.workspace.state['candidates'].get(candidate_id)
+                if value and value.get('shot_id') == shot_id and value.get('media') == 'audio':
+                    inputs.append(ProductionInput(role='reference_audio', purpose='dialogue',
+                        asset_id=value['asset_id'], path=value['media_path'], sha256=value['sha256'],
+                        metadata={'dialogue_id': dialogue_id, 'candidate_id': candidate_id}))
         settings = dict(model_settings or {})
         common = common or {}
         request = ProductionRequest(
@@ -400,6 +440,7 @@ class ProductionRuntime:
         snapshot = request.model_dump(mode='json')
         job = RuntimeJob(project_id=request.project_id, chapter_id=request.chapter_id,
                          shot_id=request.shot_id, requirement_id=request.requirement_id,
+                         dialogue_id=request.dialogue_id, background_id=request.background_id,
                          task=request.task, media=request.media, provider_id=request.provider_id,
                          model_id=request.model_id, request_id=request.id, request_snapshot=deepcopy(snapshot),
                          source_context_fingerprint=request.source_context_fingerprint,
@@ -503,7 +544,11 @@ class ProductionRuntime:
                                        'fixture': job.provider_id == 'fixture-local', 'api_called': False},
                     generation_metadata={**item.metadata, **metadata, 'model_id': job.model_id,
                                          'request_id': job.request_id,
-                                         'context_fingerprint': job.source_context_fingerprint})
+                                         'context_fingerprint': job.source_context_fingerprint,
+                                         'purpose': request.purpose, 'speaker': request.speaker,
+                                         'text': request.text, 'language': request.language,
+                                         'performance': request.performance,
+                                         'inputs': [value.model_dump(mode='json') for value in request.inputs]})
                 candidates.append(candidate.id)
             portable = []
             for item in outputs:
@@ -610,8 +655,10 @@ def default_registry():
         limits={'output_count': [1, 8]}))
     registry.register_model(ModelManifest(
         id='fixture-audio-v1', display_name='Fixture Audio · 本地零调用', provider_id='fixture-local',
-        tasks={'asset_audio'}, accepted_input_roles={'reference_audio', 'source_audio', 'voice_identity'},
-        output_media='audio', common_controls={'output_count', 'duration', 'seed'}))
+        tasks={'asset_audio', 'dialogue_audio', 'background_audio'},
+        accepted_input_roles={'reference_audio', 'source_audio', 'voice_identity'},
+        output_media='audio', common_controls={'output_count', 'duration', 'seed', 'speed'},
+        model_settings={'language': True, 'performance': True, 'speed': [0.5, 2.0]}))
     registry.register_model(ModelManifest(
         id='fixture-video-v1', display_name='Fixture Video · 本地零调用', provider_id='fixture-local',
         tasks={'video_reference', 'shot_video'}, accepted_input_roles=all_refs,

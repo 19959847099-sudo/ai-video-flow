@@ -22,6 +22,8 @@ class Candidate(BaseModel):
     id: str
     project_id: str
     requirement_id: str | None
+    dialogue_id: str | None = None
+    background_id: str | None = None
     chapter_id: str
     shot_id: str
     kind: str
@@ -81,6 +83,14 @@ class ProductionService:
         return sorted((Candidate.model_validate(value) for value in self.workspace.state['candidates'].values()
                        if value['requirement_id'] == requirement_id),
                       key=lambda c: c.take_number)
+
+    def dialogue_candidates(self, dialogue_id: str):
+        return sorted((Candidate.model_validate(value) for value in self.workspace.state['candidates'].values()
+                       if value.get('dialogue_id') == dialogue_id), key=lambda candidate: candidate.take_number)
+
+    def background_candidates(self, background_id: str):
+        return sorted((Candidate.model_validate(value) for value in self.workspace.state['candidates'].values()
+                       if value.get('background_id') == background_id), key=lambda candidate: candidate.take_number)
 
     def shot_context(self, shot_id: str):
         script = self.workspace.script
@@ -258,6 +268,14 @@ class ProductionService:
 
     def ingest_generated(self, source, job, provider_metadata=None, generation_metadata=None):
         """Merge a validated runtime output into the existing Candidate model."""
+        if getattr(job, 'dialogue_id', None):
+            return self.ingest_audio_target(job.shot_id, 'dialogue_audio', job.dialogue_id, source,
+                                            'generated', job=job, provider_metadata=provider_metadata,
+                                            generation_metadata=generation_metadata)
+        if getattr(job, 'background_id', None):
+            return self.ingest_audio_target(job.shot_id, 'background_audio', job.background_id, source,
+                                            'generated', job=job, provider_metadata=provider_metadata,
+                                            generation_metadata=generation_metadata)
         if job.requirement_id:
             return self._ingest(job.requirement_id, job.shot_id, Path(source), 'generated',
                                 job=job, provider_metadata=provider_metadata,
@@ -265,6 +283,50 @@ class ProductionService:
         return self._ingest_shot(job.shot_id, Path(source), 'generated', job=job,
                                  provider_metadata=provider_metadata,
                                  generation_metadata=generation_metadata)
+
+    def ingest_audio_target(self, shot_id: str, target_kind: str, target_id: str, source,
+                            source_type: SourceType, *, job=None, provider_metadata=None,
+                            generation_metadata=None):
+        if target_kind not in ('dialogue_audio', 'background_audio'):
+            raise ValueError('未知声音生产目标')
+        chapter, shot = self.shot_context(shot_id)
+        source = Path(source).resolve()
+        if not source.is_file() or source.suffix.lower() not in EXTENSIONS['audio']:
+            raise ValueError('请选择可读取的音频文件')
+        existing = (self.dialogue_candidates(target_id) if target_kind == 'dialogue_audio'
+                    else self.background_candidates(target_id))
+        take = max((item.take_number for item in existing), default=0) + 1
+        candidate_id = uuid4().hex
+        target = self.workspace.path(f'library/{target_kind}/{target_id}/take_{take:03d}_{candidate_id[:8]}{source.suffix.lower()}')
+        partial = target.with_name(target.name + '.partial')
+        before = deepcopy(self.workspace.state)
+        try:
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(source, partial); os.replace(partial, target)
+            checksum = sha(target); self.workspace.scan()
+            asset = next((a for a in self.workspace.state['assets'].values()
+                          if a['path'] == target.relative_to(self.workspace.root).as_posix()), None)
+            if not asset or asset['problem'] or asset['sha256'] != checksum:
+                raise ValueError(asset['problem'] if asset else '声音结果入库失败')
+            stamp = now()
+            candidate = Candidate(
+                id=candidate_id, project_id=self.workspace.state['project_id'], requirement_id=None,
+                dialogue_id=target_id if target_kind == 'dialogue_audio' else None,
+                background_id=target_id if target_kind == 'background_audio' else None,
+                chapter_id=chapter.id, shot_id=shot.id, kind=target_kind, media='audio',
+                take_number=take, media_path=asset['path'], snapshot_path=asset['snapshot'],
+                asset_id=asset['id'], sha256=checksum, created_at=stamp, source_type=source_type,
+                provider=((getattr(job, 'provider_id', None) or getattr(job, 'provider', None)) if job else None),
+                job_id=job.id if job else None, provider_metadata=provider_metadata or {},
+                generation_metadata=generation_metadata or {},
+                history=[{'at': stamp, 'event': 'created', 'source_type': source_type}])
+            self.workspace.state['candidates'][candidate.id] = candidate.model_dump()
+            self.workspace._event('candidate', f'{target_kind} Take {take:02d} 已归档', [shot.id],
+                                  candidate_id=candidate.id, target_id=target_id)
+            self.workspace._save(); return candidate
+        except Exception:
+            partial.unlink(missing_ok=True); target.unlink(missing_ok=True)
+            self.workspace.state = before; self.workspace._save(); raise
 
     def _legacy_job(self, runtime_job):
         status = {'queued': 'queued', 'running': 'running', 'succeeded': 'completed',

@@ -1,0 +1,514 @@
+{
+    "OTIO_SCHEMA": "Timeline.1",
+    "metadata": {
+        "aigc": {
+            "audio_policy": "explicit native / independent / none",
+            "chapter_id": "45d7a9acdc2455b7956043629f41efbf",
+            "fixture_or_user_media": true,
+            "subtitle_sidecar": "subtitles.srt",
+            "subtitles": [
+                {
+                    "dialogue_id": "db56c54644fc5bc8adec90a1306eb66b",
+                    "end": 2.2,
+                    "speaker": "林夏",
+                    "stale": false,
+                    "start": 0.3,
+                    "text": "这把伞，\n是不是有人来找过？"
+                },
+                {
+                    "dialogue_id": "d872df4de9e459dea9ff3daa97461fb3",
+                    "end": 3.0,
+                    "speaker": "店员",
+                    "stale": false,
+                    "start": 2.7,
+                    "text": "没有。"
+                },
+                {
+                    "dialogue_id": "058d7d07c84f57008e2219a6f0e4d0b0",
+                    "end": 4.6,
+                    "speaker": "林夏",
+                    "stale": false,
+                    "start": 3.35,
+                    "text": "我再等等。"
+                }
+            ]
+        }
+    },
+    "name": "雨夜",
+    "global_start_time": null,
+    "tracks": {
+        "OTIO_SCHEMA": "Stack.1",
+        "metadata": {},
+        "name": "tracks",
+        "source_range": null,
+        "effects": [],
+        "markers": [],
+        "enabled": true,
+        "color": null,
+        "children": [
+            {
+                "OTIO_SCHEMA": "Track.1",
+                "metadata": {},
+                "name": "Current Shot Video",
+                "source_range": null,
+                "effects": [],
+                "markers": [],
+                "enabled": true,
+                "color": null,
+                "children": [
+                    {
+                        "OTIO_SCHEMA": "Clip.2",
+                        "metadata": {
+                            "aigc": {
+                                "audio_strategy": [
+                                    "independent",
+                                    "none"
+                                ],
+                                "candidate_id": "f784c82f635f4d4c838d91cdc76b9aa4",
+                                "mute": false,
+                                "segment_id": "c3a6f340e6ff4693b529f591af5053ba",
+                                "shot_id": "b48ba36fb88b52418483a91fd0622056",
+                                "volume": 1.0
+                            }
+                        },
+                        "name": "001 门前",
+                        "source_range": {
+                            "OTIO_SCHEMA": "TimeRange.1",
+                            "duration": {
+                                "OTIO_SCHEMA": "RationalTime.1",
+                                "rate": 24.0,
+                                "value": 72.0
+                            },
+                            "start_time": {
+                                "OTIO_SCHEMA": "RationalTime.1",
+                                "rate": 24.0,
+                                "value": 0.0
+                            }
+                        },
+                        "effects": [],
+                        "markers": [],
+                        "enabled": true,
+                        "color": null,
+                        "media_references": {
+                            "DEFAULT_MEDIA": {
+                                "OTIO_SCHEMA": "ExternalReference.1",
+                                "metadata": {},
+                                "name": "",
+                                "available_range": null,
+                                "available_image_bounds": null,
+                                "target_url": "media/f75dd83b145ac4b88c553175ac6269d17494d1f99db4235cb69c03faaa8498ab.mp4"
+                            }
+                        },
+                        "active_media_reference_key": "DEFAULT_MEDIA"
+                    },
+                    {
+                        "OTIO_SCHEMA": "Clip.2",
+                        "metadata": {
+                            "aigc": {
+                                "audio_strategy": [
+                                    "independent"
+                                ],
+                                "candidate_id": "2bef13aaa5f140ea9ee7222c7b2fc366",
+                                "mute": false,
+                                "segment_id": "079398aafd434d9f8193dfc763498daf",
+                                "shot_id": "3cf3ce18f9c25c07bbbdd6cbd6046ce0",
+                                "volume": 1.0
+                            }
+                        },
+                        "name": "002 窗边",
+                        "source_range": {
+                            "OTIO_SCHEMA": "TimeRange.1",
+                            "duration": {
+                                "OTIO_SCHEMA": "RationalTime.1",
+                                "rate": 24.0,
+                                "value": 72.0
+                            },
+                            "start_time": {
+                                "OTIO_SCHEMA": "RationalTime.1",
+                                "rate": 24.0,
+                                "value": 0.0
+                            }
+                        },
+                        "effects": [],
+                        "markers": [],
+                        "enabled": true,
+                        "color": null,
+                        "media_references": {
+                            "DEFAULT_MEDIA": {
+                                "OTIO_SCHEMA": "ExternalReference.1",
+                                "metadata": {},
+                                "name": "",
+                                "available_range": null,
+                                "available_image_bounds": null,
+                                "target_url": "media/81d748f9fcfe58fb2ee4ea3f4bc0faf2acf8e7511bcd77544cb110af12fab557.mp4"
+                            }
+                        },
+                        "active_media_reference_key": "DEFAULT_MEDIA"
+                    }
+                ],
+                "kind": "Video"
+            },
+            {
+                "OTIO_SCHEMA": "Track.1",
+                "metadata": {},
+                "name": "Native Video Audio",
+                "source_range": null,
+                "effects": [],
+                "markers": [],
+                "enabled": true,
+                "color": null,
+                "children": [
+                    {
+                        "OTIO_SCHEMA": "Gap.1",
+                        "metadata": {},
+                        "name": "",
+                        "source_range": {
+                            "OTIO_SCHEMA": "TimeRange.1",
+                            "duration": {
+                                "OTIO_SCHEMA": "RationalTime.1",
+                                "rate": 24.0,
+                                "value": 72.0
+                            },
+                            "start_time": {
+                                "OTIO_SCHEMA": "RationalTime.1",
+                                "rate": 24.0,
+                                "value": 0.0
+                            }
+                        },
+                        "effects": [],
+                        "markers": [],
+                        "enabled": true,
+                        "color": null
+                    },
+                    {
+                        "OTIO_SCHEMA": "Gap.1",
+                        "metadata": {},
+                        "name": "",
+                        "source_range": {
+                            "OTIO_SCHEMA": "TimeRange.1",
+                            "duration": {
+                                "OTIO_SCHEMA": "RationalTime.1",
+                                "rate": 24.0,
+                                "value": 72.0
+                            },
+                            "start_time": {
+                                "OTIO_SCHEMA": "RationalTime.1",
+                                "rate": 24.0,
+                                "value": 0.0
+                            }
+                        },
+                        "effects": [],
+                        "markers": [],
+                        "enabled": true,
+                        "color": null
+                    }
+                ],
+                "kind": "Audio"
+            },
+            {
+                "OTIO_SCHEMA": "Track.1",
+                "metadata": {},
+                "name": "Independent Dialogue",
+                "source_range": null,
+                "effects": [],
+                "markers": [],
+                "enabled": true,
+                "color": null,
+                "children": [
+                    {
+                        "OTIO_SCHEMA": "Gap.1",
+                        "metadata": {},
+                        "name": "",
+                        "source_range": {
+                            "OTIO_SCHEMA": "TimeRange.1",
+                            "duration": {
+                                "OTIO_SCHEMA": "RationalTime.1",
+                                "rate": 24.0,
+                                "value": 6.720000000000001
+                            },
+                            "start_time": {
+                                "OTIO_SCHEMA": "RationalTime.1",
+                                "rate": 24.0,
+                                "value": 0.0
+                            }
+                        },
+                        "effects": [],
+                        "markers": [],
+                        "enabled": true,
+                        "color": null
+                    },
+                    {
+                        "OTIO_SCHEMA": "Clip.2",
+                        "metadata": {
+                            "aigc": {
+                                "candidate_id": "a45ba7d42a0643afbee7e9d2939bf7b4",
+                                "dialogue_id": "db56c54644fc5bc8adec90a1306eb66b",
+                                "fade_in": 0.08,
+                                "fade_out": 0.12,
+                                "role": "dialogue",
+                                "volume": 0.82
+                            }
+                        },
+                        "name": "林夏 · 这把伞，是不是有人来找过？",
+                        "source_range": {
+                            "OTIO_SCHEMA": "TimeRange.1",
+                            "duration": {
+                                "OTIO_SCHEMA": "RationalTime.1",
+                                "rate": 24.0,
+                                "value": 30.0
+                            },
+                            "start_time": {
+                                "OTIO_SCHEMA": "RationalTime.1",
+                                "rate": 24.0,
+                                "value": 0.0
+                            }
+                        },
+                        "effects": [],
+                        "markers": [],
+                        "enabled": true,
+                        "color": null,
+                        "media_references": {
+                            "DEFAULT_MEDIA": {
+                                "OTIO_SCHEMA": "ExternalReference.1",
+                                "metadata": {},
+                                "name": "",
+                                "available_range": null,
+                                "available_image_bounds": null,
+                                "target_url": "media/094cc363c8ca255bbbe7670e51907873182c12bf8ebc1b4bd8f8af9a26bd60a0.wav"
+                            }
+                        },
+                        "active_media_reference_key": "DEFAULT_MEDIA"
+                    },
+                    {
+                        "OTIO_SCHEMA": "Gap.1",
+                        "metadata": {},
+                        "name": "",
+                        "source_range": {
+                            "OTIO_SCHEMA": "TimeRange.1",
+                            "duration": {
+                                "OTIO_SCHEMA": "RationalTime.1",
+                                "rate": 24.0,
+                                "value": 43.68
+                            },
+                            "start_time": {
+                                "OTIO_SCHEMA": "RationalTime.1",
+                                "rate": 24.0,
+                                "value": 0.0
+                            }
+                        },
+                        "effects": [],
+                        "markers": [],
+                        "enabled": true,
+                        "color": null
+                    },
+                    {
+                        "OTIO_SCHEMA": "Clip.2",
+                        "metadata": {
+                            "aigc": {
+                                "candidate_id": "1d1a2f3387f343bbb731263d1568cd6c",
+                                "dialogue_id": "058d7d07c84f57008e2219a6f0e4d0b0",
+                                "fade_in": 0.0,
+                                "fade_out": 0.0,
+                                "role": "dialogue",
+                                "volume": 0.78
+                            }
+                        },
+                        "name": "林夏 · 我再等等。",
+                        "source_range": {
+                            "OTIO_SCHEMA": "TimeRange.1",
+                            "duration": {
+                                "OTIO_SCHEMA": "RationalTime.1",
+                                "rate": 24.0,
+                                "value": 30.0
+                            },
+                            "start_time": {
+                                "OTIO_SCHEMA": "RationalTime.1",
+                                "rate": 24.0,
+                                "value": 0.0
+                            }
+                        },
+                        "effects": [],
+                        "markers": [],
+                        "enabled": true,
+                        "color": null,
+                        "media_references": {
+                            "DEFAULT_MEDIA": {
+                                "OTIO_SCHEMA": "ExternalReference.1",
+                                "metadata": {},
+                                "name": "",
+                                "available_range": null,
+                                "available_image_bounds": null,
+                                "target_url": "media/094cc363c8ca255bbbe7670e51907873182c12bf8ebc1b4bd8f8af9a26bd60a0.wav"
+                            }
+                        },
+                        "active_media_reference_key": "DEFAULT_MEDIA"
+                    },
+                    {
+                        "OTIO_SCHEMA": "Gap.1",
+                        "metadata": {},
+                        "name": "",
+                        "source_range": {
+                            "OTIO_SCHEMA": "TimeRange.1",
+                            "duration": {
+                                "OTIO_SCHEMA": "RationalTime.1",
+                                "rate": 24.0,
+                                "value": 33.60000000000001
+                            },
+                            "start_time": {
+                                "OTIO_SCHEMA": "RationalTime.1",
+                                "rate": 24.0,
+                                "value": 0.0
+                            }
+                        },
+                        "effects": [],
+                        "markers": [],
+                        "enabled": true,
+                        "color": null
+                    }
+                ],
+                "kind": "Audio"
+            },
+            {
+                "OTIO_SCHEMA": "Track.1",
+                "metadata": {},
+                "name": "Background Audio",
+                "source_range": null,
+                "effects": [],
+                "markers": [],
+                "enabled": true,
+                "color": null,
+                "children": [
+                    {
+                        "OTIO_SCHEMA": "Clip.2",
+                        "metadata": {
+                            "aigc": {
+                                "background_id": "781d92814f69536487bcd38c51c3456c",
+                                "candidate_id": "f56588247a7c415e9e8fee756d6d9346",
+                                "fade_in": 0.2,
+                                "fade_out": 0.3,
+                                "role": "background",
+                                "volume": 0.28
+                            }
+                        },
+                        "name": "雨声、冰柜低鸣",
+                        "source_range": {
+                            "OTIO_SCHEMA": "TimeRange.1",
+                            "duration": {
+                                "OTIO_SCHEMA": "RationalTime.1",
+                                "rate": 24.0,
+                                "value": 30.0
+                            },
+                            "start_time": {
+                                "OTIO_SCHEMA": "RationalTime.1",
+                                "rate": 24.0,
+                                "value": 0.0
+                            }
+                        },
+                        "effects": [],
+                        "markers": [],
+                        "enabled": true,
+                        "color": null,
+                        "media_references": {
+                            "DEFAULT_MEDIA": {
+                                "OTIO_SCHEMA": "ExternalReference.1",
+                                "metadata": {},
+                                "name": "",
+                                "available_range": null,
+                                "available_image_bounds": null,
+                                "target_url": "media/094cc363c8ca255bbbe7670e51907873182c12bf8ebc1b4bd8f8af9a26bd60a0.wav"
+                            }
+                        },
+                        "active_media_reference_key": "DEFAULT_MEDIA"
+                    },
+                    {
+                        "OTIO_SCHEMA": "Gap.1",
+                        "metadata": {},
+                        "name": "",
+                        "source_range": {
+                            "OTIO_SCHEMA": "TimeRange.1",
+                            "duration": {
+                                "OTIO_SCHEMA": "RationalTime.1",
+                                "rate": 24.0,
+                                "value": 42.0
+                            },
+                            "start_time": {
+                                "OTIO_SCHEMA": "RationalTime.1",
+                                "rate": 24.0,
+                                "value": 0.0
+                            }
+                        },
+                        "effects": [],
+                        "markers": [],
+                        "enabled": true,
+                        "color": null
+                    },
+                    {
+                        "OTIO_SCHEMA": "Clip.2",
+                        "metadata": {
+                            "aigc": {
+                                "background_id": "73fe1344d3f457dd8a19200a0ba2b0ca",
+                                "candidate_id": "efe94250e147400e991957ea4f4fa5e1",
+                                "fade_in": 0.2,
+                                "fade_out": 0.3,
+                                "role": "background",
+                                "volume": 0.28
+                            }
+                        },
+                        "name": "雨声",
+                        "source_range": {
+                            "OTIO_SCHEMA": "TimeRange.1",
+                            "duration": {
+                                "OTIO_SCHEMA": "RationalTime.1",
+                                "rate": 24.0,
+                                "value": 30.0
+                            },
+                            "start_time": {
+                                "OTIO_SCHEMA": "RationalTime.1",
+                                "rate": 24.0,
+                                "value": 0.0
+                            }
+                        },
+                        "effects": [],
+                        "markers": [],
+                        "enabled": true,
+                        "color": null,
+                        "media_references": {
+                            "DEFAULT_MEDIA": {
+                                "OTIO_SCHEMA": "ExternalReference.1",
+                                "metadata": {},
+                                "name": "",
+                                "available_range": null,
+                                "available_image_bounds": null,
+                                "target_url": "media/094cc363c8ca255bbbe7670e51907873182c12bf8ebc1b4bd8f8af9a26bd60a0.wav"
+                            }
+                        },
+                        "active_media_reference_key": "DEFAULT_MEDIA"
+                    },
+                    {
+                        "OTIO_SCHEMA": "Gap.1",
+                        "metadata": {},
+                        "name": "",
+                        "source_range": {
+                            "OTIO_SCHEMA": "TimeRange.1",
+                            "duration": {
+                                "OTIO_SCHEMA": "RationalTime.1",
+                                "rate": 24.0,
+                                "value": 42.0
+                            },
+                            "start_time": {
+                                "OTIO_SCHEMA": "RationalTime.1",
+                                "rate": 24.0,
+                                "value": 0.0
+                            }
+                        },
+                        "effects": [],
+                        "markers": [],
+                        "enabled": true,
+                        "color": null
+                    }
+                ],
+                "kind": "Audio"
+            }
+        ]
+    }
+}

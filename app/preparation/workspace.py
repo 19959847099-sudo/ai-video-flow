@@ -50,7 +50,8 @@ class Workspace:
                               draft='', script=None, assets={}, bindings={}, history=[],
                               events=[], revisions=[], ui={}, updated_at=now(),
                               candidates={}, runtime_requests={}, runtime_jobs={},
-                              runtime_batches={}, unbound_requirements=[],
+                              runtime_batches={}, dialogue_bindings={}, dialogue_states={}, subtitles={}, background_states={}, background_bindings={},
+                              voice_identities={}, voice_identity_bindings={}, sound_prompts={}, unbound_requirements=[],
                               reference_decisions={}, prompt_drafts={}, shot_bindings={}, assemblies={})
             self._save()
         # Additive V0.2 production records keep existing Preparation projects readable.
@@ -58,12 +59,20 @@ class Workspace:
         self.state.setdefault('runtime_requests', {})
         self.state.setdefault('runtime_jobs', {})
         self.state.setdefault('runtime_batches', {})
+        self.state.setdefault('dialogue_bindings', {})
+        self.state.setdefault('dialogue_states', {})
+        self.state.setdefault('subtitles', {})
+        self.state.setdefault('background_states', {})
+        self.state.setdefault('background_bindings', {})
+        self.state.setdefault('voice_identities', {})
+        self.state.setdefault('voice_identity_bindings', {})
+        self.state.setdefault('sound_prompts', {})
         self.state.setdefault('unbound_requirements', [])
         self.state.setdefault('reference_decisions', {})
         self.state.setdefault('prompt_drafts', {})
         self.state.setdefault('shot_bindings', {})
         self.state.setdefault('assemblies', {})
-        for kind in (*KINDS, 'shot_video'):
+        for kind in (*KINDS, 'shot_video', 'dialogue_audio'):
             (self.root / 'library' / kind).mkdir(parents=True, exist_ok=True)
 
     def _save(self):
@@ -134,7 +143,7 @@ class Workspace:
         return target.relative_to(self.root).as_posix()
 
     def _inspect(self, path, kind):
-        media = 'video' if kind == 'shot_video' else MEDIA[kind]
+        media = 'video' if kind == 'shot_video' else 'audio' if kind == 'dialogue_audio' else MEDIA[kind]
         if path.suffix.lower() not in EXTENSIONS[media]:
             return None
         name = path.relative_to(self.root / 'library' / kind).with_suffix('').as_posix()
@@ -168,7 +177,7 @@ class Workspace:
         before = deepcopy(self.state)
         try:
             discovered = {}
-            for kind in (*KINDS, 'shot_video'):
+            for kind in (*KINDS, 'shot_video', 'dialogue_audio'):
                 for path in sorted((self.root / 'library' / kind).rglob('*')):
                     if not path.is_file():
                         continue

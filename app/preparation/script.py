@@ -10,9 +10,10 @@ from pydantic import BaseModel, Field
 KINDS = {
     'character': '人物视觉', 'age': '年龄状态', 'costume': '服装',
     'character_visual': '完整角色', 'environment': '环境参照',
-    'prop': '关键物件', 'voice': '人物音声', 'video_reference': '镜头参照',
+    'prop': '关键物件', 'voice': '人物音声', 'background_audio': '环境声音',
+    'video_reference': '镜头参照',
 }
-MEDIA = {kind: ('audio' if kind == 'voice' else 'video' if kind == 'video_reference' else 'image') for kind in KINDS}
+MEDIA = {kind: ('audio' if kind in ('voice', 'background_audio') else 'video' if kind == 'video_reference' else 'image') for kind in KINDS}
 SECTIONS = {'镜头', '动作', '表演', '对白', '连续性', '备注'}
 
 
@@ -46,6 +47,16 @@ class Cast(BaseModel):
     line: int
 
 
+class DialogueLine(BaseModel):
+    id: str
+    speaker: str
+    text: str
+    order: int
+    line: int
+    source_fingerprint: str
+    voice_requirement_id: str | None = None
+
+
 class Shot(BaseModel):
     id: str
     number: str
@@ -57,6 +68,7 @@ class Shot(BaseModel):
     ambience: str = ''
     environment_reference: bool = False
     sections: dict[str, str] = Field(default_factory=dict)
+    dialogues: list[DialogueLine] = Field(default_factory=list)
     text: str = ''
     requirement_ids: list[str] = Field(default_factory=list)
 
@@ -271,6 +283,23 @@ def parse(source: str, project_id: str) -> Script:
             continue
         structural = False
         shot.sections[section] = (shot.sections.get(section, '') + '\n' + text).strip()
+        if section == '对白':
+            dialogue = re.fullmatch(r'([^：:]+)[：:](.+)', text)
+            if not dialogue:
+                error(line_no, '对白格式：角色：内容', 'dialogue')
+            else:
+                speaker, words = (part.strip() for part in dialogue.groups())
+                cast_item = next((item for item in shot.cast if item.person == speaker), None)
+                if not cast_item:
+                    error(line_no, f'对白角色未在当前镜头人物中声明：{speaker}', 'dialogue_speaker')
+                else:
+                    order = len(shot.dialogues) + 1
+                    voice_id = requirement_id('voice', f'{speaker}/{cast_item.voice}') if cast_item.voice != '-' else None
+                    semantic = hashlib.sha256(f'{speaker}\0{words}'.encode('utf-8')).hexdigest()
+                    shot.dialogues.append(DialogueLine(
+                        id=identity(project_id, f'dialogue:{shot.id}:{order}'), speaker=speaker,
+                        text=words, order=order, line=line_no, source_fingerprint=semantic,
+                        voice_requirement_id=voice_id))
         for name in re.findall(r'【([^【】]+)】', text):
             need('video_reference' if section == '镜头' else 'prop', name.strip(), line_no)
     finish(len(lines))

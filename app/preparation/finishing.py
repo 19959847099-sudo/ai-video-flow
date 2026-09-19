@@ -15,6 +15,7 @@ from app.core import write_json
 from app.production import media_tool
 from app.rough_cut import probe
 from .production import ProductionService
+from .sound import SoundProduction, write_srt
 from .workspace import Workspace, sha
 
 
@@ -26,6 +27,7 @@ class ChapterFinishing:
     def __init__(self, workspace: Workspace, chapter_id: str):
         self.workspace = workspace
         self.service = ProductionService(workspace)
+        self.sound = SoundProduction(workspace)
         self.chapter_id = chapter_id
         self._probe_cache = {}
         self.chapter()
@@ -41,7 +43,7 @@ class ChapterFinishing:
     def _ensure(self):
         state = self.workspace.state['assemblies']
         if self.chapter_id not in state:
-            state[self.chapter_id] = {'segments': [], 'known_shots': [], 'selected': None, 'version': 1, 'preview': None, 'output': None}
+            state[self.chapter_id] = {'segments': [], 'known_shots': [], 'selected': None, 'version': 1, 'preview': None, 'output': None, 'subtitle_sidecar': True}
         assembly = state[self.chapter_id]
         known = assembly.setdefault('known_shots', list(dict.fromkeys(item['shot_id'] for item in assembly['segments'])))
         for shot in self.chapter().shots:
@@ -182,12 +184,28 @@ class ChapterFinishing:
                 has_audio = self._has_audio(path)
                 if not has_audio:
                     warnings.append(f'Shot {shot.number}: 源视频无音轨；预览使用静音')
+                audio_plan = self.sound.audio_plan(shot.id)
+                if audio_plan['mixed_dialogue_sources']:
+                    warnings.append(
+                        f'Shot {shot.number}: 已启用独立对白；本镜头视频原声音轨关闭以避免重复对白')
+                for dialogue in audio_plan['dialogues']:
+                    if dialogue['strategy'] == 'independent' and dialogue['enabled'] and not dialogue['path']:
+                        errors.append(f'Shot {shot.number}: 独立对白尚未选用音频')
+                    if dialogue['strategy'] == 'native' and dialogue['enabled'] and not has_audio:
+                        errors.append(f'Shot {shot.number}: 已选择视频原生对白，但视频没有音轨')
+                    if dialogue['stale']:
+                        warnings.append(f'Shot {shot.number}: 对白音频基于较早的剧本或 Voice')
+                for background in audio_plan['backgrounds']:
+                    if background['enabled'] and not background['path']:
+                        warnings.append(f'Shot {shot.number}: 背景音“{background["text"]}”尚未选用')
+                    if background['stale']:
+                        warnings.append(f'Shot {shot.number}: 背景音基于较早的环境描述')
                 clips.append(dict(segment_id=segment['id'], shot_id=shot.id, shot_number=shot.number,
                                   shot_title=shot.title, shot_text=shot.text, candidate_id=candidate.id,
                                   take_number=candidate.take_number, path=candidate.media_path,
                                   sha256=candidate.sha256, source_in=start, source_out=end,
                                   duration=end-start, volume=float(segment['volume']), mute=bool(segment['mute']),
-                                  has_audio=has_audio))
+                                  has_audio=has_audio, audio_plan=audio_plan))
             except (ValueError, OSError, KeyError) as exc:
                 errors.append(f'Shot {shot.number}: {exc}')
         if not clips and not errors:
@@ -204,11 +222,29 @@ class ChapterFinishing:
                      candidate_id=(reports[rid]['binding'] or {}).get('candidate_id'),
                      sha256=(reports[rid]['binding'] or {}).get('sha256'))
                 for rid in shot.requirement_ids if rid in reports]
+        cursor = 0.0
+        subtitles = []
+        for clip in clips:
+            for dialogue in clip['audio_plan']['dialogues']:
+                subtitle = dialogue['subtitle']
+                if subtitle['enabled'] and dialogue['enabled']:
+                    local_start = float(subtitle['start']) - clip['source_in']
+                    local_end = float(subtitle['end']) - clip['source_in']
+                    start = cursor + max(0.0, local_start)
+                    end = cursor + min(clip['duration'], local_end)
+                    if end > start:
+                        subtitles.append(dict(dialogue_id=dialogue['dialogue_id'], speaker=dialogue['speaker'],
+                                              text=subtitle['display_text'], start=start, end=end,
+                                              stale=subtitle['stale']))
+                    if subtitle['stale']:
+                        warnings.append(f'Shot {clip["shot_number"]}: 人工字幕对应的正式对白已变化')
+            cursor += clip['duration']
         signature = fingerprint(dict(chapter_id=self.chapter_id, segments=self.state['segments'],
-                                     clips=clips, references=references))
+                                     clips=clips, references=references, subtitles=subtitles,
+                                     subtitle_sidecar=self.state.get('subtitle_sidecar', True)))
         previous = self.state.get('preview')
         return dict(status='Blocked' if errors else 'Ready', errors=errors, warnings=warnings,
-                    clips=clips, fingerprint=signature,
+                    clips=clips, subtitles=subtitles, fingerprint=signature,
                     stale=bool(previous and previous.get('fingerprint') != signature),
                     duration=sum(c['duration'] for c in clips))
 
@@ -247,25 +283,61 @@ class ChapterFinishing:
             source = self.workspace.path(clip['path'])
             part = folder / f'part-{index:03d}.mp4'
             start, end, duration = clip['source_in'], clip['source_out'], clip['duration']
-            vf = (f'[0:v]trim=start={start}:end={end},setpts=PTS-STARTPTS,'
-                  f'scale={width}:{height}:force_original_aspect_ratio=decrease,'
-                  f'pad={width}:{height}:(ow-iw)/2:(oh-ih)/2,fps=24,format=yuv420p[v]')
-            if clip['has_audio'] and not clip['mute']:
-                af = (f'[0:a]atrim=start={start}:end={end},asetpts=PTS-STARTPTS,'
-                      f'aresample=48000,volume={clip["volume"]},apad,atrim=duration={duration}[a]')
-                command = [media_tool('ffmpeg'), '-y', '-v', 'error', '-i', str(source)]
+            inputs = ['-i', str(source)]
+            filters = [(f'[0:v]trim=start={start}:end={end},setpts=PTS-STARTPTS,'
+                        f'scale={width}:{height}:force_original_aspect_ratio=decrease,'
+                        f'pad={width}:{height}:(ow-iw)/2:(oh-ih)/2,fps=24,format=yuv420p[v]')]
+            audio_labels = []
+            plan = clip['audio_plan']
+            if plan['native_audio'] and clip['has_audio'] and not clip['mute']:
+                label_name = f'a{len(audio_labels)}'
+                filters.append(f'[0:a]atrim=start={start}:end={end},asetpts=PTS-STARTPTS,'
+                               f'aresample=48000,volume={clip["volume"]},apad,atrim=duration={duration}[{label_name}]')
+                audio_labels.append(label_name)
+
+            def add_audio(item, role):
+                if not item.get('path') or not item.get('enabled') or item.get('mute'):
+                    return
+                placement = float(item.get('start', 0))
+                local_start = placement - start
+                source_in = max(0.0, -local_start)
+                delay = max(0.0, local_start)
+                available = max(0.0, min(float(item.get('duration') or 0) - source_in, duration - delay))
+                if available <= .01:
+                    return
+                input_index = len(inputs) // 2
+                inputs.extend(['-i', str(self.workspace.path(item['path']))])
+                label_name = f'a{len(audio_labels)}'
+                chain = (f'[{input_index}:a]atrim=start={source_in}:duration={available},asetpts=PTS-STARTPTS,'
+                         f'aresample=48000,volume={float(item.get("volume", 1))}')
+                fade_in = min(float(item.get('fade_in', 0)), available / 2)
+                fade_out = min(float(item.get('fade_out', 0)), available / 2)
+                if fade_in > 0: chain += f',afade=t=in:st=0:d={fade_in}'
+                if fade_out > 0: chain += f',afade=t=out:st={max(0, available-fade_out)}:d={fade_out}'
+                milliseconds = round(delay * 1000)
+                chain += f',adelay={milliseconds}|{milliseconds},apad,atrim=duration={duration}[{label_name}]'
+                filters.append(chain); audio_labels.append(label_name)
+
+            for dialogue in plan['dialogues']:
+                if dialogue['strategy'] == 'independent': add_audio(dialogue, 'dialogue')
+            for background in plan['backgrounds']: add_audio(background, 'background')
+            command = [media_tool('ffmpeg'), '-y', '-v', 'error', *inputs]
+            if not audio_labels:
+                silent_index = len(inputs) // 2
+                command.extend(['-f', 'lavfi', '-i', 'anullsrc=r=48000:cl=stereo'])
+                filters.append(f'[{silent_index}:a]atrim=duration={duration},asetpts=PTS-STARTPTS[a]')
+            elif len(audio_labels) == 1:
+                filters.append(f'[{audio_labels[0]}]anull[a]')
             else:
-                af = f'[1:a]atrim=duration={duration},asetpts=PTS-STARTPTS[a]'
-                command = [media_tool('ffmpeg'), '-y', '-v', 'error', '-i', str(source),
-                           '-f', 'lavfi', '-i', 'anullsrc=r=48000:cl=stereo']
-            command += ['-filter_complex', vf+';'+af, '-map', '[v]', '-map', '[a]',
+                joined = ''.join(f'[{name}]' for name in audio_labels)
+                filters.append(f'{joined}amix=inputs={len(audio_labels)}:duration=longest:normalize=0,'
+                               f'atrim=duration={duration}[a]')
+            command += ['-filter_complex', ';'.join(filters), '-map', '[v]', '-map', '[a]',
                         '-t', str(duration), '-c:v', 'libx264', '-preset',
                         'ultrafast' if quality == 'preview' else 'medium',
-                        '-crf', '23' if quality == 'preview' else '19',
-                        '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-ar', '48000', '-ac', '2',
-                        '-movflags', '+faststart', str(part)]
-            self._run(command)
-            parts.append(part)
+                        '-crf', '23' if quality == 'preview' else '19', '-pix_fmt', 'yuv420p',
+                        '-c:a', 'aac', '-ar', '48000', '-ac', '2', '-movflags', '+faststart', str(part)]
+            self._run(command); parts.append(part)
         listing = folder / 'concat.txt'
         listing.write_text('\n'.join("file '"+part.name+"'" for part in parts), encoding='utf-8')
         self._run([media_tool('ffmpeg'), '-y', '-v', 'error', '-f', 'concat', '-safe', '1',
@@ -278,6 +350,7 @@ class ChapterFinishing:
             part.unlink()
         listing.unlink()
         write_json(folder / 'manifest.json', resolved)
+        write_srt(folder / 'subtitles.srt', resolved['subtitles'])
         self.state[quality] = dict(path=target.relative_to(self.workspace.root).as_posix(),
                                    fingerprint=signature, sha256=sha(target))
         self.workspace._save()
@@ -296,52 +369,97 @@ class ChapterFinishing:
             raise ValueError('\n'.join(resolved['errors']))
         output = self.output()
         folder = self.workspace.path(f'finishing/{self.chapter_id}/handoff/{resolved["fingerprint"]}')
-        folder.mkdir(parents=True, exist_ok=True)
-        media_folder = folder / 'media'
-        media_folder.mkdir(exist_ok=True)
-        rt = otio.opentime.RationalTime
-        tr = otio.opentime.TimeRange
+        folder.mkdir(parents=True, exist_ok=True); (folder / 'media').mkdir(exist_ok=True)
+        rt = otio.opentime.RationalTime; tr = otio.opentime.TimeRange; rate = 24
         timeline = otio.schema.Timeline(name=self.chapter().title,
             metadata={'aigc': {'chapter_id': self.chapter_id, 'fixture_or_user_media': True,
-                               'audio_policy': 'embedded source; inspect track routing in NLE'}})
+                               'audio_policy': 'explicit native / independent / none',
+                               'subtitles': resolved['subtitles'], 'subtitle_sidecar': 'subtitles.srt'}})
         video = otio.schema.Track(name='Current Shot Video', kind=otio.schema.TrackKind.Video)
-        audio = otio.schema.Track(name='Source Audio', kind=otio.schema.TrackKind.Audio)
-        paths = {}
-        for clip in resolved['clips']:
-            src = self.workspace.path(clip['path'])
-            relative = f'media/{clip["sha256"]}{src.suffix.lower()}'
+        native = otio.schema.Track(name='Native Video Audio', kind=otio.schema.TrackKind.Audio)
+        dialogue_track = otio.schema.Track(name='Independent Dialogue', kind=otio.schema.TrackKind.Audio)
+        background_track = otio.schema.Track(name='Background Audio', kind=otio.schema.TrackKind.Audio)
+        paths = {}; cursors = {'dialogue': 0.0, 'background': 0.0}; timeline_cursor = 0.0
+
+        def portable(path, checksum):
+            src = self.workspace.path(path); relative = f'media/{checksum}{src.suffix.lower()}'
             dest = folder / relative
-            if not dest.exists() or sha(dest) != clip['sha256']:
-                shutil.copy2(src, dest)
-            paths[clip['path']] = relative
-            source_range = tr(rt(clip['source_in']*24,24), rt(clip['duration']*24,24))
-            ref = otio.schema.ExternalReference(target_url=relative)
+            if not dest.exists() or sha(dest) != checksum: shutil.copy2(src, dest)
+            paths[path] = relative; return relative
+
+        def append_at(track, cursor_key, name, relative, start, source_in, duration, metadata):
+            cursor = cursors[cursor_key]
+            if start > cursor + .001:
+                track.append(otio.schema.Gap(source_range=tr(rt(0, rate), rt((start-cursor)*rate, rate))))
+            elif start < cursor - .001:
+                metadata = deepcopy(metadata); metadata['aigc']['overlap_adjusted_from'] = start
+                start = cursor
+            track.append(otio.schema.Clip(name=name,
+                media_reference=otio.schema.ExternalReference(target_url=relative),
+                source_range=tr(rt(source_in*rate, rate), rt(duration*rate, rate)), metadata=metadata))
+            cursors[cursor_key] = start + duration
+
+        for clip in resolved['clips']:
+            relative = portable(clip['path'], clip['sha256'])
+            source_range = tr(rt(clip['source_in']*rate,rate), rt(clip['duration']*rate,rate))
             metadata = {'aigc': {'shot_id': clip['shot_id'], 'segment_id': clip['segment_id'],
                                  'candidate_id': clip['candidate_id'], 'volume': clip['volume'],
-                                 'mute': clip['mute']}}
+                                 'mute': clip['mute'], 'audio_strategy':
+                                 [d['strategy'] for d in clip['audio_plan']['dialogues']]}}
             video.append(otio.schema.Clip(name=f'{clip["shot_number"]} {clip["shot_title"]}',
-                                         media_reference=ref, source_range=source_range, metadata=metadata))
-            if clip['has_audio'] and not clip['mute']:
-                audio.append(otio.schema.Clip(name=f'{clip["shot_number"]} audio',
-                                             media_reference=otio.schema.ExternalReference(target_url=relative),
-                                             source_range=source_range, metadata=metadata))
+                         media_reference=otio.schema.ExternalReference(target_url=relative),
+                         source_range=source_range, metadata=metadata))
+            if clip['audio_plan']['native_audio'] and clip['has_audio'] and not clip['mute']:
+                native.append(otio.schema.Clip(name=f'{clip["shot_number"]} native audio',
+                              media_reference=otio.schema.ExternalReference(target_url=relative),
+                              source_range=source_range, metadata=metadata))
             else:
-                audio.append(otio.schema.Gap(source_range=tr(rt(0,24),rt(clip['duration']*24,24))))
-        timeline.tracks.extend([video,audio])
+                native.append(otio.schema.Gap(source_range=tr(rt(0,rate),rt(clip['duration']*rate,rate))))
+            for item in clip['audio_plan']['dialogues']:
+                if item['strategy'] != 'independent' or not item['path'] or not item['enabled'] or item['mute']: continue
+                source_in = max(0.0, clip['source_in'] - item['start'])
+                start_at = timeline_cursor + max(0.0, item['start'] - clip['source_in'])
+                duration = max(0.0, min(item['duration']-source_in, clip['duration']-(start_at-timeline_cursor)))
+                if duration <= .01: continue
+                candidate = self.service.candidate(item['candidate_id'])
+                audio_relative = portable(item['path'], candidate.sha256)
+                append_at(dialogue_track, 'dialogue', f'{item["speaker"]} · {item["text"]}', audio_relative,
+                          start_at, source_in, duration,
+                          {'aigc': {'role': 'dialogue', 'dialogue_id': item['dialogue_id'],
+                                    'candidate_id': item['candidate_id'], 'volume': item['volume'],
+                                    'fade_in': item['fade_in'], 'fade_out': item['fade_out']}})
+            for item in clip['audio_plan']['backgrounds']:
+                if not item['path'] or not item['enabled'] or item['mute']: continue
+                source_in = max(0.0, clip['source_in'] - item['start'])
+                start_at = timeline_cursor + max(0.0, item['start'] - clip['source_in'])
+                duration = max(0.0, min(item['duration']-source_in, clip['duration']-(start_at-timeline_cursor)))
+                if duration <= .01: continue
+                candidate = self.service.candidate(item['candidate_id'])
+                audio_relative = portable(item['path'], candidate.sha256)
+                append_at(background_track, 'background', item['text'], audio_relative, start_at, source_in, duration,
+                          {'aigc': {'role': 'background', 'background_id': item['background_id'],
+                                    'candidate_id': item['candidate_id'], 'volume': item['volume'],
+                                    'fade_in': item['fade_in'], 'fade_out': item['fade_out']}})
+            timeline_cursor += clip['duration']
+        for track, key in ((dialogue_track, 'dialogue'), (background_track, 'background')):
+            if cursors[key] < resolved['duration']:
+                track.append(otio.schema.Gap(source_range=tr(rt(0,rate),rt((resolved['duration']-cursors[key])*rate,rate))))
+        timeline.tracks.extend([video, native, dialogue_track, background_track])
         otio.adapters.write_to_file(timeline, str(folder / 'timeline.otio'))
         restored = otio.adapters.read_from_file(str(folder / 'timeline.otio'))
-        if not timeline.is_equivalent_to(restored):
-            raise ValueError('OTIO 回读不一致')
+        if not timeline.is_equivalent_to(restored): raise ValueError('OTIO 回读不一致')
         shutil.copy2(output, folder / 'chapter-output.mp4')
+        write_srt(folder / 'subtitles.srt', resolved['subtitles'])
         write_json(folder / 'manifest.json', dict(chapter_id=self.chapter_id,
-                   fingerprint=resolved['fingerprint'], clips=resolved['clips'], paths=paths,
-                   round_trip=True, model_calls=0, model_cost=0))
+                   fingerprint=resolved['fingerprint'], clips=resolved['clips'],
+                   subtitles=resolved['subtitles'], paths=paths, round_trip=True,
+                   model_calls=0, model_cost=0))
         (folder / 'README.txt').write_text(
             'V0.2 Chapter Finishing / local media\n'
-            'Open timeline.otio in an NLE with OTIO support; media/ uses relative paths.\n'
+            'timeline.otio contains video, native audio, independent dialogue and background tracks.\n'
+            'subtitles.srt is UTF-8 and derived from Production Script dialogue with saved manual edits.\n'
             'chapter-output.mp4 is the authoritative rendered playback for this assembly.\n'
-            'For source audio, mute embedded audio on the video track and use Source Audio.\n'
-            'Clip volume and mute are recorded in aigc metadata; verify audio routing and levels in the NLE.\n'
+            'Clip volume, mute and fades are recorded in aigc metadata; verify routing in the NLE.\n'
             'Actual Resolve/Premiere import is not verified. No AI model call or paid generation.\n',
             encoding='utf-8')
         return folder

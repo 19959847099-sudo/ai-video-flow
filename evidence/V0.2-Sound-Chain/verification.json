@@ -1,0 +1,118 @@
+{
+  "label": "DEMO / FIXTURE / ZERO-CALL",
+  "project_title": "声音链",
+  "dialogue_identity": "db56c54644fc5bc8adec90a1306eb66b",
+  "dialogue_candidates": [
+    {
+      "id": "a45ba7d42a0643afbee7e9d2939bf7b4",
+      "review": "green"
+    },
+    {
+      "id": "613f244e2532402e9c597f27e24fffbb",
+      "review": "yellow"
+    },
+    {
+      "id": "166f1d848171491eae74d664799106b5",
+      "review": "red"
+    }
+  ],
+  "dialogue_current": "a45ba7d42a0643afbee7e9d2939bf7b4",
+  "voice_current": "36ebaa5474464e7babdd16c90abae1fd",
+  "background_current_count": 2,
+  "dialogue_timing": {
+    "dialogue_id": "db56c54644fc5bc8adec90a1306eb66b",
+    "strategy": "independent",
+    "start": 0.28,
+    "volume": 0.82,
+    "mute": false,
+    "enabled": true,
+    "fade_in": 0.08,
+    "fade_out": 0.12,
+    "updated_at": "2026-09-19T06:35:02.840425+00:00"
+  },
+  "subtitle": {
+    "dialogue_id": "db56c54644fc5bc8adec90a1306eb66b",
+    "display_text": "这把伞，\n是不是有人来找过？",
+    "start": 0.3,
+    "end": 2.2,
+    "enabled": true,
+    "manual_text": true,
+    "manual_timing": true,
+    "source_fingerprint": "702ead6b11b754fd9afbdf543e92a3577c936a1eb0fbc42b126de754a3af9bac",
+    "stale": true,
+    "updated_at": "2026-09-19T06:35:03.176463+00:00"
+  },
+  "candidate_stale_after_script_change": true,
+  "restart_current_preserved": true,
+  "preview": {
+    "codec_name": "h264",
+    "width": 960,
+    "height": 540,
+    "avg_frame_rate": "24/1",
+    "r_frame_rate": "24/1",
+    "time_base": "1/12288",
+    "duration": 6.0,
+    "rate": "24"
+  },
+  "preview_audio": {
+    "codec_name": "aac",
+    "avg_frame_rate": "0/0",
+    "r_frame_rate": "0/0",
+    "time_base": "1/48000",
+    "sample_rate": "48000",
+    "channels": 2,
+    "duration": 6.021333
+  },
+  "output": {
+    "codec_name": "h264",
+    "width": 1280,
+    "height": 720,
+    "avg_frame_rate": "24/1",
+    "r_frame_rate": "24/1",
+    "time_base": "1/12288",
+    "duration": 6.0,
+    "rate": "24"
+  },
+  "output_audio": {
+    "codec_name": "aac",
+    "avg_frame_rate": "0/0",
+    "r_frame_rate": "0/0",
+    "time_base": "1/48000",
+    "sample_rate": "48000",
+    "channels": 2,
+    "duration": 6.021333
+  },
+  "srt_entry_count": 3,
+  "srt_timecodes": [
+    [
+      "00:00:00,300",
+      "00:00:02,200"
+    ],
+    [
+      "00:00:02,700",
+      "00:00:03,000"
+    ],
+    [
+      "00:00:03,350",
+      "00:00:04,600"
+    ]
+  ],
+  "otio_tracks": [
+    "Current Shot Video",
+    "Native Video Audio",
+    "Independent Dialogue",
+    "Background Audio"
+  ],
+  "otio_relative_urls": true,
+  "otio_round_trip": true,
+  "dialogue_jobs": [
+    "succeeded",
+    "succeeded"
+  ],
+  "background_jobs": [
+    "succeeded",
+    "succeeded"
+  ],
+  "commercial_api_calls": 0,
+  "actual_cost": 0
+}

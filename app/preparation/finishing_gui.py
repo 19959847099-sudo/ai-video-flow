@@ -329,6 +329,7 @@ class ChapterFinishingDialog(QDialog):
         side.addWidget(self.shot_title)
         self.take = label('', 'finishingMuted')
         side.addWidget(self.take)
+        side.addWidget(button('对白、声音与字幕  ↗', self.open_sound, 'tool'))
         side.addSpacing(10)
         side.addWidget(label('起点 / 终点', 'finishingMuted'))
         ranges = QHBoxLayout()
@@ -571,6 +572,13 @@ class ChapterFinishingDialog(QDialog):
         segment = self.selected_segment()
         if segment:
             self._edit(lambda: self.finishing.remove(segment['id']))
+
+    def open_sound(self):
+        segment = self.selected_segment()
+        if segment:
+            from .sound_gui import SoundDialog
+            SoundDialog(self.host, segment['shot_id']).exec()
+            self.refresh(segment['id'])
 
     def open_candidate(self):
         segment = self.selected_segment()

@@ -17,9 +17,9 @@ from .ui_copy import asset_message, operation_message
 
 REVIEW = {
     'unreviewed': ('待判断', '#91a6b9', '○'),
-    'green': ('', '#8fbdac', '●'),
-    'yellow': ('', '#d7ad79', '●'),
-    'red': ('', '#d09b87', '●'),
+    'green': ('', '#42d684', '●'),
+    'yellow': ('', '#f2b83f', '●'),
+    'red': ('', '#f0645d', '●'),
 }
 
 
@@ -39,7 +39,7 @@ def action(value, handler, role='quiet'):
 
 
 class ReviewDot(QAbstractButton):
-    COLORS = {'green': '#8fbdac', 'yellow': '#d7ad79', 'red': '#d09b87'}
+    COLORS = {'green': '#42d684', 'yellow': '#f2b83f', 'red': '#f0645d'}
 
     def __init__(self, state, parent=None):
         super().__init__(parent)

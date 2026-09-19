@@ -1,0 +1,139 @@
+{
+  "label": "FIXTURE / DEMO / ZERO-CALL",
+  "formal_unchanged_before_apply": true,
+  "applied_revision": "edd17daa5e03d90ec54af9c9506d2a30931a9a8e0df28e5ed5fcd044992de4b0",
+  "first_proposal_became_stale": true,
+  "continue_based_on_proposal": true,
+  "local_diff": {
+    "added": 4,
+    "removed": 0
+  },
+  "stale_blocked": true,
+  "invalid_validation": "invalid",
+  "invalid_diagnostics": [
+    {
+      "line": 1,
+      "column": 1,
+      "message": "内容必须位于镜头内；镜头使用三位及以上编号，例如 001/推门进入",
+      "code": "context"
+    },
+    {
+      "line": 1,
+      "column": 1,
+      "message": "缺少影片名/名称",
+      "code": "project"
+    },
+    {
+      "line": 1,
+      "column": 1,
+      "message": "至少需要一个章节",
+      "code": "chapter"
+    }
+  ],
+  "production_state_unchanged": true,
+  "run_trace": [
+    {
+      "id": "fb08cbab9064444f9e572f96eaa558d5",
+      "task": "project_discussion",
+      "status": "succeeded",
+      "provider": "fixture-text",
+      "model": "fixture-text-v1",
+      "prompt_versions": {
+        "base": "creative_base_v1",
+        "product": "production_rules_v1",
+        "task": "project_discussion_v1",
+        "output": "creative_output_v1",
+        "dsl": "production_script_dsl_v1"
+      },
+      "template_hash": "a51431a971d01f5467309e8192f00265e9cc391e2d8beb43345c04e293b01426",
+      "context_fingerprint": "fa7198ea40597d599976fcd51887dbb8cfb8bc458194d04b8216d3e213fa0969",
+      "base_script_fingerprint": "afb4a341d19844bee30a40874c50e0e4013e8f91d69714c2cd5d1bd65c604966",
+      "proposal_id": null,
+      "repair_count": 0
+    },
+    {
+      "id": "baf94f9cd8da469cb34f8128ae0d60d4",
+      "task": "edit_shot",
+      "status": "succeeded",
+      "provider": "fixture-text",
+      "model": "fixture-text-v1",
+      "prompt_versions": {
+        "base": "creative_base_v1",
+        "product": "production_rules_v1",
+        "task": "edit_shot_v1",
+        "output": "creative_output_v1",
+        "dsl": "production_script_dsl_v1"
+      },
+      "template_hash": "378e58e0458daf9e1b91208c46aa6d97db7d5457191123befbce9ccebf17c29b",
+      "context_fingerprint": "fc6e0992b47d887a3cc3f86fcedb3786a3e342b43621576d09c7ac9bd050ed3b",
+      "base_script_fingerprint": "afb4a341d19844bee30a40874c50e0e4013e8f91d69714c2cd5d1bd65c604966",
+      "proposal_id": "8947734d09a54209b1cbbb9da9cffc1d",
+      "repair_count": 0
+    },
+    {
+      "id": "af4dd1180f6248d197c23089bee2321f",
+      "task": "edit_shot",
+      "status": "succeeded",
+      "provider": "fixture-text",
+      "model": "fixture-text-v1",
+      "prompt_versions": {
+        "base": "creative_base_v1",
+        "product": "production_rules_v1",
+        "task": "edit_shot_v1",
+        "output": "creative_output_v1",
+        "dsl": "production_script_dsl_v1"
+      },
+      "template_hash": "378e58e0458daf9e1b91208c46aa6d97db7d5457191123befbce9ccebf17c29b",
+      "context_fingerprint": "364151c2708d491e8d8b5a29de33fe72551057d70a0dc1012724e1c3d1cfe110",
+      "base_script_fingerprint": "afb4a341d19844bee30a40874c50e0e4013e8f91d69714c2cd5d1bd65c604966",
+      "proposal_id": "132fe2d423dc4b178395938889986d3d",
+      "repair_count": 0
+    },
+    {
+      "id": "0a1d952e0dc945a2b1ef5874d0fc78b7",
+      "task": "edit_shot",
+      "status": "succeeded",
+      "provider": "fixture-text",
+      "model": "fixture-text-v1",
+      "prompt_versions": {
+        "base": "creative_base_v1",
+        "product": "production_rules_v1",
+        "task": "edit_shot_v1",
+        "output": "creative_output_v1",
+        "dsl": "production_script_dsl_v1"
+      },
+      "template_hash": "378e58e0458daf9e1b91208c46aa6d97db7d5457191123befbce9ccebf17c29b",
+      "context_fingerprint": "97f813b3628e247f1f49868994fa3feacfb016bf4e460893b98f883c2b07a1dd",
+      "base_script_fingerprint": "edd17daa5e03d90ec54af9c9506d2a30931a9a8e0df28e5ed5fcd044992de4b0",
+      "proposal_id": "c73fde636e1a4190801fa70cc5be05c8",
+      "repair_count": 0
+    },
+    {
+      "id": "964fb6b9714747b1877c8fda9b8426b7",
+      "task": "edit_shot",
+      "status": "succeeded",
+      "provider": "fixture-text",
+      "model": "fixture-text-v1",
+      "prompt_versions": {
+        "base": "creative_base_v1",
+        "product": "production_rules_v1",
+        "task": "edit_shot_v1",
+        "output": "creative_output_v1",
+        "dsl": "production_script_dsl_v1"
+      },
+      "template_hash": "378e58e0458daf9e1b91208c46aa6d97db7d5457191123befbce9ccebf17c29b",
+      "context_fingerprint": "50a00924af0c5a7c988c27a64360e071ebab70fd0b4ace32f4f37916ae04199e",
+      "base_script_fingerprint": "551b1c0966782fb850f4e2d32f6dc4f08a5da7b0ad768f929dfdfedbdf50151a",
+      "proposal_id": "89fb7b1ce4484da9827397b4fec601f6",
+      "repair_count": 0
+    }
+  ],
+  "idea_validation": "valid",
+  "external_normalization": {
+    "validation": "valid",
+    "applied": true,
+    "narrative_preserved": true
+  },
+  "commercial_llm_calls": 0,
+  "actual_cost": 0
+}

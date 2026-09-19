@@ -51,7 +51,7 @@ class Workspace:
                               events=[], revisions=[], ui={}, updated_at=now(),
                               candidates={}, runtime_requests={}, runtime_jobs={},
                               runtime_batches={}, dialogue_bindings={}, dialogue_states={}, subtitles={}, background_states={}, background_bindings={},
-                              voice_identities={}, voice_identity_bindings={}, sound_prompts={}, unbound_requirements=[],
+                              voice_identities={}, voice_identity_bindings={}, sound_prompts={}, creative_conversations={}, creative_proposals={}, creative_runs={}, creative_requests={}, creative_active_conversation=None, unbound_requirements=[],
                               reference_decisions={}, prompt_drafts={}, shot_bindings={}, assemblies={})
             self._save()
         # Additive V0.2 production records keep existing Preparation projects readable.
@@ -67,6 +67,11 @@ class Workspace:
         self.state.setdefault('voice_identities', {})
         self.state.setdefault('voice_identity_bindings', {})
         self.state.setdefault('sound_prompts', {})
+        self.state.setdefault('creative_conversations', {})
+        self.state.setdefault('creative_proposals', {})
+        self.state.setdefault('creative_runs', {})
+        self.state.setdefault('creative_requests', {})
+        self.state.setdefault('creative_active_conversation', None)
         self.state.setdefault('unbound_requirements', [])
         self.state.setdefault('reference_decisions', {})
         self.state.setdefault('prompt_drafts', {})

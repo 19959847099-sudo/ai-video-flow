@@ -17,6 +17,17 @@ MEDIA = {kind: ('audio' if kind in ('voice', 'background_audio') else 'video' if
 SECTIONS = {'镜头', '动作', '表演', '对白', '连续性', '备注'}
 
 
+def dsl_guide():
+    """Shared human/model description of the parser contract."""
+    return ("Slash / separates fixed structural fields; use - for an unspecified value. "
+            "A complete reusable reference is wrapped in 【...】 and slash inside the brackets is not a separator. "
+            "Project: title/名称. Chapter: 01/章节/title. Shot: 001/title. "
+            "Cast: 人物：person/age/costume/voice. Environment: 环境：environment/background audio. "
+            "Natural-language sections are: " + ", ".join(sorted(SECTIONS)) + ". "
+            "Dialogue lines use speaker：text and the speaker must be declared in the shot. "
+            "Do not invent unknown age, costume, voice, environment, or reusable asset facts.")
+
+
 class Diagnostic(BaseModel):
     line: int
     column: int = 1

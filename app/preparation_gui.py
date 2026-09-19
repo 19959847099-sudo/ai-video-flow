@@ -343,13 +343,14 @@ class PreparationWindow(QMainWindow):
             stages.addWidget(stage)
         top_layout.addLayout(stages)
         top_layout.addStretch()
+        self.creative_button = button('AI 创作', self.open_creative, 'primary')
         self.open_button = button('打开项目', self.choose_workspace, 'tool')
         import_button = button('导入剧本', self.import_script, 'importScript')
         self.library_button = button('素材库', self.open_library, 'tool')
         self.scan_button = button('同步素材', self.scan, 'tool')
         self.scan_button.setObjectName('scanLibrary')
-        top_layout.addLayout(row(self.open_button, import_button, self.library_button,
-                                 self.scan_button, spacing=4))
+        top_layout.addLayout(row(self.creative_button, self.open_button, import_button,
+                                 self.library_button, self.scan_button, spacing=4))
         root.addWidget(top)
 
         project, project_layout = hframe('projectbar', (36, 14, 36, 14), 0)
@@ -711,7 +712,7 @@ class PreparationWindow(QMainWindow):
         try: self.save_draft()
         except Exception: return
         self.body.setEnabled(False)
-        for control in (self.open_button, self.scan_button, self.apply_button, *self.production_stages): control.setEnabled(False)
+        for control in (self.creative_button, self.open_button, self.scan_button, self.apply_button, *self.production_stages): control.setEnabled(False)
         self.saved.setText('正在扫描与校验素材…')
         self.scan_error = None
         self.worker = ScanThread(self.workspace)
@@ -724,7 +725,7 @@ class PreparationWindow(QMainWindow):
 
     def scan_finished(self):
         self.body.setEnabled(True)
-        for control in (self.open_button, self.scan_button, self.apply_button, *self.production_stages): control.setEnabled(True)
+        for control in (self.creative_button, self.open_button, self.scan_button, self.apply_button, *self.production_stages): control.setEnabled(True)
         self.refresh()
         if self.scan_error:
             self.saved.setText('同步未完成')
@@ -1109,6 +1110,14 @@ class PreparationWindow(QMainWindow):
     def import_for_requirement(self):
         if self.active_requirement_id:
             self.open_production(self.active_requirement_id, import_now=True)
+
+    def open_creative(self):
+        if self.worker and self.worker.isRunning():
+            self.feedback.setText('素材同步完成后再进入 AI 创作。')
+            return
+        from .preparation.creative_gui import CreativeDialog
+        CreativeDialog(self).exec()
+        self.refresh()
 
     def open_api_settings(self):
         report = next((r for r in self.workspace.report()

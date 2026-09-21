@@ -1322,11 +1322,16 @@ def main():
     parser.add_argument('--data-dir', default=None)
     parser.add_argument('--layout', choices=('D', 'C'), default=None)
     parser.add_argument('--settings-path', default=None)
+    parser.add_argument('--smoke-test', action='store_true', help=argparse.SUPPRESS)
+    parser.add_argument('--smoke-report', default=None, help=argparse.SUPPRESS)
+    parser.add_argument('--expect-missing-media', action='store_true', help=argparse.SUPPRESS)
+    parser.add_argument('--smoke-quick', action='store_true', help=argparse.SUPPRESS)
     args = parser.parse_args()
     app = QApplication.instance() or QApplication(sys.argv)
     app.setFont(QFont('Microsoft YaHei UI', 10))
-    session_path = Path('.v02-session.json') if args.data_dir is None else None
-    target = args.data_dir or 'workspace-v02'
+    from .resources import default_workspace_root, session_file
+    session_path = session_file() if args.data_dir is None else None
+    target = args.data_dir or default_workspace_root()
     from .integration import AppSettingsStore
     settings = AppSettingsStore(args.settings_path)
     if session_path and session_path.is_file() and settings.values['resume_last_project']:
@@ -1335,6 +1340,15 @@ def main():
             if recent and (Path(recent) / 'project.json').is_file(): target = recent
         except (ValueError, OSError, TypeError): pass
     layout = args.layout or settings.values['layout']
+    if args.smoke_test:
+        if not args.smoke_report:
+            parser.error('--smoke-report is required with --smoke-test')
+        from .package_smoke import run_packaged_smoke
+        return run_packaged_smoke(
+            app, target, args.settings_path, args.smoke_report,
+            expect_missing_media=args.expect_missing_media,
+            quick=args.smoke_quick,
+        )
     try:
         if layout == 'C':
             window = PreparationWindow(target, session_path)

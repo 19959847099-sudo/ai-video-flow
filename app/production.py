@@ -4,7 +4,6 @@ from __future__ import annotations
 import hashlib
 import json
 import os
-import shutil
 import subprocess
 from pathlib import Path
 from typing import Literal
@@ -15,11 +14,7 @@ from pydantic import Field
 from .core import Record, Store, GenerationTask, DummyProviderAdapter, new_id, write_json
 
 
-def media_tool(name):
-    path = shutil.which(name)
-    if not path:
-        raise ValueError(f"未找到 {name}，请安装 FFmpeg 并加入 PATH 后重启应用")
-    return path
+from .resources import media_tool
 
 
 def run_media(arguments):

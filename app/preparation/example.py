@@ -5,6 +5,7 @@ from PySide6.QtCore import QByteArray, Qt
 from PySide6.QtGui import QImage, QPainter
 from PySide6.QtSvg import QSvgRenderer
 from .workspace import Workspace
+from app.resources import resource_path
 
 SOURCE = '''雨停之前/名称
 01/章节/一把没有主人的伞
@@ -109,6 +110,7 @@ def create_example(root):
         render_svg(source, workspace.root / 'library' / relative)
     environment = workspace.root / 'library/environment/便利店/雨夜.png'
     environment.parent.mkdir(parents=True, exist_ok=True)
-    copyfile(Path(__file__).parent / 'demo_assets/convenience-store-night.png', environment)
+    copyfile(resource_path('app', 'preparation', 'demo_assets',
+                           'convenience-store-night.png'), environment)
     workspace.scan()
     return workspace

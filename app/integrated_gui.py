@@ -2,8 +2,6 @@
 from __future__ import annotations
 
 from pathlib import Path
-import shutil
-
 from PySide6.QtCore import Qt, QTimer, QUrl
 from PySide6.QtGui import QDesktopServices
 from PySide6.QtWidgets import (
@@ -13,7 +11,9 @@ from PySide6.QtWidgets import (
 )
 
 from .integration import ActivityAdapter, AppSettingsStore, WorkspaceRouter
+from .resources import find_media_tool
 from .shell_theme import D_STYLE
+from .version import __version__
 
 
 def label(value="", name="muted", wrap=False):
@@ -446,14 +446,15 @@ class SettingsPage(QWidget):
 
     def _system(self):
         page, layout = self.surface("系统信息", "只读显示本机实际能力。")
-        self.row(layout, "FFmpeg", label(shutil.which("ffmpeg") or "未找到", "muted"))
-        self.row(layout, "FFprobe", label(shutil.which("ffprobe") or "未找到", "muted"))
+        self.row(layout, "FFmpeg", label(find_media_tool("ffmpeg") or "\u672a\u627e\u5230", "muted"))
+        self.row(layout, "FFprobe", label(find_media_tool("ffprobe") or "\u672a\u627e\u5230", "muted"))
         try:
             import opentimelineio  # noqa: F401
             otio = "可用"
         except Exception:
             otio = "未安装"
         self.row(layout, "OpenTimelineIO", label(otio, "muted"))
+        self.row(layout, "\u5e94\u7528\u7248\u672c", label(__version__, "muted"))
         self.row(layout, "当前项目", label(str(self.shell.workspace.root), "muted", True))
         layout.addWidget(button("打开项目文件夹",
                                 lambda: QDesktopServices.openUrl(

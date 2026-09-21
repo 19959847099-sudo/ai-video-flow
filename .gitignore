@@ -13,3 +13,6 @@ example-preparation/
 
 .v02-session.json
 .aivideo-settings-v1.json
+build/
+dist/
+release/

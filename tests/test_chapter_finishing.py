@@ -4,6 +4,8 @@ from __future__ import annotations
 from pathlib import Path
 from tempfile import TemporaryDirectory
 import unittest
+import builtins
+from unittest.mock import patch
 import re
 import subprocess
 
@@ -63,6 +65,29 @@ class ChapterFinishingTests(unittest.TestCase):
         self.assertEqual([c['candidate_id'] for c in resolved['clips']], [alternate.id])
         self.assertEqual(len(resolved['errors']), 2)
 
+    def test_missing_bound_media_blocks_locally_without_crashing(self):
+        originals = self.ready()
+        self.workspace.path(originals[0].media_path).unlink()
+        resolved = self.finishing.resolve()
+        self.assertEqual(resolved['status'], 'Blocked')
+        self.assertTrue(any('不存在' in message or '不可用' in message
+                            for message in resolved['errors']))
+        self.assertEqual(len(resolved['clips']), 2)
+
+    def test_otio_unavailable_only_blocks_handoff(self):
+        self.ready()
+        preview = self.finishing.preview()
+        original_import = builtins.__import__
+
+        def without_otio(name, *args, **kwargs):
+            if name == 'opentimelineio':
+                raise ModuleNotFoundError('simulated missing OpenTimelineIO')
+            return original_import(name, *args, **kwargs)
+
+        with patch('builtins.__import__', side_effect=without_otio):
+            with self.assertRaisesRegex(ModuleNotFoundError, 'simulated missing'):
+                self.finishing.handoff()
+        self.assertEqual(self.finishing.preview(), preview)
     def test_current_not_latest_and_prompt_stale_after_explicit_switch(self):
         first = self.add(0, 0, bind=True)
         shot = self.chapter.shots[0]

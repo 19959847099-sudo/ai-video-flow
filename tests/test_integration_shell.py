@@ -3,6 +3,8 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 import json
 import unittest
+from types import SimpleNamespace
+from unittest.mock import patch
 
 from PySide6.QtTest import QTest
 from PySide6.QtWidgets import QApplication
@@ -185,6 +187,16 @@ class IntegratedShellGuiTests(unittest.TestCase):
         self.shell=ApplicationShell(root,settings_path=Path(self.temp.name)/"empty-settings.json")
         self.assertEqual(self.shell.router.current.workspace,"preparation")
         self.assertIs(self.shell.stack.currentWidget(),self.shell.preparation_page)
+    def test_close_is_blocked_while_a_session_worker_is_running(self):
+        busy=SimpleNamespace(worker=SimpleNamespace(isRunning=lambda: True))
+        self.shell.pages["busy:test"]=busy
+        try:
+            with patch("app.integrated_gui.QMessageBox.information") as information:
+                self.assertFalse(self.shell.close())
+                self.assertTrue(self.shell.isVisible())
+                information.assert_called_once()
+        finally:
+            self.shell.pages.pop("busy:test",None)
 
 
 if __name__=="__main__":

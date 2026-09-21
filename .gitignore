@@ -12,3 +12,4 @@ example-preparation/
 *.lock
 
 .v02-session.json
+.aivideo-settings-v1.json

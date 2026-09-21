@@ -19,6 +19,7 @@ from .production import ProductionService
 from .production_gui import ReviewDot
 from .workspace import EXTENSIONS, sha
 from .ui_copy import finishing_message, operation_message
+from app.shell_theme import D_STYLE, EMBEDDED_D_STYLE
 
 
 def button(caption, callback, role='quiet'):
@@ -92,9 +93,10 @@ class RenderWorker(QThread):
 
 
 class ShotCandidateDialog(QDialog):
-    def __init__(self, host, shot_id):
+    def __init__(self, host, shot_id, integrated=False):
         super().__init__(host)
         self.host = host
+        self.integrated = integrated
         self.service = ProductionService(host.workspace)
         self.preview_source = QPixmap()
         self.chapter, self.shot = self.service.shot_context(shot_id)
@@ -109,6 +111,8 @@ class ShotCandidateDialog(QDialog):
             QListWidget#shotCandidates::item { min-height:46px; padding:8px; }
             QListWidget#shotCandidates::item:selected { background:#263c52; color:#eef4f8; }
         """)
+        if self.integrated:
+            self.setStyleSheet(D_STYLE + EMBEDDED_D_STYLE)
         root = QVBoxLayout(self)
         root.setContentsMargins(26, 21, 26, 18)
         root.setSpacing(13)
@@ -141,8 +145,14 @@ class ShotCandidateDialog(QDialog):
         self.list.setObjectName('shotCandidates')
         self.list.currentItemChanged.connect(lambda *_: self.selection_changed())
         root.addWidget(self.list)
-        root.addWidget(button('返回章节  ↗', self.accept, 'quiet'))
+        root.addWidget(button('返回来源  ↗', self.go_back, 'quiet'))
         self.refresh()
+
+    def go_back(self):
+        if self.integrated and getattr(self.host, "shell", None):
+            self.host.shell.return_route()
+        else:
+            self.accept()
 
     def selected_id(self):
         item = self.list.currentItem()
@@ -244,9 +254,10 @@ class ShotCandidateDialog(QDialog):
 
 
 class ChapterFinishingDialog(QDialog):
-    def __init__(self, host, chapter_id, selected_shot_id=None):
+    def __init__(self, host, chapter_id, selected_shot_id=None, integrated=False):
         super().__init__(host)
         self.host = host
+        self.integrated = integrated
         self.finishing = ChapterFinishing(host.workspace, chapter_id)
         self.worker = None
         self._updating = False
@@ -271,6 +282,8 @@ class ChapterFinishingDialog(QDialog):
                              padding:6px; border-radius:3px; }
             QCheckBox { color:#cad8e3; spacing:7px; }
         """)
+        if self.integrated:
+            self.setStyleSheet(D_STYLE + EMBEDDED_D_STYLE)
         self.build()
         segments = self.finishing.segments()
         chosen = next((s['id'] for s in segments if s['shot_id'] == selected_shot_id),
@@ -289,7 +302,7 @@ class ChapterFinishingDialog(QDialog):
         top.addLayout(title, 1)
         self.status = label('', 'finishingMuted')
         top.addWidget(self.status, 0, Qt.AlignmentFlag.AlignVCenter)
-        top.addWidget(button('返回准备  ↗', self.accept, 'quiet'))
+        top.addWidget(button('返回来源  ↗', self.go_back, 'quiet'))
         root.addLayout(top)
         body = QHBoxLayout()
         body.setSpacing(18)
@@ -582,7 +595,11 @@ class ChapterFinishingDialog(QDialog):
 
     def open_candidate(self):
         segment = self.selected_segment()
-        if segment:
+        if segment and self.integrated and getattr(self.host, "shell", None):
+            self.host.shell.navigate("production", chapter_id=self.finishing.chapter_id,
+                shot_id=segment["shot_id"], object_type="shot_current",
+                object_id=segment["shot_id"], deep_link=True, reason="成片缺少 Current")
+        elif segment:
             ShotCandidateDialog(self.host, segment['shot_id']).exec()
             self.host.refresh()
             self.refresh(segment['id'])
@@ -599,7 +616,11 @@ class ChapterFinishingDialog(QDialog):
         if not segment:
             return
         shot = next((s for s in self.finishing.chapter().shots if s.id == segment['shot_id']), None)
-        if shot:
+        if shot and self.integrated and getattr(self.host, "shell", None):
+            self.host.shell.navigate("creative", chapter_id=self.finishing.chapter_id,
+                shot_id=shot.id, object_type="shot", object_id=shot.id,
+                deep_link=True, reason="从成片修改镜头")
+        elif shot:
             self.host.chapter_id = self.finishing.chapter_id
             self.host.shot_id = shot.id
             self.host.refresh()
@@ -672,6 +693,12 @@ class ChapterFinishingDialog(QDialog):
     def _media_status(self, status):
         if status == QMediaPlayer.MediaStatus.EndOfMedia:
             self.player.pause()
+
+    def go_back(self):
+        if self.integrated and getattr(self.host, "shell", None):
+            self.host.shell.return_route()
+        else:
+            self.accept()
 
     def accept(self):
         if self.worker and self.worker.isRunning():

@@ -1320,17 +1320,27 @@ HELP = '''影片名/名称
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--data-dir', default=None)
+    parser.add_argument('--layout', choices=('D', 'C'), default=None)
+    parser.add_argument('--settings-path', default=None)
     args = parser.parse_args()
     app = QApplication.instance() or QApplication(sys.argv)
     app.setFont(QFont('Microsoft YaHei UI', 10))
     session_path = Path('.v02-session.json') if args.data_dir is None else None
     target = args.data_dir or 'workspace-v02'
-    if session_path and session_path.is_file():
+    from .integration import AppSettingsStore
+    settings = AppSettingsStore(args.settings_path)
+    if session_path and session_path.is_file() and settings.values['resume_last_project']:
         try:
             recent = json.loads(session_path.read_text(encoding='utf-8')).get('last_project')
             if recent and (Path(recent) / 'project.json').is_file(): target = recent
         except (ValueError, OSError, TypeError): pass
-    try: window = PreparationWindow(target, session_path)
+    layout = args.layout or settings.values['layout']
+    try:
+        if layout == 'C':
+            window = PreparationWindow(target, session_path)
+        else:
+            from .integrated_gui import ApplicationShell
+            window = ApplicationShell(target, session_path, args.settings_path)
     except Exception as exc:
         QMessageBox.critical(None, '无法打开项目', str(exc))
         return 1

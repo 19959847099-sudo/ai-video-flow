@@ -6,6 +6,7 @@ from PySide6.QtCore import Qt, QThread, Signal
 from PySide6.QtWidgets import (QComboBox, QDialog, QFileDialog, QFrame, QHBoxLayout, QLabel,
     QMessageBox, QPlainTextEdit, QPushButton, QSplitter, QTextBrowser, QVBoxLayout, QWidget)
 from .creative import CreativeService, Scope
+from app.shell_theme import D_STYLE, EMBEDDED_D_STYLE
 
 TASKS = [
     ("\u9879\u76ee\u8ba8\u8bba", "project_discussion"),
@@ -35,9 +36,9 @@ class CreativeWorker(QThread):
                                                     repair=self.repair))
 
 class CreativeDialog(QDialog):
-    def __init__(self, host):
+    def __init__(self, host, integrated=False):
         super().__init__(host)
-        self.host=host; self.workspace=host.workspace
+        self.host=host; self.workspace=host.workspace; self.integrated=integrated
         self.service=CreativeService(self.workspace)
         self.scope=self.current_scope()
         self.conversation=self.service.active_conversation(self.scope)
@@ -56,6 +57,7 @@ class CreativeDialog(QDialog):
             QPlainTextEdit#creativeDraft { background:#132232; border:0; color:#dce8f1; }
             QComboBox { background:#142638; border:1px solid #31495d; padding:5px; }
         """)
+        if self.integrated:self.setStyleSheet(D_STYLE+EMBEDDED_D_STYLE)
         self.build(); self.refresh()
 
     def current_scope(self):
@@ -82,7 +84,7 @@ class CreativeDialog(QDialog):
             self.model.addItem(model.display_name,model.id)
         top.addWidget(label("\u6a21\u578b","creativeMuted")); top.addWidget(self.model)
         top.addWidget(button("\u6a21\u578b\u8bbe\u7f6e",self.model_settings,"quiet"))
-        top.addWidget(button("\u8fd4\u56de\u51c6\u5907  \u2197",self.accept,"quiet"))
+        top.addWidget(button("\u8fd4\u56de\u6765\u6e90  \u2197",self.go_back,"quiet"))
         root.addLayout(top)
 
         split=QSplitter(Qt.Orientation.Horizontal)
@@ -261,6 +263,11 @@ class CreativeDialog(QDialog):
         if proposal:
             try:self.service.discard(proposal.id);self.status.setText("\u5df2\u653e\u5f03\u8fd9\u7248\u4fee\u6539");self.refresh()
             except Exception as exc:self.status.setText(str(exc))
+
+    def go_back(self):
+        if self.integrated and getattr(self.host,"shell",None):
+            self.host.shell.return_route()
+        else:self.accept()
 
     def accept(self):
         if self.worker and self.worker.isRunning():self.status.setText("\u8bf7\u5148\u7b49\u5f85\u5b8c\u6210\u6216\u53d6\u6d88");return

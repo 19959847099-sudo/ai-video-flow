@@ -13,6 +13,7 @@ from PySide6.QtWidgets import (
 from .production import ProductionService
 from .workspace import EXTENSIONS
 from .ui_copy import asset_message, operation_message
+from app.shell_theme import D_STYLE, EMBEDDED_D_STYLE
 
 
 REVIEW = {
@@ -122,9 +123,10 @@ class CandidateDelegate(QStyledItemDelegate):
 
 
 class ProductionDialog(QDialog):
-    def __init__(self, host, requirement_id, shot_id=None):
+    def __init__(self, host, requirement_id, shot_id=None, integrated=False):
         super().__init__(host)
         self.host = host
+        self.integrated = integrated
         self.service = ProductionService(host.workspace)
         self.req, self.chapter, self.shot = self.service.context(requirement_id, shot_id)
         self.selected_id = None
@@ -142,6 +144,8 @@ class ProductionDialog(QDialog):
             QListWidget#candidateStrip::item:selected { background:#1e3042; border-top:2px solid #bad0df; }
             QLineEdit#reviewNote { background:#101c29; }
         """)
+        if self.integrated:
+            self.setStyleSheet(D_STYLE + EMBEDDED_D_STYLE)
         self.build()
         self.refresh()
         for key, state in [('1', 'green'), ('2', 'yellow'), ('3', 'red')]:
@@ -164,7 +168,11 @@ class ProductionDialog(QDialog):
         top.addLayout(title, 1)
         self.status = text('', 'productionStatus')
         top.addWidget(self.status, 0, Qt.AlignmentFlag.AlignVCenter)
-        top.addWidget(action('返回镜头  ↗', self.accept, 'quiet'), 0, Qt.AlignmentFlag.AlignVCenter)
+        if self.integrated:
+            top.addWidget(action('准备素材', self.open_preparation, 'quiet'))
+            top.addWidget(action('AI 协作', self.open_creative, 'quiet'))
+            top.addWidget(action('进入成片', self.open_assembly, 'quiet'))
+        top.addWidget(action('返回来源  ↗', self.go_back, 'quiet'), 0, Qt.AlignmentFlag.AlignVCenter)
         root.addLayout(top)
 
         body = QHBoxLayout()
@@ -413,6 +421,29 @@ class ProductionDialog(QDialog):
         asset['name'] = f'版本 {candidate.take_number:02d}  ·  {self.req.name}'
         from app.preparation_gui import MediaDialog
         MediaDialog(self.host, asset).exec()
+
+    def open_preparation(self):
+        if getattr(self.host, "shell", None):
+            self.host.shell.navigate("preparation", chapter_id=self.chapter.id,
+                shot_id=self.shot.id, object_type="requirement", object_id=self.req.id,
+                deep_link=True, reason="制作缺少输入")
+
+    def open_creative(self):
+        if getattr(self.host, "shell", None):
+            self.host.shell.navigate("creative", chapter_id=self.chapter.id,
+                shot_id=self.shot.id, object_type="shot", object_id=self.shot.id,
+                deep_link=True, reason="从制作台协作")
+
+    def open_assembly(self):
+        if getattr(self.host, "shell", None):
+            self.host.shell.navigate("assembly", chapter_id=self.chapter.id,
+                shot_id=self.shot.id, deep_link=True, reason="从制作台进入成片")
+
+    def go_back(self):
+        if self.integrated and getattr(self.host, "shell", None):
+            self.host.shell.return_route()
+        else:
+            self.accept()
 
     def closeEvent(self, event):
         self.host.refresh()

@@ -1,0 +1,118 @@
+{
+  "schema": 1,
+  "version": "0.1.0-rc.1",
+  "artifact": "E:\\codex\\AIGC流\\dist\\AIGCFlow",
+  "build_environment": {
+    "python": "3.13.3",
+    "PyInstaller": "6.22.3",
+    "PySide6": "6.10.2",
+    "OpenTimelineIO": "0.18.1",
+    "Pillow": "12.1.1",
+    "pydantic": "2.12.5"
+  },
+  "total_bytes": 364829856,
+  "file_count": 236,
+  "exe_bytes": 4817152,
+  "python_runtime_bytes": 6099960,
+  "qt_bytes": 118729205,
+  "ffmpeg_bytes": 101060096,
+  "ffprobe_bytes": 100853248,
+  "ffmpeg_version": "ffmpeg version 8.1-essentials_build-www.gyan.dev Copyright (c) 2000-2026 the FFmpeg developers",
+  "ffmpeg_sha256": "1a65d5b0b10d8d9a81d2824a3538046a40ed3607c906b335a166add87613f705",
+  "ffprobe_sha256": "54b944d6095c4588d7548424d7acd5118390a9d4f01b1c92f841547fc9a7429c",
+  "top_level": [
+    {
+      "name": "_internal",
+      "bytes": 360012704
+    },
+    {
+      "name": "AIGCFlow.exe",
+      "bytes": 4817152
+    }
+  ],
+  "largest_files": [
+    {
+      "path": "_internal/runtime/ffmpeg/bin/ffmpeg.exe",
+      "bytes": 101060096
+    },
+    {
+      "path": "_internal/runtime/ffmpeg/bin/ffprobe.exe",
+      "bytes": 100853248
+    },
+    {
+      "path": "_internal/PySide6/opengl32sw.dll",
+      "bytes": 20639544
+    },
+    {
+      "path": "_internal/PySide6/avcodec-61.dll",
+      "bytes": 13921592
+    },
+    {
+      "path": "_internal/PySide6/Qt6Core.dll",
+      "bytes": 10242360
+    },
+    {
+      "path": "_internal/PySide6/Qt6Gui.dll",
+      "bytes": 9494840
+    },
+    {
+      "path": "_internal/PIL/_avif.cp313-win_amd64.pyd",
+      "bytes": 7834112
+    },
+    {
+      "path": "_internal/PySide6/Qt6Widgets.dll",
+      "bytes": 6576952
+    },
+    {
+      "path": "_internal/PySide6/Qt6Quick.dll",
+      "bytes": 6506296
+    },
+    {
+      "path": "_internal/python313.dll",
+      "bytes": 6099960
+    },
+    {
+      "path": "_internal/PySide6/Qt6Pdf.dll",
+      "bytes": 5519672
+    },
+    {
+      "path": "_internal/pydantic_core/_pydantic_core.cp313-win_amd64.pyd",
+      "bytes": 5437440
+    },
+    {
+      "path": "_internal/PySide6/Qt6Qml.dll",
+      "bytes": 5333816
+    },
+    {
+      "path": "_internal/libcrypto-3.dll",
+      "bytes": 5231472
+    },
+    {
+      "path": "AIGCFlow.exe",
+      "bytes": 4817152
+    },
+    {
+      "path": "_internal/PySide6/QtWidgets.pyd",
+      "bytes": 4806456
+    },
+    {
+      "path": "_internal/PySide6/QtGui.pyd",
+      "bytes": 3873592
+    },
+    {
+      "path": "_internal/PySide6/QtCore.pyd",
+      "bytes": 3270968
+    },
+    {
+      "path": "_internal/PySide6/avformat-61.dll",
+      "bytes": 2642232
+    },
+    {
+      "path": "_internal/PIL/_imaging.cp313-win_amd64.pyd",
+      "bytes": 2588160
+    }
+  ],
+  "forbidden_content_absent": true,
+  "configured_secret_scanned": false,
+  "secret_hit": null
+}

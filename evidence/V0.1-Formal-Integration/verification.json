@@ -1,0 +1,100 @@
+{
+  "label": "FORMAL D SHELL · FIXTURE / ZERO-CALL",
+  "head": "5c08268 baseline",
+  "shell_height": 56,
+  "routes": {
+    "preparation-1280x720": {
+      "route": "preparation",
+      "size": [
+        1280,
+        720
+      ],
+      "shell_height": 56
+    },
+    "production-1280x720": {
+      "route": "production",
+      "size": [
+        1280,
+        720
+      ],
+      "shell_height": 56
+    },
+    "creative-1280x720": {
+      "route": "creative",
+      "size": [
+        1280,
+        720
+      ],
+      "shell_height": 56
+    },
+    "assembly-1280x720": {
+      "route": "assembly",
+      "size": [
+        1280,
+        720
+      ],
+      "shell_height": 56
+    },
+    "settings-1280x720": {
+      "route": "settings",
+      "size": [
+        1280,
+        720
+      ],
+      "shell_height": 56
+    },
+    "preparation-1600x1000": {
+      "route": "preparation",
+      "size": [
+        1600,
+        1000
+      ],
+      "shell_height": 56
+    },
+    "production-1600x1000": {
+      "route": "production",
+      "size": [
+        1600,
+        1000
+      ],
+      "shell_height": 56
+    },
+    "creative-1600x1000": {
+      "route": "creative",
+      "size": [
+        1600,
+        1000
+      ],
+      "shell_height": 56
+    },
+    "assembly-1600x1000": {
+      "route": "assembly",
+      "size": [
+        1600,
+        1000
+      ],
+      "shell_height": 56
+    },
+    "settings-1600x1000": {
+      "route": "settings",
+      "size": [
+        1600,
+        1000
+      ],
+      "shell_height": 56
+    }
+  },
+  "deep_link_precise_requirement": true,
+  "return_restored_source": true,
+  "workspace_memory_keys": [
+    "assembly",
+    "creative",
+    "preparation",
+    "production"
+  ],
+  "activity_records": 3,
+  "shot_current_count": 2,
+  "assembly_current_only": true,
+  "commercial_provider_calls": 0,
+  "actual_cost": 0
+}

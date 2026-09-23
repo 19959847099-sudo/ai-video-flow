@@ -1,5 +1,6 @@
 """Semantic UI regression tests, without screenshot/pixel assertions."""
 import json
+import os
 from pathlib import Path
 import tempfile
 from types import SimpleNamespace
@@ -74,8 +75,9 @@ class PresentationTests(unittest.TestCase):
             app=App(root);app.withdraw()
             try:
                 self.assertIn('数据读取失败',app.status.get())
-                with patch('app.production.shutil.which',return_value=None):
-                    with self.assertRaisesRegex(ValueError,'FFmpeg'):
+                with patch.dict(os.environ, {'AIVIDEO_MEDIA_BIN': str(root/'missing-media-bin'),
+                                             'AIVIDEO_MEDIA_STRICT': '1'}):
+                    with self.assertRaisesRegex(ValueError, 'ffmpeg.*AIVIDEO_MEDIA_BIN'):
                         media_tool('ffmpeg')
             finally:app.dirty=False;app.close()
 

@@ -15,9 +15,9 @@
       "frozen": true,
       "version": "0.1.0-rc.1",
       "module_locations": {
-        "app": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-9rbtfdku\\portable copy\\_internal\\app\\__init__.py",
-        "PySide6": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-9rbtfdku\\portable copy\\_internal\\PySide6\\__init__.py",
-        "opentimelineio": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-9rbtfdku\\portable copy\\_internal\\opentimelineio\\__init__.py"
+        "app": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-fhz9_r2d\\portable copy\\_internal\\app\\__init__.py",
+        "PySide6": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-fhz9_r2d\\portable copy\\_internal\\PySide6\\__init__.py",
+        "opentimelineio": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-fhz9_r2d\\portable copy\\_internal\\opentimelineio\\__init__.py"
       },
       "resource_demo_asset": true,
       "settings_recovered": true,
@@ -50,16 +50,16 @@
         "widgets_before": 305,
         "widgets_after": 305,
         "widget_growth": 0,
-        "rss_before": 95469568,
-        "rss_after": 103284736,
-        "rss_growth": 7815168
+        "rss_before": 95580160,
+        "rss_after": 101515264,
+        "rss_growth": 5935104
       },
       "bounded_widgets": true,
-      "idle_cpu_ratio": 0.0,
+      "idle_cpu_ratio": 0.0584,
       "idle_cpu_reasonable": true,
       "media_tools": {
-        "ffmpeg": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-9rbtfdku\\portable copy\\_internal\\runtime\\ffmpeg\\bin\\ffmpeg.exe",
-        "ffprobe": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-9rbtfdku\\portable copy\\_internal\\runtime\\ffmpeg\\bin\\ffprobe.exe"
+        "ffmpeg": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-fhz9_r2d\\portable copy\\_internal\\runtime\\ffmpeg\\bin\\ffmpeg.exe",
+        "ffprobe": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-fhz9_r2d\\portable copy\\_internal\\runtime\\ffmpeg\\bin\\ffprobe.exe"
       },
       "media_expectation": true,
       "first_close": true,
@@ -79,9 +79,9 @@
         "frozen": true,
         "version": "0.1.0-rc.1",
         "module_locations": {
-          "app": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-9rbtfdku\\portable copy\\_internal\\app\\__init__.py",
-          "PySide6": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-9rbtfdku\\portable copy\\_internal\\PySide6\\__init__.py",
-          "opentimelineio": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-9rbtfdku\\portable copy\\_internal\\opentimelineio\\__init__.py"
+          "app": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-fhz9_r2d\\portable copy\\_internal\\app\\__init__.py",
+          "PySide6": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-fhz9_r2d\\portable copy\\_internal\\PySide6\\__init__.py",
+          "opentimelineio": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-fhz9_r2d\\portable copy\\_internal\\opentimelineio\\__init__.py"
         },
         "resource_demo_asset": true,
         "settings_recovered": true,
@@ -114,16 +114,16 @@
           "widgets_before": 305,
           "widgets_after": 305,
           "widget_growth": 0,
-          "rss_before": 96763904,
-          "rss_after": 103608320,
-          "rss_growth": 6844416
+          "rss_before": 96813056,
+          "rss_after": 103591936,
+          "rss_growth": 6778880
         },
         "bounded_widgets": true,
-        "idle_cpu_ratio": 0.0,
+        "idle_cpu_ratio": 0.1028,
         "idle_cpu_reasonable": true,
         "media_tools": {
-          "ffmpeg": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-9rbtfdku\\portable copy\\_internal\\runtime\\ffmpeg\\bin\\ffmpeg.exe",
-          "ffprobe": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-9rbtfdku\\portable copy\\_internal\\runtime\\ffmpeg\\bin\\ffprobe.exe"
+          "ffmpeg": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-fhz9_r2d\\portable copy\\_internal\\runtime\\ffmpeg\\bin\\ffmpeg.exe",
+          "ffprobe": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-fhz9_r2d\\portable copy\\_internal\\runtime\\ffmpeg\\bin\\ffprobe.exe"
         },
         "media_expectation": true,
         "first_close": true,
@@ -142,9 +142,9 @@
         "frozen": true,
         "version": "0.1.0-rc.1",
         "module_locations": {
-          "app": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-9rbtfdku\\portable copy\\_internal\\app\\__init__.py",
-          "PySide6": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-9rbtfdku\\portable copy\\_internal\\PySide6\\__init__.py",
-          "opentimelineio": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-9rbtfdku\\portable copy\\_internal\\opentimelineio\\__init__.py"
+          "app": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-fhz9_r2d\\portable copy\\_internal\\app\\__init__.py",
+          "PySide6": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-fhz9_r2d\\portable copy\\_internal\\PySide6\\__init__.py",
+          "opentimelineio": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-fhz9_r2d\\portable copy\\_internal\\opentimelineio\\__init__.py"
         },
         "resource_demo_asset": true,
         "settings_recovered": true,
@@ -177,16 +177,16 @@
           "widgets_before": 305,
           "widgets_after": 305,
           "widget_growth": 0,
-          "rss_before": 98902016,
-          "rss_after": 106274816,
-          "rss_growth": 7372800
+          "rss_before": 98541568,
+          "rss_after": 106315776,
+          "rss_growth": 7774208
         },
         "bounded_widgets": true,
-        "idle_cpu_ratio": 0.0,
+        "idle_cpu_ratio": 0.1031,
         "idle_cpu_reasonable": true,
         "media_tools": {
-          "ffmpeg": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-9rbtfdku\\portable copy\\_internal\\runtime\\ffmpeg\\bin\\ffmpeg.exe",
-          "ffprobe": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-9rbtfdku\\portable copy\\_internal\\runtime\\ffmpeg\\bin\\ffprobe.exe"
+          "ffmpeg": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-fhz9_r2d\\portable copy\\_internal\\runtime\\ffmpeg\\bin\\ffmpeg.exe",
+          "ffprobe": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-fhz9_r2d\\portable copy\\_internal\\runtime\\ffmpeg\\bin\\ffprobe.exe"
         },
         "media_expectation": true,
         "first_close": true,
@@ -206,9 +206,9 @@
       "frozen": true,
       "version": "0.1.0-rc.1",
       "module_locations": {
-        "app": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-9rbtfdku\\portable copy\\_internal\\app\\__init__.py",
-        "PySide6": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-9rbtfdku\\portable copy\\_internal\\PySide6\\__init__.py",
-        "opentimelineio": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-9rbtfdku\\portable copy\\_internal\\opentimelineio\\__init__.py"
+        "app": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-fhz9_r2d\\portable copy\\_internal\\app\\__init__.py",
+        "PySide6": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-fhz9_r2d\\portable copy\\_internal\\PySide6\\__init__.py",
+        "opentimelineio": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-fhz9_r2d\\portable copy\\_internal\\opentimelineio\\__init__.py"
       },
       "resource_demo_asset": true,
       "settings_recovered": true,
@@ -241,12 +241,12 @@
         "widgets_before": 305,
         "widgets_after": 305,
         "widget_growth": 0,
-        "rss_before": 94887936,
-        "rss_after": 102359040,
-        "rss_growth": 7471104
+        "rss_before": 95064064,
+        "rss_after": 102096896,
+        "rss_growth": 7032832
       },
       "bounded_widgets": true,
-      "idle_cpu_ratio": 0.2063,
+      "idle_cpu_ratio": 0.0,
       "idle_cpu_reasonable": true,
       "media_tools": {
         "ffmpeg": null,
@@ -269,9 +269,9 @@
       "frozen": true,
       "version": "0.1.0-rc.1",
       "module_locations": {
-        "app": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-9rbtfdku\\portable copy\\_internal\\app\\__init__.py",
-        "PySide6": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-9rbtfdku\\portable copy\\_internal\\PySide6\\__init__.py",
-        "opentimelineio": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-9rbtfdku\\portable copy\\_internal\\opentimelineio\\__init__.py"
+        "app": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-fhz9_r2d\\portable copy\\_internal\\app\\__init__.py",
+        "PySide6": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-fhz9_r2d\\portable copy\\_internal\\PySide6\\__init__.py",
+        "opentimelineio": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-fhz9_r2d\\portable copy\\_internal\\opentimelineio\\__init__.py"
       },
       "resource_demo_asset": true,
       "settings_recovered": true,
@@ -304,16 +304,16 @@
         "widgets_before": 305,
         "widgets_after": 305,
         "widget_growth": 0,
-        "rss_before": 95084544,
-        "rss_after": 102027264,
-        "rss_growth": 6942720
+        "rss_before": 94998528,
+        "rss_after": 102260736,
+        "rss_growth": 7262208
       },
       "bounded_widgets": true,
-      "idle_cpu_ratio": 0.1026,
+      "idle_cpu_ratio": 0.0,
       "idle_cpu_reasonable": true,
       "media_tools": {
-        "ffmpeg": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-9rbtfdku\\portable copy\\_internal\\runtime\\ffmpeg\\bin\\ffmpeg.exe",
-        "ffprobe": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-9rbtfdku\\portable copy\\_internal\\runtime\\ffmpeg\\bin\\ffprobe.exe"
+        "ffmpeg": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-fhz9_r2d\\portable copy\\_internal\\runtime\\ffmpeg\\bin\\ffmpeg.exe",
+        "ffprobe": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-fhz9_r2d\\portable copy\\_internal\\runtime\\ffmpeg\\bin\\ffprobe.exe"
       },
       "media_expectation": true,
       "first_close": true,

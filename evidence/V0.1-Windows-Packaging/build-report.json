@@ -10,9 +10,9 @@
     "Pillow": "12.1.1",
     "pydantic": "2.12.5"
   },
-  "total_bytes": 364829856,
+  "total_bytes": 364829863,
   "file_count": 236,
-  "exe_bytes": 4817152,
+  "exe_bytes": 4817159,
   "python_runtime_bytes": 6099960,
   "qt_bytes": 118729205,
   "ffmpeg_bytes": 101060096,
@@ -27,7 +27,7 @@
     },
     {
       "name": "AIGCFlow.exe",
-      "bytes": 4817152
+      "bytes": 4817159
     }
   ],
   "largest_files": [
@@ -89,7 +89,7 @@
     },
     {
       "path": "AIGCFlow.exe",
-      "bytes": 4817152
+      "bytes": 4817159
     },
     {
       "path": "_internal/PySide6/QtWidgets.pyd",

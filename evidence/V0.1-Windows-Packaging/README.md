@@ -14,13 +14,15 @@ Final artifact: `AIGCFlow-0.1.0-rc.1-windows-x64.zip`
 
 - Portable folder: 347.9 MB, 236 files
 - ZIP: 136.7 MB
-- SHA-256: `0539eca21c9df35c293bf74379fac33974080b3f8f376c79f33f712f29844d27`
+- SHA-256: `11e398425fcbf063e765b1766e1297a7ec5a9c0901329388f3de4d906e1887a4`
 - Clean runtime simulation: PASS
 - Extracted archive smoke: PASS
 - Source-tree isolation: PASS
-- Local Microsoft Defender scan: PASS
+- Local Microsoft Defender scan: PASS for the previous 2026-09-21 artifact; not repeated for this rebuild
 - BLOCKER: 0
 - Packaging regression: 0
+
+See `final-regression.md` for the 2026-09-23 full-suite RC release gate.
 
 The clean-environment harness copies the onedir package to Windows TEMP, removes
 Python, Git, source, virtualenv and Codex runtime paths from the child

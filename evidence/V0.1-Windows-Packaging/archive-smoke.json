@@ -6,9 +6,9 @@
     "frozen": true,
     "version": "0.1.0-rc.1",
     "module_locations": {
-      "app": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Zip-md6fs2zs\\_internal\\app\\__init__.py",
-      "PySide6": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Zip-md6fs2zs\\_internal\\PySide6\\__init__.py",
-      "opentimelineio": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Zip-md6fs2zs\\_internal\\opentimelineio\\__init__.py"
+      "app": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Zip-wknw7gi_\\_internal\\app\\__init__.py",
+      "PySide6": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Zip-wknw7gi_\\_internal\\PySide6\\__init__.py",
+      "opentimelineio": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Zip-wknw7gi_\\_internal\\opentimelineio\\__init__.py"
     },
     "resource_demo_asset": true,
     "settings_recovered": true,
@@ -41,16 +41,16 @@
       "widgets_before": 305,
       "widgets_after": 305,
       "widget_growth": 0,
-      "rss_before": 95531008,
-      "rss_after": 102662144,
-      "rss_growth": 7131136
+      "rss_before": 95457280,
+      "rss_after": 102752256,
+      "rss_growth": 7294976
     },
     "bounded_widgets": true,
-    "idle_cpu_ratio": 0.0,
+    "idle_cpu_ratio": 0.1029,
     "idle_cpu_reasonable": true,
     "media_tools": {
-      "ffmpeg": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Zip-md6fs2zs\\_internal\\runtime\\ffmpeg\\bin\\ffmpeg.exe",
-      "ffprobe": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Zip-md6fs2zs\\_internal\\runtime\\ffmpeg\\bin\\ffprobe.exe"
+      "ffmpeg": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Zip-wknw7gi_\\_internal\\runtime\\ffmpeg\\bin\\ffmpeg.exe",
+      "ffprobe": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Zip-wknw7gi_\\_internal\\runtime\\ffmpeg\\bin\\ffprobe.exe"
     },
     "media_expectation": true,
     "first_close": true,

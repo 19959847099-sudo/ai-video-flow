@@ -13,7 +13,7 @@ from PySide6.QtWidgets import (
 from .integration import ActivityAdapter, AppSettingsStore, WorkspaceRouter
 from .resources import find_media_tool
 from .shell_theme import D_STYLE
-from .version import __version__
+from .version import PRODUCT_NAME, __version__
 
 
 def label(value="", name="muted", wrap=False):
@@ -526,7 +526,7 @@ class ApplicationShell(QMainWindow):
         self.activity = ActivityAdapter(self.workspace)
         self.pages = {}
         self.current_workspace_widget = None
-        self.setWindowTitle("AI 视频个人生产工作流")
+        self.setWindowTitle(PRODUCT_NAME)
         self.resize(1440, 900)
         self.setMinimumSize(1100, 680)
         self.setStyleSheet(D_STYLE)

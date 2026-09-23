@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from app.version import __version__
+from app.version import EXECUTABLE_NAME, __version__
 
 
 def minimal_environment(root, scale):
@@ -80,7 +80,7 @@ with TemporaryDirectory(prefix="AIGCFlow-Clean-") as temporary:
     sandbox = Path(temporary)
     isolated = sandbox / "portable copy"
     shutil.copytree(dist, isolated)
-    exe = isolated / "AIGCFlow.exe"
+    exe = isolated / f"{EXECUTABLE_NAME}.exe"
     if not exe.is_file():
         raise SystemExit("Packaged executable missing")
     cwd = sandbox / "unrelated cwd"

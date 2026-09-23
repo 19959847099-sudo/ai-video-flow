@@ -7,6 +7,8 @@ import os
 from pathlib import Path
 from typing import Any, Literal
 
+from .version import LEGACY_USER_DATA_DIR
+
 WorkspaceName = Literal["preparation", "production", "creative", "assembly", "settings"]
 WORKSPACES = ("preparation", "production", "creative", "assembly")
 
@@ -282,7 +284,7 @@ class AppSettingsStore:
     def __init__(self, path=None):
         configured = os.environ.get("AIVIDEO_CONFIG_PATH")
         base = Path(os.environ.get("LOCALAPPDATA", Path.home() / ".config"))
-        self.path = Path(path or configured or base / "AI Video Workflow" / "settings-v1.json")
+        self.path = Path(path or configured or base / LEGACY_USER_DATA_DIR / "settings-v1.json")
         self.values = dict(self.DEFAULTS)
         self.error = ""
         self.load()

@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "version": "0.1.0-rc.1",
+  "passed": true,
+  "install_mode": "per-user",
+  "start_menu_target": "AIVideoFlow.exe",
+  "desktop_target": "AIVideoFlow.exe",
+  "apps_and_features": true,
+  "install_path_with_spaces": true,
+  "exe_metadata": {
+    "OriginalFilename": "AIVideoFlow.exe",
+    "ProductVersion": "0.1.0-rc.1",
+    "ProductName": "AI Video Flow",
+    "FileDescription": "AI video production workflow for Windows",
+    "CompanyName": ""
+  },
+  "installer_metadata": {
+    "OriginalFilename": "",
+    "ProductVersion": "0.1.0-rc.1",
+    "ProductName": "AI Video Flow",
+    "FileDescription": "AI video production workflow for Windows",
+    "CompanyName": ""
+  },
+  "first_launch": true,
+  "project_reopen": true,
+  "same_version_reinstall": true,
+  "uninstall_preserved_project": true,
+  "reinstall_opened_project": true,
+  "final_uninstall_clean": true,
+  "source_tree_isolated": true
+}

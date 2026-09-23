@@ -299,7 +299,7 @@ class PreparationWindow(QMainWindow):
         self.shot_id = None
         self.loading = True
         self.active_requirement_id = None
-        self.setWindowTitle('AI 视频工作流 · V0.2 章节准备')
+        self.setWindowTitle('AI Video Flow · 章节准备')
         self.resize(1480, 940)
         self.setMinimumSize(1120, 720)
         self.setStyleSheet(STYLE)
@@ -358,7 +358,7 @@ class PreparationWindow(QMainWindow):
         film = QVBoxLayout()
         film.setSpacing(3)
         self.example_badge = label('示例项目', 'eyebrow')
-        self.project_title = label('AI 视频工作流', 'projectTitle')
+        self.project_title = label('AI Video Flow', 'projectTitle')
         film.addWidget(self.example_badge)
         film.addWidget(self.project_title)
         project_layout.addLayout(film)
@@ -753,7 +753,7 @@ class PreparationWindow(QMainWindow):
         else:
             self.chapters.addItem('尚未建立章节', None)
             self.chapter_id = None
-            self.project_title.setText('AI 视频工作流')
+            self.project_title.setText('AI Video Flow')
         self.chapters.blockSignals(False)
         self.example_badge.setVisible(bool(self.workspace.state.get('is_example')))
         self.populate_shots()
@@ -1329,7 +1329,10 @@ def main():
     args = parser.parse_args()
     app = QApplication.instance() or QApplication(sys.argv)
     app.setFont(QFont('Microsoft YaHei UI', 10))
-    from .resources import default_workspace_root, session_file
+    from .resources import default_workspace_root, resource_path, session_file
+    from .version import PRODUCT_NAME
+    app.setApplicationDisplayName(PRODUCT_NAME)
+    app.setWindowIcon(QIcon(str(resource_path("packaging", "windows", "AI-Video-Flow.ico"))))
     session_path = session_file() if args.data_dir is None else None
     target = args.data_dir or default_workspace_root()
     from .integration import AppSettingsStore
@@ -1358,6 +1361,7 @@ def main():
     except Exception as exc:
         QMessageBox.critical(None, '无法打开项目', str(exc))
         return 1
+    window.setWindowIcon(app.windowIcon())
     window.show()
     return app.exec()
 

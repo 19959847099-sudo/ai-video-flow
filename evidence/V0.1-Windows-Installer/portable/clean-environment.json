@@ -1,0 +1,330 @@
+{
+  "schema": 1,
+  "version": "0.1.0-rc.1",
+  "passed": true,
+  "isolation": "Copied portable folder under Windows TEMP; minimal PATH; no Python, Git, source or virtualenv paths.",
+  "runtime_commands": {
+    "ffmpeg": "ffmpeg version 8.1-essentials_build-www.gyan.dev Copyright (c) 2000-2026 the FFmpeg developers",
+    "ffprobe": "ffprobe version 8.1-essentials_build-www.gyan.dev Copyright (c) 2007-2026 the FFmpeg developers"
+  },
+  "full": {
+    "schema": 1,
+    "version": "0.1.0-rc.1",
+    "passed": true,
+    "checks": {
+      "frozen": true,
+      "version": "0.1.0-rc.1",
+      "module_locations": {
+        "app": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-i2qi15qq\\portable copy\\_internal\\app\\__init__.py",
+        "PySide6": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-i2qi15qq\\portable copy\\_internal\\PySide6\\__init__.py",
+        "opentimelineio": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-i2qi15qq\\portable copy\\_internal\\opentimelineio\\__init__.py"
+      },
+      "resource_demo_asset": true,
+      "settings_recovered": true,
+      "api_key_required_for_startup": false,
+      "workspace_routes": [
+        "preparation",
+        "production",
+        "creative",
+        "assembly",
+        "settings"
+      ],
+      "workspace_switch": true,
+      "window_sizes": {
+        "1280x720": [
+          1280,
+          720
+        ],
+        "1600x1000": [
+          1600,
+          1000
+        ],
+        "1000x600": [
+          1100,
+          680
+        ]
+      },
+      "minimum_size_enforced": true,
+      "workspace_stress": {
+        "switches": 100,
+        "widgets_before": 305,
+        "widgets_after": 305,
+        "widget_growth": 0,
+        "rss_before": 96407552,
+        "rss_after": 104624128,
+        "rss_growth": 8216576
+      },
+      "bounded_widgets": true,
+      "idle_cpu_ratio": 0.039,
+      "idle_cpu_reasonable": true,
+      "media_tools": {
+        "ffmpeg": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-i2qi15qq\\portable copy\\_internal\\runtime\\ffmpeg\\bin\\ffmpeg.exe",
+        "ffprobe": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-i2qi15qq\\portable copy\\_internal\\runtime\\ffmpeg\\bin\\ffprobe.exe"
+      },
+      "media_expectation": true,
+      "first_close": true,
+      "restart_workspace": "production",
+      "restart_ok": true,
+      "shutdown_clean": true
+    },
+    "errors": [],
+    "commercial_provider_calls": 0
+  },
+  "dpi": {
+    "1.25": {
+      "schema": 1,
+      "version": "0.1.0-rc.1",
+      "passed": true,
+      "checks": {
+        "frozen": true,
+        "version": "0.1.0-rc.1",
+        "module_locations": {
+          "app": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-i2qi15qq\\portable copy\\_internal\\app\\__init__.py",
+          "PySide6": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-i2qi15qq\\portable copy\\_internal\\PySide6\\__init__.py",
+          "opentimelineio": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-i2qi15qq\\portable copy\\_internal\\opentimelineio\\__init__.py"
+        },
+        "resource_demo_asset": true,
+        "settings_recovered": true,
+        "api_key_required_for_startup": false,
+        "workspace_routes": [
+          "preparation",
+          "production",
+          "creative",
+          "assembly",
+          "settings"
+        ],
+        "workspace_switch": true,
+        "window_sizes": {
+          "1280x720": [
+            1280,
+            720
+          ],
+          "1600x1000": [
+            1600,
+            1000
+          ],
+          "1000x600": [
+            1100,
+            680
+          ]
+        },
+        "minimum_size_enforced": true,
+        "workspace_stress": {
+          "switches": 10,
+          "widgets_before": 305,
+          "widgets_after": 305,
+          "widget_growth": 0,
+          "rss_before": 97558528,
+          "rss_after": 104390656,
+          "rss_growth": 6832128
+        },
+        "bounded_widgets": true,
+        "idle_cpu_ratio": 0.1032,
+        "idle_cpu_reasonable": true,
+        "media_tools": {
+          "ffmpeg": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-i2qi15qq\\portable copy\\_internal\\runtime\\ffmpeg\\bin\\ffmpeg.exe",
+          "ffprobe": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-i2qi15qq\\portable copy\\_internal\\runtime\\ffmpeg\\bin\\ffprobe.exe"
+        },
+        "media_expectation": true,
+        "first_close": true,
+        "restart_workspace": "production",
+        "restart_ok": true,
+        "shutdown_clean": true
+      },
+      "errors": [],
+      "commercial_provider_calls": 0
+    },
+    "1.5": {
+      "schema": 1,
+      "version": "0.1.0-rc.1",
+      "passed": true,
+      "checks": {
+        "frozen": true,
+        "version": "0.1.0-rc.1",
+        "module_locations": {
+          "app": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-i2qi15qq\\portable copy\\_internal\\app\\__init__.py",
+          "PySide6": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-i2qi15qq\\portable copy\\_internal\\PySide6\\__init__.py",
+          "opentimelineio": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-i2qi15qq\\portable copy\\_internal\\opentimelineio\\__init__.py"
+        },
+        "resource_demo_asset": true,
+        "settings_recovered": true,
+        "api_key_required_for_startup": false,
+        "workspace_routes": [
+          "preparation",
+          "production",
+          "creative",
+          "assembly",
+          "settings"
+        ],
+        "workspace_switch": true,
+        "window_sizes": {
+          "1280x720": [
+            1280,
+            720
+          ],
+          "1600x1000": [
+            1600,
+            1000
+          ],
+          "1000x600": [
+            1100,
+            680
+          ]
+        },
+        "minimum_size_enforced": true,
+        "workspace_stress": {
+          "switches": 10,
+          "widgets_before": 305,
+          "widgets_after": 305,
+          "widget_growth": 0,
+          "rss_before": 99692544,
+          "rss_after": 106721280,
+          "rss_growth": 7028736
+        },
+        "bounded_widgets": true,
+        "idle_cpu_ratio": 0.0,
+        "idle_cpu_reasonable": true,
+        "media_tools": {
+          "ffmpeg": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-i2qi15qq\\portable copy\\_internal\\runtime\\ffmpeg\\bin\\ffmpeg.exe",
+          "ffprobe": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-i2qi15qq\\portable copy\\_internal\\runtime\\ffmpeg\\bin\\ffprobe.exe"
+        },
+        "media_expectation": true,
+        "first_close": true,
+        "restart_workspace": "production",
+        "restart_ok": true,
+        "shutdown_clean": true
+      },
+      "errors": [],
+      "commercial_provider_calls": 0
+    }
+  },
+  "missing_media": {
+    "schema": 1,
+    "version": "0.1.0-rc.1",
+    "passed": true,
+    "checks": {
+      "frozen": true,
+      "version": "0.1.0-rc.1",
+      "module_locations": {
+        "app": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-i2qi15qq\\portable copy\\_internal\\app\\__init__.py",
+        "PySide6": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-i2qi15qq\\portable copy\\_internal\\PySide6\\__init__.py",
+        "opentimelineio": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-i2qi15qq\\portable copy\\_internal\\opentimelineio\\__init__.py"
+      },
+      "resource_demo_asset": true,
+      "settings_recovered": true,
+      "api_key_required_for_startup": false,
+      "workspace_routes": [
+        "preparation",
+        "production",
+        "creative",
+        "assembly",
+        "settings"
+      ],
+      "workspace_switch": true,
+      "window_sizes": {
+        "1280x720": [
+          1280,
+          720
+        ],
+        "1600x1000": [
+          1600,
+          1000
+        ],
+        "1000x600": [
+          1100,
+          680
+        ]
+      },
+      "minimum_size_enforced": true,
+      "workspace_stress": {
+        "switches": 10,
+        "widgets_before": 305,
+        "widgets_after": 305,
+        "widget_growth": 0,
+        "rss_before": 95764480,
+        "rss_after": 103030784,
+        "rss_growth": 7266304
+      },
+      "bounded_widgets": true,
+      "idle_cpu_ratio": 0.104,
+      "idle_cpu_reasonable": true,
+      "media_tools": {
+        "ffmpeg": null,
+        "ffprobe": null
+      },
+      "media_expectation": true,
+      "first_close": true,
+      "restart_workspace": "production",
+      "restart_ok": true,
+      "shutdown_clean": true
+    },
+    "errors": [],
+    "commercial_provider_calls": 0
+  },
+  "abnormal_exit_recovery": {
+    "schema": 1,
+    "version": "0.1.0-rc.1",
+    "passed": true,
+    "checks": {
+      "frozen": true,
+      "version": "0.1.0-rc.1",
+      "module_locations": {
+        "app": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-i2qi15qq\\portable copy\\_internal\\app\\__init__.py",
+        "PySide6": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-i2qi15qq\\portable copy\\_internal\\PySide6\\__init__.py",
+        "opentimelineio": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-i2qi15qq\\portable copy\\_internal\\opentimelineio\\__init__.py"
+      },
+      "resource_demo_asset": true,
+      "settings_recovered": true,
+      "api_key_required_for_startup": false,
+      "workspace_routes": [
+        "preparation",
+        "production",
+        "creative",
+        "assembly",
+        "settings"
+      ],
+      "workspace_switch": true,
+      "window_sizes": {
+        "1280x720": [
+          1280,
+          720
+        ],
+        "1600x1000": [
+          1600,
+          1000
+        ],
+        "1000x600": [
+          1100,
+          680
+        ]
+      },
+      "minimum_size_enforced": true,
+      "workspace_stress": {
+        "switches": 10,
+        "widgets_before": 305,
+        "widgets_after": 305,
+        "widget_growth": 0,
+        "rss_before": 95608832,
+        "rss_after": 102674432,
+        "rss_growth": 7065600
+      },
+      "bounded_widgets": true,
+      "idle_cpu_ratio": 0.0,
+      "idle_cpu_reasonable": true,
+      "media_tools": {
+        "ffmpeg": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-i2qi15qq\\portable copy\\_internal\\runtime\\ffmpeg\\bin\\ffmpeg.exe",
+        "ffprobe": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\AIGCFlow-Clean-i2qi15qq\\portable copy\\_internal\\runtime\\ffmpeg\\bin\\ffprobe.exe"
+      },
+      "media_expectation": true,
+      "first_close": true,
+      "restart_workspace": "production",
+      "restart_ok": true,
+      "shutdown_clean": true
+    },
+    "errors": [],
+    "commercial_provider_calls": 0
+  },
+  "source_tree_isolated": true,
+  "clean_copy_removed_after_process_exit": true,
+  "commercial_provider_calls": 0
+}

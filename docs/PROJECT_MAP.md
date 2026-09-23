@@ -1,10 +1,10 @@
-# AIGCFlow Project Map V0.1
+# AI Video Flow Project Map V0.1
 
-> RC1 工程导航入口。基线：`9d4ce5ae4cc590293990fe7b57a033705b3f4a35`；以工作时的实际 HEAD 为准。`CURRENT` 是已实现，`PLANNED`/`DEFERRED` 不是已交付能力。先读本页，再按变更入口进入专题地图。
+> 原工程名 AIGCFlow；原始测绘基线 `9d4ce5a`，发行层已更新至 Windows Installer V0.1。以实际 Git HEAD 为准。`CURRENT` 是已实现，`PLANNED`/`DEFERRED` 不是已交付能力。
 
 ## 30 秒心智模型
 
-`project.json` 是项目状态容器；正式 Production Script 声明需求，Preparation 管素材，Production 产生并审核 Candidate，显式 Current Binding 决定 Assembly 能消费什么。Creative 的 Proposal 只有经过显式 Apply 才改正式剧本。D Shell 负责导航和观察，不替业务服务拥有 Truth。发布形态是 Windows portable RC，不是安装器。
+`project.json` 是项目状态容器；正式 Production Script 声明需求，Preparation 管素材，Production 产生并审核 Candidate，显式 Current Binding 决定 Assembly 能消费什么。Creative 的 Proposal 只有经过显式 Apply 才改正式剧本。D Shell 负责导航和观察，不替业务服务拥有 Truth。Windows RC 同时提供 per-user Installer 与 portable ZIP。
 
 ```mermaid
 flowchart LR
@@ -79,7 +79,7 @@ flowchart TD
 | 改项目数据 / 身份 / Current | [Data Model](DATA_MODEL.md) | [`app/preparation/workspace.py`](../app/preparation/workspace.py)、`production.py` |
 | 改 Provider / Job / 媒体 | [Runtime](RUNTIME.md) | [`app/preparation/runtime.py`](../app/preparation/runtime.py)、`creative.py`、`finishing.py` |
 | 查回归影响 | [Testing](TESTING.md) | `tests/` |
-| 构建与发布 | [Releasing](RELEASING.md) | [`scripts/build_windows.ps1`](../scripts/build_windows.ps1)、`tools/` |
+| 构建与发布 | [Releasing](RELEASING.md) | [`scripts/build_windows.ps1`](../scripts/build_windows.ps1)、[`scripts/build_windows_installer.ps1`](../scripts/build_windows_installer.ps1) |
 
 ## Change Map：先定位再施工
 
@@ -105,7 +105,7 @@ flowchart TD
 | 改 Router | `integration.py:WorkspaceRouter` | Shell 跳转/Return | 修改领域 Truth | deep link/return/memory 可恢复 | `test_integration_shell`, `test_ui_final`, `test_packaging` | High |
 | 升级 FFmpeg/FFprobe | `resources.py:media_tool` | bundling、probe/render | Candidate/Current 语义 | 媒体失败局部化 | `test_chapter_finishing`, `test_audio`, `test_rough_cut`, `test_packaging` + clean/ZIP smoke | High |
 | 升级 PySide6 | `requirements.txt` | GUI、PyInstaller hooks | project schema | 视图更新不破坏布局几何 | GUI/Integration 全集 + frozen/clean smoke | High |
-| 改 Packaging | [`scripts/build_windows.ps1`](../scripts/build_windows.ps1) | `packaging/windows`、`tools/*smoke.py` | app Truth | portable 与源码隔离 | `test_packaging` + clean/ZIP smoke | High |
+| 改 Packaging / Installer | [`scripts/build_windows_installer.ps1`](../scripts/build_windows_installer.ps1) | `build_windows.ps1`、`packaging/windows/AI-Video-Flow.iss`、smoke/checksum 工具 | app Truth、用户项目目录 | Installer 卸载不删除作品；portable 仍隔离源码 | `test_packaging`, `test_installer_release` + clean/ZIP/install/uninstall/reinstall smoke | High |
 | 新 Settings | `integration.py:AppSettingsStore` | SettingsPage、测试 | `project.json` 除非真为项目字段 | Global Default ≠ Project Truth | `test_integration_shell`, `test_packaging` | Medium |
 | 改 Output / 新 export | `preparation/finishing.py` | OTIO/媒体工具、Assembly UI | Current 自动补全 | output 是派生 artifact | `test_chapter_finishing`, `test_missing_resolution`, `test_packaging` | High |
 | 改 Asset identity / rename | `preparation/workspace.py:scan` | snapshot、binding、resolution | 用路径做 ID | 身份稳定、Stale 不删除 | `test_asset_rework`, `test_missing_resolution`, `test_preparation` | High |
@@ -122,7 +122,7 @@ AI Agent 大型施工前：读本页 → 选 Change Map 行 → 读专题图 →
 
 语义复杂度集中在 Script/Requirement/Candidate/Current/Apply，但边界已清楚；集成成本来自 Shell 复用隐藏 Preparation、跨 UI 模块；媒体成本来自 FFmpeg/FFprobe、异步失败与输出校验；打包成本来自 frozen 资源/媒体二进制/源隔离；兼容成本来自项目 schema 尚无迁移政策。安全扩展相对是新 Provider、纯展示、新 export adapter；中风险是新 Workspace/共享状态；高风险是 Project schema、身份、Current 和正式剧本语义。
 
-已知维护裁决是 **SMALL REFACTOR，不是结构性重写**：`PLANNED` ProjectRepository/Migration、非视觉 ProjectSession、Media/IO primitives 收口。它们现在能工作，但写盘兼容、隐藏 GUI 生命周期、媒体依赖散布会抬高后续更新成本。本轮只测绘；边界细节见 [Architecture](ARCHITECTURE.md)、[Data Model](DATA_MODEL.md)。`DEFERRED` Installer、Updater、CI/CD、Credential Store 均不可当作现有能力。
+已知维护裁决是 **SMALL REFACTOR，不是结构性重写**：`PLANNED` ProjectRepository/Migration、非视觉 ProjectSession、Media/IO primitives 收口。发行层 `CURRENT` 有 per-user Installer 与 portable；旧 `%LOCALAPPDATA%/AI Video Workflow` 是保留的兼容路径，不能只因品牌改名而移动。`DEFERRED` Updater、CI/CD、Credential Store。边界细节见 [Architecture](ARCHITECTURE.md)、[Data Model](DATA_MODEL.md)。
 
 ## 深入地图与证据
 
@@ -130,10 +130,10 @@ AI Agent 大型施工前：读本页 → 选 Change Map 行 → 读专题图 →
 - [Data Model](DATA_MODEL.md)：Truth owner、身份、落盘、schema。
 - [Runtime](RUNTIME.md)：Provider、Job、Creative、Assembly、媒体。
 - [Testing](TESTING.md)：测试层、变更验证、反向核验。
-- [Releasing](RELEASING.md)：构建、portable、smoke、发布门禁。
+- [Releasing](RELEASING.md)：portable、Installer、卸载/重装烟测、校验和与发布门禁。
 - [RC1 final regression](../evidence/V0.1-Windows-Packaging/final-regression.md)：上一轮 166/166 两次、关键集成 46/46 的发布证据；本地图不重新宣称执行了该轮测试。
 - 长期维护审计及核验附录（本地 `docs/AIGCFlow_长期维护与更新架构深度审计_V0.1*.md`）：用户原有未跟踪参考资料，不属于本次提交；公共导航不依赖它们。
 
 ## 现状与冻结文档的阅读警示
 
-`README.md` 的 C/Preparation 阶段描述已落后于当前默认 D Shell；以入口代码为运行现状。冻结路线涵盖更宽的生成/模型愿景，当前媒体 Provider 注册仍仅 fixture；不是商业媒体能力已交付。冻结项目定义中的 Green 进入轻剪是概念性入口；当前实现采用更严格的显式 Current-only 交付边界，不能把 Green 自动当 Current。V0.2 扩展补充是设计资料，不把未来 Profile/能力当作 CURRENT。
+`README.md` 的 V0.2 C/Preparation 段落已标为历史资料；以当前默认 D Shell 和发行代码为运行现状。冻结路线涵盖更宽的生成/模型愿景，当前媒体 Provider 注册仍仅 fixture；不是商业媒体能力已交付。冻结项目定义中的 Green 进入轻剪是概念性入口；当前实现采用更严格的显式 Current-only 交付边界，不能把 Green 自动当 Current。V0.2 扩展补充是设计资料，不把未来 Profile/能力当作 CURRENT。

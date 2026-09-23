@@ -8,7 +8,8 @@ Set-Location $root
 
 function Assert-BuildPath([string]$PathValue) {
     $full = [System.IO.Path]::GetFullPath($PathValue)
-    if (-not $full.StartsWith($root, [System.StringComparison]::OrdinalIgnoreCase)) {
+    $safeRoot = $root.TrimEnd('\') + '\'
+    if (-not $full.StartsWith($safeRoot, [System.StringComparison]::OrdinalIgnoreCase)) {
         throw "Refusing to clean outside repository: $full"
     }
     return $full
@@ -21,6 +22,10 @@ $actualPackager = & $pythonExe -c "import PyInstaller; print(PyInstaller.__versi
 if ($LASTEXITCODE -ne 0 -or $actualPackager.Trim() -ne $expectedPackager) {
     throw "Install build dependencies first: python -m pip install -r requirements-build.txt"
 }
+$version = (& $pythonExe -c "from app.version import __version__; print(__version__)").Trim()
+if ($LASTEXITCODE -ne 0 -or $version -notmatch '^\d+\.\d+\.\d+-rc\.\d+$') {
+    throw "Unsupported release version: $version"
+}
 
 $ffmpeg = (Get-Command ffmpeg -ErrorAction Stop).Source
 $ffprobe = (Get-Command ffprobe -ErrorAction Stop).Source
@@ -32,9 +37,9 @@ if (-not (Test-Path -LiteralPath $license) -or -not (Test-Path -LiteralPath $rea
 }
 
 $work = Assert-BuildPath (Join-Path $root "build\windows")
-$dist = Assert-BuildPath (Join-Path $root "dist\AIGCFlow")
-$release = Assert-BuildPath (Join-Path $root "release\v0.1.0-rc.1")
-foreach ($target in @($work, $dist, $release)) {
+$dist = Assert-BuildPath (Join-Path $root "dist\AIVideoFlow")
+$release = Assert-BuildPath (Join-Path $root "release\v$version")
+foreach ($target in @($work, $dist)) {
     if (Test-Path -LiteralPath $target) {
         Remove-Item -LiteralPath $target -Recurse -Force
     }
@@ -72,7 +77,7 @@ if (Select-String -LiteralPath $toc -Pattern '\.codex\\|codex-runtimes' -Quiet) 
     throw "Build contamination detected in PyInstaller analysis."
 }
 
-$evidence = Join-Path $root "evidence\V0.1-Windows-Packaging"
+$evidence = Join-Path $root "evidence\V0.1-Windows-Installer\portable"
 & $pythonExe "tools/package_report.py" $dist (Join-Path $evidence "build-report.json") (Join-Path $evidence "build-report.md")
 if ($LASTEXITCODE -ne 0) { throw "Package report failed." }
 
@@ -81,7 +86,8 @@ if (-not $SkipSmoke) {
     if ($LASTEXITCODE -ne 0) { throw "Clean-environment smoke failed." }
 }
 
-$archive = Join-Path $release "AIGCFlow-0.1.0-rc.1-windows-x64.zip"
+$archive = Join-Path $release "AI-Video-Flow-$version-windows-x64.zip"
+if (Test-Path -LiteralPath $archive) { Remove-Item -LiteralPath $archive -Force }
 Compress-Archive -Path (Join-Path $dist "*") -DestinationPath $archive -CompressionLevel Optimal
 $archiveItem = Get-Item -LiteralPath $archive
 & $pythonExe "tools/archive_smoke.py" $archive $root (Join-Path $evidence "archive-smoke.json")

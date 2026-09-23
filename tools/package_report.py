@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from app.version import __version__
+from app.version import EXECUTABLE_NAME, __version__
 
 
 def size(path):
@@ -51,8 +51,8 @@ def scan_secret(root, secret):
 root = Path(sys.argv[1]).resolve()
 json_target = Path(sys.argv[2]).resolve()
 markdown_target = Path(sys.argv[3]).resolve()
-if not (root / "AIGCFlow.exe").is_file():
-    raise SystemExit("AIGCFlow.exe not found")
+if not (root / f"{EXECUTABLE_NAME}.exe").is_file():
+    raise SystemExit(f"{EXECUTABLE_NAME}.exe not found")
 
 files = [(item.relative_to(root).as_posix(), item.stat().st_size)
          for item in root.rglob("*") if item.is_file()]
@@ -89,7 +89,7 @@ report = {
     },
     "total_bytes": size(root),
     "file_count": len(files),
-    "exe_bytes": (root / "AIGCFlow.exe").stat().st_size,
+    "exe_bytes": (root / f"{EXECUTABLE_NAME}.exe").stat().st_size,
     "python_runtime_bytes": size(root / "_internal" / "python313.dll"),
     "qt_bytes": size(root / "_internal" / "PySide6"),
     "ffmpeg_bytes": ffmpeg.stat().st_size,

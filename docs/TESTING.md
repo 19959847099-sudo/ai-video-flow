@@ -20,7 +20,7 @@ python -m unittest discover -s tests -q
 | Creative / prompt | `test_preparation_creative.py`, `test_preparation_creative_gui.py`, `test_preparation_prompt.py` | Proposal/Apply/scope/stale |
 | Sound / media / Assembly | `test_preparation_sound.py`, `test_preparation_sound_gui.py`, `test_audio.py`, `test_images.py`, `test_rough_cut.py`, `test_chapter_finishing.py` | 声音 Current、媒体、输出/OTIO |
 | Workspace / GUI / integration | `test_preparation_gui.py`, `test_ui.py`, `test_ui_final.py`, `test_integration_shell.py` | D Shell、路由、深链、Return、视图状态 |
-| Packaging / frozen smoke | `test_packaging.py` + `tools/clean_env_smoke.py` + `tools/archive_smoke.py` | frozen 资源、隔离、ZIP、恢复 |
+| Packaging / frozen / Installer | `test_packaging.py`, `test_installer_release.py` + `tools/clean_env_smoke.py`, `archive_smoke.py`, `installer_smoke.py` | frozen 资源、双产物命名/校验和、隔离、安装/卸载/重装 |
 
 ## 最低变更验证矩阵
 
@@ -34,13 +34,13 @@ python -m unittest discover -s tests -q
 | Creative proposal / Apply | `test_preparation_creative`, `test_preparation_creative_gui`, `test_preparation` | integration、全量 |
 | Shell / Router / Settings | `test_integration_shell`, `test_ui_final`, `test_preparation_gui` | `test_packaging`、全量/frozen |
 | Assembly / Output / OTIO | `test_chapter_finishing`, `test_missing_resolution`, `test_preparation_sound` | 全量、clean/ZIP smoke |
-| FFmpeg / PySide6 / packaging | `test_packaging` + 涉及 GUI/媒体模块 | 全量、clean-runtime、ZIP archive smoke、人工 UI |
+| FFmpeg / PySide6 / packaging | `test_packaging`, `test_installer_release` + 涉及 GUI/媒体模块 | 全量、clean-runtime、ZIP、Installer install/uninstall/reinstall smoke、人工 UI |
 
 完整 22 场景的 Start/Likely Touch/DNT/Truth/Test/Impact 见 [Project Map](PROJECT_MAP.md#change-map先定位再施工)。上表是测试路由，不是目录重构建议。关键语义断言：Green/Selected 不自动 Current、Creative 只显式 Apply、Failed Job 无 Candidate、Assembly Current-only、Asset rename 身份、Missing/FREE、router return、frozen source isolation。新增功能必须加对应正反例，不删除或放宽旧断言来取得绿色。
 
 ## Release Gate 与 flaky 纪律
 
-上一轮 [RC1 final regression](../evidence/V0.1-Windows-Packaging/final-regression.md) 记录 166/166 连续两轮通过、关键集成 46/46、BLOCKER=0、REGRESSION=0，另有 portable/clean/ZIP smoke 证据。本地图是文档施工，**不声称重新执行**该轮门禁。改代码后重新跑相应测试；发版需要重新全量及 [Releasing](RELEASING.md) 清洁环境链，并按 [RC manual smoke](RC_MANUAL_SMOKE.md) 做人工 UI 检查。
+历史 [RC1 final regression](../evidence/V0.1-Windows-Packaging/final-regression.md) 记录 166/166 连续两轮通过、关键集成 46/46。当前 Installer V0.1 须重新跑全量、Packaging/Integration 定向集、portable clean/ZIP 与 install/uninstall/reinstall smoke；人工 GUI 项仍按 [RC manual smoke](RC_MANUAL_SMOKE.md) 独立留证。历史门禁不能替代新发行验证。
 
 若出现 flaky：保存 seed、系统环境、完整失败日志和复现命令，先定位异步/媒体/平台隔离；不得静默跳过、扩大超时或削弱断言后宣称通过。Fixture 生成须保持零调用、临时项目隔离、无凭据外泄。外部真实 Provider 验证独立标注，不混入可离线复现的 RC 数字。
 
@@ -59,6 +59,6 @@ python -m unittest discover -s tests -q
 | 新增 export | `app/preparation/finishing.py` → Current-only、OTIO/Output | `test_chapter_finishing`, `test_missing_resolution`, `test_packaging` |
 | 改 Router | `app/integration.py:WorkspaceRouter` → deep link、return、memory | `test_integration_shell`, `test_ui_final`, `test_packaging` |
 | 新增 Settings | `app/integration.py:AppSettingsStore` → SettingsPage/本机配置 | `test_integration_shell`, `test_packaging` |
-| 改 Packaging | `scripts/build_windows.ps1` → frozen 资源/源码隔离/ZIP | `test_packaging` + clean/ZIP smoke |
+| 改 Packaging / Installer | `scripts/build_windows_installer.ps1` → portable、Installer、快捷方式、项目数据边界、SHA-256 | `test_packaging`, `test_installer_release` + clean/ZIP/install/uninstall/reinstall smoke |
 
 若任一任务不能说清 Truth Boundary，应先补地图再施工。

@@ -6,7 +6,7 @@ from pathlib import Path
 import shutil
 import sys
 
-from .version import PRODUCT_NAME
+from .version import LEGACY_USER_DATA_DIR
 
 
 def is_frozen() -> bool:
@@ -27,7 +27,7 @@ def user_data_root() -> Path:
     if configured:
         return Path(configured).expanduser().resolve()
     base = Path(os.environ.get("LOCALAPPDATA", Path.home() / ".local" / "share"))
-    return (base / PRODUCT_NAME).resolve()
+    return (base / LEGACY_USER_DATA_DIR).resolve()
 
 
 def default_workspace_root() -> Path:
@@ -65,7 +65,7 @@ def media_tool(name: str) -> str:
     path = find_media_tool(name)
     if not path:
         raise ValueError(
-            f"Media tool {name} is unavailable. Reinstall the portable package "
+            f"Media tool {name} is unavailable. Reinstall AI Video Flow "
             "or configure AIVIDEO_MEDIA_BIN."
         )
     return path

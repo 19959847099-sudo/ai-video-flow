@@ -7,7 +7,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from app.version import PRODUCT_NAME, __version__
+from app.version import EXECUTABLE_NAME, PRODUCT_NAME, __version__
 
 match = re.fullmatch(r"(\d+)\.(\d+)\.(\d+)-rc\.(\d+)", __version__)
 if not match:
@@ -31,11 +31,11 @@ target.write_text(f"""VSVersionInfo(
       StringTable(
         '080404B0',
         [
-          StringStruct('CompanyName', 'Local Creator Tools'),
-          StringStruct('FileDescription', '{PRODUCT_NAME} Windows Portable'),
+          StringStruct('Comments', 'Unsigned community release'),
+          StringStruct('FileDescription', 'AI video production workflow for Windows'),
           StringStruct('FileVersion', '{__version__}'),
-          StringStruct('InternalName', 'AIGCFlow'),
-          StringStruct('OriginalFilename', 'AIGCFlow.exe'),
+          StringStruct('InternalName', '{EXECUTABLE_NAME}'),
+          StringStruct('OriginalFilename', '{EXECUTABLE_NAME}.exe'),
           StringStruct('ProductName', '{PRODUCT_NAME}'),
           StringStruct('ProductVersion', '{__version__}')
         ])

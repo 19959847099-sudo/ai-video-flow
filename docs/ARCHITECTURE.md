@@ -49,7 +49,7 @@ Production 是日常核心生产地面，Preparation 管共享 Requirement/Asset
 2. `ProjectSession`：当前隐藏 `PreparationWindow` 还承担非视觉项目会话职责；运行正常，但影响 Shell/后台生命周期的可替换性。计划抽出项目装载、锁、扫描/保存等非视觉职责；本轮未实施。
 3. `Media / IO primitives`：FFmpeg/FFprobe 查找、执行、校验散在新旧模块；打包与升级时需跨层追踪。计划收拢共用原语，不改用户可见语义；本轮未实施。
 
-`DEFERRED`：Installer、Updater、CI/CD、Credential Store。没有这些能力时，不能在新 UI 或文档里假装已有自动升级、自动发布或安全凭据库。
+发行层 `CURRENT`：独立于业务服务的 Windows per-user Installer，固定 AppId，同版本 portable 共用 onedir 构建；`DEFERRED`：Updater、CI/CD、Credential Store。不要把安装器写成项目 Truth，也不要假装已有自动升级、自动发布或安全凭据库。
 
 ## 维护依赖检查
 

@@ -1,6 +1,17 @@
-# AI 视频个人生产工作流 · V0.2
+# AI Video Flow
 
-> 长期维护、代码入口、Truth、测试与发布导航请从 [AIGCFlow Project Map V0.1](docs/PROJECT_MAP.md) 开始。以下早期 C/Preparation 说明保留为历史使用资料；当前默认入口是 D Shell，实际 RC1 状态以项目地图及代码为准。
+> 原工程名 AIGCFlow；长期维护与代码导航见 [AI Video Flow Project Map](docs/PROJECT_MAP.md)。下方 V0.2 段落为历史开发资料，当前默认界面是 D Shell。
+
+当前 Windows RC：`0.1.0-rc.1`。发行产物由脚本生成在 `release/v0.1.0-rc.1/`，不进入 Git。
+
+## Windows 安装与运行
+
+- 安装版：`AI-Video-Flow-0.1.0-rc.1-windows-x64-setup.exe`。当前用户安装，无需管理员权限；开始菜单快捷方式必建，桌面快捷方式可选；可从 Windows 已安装的应用卸载。
+- 便携版：`AI-Video-Flow-0.1.0-rc.1-windows-x64.zip`。解压后运行 `AIVideoFlow.exe`；两种发行形态同版本。
+- 两个文件的 SHA-256 见同目录 `SHA256SUMS.txt`。当前构建未签名，也没有自动更新器。
+- 卸载只移除程序，不删除项目。兼容数据目录继续使用 `%LOCALAPPDATA%\AI Video Workflow`，本轮不迁移。
+
+## 历史 V0.2 开发资料
 
 当前交付：**V0.2 准备工作区 + Production / Candidate / Review 最小完整闭环**。C「镜头上下文」仍是正式视觉基线。
 

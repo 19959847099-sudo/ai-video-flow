@@ -8,7 +8,10 @@ import subprocess
 import sys
 from tempfile import TemporaryDirectory
 import zipfile
-
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+from app.version import EXECUTABLE_NAME
 
 archive = Path(sys.argv[1]).resolve()
 source = Path(sys.argv[2]).resolve()
@@ -38,7 +41,7 @@ with TemporaryDirectory(prefix="AIGCFlow-Zip-") as temporary:
     settings.write_text("{bad", encoding="utf-8")
     report = root / "report.json"
     command = [
-        str(root / "AIGCFlow.exe"), "--smoke-test", "--smoke-quick",
+        str(root / f"{EXECUTABLE_NAME}.exe"), "--smoke-test", "--smoke-quick",
         "--data-dir", str(root / "\u5f52\u6863 \u9879\u76ee"),
         "--settings-path", str(settings), "--smoke-report", str(report),
     ]

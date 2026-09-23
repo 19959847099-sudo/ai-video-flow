@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "version": "0.1.0-rc.1",
+  "artifacts": [
+    {
+      "name": "AI-Video-Flow-0.1.0-rc.1-windows-x64.zip",
+      "bytes": 143341044,
+      "sha256": "9eac59e26416166d81539c95b3775987977f6612221ca7c409b6411f3c29f6ab"
+    },
+    {
+      "name": "AI-Video-Flow-0.1.0-rc.1-windows-x64-setup.exe",
+      "bytes": 106192641,
+      "sha256": "3240b31796248d458e22e018b51d37619bbb789589265478b8828153323d1907"
+    }
+  ]
+}

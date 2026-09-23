@@ -24,6 +24,7 @@ datas = [
     (str(ffmpeg_license), "runtime/ffmpeg"),
     (str(ffmpeg_readme), "runtime/ffmpeg"),
     (str(root / "packaging" / "windows" / "THIRD_PARTY_NOTICES.md"), "runtime/ffmpeg"),
+    (str(root / "packaging" / "windows" / "AI-Video-Flow.ico"), "packaging/windows"),
 ] + otio_datas
 binaries = [
     (str(ffmpeg), "runtime/ffmpeg/bin"),
@@ -54,13 +55,14 @@ exe = EXE(
     a.scripts,
     [],
     exclude_binaries=True,
-    name="AIGCFlow",
+    name="AIVideoFlow",
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
     upx=False,
     console=False,
     version=version_file,
+    icon=str(root / "packaging" / "windows" / "AI-Video-Flow.ico"),
 )
 coll = COLLECT(
     exe,
@@ -68,5 +70,5 @@ coll = COLLECT(
     a.datas,
     strip=False,
     upx=False,
-    name="AIGCFlow",
+    name="AIVideoFlow",
 )

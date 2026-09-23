@@ -1,5 +1,7 @@
 # AI 视频个人生产工作流 · V0.2
 
+> 长期维护、代码入口、Truth、测试与发布导航请从 [AIGCFlow Project Map V0.1](docs/PROJECT_MAP.md) 开始。以下早期 C/Preparation 说明保留为历史使用资料；当前默认入口是 D Shell，实际 RC1 状态以项目地图及代码为准。
+
 当前交付：**V0.2 准备工作区 + Production / Candidate / Review 最小完整闭环**。C「镜头上下文」仍是正式视觉基线。
 
 规范剧本 → 资产需求 → 缺失项生产 / 导入 → Candidate → Green / Yellow / Red → 明确选用 Current → Requirement Resolved。

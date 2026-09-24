@@ -91,9 +91,11 @@ class PackagingContractTests(unittest.TestCase):
         root = Path(__file__).resolve().parents[1]
         spec = (root / "packaging/windows/AIGCFlow.spec").read_text(encoding="utf-8")
         self.assertIn('"third_party/licenses"', spec)
+        self.assertIn('"third_party/ffmpeg"', spec)
         self.assertIn('"virtualkeyboard" not in item[0].casefold()', spec)
         for relative in (
             "LICENSE", "THIRD_PARTY_NOTICES.md",
+            "third_party/ffmpeg/PROVENANCE.md",
             "third_party/licenses/LGPL-2.1.txt",
             "third_party/licenses/LGPL-3.0.txt",
             "third_party/licenses/GPL-3.0.txt",

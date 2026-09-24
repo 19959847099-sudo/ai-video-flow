@@ -23,6 +23,7 @@ datas = [
     (str(root / "THIRD_PARTY_NOTICES.md"), "."),
     (str(root / "third_party" / "licenses"), "third_party/licenses"),
     (str(root / "app" / "preparation" / "demo_assets"), "app/preparation/demo_assets"),
+    (str(root / "third_party" / "ffmpeg"), "third_party/ffmpeg"),
     (str(ffmpeg_license), "runtime/ffmpeg"),
     (str(ffmpeg_readme), "runtime/ffmpeg"),
     (str(root / "packaging" / "windows" / "THIRD_PARTY_NOTICES.md"), "runtime/ffmpeg"),

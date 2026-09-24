@@ -37,3 +37,12 @@ The release build was rerun after adding project and third-party license materia
 - Portable ZIP: 143,243,375 bytes; SHA-256 `09aa812ec5f449d6e810d30f7e045542d35fe3656b9ec8edcfe8a4b6ab0c60b9`.
 
 These replace the historical hashes above. The static GPLv3 FFmpeg/FFprobe corresponding-source delivery path still requires confirmation before any binary publication. See `docs/PUBLIC_RELEASE_AUDIT_V0.1.md`; a passed installer smoke is not a passed public-release licensing gate.
+
+## 2026-09-24 provenance-bearing rebuild (latest local candidate)
+
+The formal `third_party/ffmpeg/PROVENANCE.md` was added to the onedir bundle and linked from the distributed notice. The exact same Gyan FFmpeg/FFprobe executables remain; no media/runtime code changed. The portable clean-runtime/ZIP extraction and Installer install/reinstall/uninstall smoke all passed again. These local artifacts supersede both earlier hash pairs:
+
+- Installer: 106,133,421 bytes; SHA-256 `a2b173e6dd92a9910b59b6b79d0ad4d5359c42d5fdda1fc8a01404935186e6a4`.
+- Portable ZIP: 143,248,001 bytes; SHA-256 `83d09a1d8386c48c44c3c2b6a497119fa1524241ddb1e7a247c288238788d01a`.
+
+`release/v0.1.0-rc.1/SHA256SUMS.txt` lists this pair. Corresponding-source delivery is still unresolved, so **do not publish the binaries**. The Installer wizard's controls were inspected as far as automation allowed, but reliable visual captures of every page were not obtained; interactive presentation review remains open.

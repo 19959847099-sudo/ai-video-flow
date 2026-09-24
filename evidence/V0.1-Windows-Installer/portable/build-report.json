@@ -10,8 +10,8 @@
     "Pillow": "12.1.1",
     "pydantic": "2.12.5"
   },
-  "total_bytes": 364603032,
-  "file_count": 247,
+  "total_bytes": 364609664,
+  "file_count": 248,
   "exe_bytes": 4786739,
   "python_runtime_bytes": 6099960,
   "qt_bytes": 118261125,
@@ -23,7 +23,7 @@
   "top_level": [
     {
       "name": "_internal",
-      "bytes": 359816293
+      "bytes": 359822925
     },
     {
       "name": "AIVideoFlow.exe",

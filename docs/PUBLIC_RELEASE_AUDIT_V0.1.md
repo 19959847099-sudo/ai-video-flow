@@ -1,5 +1,7 @@
 # AI Video Flow V0.1 public release audit
 
+> Historical baseline audit. The later provenance-bearing rebuild, current artifact hashes, polished screenshots and final gate are recorded in [Final Release Delta V0.1](PUBLIC_RELEASE_DELTA_V0.1.md).
+
 Audit date: 2026-09-24. Scope: local `master` at baseline `7c0dede641169abaf350fb0df5d68cdd7b0837ec`, the prepared open-source files, current tracked tree and reachable Git history, and the rebuilt Windows v0.1.0-rc.1 artifacts. This is an engineering release gate, not a legal opinion or permission to upload.
 
 **PUBLIC RELEASE GATE = FAIL · READY TO PUBLISH = NO.** The local Installer gate passes, but the exact static GPLv3 FFmpeg/FFprobe build's complete corresponding-source delivery has not been established. Do not publish either Windows binary until that is resolved and checked again.

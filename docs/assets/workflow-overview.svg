@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="220" viewBox="0 0 1200 220" role="img" aria-labelledby="title desc">
+  <title id="title">AI Video Flow production workflow</title>
+  <desc id="desc">Preparation flows to Production, Production collaborates both ways with Creative, then Current media flows to Assembly and Output.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#5b7183" stroke-width="1.8"/></marker>
+  </defs>
+  <rect width="1200" height="220" rx="18" fill="#f6f8f9"/>
+  <g font-family="Arial, Helvetica, sans-serif" text-anchor="middle">
+    <g fill="#ffffff" stroke="#d5e0e6" stroke-width="2">
+      <rect x="28" y="42" width="192" height="132" rx="12"/>
+      <rect x="266" y="42" width="192" height="132" rx="12"/>
+      <rect x="504" y="42" width="192" height="132" rx="12"/>
+      <rect x="742" y="42" width="192" height="132" rx="12"/>
+      <rect x="980" y="42" width="192" height="132" rx="12"/>
+    </g>
+    <g fill="#142430" font-size="23" font-weight="700">
+      <text x="124" y="92">Preparation</text><text x="362" y="92">Production</text>
+      <text x="600" y="92">Creative</text><text x="838" y="92">Assembly</text>
+      <text x="1076" y="92">Output</text>
+    </g>
+    <g fill="#607684" font-size="16">
+      <text x="124" y="125">Script · references</text><text x="362" y="125">Candidates · Current</text>
+      <text x="600" y="125">Proposal · Apply</text><text x="838" y="125">Current-only edit</text>
+      <text x="1076" y="125">Preview · export</text>
+    </g>
+  </g>
+  <g stroke="#5b7183" stroke-width="2.4" fill="none" marker-end="url(#arrow)">
+    <path d="M 226 108 H 257"/><path d="M 464 108 H 495"/>
+    <path d="M 702 108 H 733"/><path d="M 940 108 H 971"/>
+  </g>
+  <path d="M 496 133 H 465" stroke="#5b7183" stroke-width="2.4" fill="none" marker-end="url(#arrow)"/>
+</svg>

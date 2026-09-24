@@ -2,15 +2,17 @@
 
 An open-source AI video production workflow for Windows. It organizes preparation, generation, review, creative revision, and assembly in one desktop application—not a one-prompt video generator.
 
-![AI Video Flow Production workspace showing a local zero-call video fixture and explicit Current binding](docs/assets/screenshots/production-1600x1000.png)
+![AI Video Flow Production workspace showing a locally imported Current clip and two reviewed Candidates](docs/assets/screenshots/production-1600x1000.png)
 
-*The current D-layout Production workspace, captured from a disposable demo project. The media shown is a local zero-call fixture, not a commercial model result.*
+*The current D-layout Production workspace, captured from a disposable synthetic demo project. The selected clip was made locally from the bundled demo scene image; another Candidate came from the zero-call fixture. Neither is a commercial model result.*
 
 ## What it is
 
 AI generation is one stage in a longer production process. AI Video Flow helps you keep the script, shared references, generated takes, human review, chosen take, creative changes, and output connected across shots and chapters.
 
 **Preparation → Production ↔ Creative → Assembly → Output**
+
+![Workflow overview: preparation, production, creative revision, assembly and output](docs/assets/workflow-overview.svg)
 
 - **Preparation:** derive shared asset requirements from a structured script, import references, and resolve missing inputs.
 - **Production:** run supported jobs, retain Candidates, review them, then explicitly bind a Current take. Green review alone does not select a take.
@@ -21,7 +23,7 @@ The [Project Map](docs/PROJECT_MAP.md) is the entry point for architecture, data
 
 ## Screenshots
 
-These are captures of the current PySide6 D layout using a temporary, public-safe demo project. Fixture media and text responses make no commercial provider calls.
+These are captures of the current PySide6 D layout using one temporary, public-safe demo project. The scene clip was imported from local media; the other Candidate and Creative text use zero-call fixtures. No commercial provider was called.
 
 | Preparation | Creative |
 | --- | --- |

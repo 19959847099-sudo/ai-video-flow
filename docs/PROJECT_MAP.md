@@ -130,10 +130,11 @@ AI Agent 大型施工前：读本页 → 选 Change Map 行 → 读专题图 →
 - [Data Model](DATA_MODEL.md)：Truth owner、身份、落盘、schema。
 - [Runtime](RUNTIME.md)：Provider、Job、Creative、Assembly、媒体。
 - [Testing](TESTING.md)：测试层、变更验证、反向核验。
+- [FFmpeg provenance](../third_party/ffmpeg/PROVENANCE.md) 与 [Public Release Delta](PUBLIC_RELEASE_DELTA_V0.1.md)：精确媒体二进制来源、对应源码阻塞和本轮视觉/合规复审；不改变 Product Truth。
 - [Releasing](RELEASING.md)：portable、Installer、卸载/重装烟测、校验和与发布门禁。
 - [RC1 final regression](../evidence/V0.1-Windows-Packaging/final-regression.md)：上一轮 166/166 两次、关键集成 46/46 的发布证据；本地图不重新宣称执行了该轮测试。
 - 长期维护审计及核验附录（本地 `docs/AIGCFlow_长期维护与更新架构深度审计_V0.1*.md`）：用户原有未跟踪参考资料，不属于本次提交；公共导航不依赖它们。
 
 ## 现状与冻结文档的阅读警示
 
-`README.md` 的 V0.2 C/Preparation 段落已标为历史资料；以当前默认 D Shell 和发行代码为运行现状。冻结路线涵盖更宽的生成/模型愿景，当前媒体 Provider 注册仍仅 fixture；不是商业媒体能力已交付。冻结项目定义中的 Green 进入轻剪是概念性入口；当前实现采用更严格的显式 Current-only 交付边界，不能把 Green 自动当 Current。V0.2 扩展补充是设计资料，不把未来 Profile/能力当作 CURRENT。
+根目录 `README.md` 是当前英文产品首页；旧 V0.2 中文冻结资料是设计历史，以当前默认 D Shell 和发行代码为运行现状。冻结路线涵盖更宽的生成/模型愿景，当前媒体 Provider 注册仍仅 fixture；不是商业媒体能力已交付。冻结项目定义中的 Green 进入轻剪是概念性入口；当前实现采用更严格的显式 Current-only 交付边界，不能把 Green 自动当 Current。V0.2 扩展补充是设计资料，不把未来 Profile/能力当作 CURRENT。

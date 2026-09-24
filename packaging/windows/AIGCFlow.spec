@@ -18,8 +18,10 @@ otio_hiddenimports = (
     + collect_submodules("opentimelineio.plugins")
     + collect_submodules("opentimelineio.schema")
 )
-
 datas = [
+    (str(root / "LICENSE"), "."),
+    (str(root / "THIRD_PARTY_NOTICES.md"), "."),
+    (str(root / "third_party" / "licenses"), "third_party/licenses"),
     (str(root / "app" / "preparation" / "demo_assets"), "app/preparation/demo_assets"),
     (str(ffmpeg_license), "runtime/ffmpeg"),
     (str(ffmpeg_readme), "runtime/ffmpeg"),
@@ -49,6 +51,10 @@ a = Analysis(
     ],
     noarchive=False,
 )
+# Qt Virtual Keyboard is not used by the D shell and is GPL-only in Qt's
+# community distribution. Do not ship its DLL or input-context plugin.
+a.binaries = [item for item in a.binaries if "virtualkeyboard" not in item[0].casefold()]
+a.datas = [item for item in a.datas if "virtualkeyboard" not in item[0].casefold()]
 pyz = PYZ(a.pure)
 exe = EXE(
     pyz,

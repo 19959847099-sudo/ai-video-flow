@@ -10,11 +10,11 @@
     "Pillow": "12.1.1",
     "pydantic": "2.12.5"
   },
-  "total_bytes": 364829276,
-  "file_count": 237,
+  "total_bytes": 364603032,
+  "file_count": 247,
   "exe_bytes": 4786739,
   "python_runtime_bytes": 6099960,
-  "qt_bytes": 118729205,
+  "qt_bytes": 118261125,
   "ffmpeg_bytes": 101060096,
   "ffprobe_bytes": 100853248,
   "ffmpeg_version": "ffmpeg version 8.1-essentials_build-www.gyan.dev Copyright (c) 2000-2026 the FFmpeg developers",
@@ -23,7 +23,7 @@
   "top_level": [
     {
       "name": "_internal",
-      "bytes": 360042537
+      "bytes": 359816293
     },
     {
       "name": "AIVideoFlow.exe",

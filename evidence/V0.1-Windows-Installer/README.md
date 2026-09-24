@@ -28,3 +28,12 @@ Baseline HEAD before this work: `2e3aad6a063d4167fd1c265885aad1f61e86c7ce`. Vers
 ## Boundaries
 
 User projects/settings remain in the legacy `%LOCALAPPDATA%/AI Video Workflow` compatibility path unless explicitly overridden. Installer uninstall never targets it. No updater, file association, account, telemetry, code signature, or public release was created. Interactive visual wizard review and broader third-party notice/license audit are separate follow-up checks; the self-authored icon was inspected at 256 px.
+
+## 2026-09-24 open-source notice rebuild
+
+The release build was rerun after adding project and third-party license material, and after excluding unused GPL-only Qt Virtual Keyboard components. Portable and Installer smoke tests passed, including install/uninstall/reinstall. The local release assets now have these hashes:
+
+- Installer: 106,135,544 bytes; SHA-256 `4bdacf98c78bd4989e4863835088c1b48330619b8d099acce8e61a221c1280c9`.
+- Portable ZIP: 143,243,375 bytes; SHA-256 `09aa812ec5f449d6e810d30f7e045542d35fe3656b9ec8edcfe8a4b6ab0c60b9`.
+
+These replace the historical hashes above. The static GPLv3 FFmpeg/FFprobe corresponding-source delivery path still requires confirmation before any binary publication. See `docs/PUBLIC_RELEASE_AUDIT_V0.1.md`; a passed installer smoke is not a passed public-release licensing gate.

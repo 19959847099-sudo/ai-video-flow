@@ -1,0 +1,24 @@
+name: Feature request
+description: Propose a focused workflow improvement.
+title: "[Feature] "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Workflow problem
+      description: Describe the production task and current workaround.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior
+      description: Which workspace or truth boundary would change?
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives or constraints
+      description: Optional; keep private project details out of the issue.

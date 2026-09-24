@@ -87,6 +87,20 @@ class PackagingContractTests(unittest.TestCase):
         ):
             self.assertTrue((root / relative).is_file(), relative)
 
+    def test_public_release_license_bundle_contract(self):
+        root = Path(__file__).resolve().parents[1]
+        spec = (root / "packaging/windows/AIGCFlow.spec").read_text(encoding="utf-8")
+        self.assertIn('"third_party/licenses"', spec)
+        self.assertIn('"virtualkeyboard" not in item[0].casefold()', spec)
+        for relative in (
+            "LICENSE", "THIRD_PARTY_NOTICES.md",
+            "third_party/licenses/LGPL-2.1.txt",
+            "third_party/licenses/LGPL-3.0.txt",
+            "third_party/licenses/GPL-3.0.txt",
+            "third_party/licenses/OpenTimelineIO-NOTICE.txt",
+        ):
+            self.assertTrue((root / relative).is_file(), relative)
+
 
 if __name__ == "__main__":
     unittest.main()

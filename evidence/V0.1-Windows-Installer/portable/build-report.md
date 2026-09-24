@@ -1,12 +1,12 @@
 # Windows packaging build report
 
 - Version: 0.1.0-rc.1
-- Total: 347.9 MB
+- Total: 347.7 MB
 - Executable: 4.6 MB
-- Qt: 113.2 MB
+- Qt: 112.8 MB
 - FFmpeg: 96.4 MB
 - FFprobe: 96.2 MB
-- Files: 237
+- Files: 247
 
 ## Largest files
 

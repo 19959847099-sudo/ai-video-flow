@@ -1,89 +1,75 @@
 # AI Video Flow
 
-> 原工程名 AIGCFlow；长期维护与代码导航见 [AI Video Flow Project Map](docs/PROJECT_MAP.md)。下方 V0.2 段落为历史开发资料，当前默认界面是 D Shell。
+An open-source AI video production workflow for Windows. It organizes preparation, generation, review, creative revision, and assembly in one desktop application—not a one-prompt video generator.
 
-当前 Windows RC：`0.1.0-rc.1`。发行产物由脚本生成在 `release/v0.1.0-rc.1/`，不进入 Git。
+![AI Video Flow Production workspace showing a local zero-call video fixture and explicit Current binding](docs/assets/screenshots/production-1600x1000.png)
 
-## Windows 安装与运行
+*The current D-layout Production workspace, captured from a disposable demo project. The media shown is a local zero-call fixture, not a commercial model result.*
 
-- 安装版：`AI-Video-Flow-0.1.0-rc.1-windows-x64-setup.exe`。当前用户安装，无需管理员权限；开始菜单快捷方式必建，桌面快捷方式可选；可从 Windows 已安装的应用卸载。
-- 便携版：`AI-Video-Flow-0.1.0-rc.1-windows-x64.zip`。解压后运行 `AIVideoFlow.exe`；两种发行形态同版本。
-- 两个文件的 SHA-256 见同目录 `SHA256SUMS.txt`。当前构建未签名，也没有自动更新器。
-- 卸载只移除程序，不删除项目。兼容数据目录继续使用 `%LOCALAPPDATA%\AI Video Workflow`，本轮不迁移。
+## What it is
 
-## 历史 V0.2 开发资料
+AI generation is one stage in a longer production process. AI Video Flow helps you keep the script, shared references, generated takes, human review, chosen take, creative changes, and output connected across shots and chapters.
 
-当前交付：**V0.2 准备工作区 + Production / Candidate / Review 最小完整闭环**。C「镜头上下文」仍是正式视觉基线。
+**Preparation → Production ↔ Creative → Assembly → Output**
 
-规范剧本 → 资产需求 → 缺失项生产 / 导入 → Candidate → Green / Yellow / Red → 明确选用 Current → Requirement Resolved。
+- **Preparation:** derive shared asset requirements from a structured script, import references, and resolve missing inputs.
+- **Production:** run supported jobs, retain Candidates, review them, then explicitly bind a Current take. Green review alone does not select a take.
+- **Creative:** discuss a shot or project, inspect a Proposal and Diff, edit a draft, and explicitly Apply a valid revision to the production script.
+- **Assembly:** consume Current media for chapter editing, preview/output, and OpenTimelineIO handoff. A shot without Current remains visibly unresolved.
 
-正式依据为 `重要文档` 中的项目定义 V0.2、项目路线 V0.2、AI 协作规则 V0.1。旧 A-01～A-08 / UI-Final 是技术底座与历史证据，不定义当前产品结构。
+The [Project Map](docs/PROJECT_MAP.md) is the entry point for architecture, data ownership, runtime, tests, and the release flow.
 
-## 启动
+## Screenshots
+
+These are captures of the current PySide6 D layout using a temporary, public-safe demo project. Fixture media and text responses make no commercial provider calls.
+
+| Preparation | Creative |
+| --- | --- |
+| ![Preparation workspace with shared requirements and production script](docs/assets/screenshots/preparation-1600x1000.png) | ![Creative workspace with a proposed script diff and explicit Apply action](docs/assets/screenshots/creative-1600x1000.png) |
+
+![Assembly workspace with Current-only chapter timeline and output controls](docs/assets/screenshots/assembly-1600x1000.png)
+
+## Current status
+
+**v0.1.0-rc.1 is a Windows-first release candidate.** The D-layout application, project workflow, local fixture providers, Windows Installer, and portable ZIP have passed local release-gate tests. This is not a claim that commercial image or video generation is integrated.
+
+The default image, audio, and video providers are **zero-call local fixtures**. Creative text can optionally use a configurable OpenAI-compatible API; its key is read from an environment variable, not saved in project settings. The archived `fal_adapter.py` and integration harness are not registered as production media providers in the D runtime.
+
+Current limits: the Windows builds are unsigned and may trigger a SmartScreen warning; no automatic updater or credential store is included; cross-version project migration is not yet a supported workflow. Keep a backup of important projects before trying an RC. See the [release notes](docs/releases/v0.1.0-rc.1.md) for more detail.
+
+## Install on Windows
+
+The release artifacts are prepared locally; they will be attached to the GitHub pre-release when publication is approved. Verify downloads against the accompanying `SHA256SUMS.txt`.
+
+- **Installer:** download `AI-Video-Flow-0.1.0-rc.1-windows-x64-setup.exe`, run it, and follow the per-user setup wizard. It adds a Start Menu shortcut; the desktop shortcut is optional. Uninstalling the app does not delete projects.
+- **Portable:** download `AI-Video-Flow-0.1.0-rc.1-windows-x64.zip`, extract it, and run `AIVideoFlow.exe`. Keep the extracted files together.
+
+Both contain FFmpeg/FFprobe for local media work. Their third-party terms are documented in [Third-Party Notices](THIRD_PARTY_NOTICES.md). The legacy user-data location remains `%LOCALAPPDATA%\AI Video Workflow` for compatibility; this is distinct from the installation directory.
+
+## Run from source
+
+Use Windows, Python 3.11 or newer, and FFmpeg/FFprobe on `PATH` for media operations. From the repository root:
 
 ```powershell
 python -m pip install -r requirements.txt
 python -m app.preparation_gui
 ```
 
-或双击 `start.cmd`。使用 Python 3.11+、PySide6 6.10.2，以及 PATH 中已有的 FFmpeg 工具（音视频参照校验使用 ffprobe）。
+The default layout is D; `--layout C` opens the older Preparation layout. To work with a separate project, pass `--data-dir <folder>`. The app does not need Node for ordinary GUI use.
 
-首次进入空工作区：在右侧点“编辑剧本”、从顶栏导入 `.md/.txt` 规范剧本，或点底栏“打开示例”。“打开项目”可选择新空文件夹或已有 V0.2 项目。
+## Build and test
 
-默认启动恢复上次打开的项目；指定项目：
-
-```powershell
-python -m app.preparation_gui --data-dir evidence/V0.2-C-Qt/demo-project
-```
-
-![V0.2 准备工作区：C 镜头上下文真实 Qt 实现](evidence/V0.2-C-Qt/preparation-desktop.png)
-
-![V0.2 Production：Candidate 审核与明确绑定](evidence/V0.2-Production/production-review.png)
-
-## 当前可用
-
-- 影片 → 章节 → 镜头，支持多人物、完整视觉组合、独立 Voice、环境/背景音、关键物件、视频镜头参照和自然语言创作区。
-- 剧本自动推导并去重资产需求；无需手工建立资产清单。
-- 已有、缺失、歧义、变更状态；明确选择、导入自动命名、图片与音视频预览。
-- 开放素材文件夹；新增、替换、改名、删除后重新扫描，提示受影响镜头。
-- 草稿自动保存、源行错误定位、有效版本保护、资产历史与绑定恢复。
-- 章节/镜头和编辑位置恢复，同项目单窗口写入。
-- 缺失需求可进入 Production：图像使用零调用本地 Fixture，图像 / 音频 / 视频均可导入为 Candidate。
-- Candidate 独立保留 Take、媒体哈希、来源、Job、审核与绑定历史；多个 Green 可共存，Current 需另行明确选用。
-
-准备就绪仅表示必需参照已映射，不表示模型质量或成片完成。当前图像 Fixture 不调用真实 API；轻剪和输出仍在后续轮次接入。
-
-## 日常操作
-
-1. 在右侧阅读当前镜头剧本；点“编辑剧本”修改，或从顶栏导入，然后点“应用剧本”（Ctrl+Enter）。草稿自动保存，Ctrl+S 可立即保存。
-2. 顶部切换章节、底部切换镜头；左侧缺失需求直接选择“不需要固定素材 / 导入素材 / 添加 API”。
-3. 不需要固定素材会保留需求语义、解除固定参照阻塞，可随时恢复；导入则进入现有 Candidate → Green / Yellow / Red → 明确选用 Current 链。
-4. “添加 API”定位到对应的 Image / Audio / Video 能力；当前无真实内部 Provider，明确显示未配置。返回镜头后，素材变化可点“同步素材”，不会静默改绑。
-5. 关闭重开继续当前项目；迁移时复制整个项目目录，包含 `.history`。
-
-[五分钟语法、文件夹约定与实现边界](docs/V0.2-准备工作区.md) · [C 母版 Qt 实现与截图](evidence/V0.2-C-Qt/实现回执.md) · [Production 施工回执与截图](evidence/V0.2-Production/施工回执.md) · [Missing Resolution 回执与截图](evidence/V0.2-Missing/施工回执.md)
-
-## 工程入口
-
-```text
-app/preparation/script.py       Parser、章节镜头、资产需求与源行
-app/preparation/workspace.py    映射、文件同步、版本、历史、原子状态
-app/preparation/visuals.py      统一视觉语言、剧本编辑器
-app/preparation/production.py   Job、Candidate、审核与明确绑定
-app/preparation/production_gui.py  Qt 生产与判断工作区
-app/preparation/example.py      示例剧本、原创矢量与 AI 生成的 Demo 环境参照
-app/preparation_gui.py          Qt 准备工作区与参照预览
-workspace-v02/                  默认新工作区（运行数据，不提交 Git）
-```
-
-新工作区没有迁移或覆盖旧 `data`。历史 Tk GUI 与生成模块仍在仓库，供后续按能力提取复用；不承担旧 GUI 兼容要求。
-
-## 本轮聚焦验证
+The Windows portable and Installer builds are scripted in `scripts/build_windows.ps1` and `scripts/build_windows_installer.ps1`. Build prerequisites, clean-runtime, ZIP, install/uninstall, and checksum gates are in [Releasing](docs/RELEASING.md). Generated `build/`, `dist/`, and `release/` binaries are not committed to the source repository.
 
 ```powershell
-python -m unittest tests.test_missing_resolution tests.test_preparation_production tests.test_preparation_gui tests.test_preparation -v
+$env:QT_QPA_PLATFORM = 'offscreen'
+python -m unittest discover -s tests -q
 ```
 
-聚焦验证 Missing 决策、Candidate 生命周期、绑定与恢复、代表性 Qt 主路径和 Workspace 受影响逻辑；未重复历史生成、FFmpeg、OTIO 的大规模回归。
+See [Testing](docs/TESTING.md) for targeted suites and fixture boundaries. The latest local release-gate evidence is under `evidence/V0.1-Windows-Installer/`; it is not an online-provider test.
 
-Missing Requirement Resolution 施工基线：`8979715`。无远程仓库配置或发布动作。
+## Contributing and license
+
+Start with [Contributing](CONTRIBUTING.md) and the [Project Map](docs/PROJECT_MAP.md) before changing a truth boundary. Report security concerns through the guidance in [Security](SECURITY.md), not a public issue containing secrets.
+
+The project's own code is licensed under [Apache-2.0](LICENSE). Bundled dependencies have separate licenses and obligations; see [Third-Party Notices](THIRD_PARTY_NOTICES.md). Public release readiness is tracked in the [audit](docs/PUBLIC_RELEASE_AUDIT_V0.1.md).

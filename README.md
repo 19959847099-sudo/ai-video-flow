@@ -1,77 +1,50 @@
 # AI Video Flow
 
-An open-source AI video production workflow for Windows. It organizes preparation, generation, review, creative revision, and assembly in one desktop application—not a one-prompt video generator.
+An open-source AI video production workflow for Windows.
 
-![AI Video Flow Production workspace showing a locally imported Current clip and two reviewed Candidates](docs/assets/screenshots/production-1600x1000.png)
+> **Early stage.** `v0.1.0-rc.1` is the first public engineering baseline: real, packaged and tested, but not a polished or production-ready application, and not a substitute for a professional NLE or a mature commercial AI video tool.
 
-*The current D-layout Production workspace, captured from a disposable synthetic demo project. The selected clip was made locally from the bundled demo scene image; another Candidate came from the zero-call fixture. Neither is a commercial model result.*
+It keeps the parts of an AI video project that usually drift apart connected — script, shared asset requirements, generated or imported takes, human review, the chosen take for each shot, creative revisions, chapter assembly — in one desktop application.
 
-## What it is
+![The Production workspace in the current D layout, with two reviewed Candidates and a selected clip](docs/assets/screenshots/production-1600x1000.png)
 
-AI generation is one stage in a longer production process. AI Video Flow helps you keep the script, shared references, generated takes, human review, chosen take, creative changes, and output connected across shots and chapters.
+*From a disposable demo project: one clip was encoded locally from the bundled demo scene image, the other Candidate came from a zero-call fixture. Neither is a commercial model result.*
 
-**Preparation → Production ↔ Creative → Assembly → Output**
+## What works today
 
-![Workflow overview: preparation, production, creative revision, assembly and output](docs/assets/workflow-overview.svg)
+A PySide6 Windows app arranged as four workspaces — Preparation, Production, Creative, Assembly — over project / chapter / shot state, with asset requirements, candidate review, an explicit **Current** take per shot, FFmpeg media handling, chapter preview and output, and OpenTimelineIO handoff. The Installer and portable ZIP are both built and smoke-tested.
 
-- **Preparation:** derive shared asset requirements from a structured script, import references, and resolve missing inputs.
-- **Production:** run supported jobs, retain Candidates, review them, then explicitly bind a Current take. Green review alone does not select a take.
-- **Creative:** discuss a shot or project, inspect a Proposal and Diff, edit a draft, and explicitly Apply a valid revision to the production script.
-- **Assembly:** consume Current media for chapter editing, preview/output, and OpenTimelineIO handoff. A shot without Current remains visibly unresolved.
+The product keeps several things deliberately separate: a green review does not select a take; a proposal changes the script only when applied; assembly reads *Current* media only. See [Data Model](docs/DATA_MODEL.md).
 
-The [Project Map](docs/PROJECT_MAP.md) is the entry point for architecture, data ownership, runtime, tests, and the release flow.
+## Current limitations
 
-## Screenshots
+- Media providers are **local zero-call fixtures**. Commercial image/video/audio integration is limited; Creative text can optionally use a configured OpenAI-compatible API.
+- UI and interaction are not final; the installer works but is basic; internationalisation is incomplete.
+- Not yet validated through broad real-world use.
+- Builds are unsigned (SmartScreen may warn), there is no updater or credential store, and project formats are not yet migrated between versions — back up important projects.
 
-These are captures of the current PySide6 D layout using one temporary, public-safe demo project. The scene clip was imported from local media; the other Candidate and Creative text use zero-call fixtures. No commercial provider was called.
+## Download and run
 
-| Preparation | Creative |
-| --- | --- |
-| ![Preparation workspace with shared requirements and production script](docs/assets/screenshots/preparation-1600x1000.png) | ![Creative workspace with a proposed script diff and explicit Apply action](docs/assets/screenshots/creative-1600x1000.png) |
+Download either form from this repository's GitHub Releases, under the `v0.1.0-rc.1` pre-release, and verify it against the published `SHA256SUMS.txt`.
 
-![Assembly workspace with Current-only chapter timeline and output controls](docs/assets/screenshots/assembly-1600x1000.png)
+- **Installer** `AI-Video-Flow-0.1.0-rc.1-windows-x64-setup.exe` — per-user install; uninstalling does not delete your projects.
+- **Portable** `AI-Video-Flow-0.1.0-rc.1-windows-x64.zip` — extract and run `AIVideoFlow.exe`.
 
-## Current status
-
-**v0.1.0-rc.1 is a Windows-first release candidate.** The D-layout application, project workflow, local fixture providers, Windows Installer, and portable ZIP have passed local release-gate tests. This is not a claim that commercial image or video generation is integrated.
-
-The default image, audio, and video providers are **zero-call local fixtures**. Creative text can optionally use a configurable OpenAI-compatible API; its key is read from an environment variable, not saved in project settings. The archived `fal_adapter.py` and integration harness are not registered as production media providers in the D runtime.
-
-Current limits: the Windows builds are unsigned and may trigger a SmartScreen warning; no automatic updater or credential store is included; cross-version project migration is not yet a supported workflow. Keep a backup of important projects before trying an RC. See the [release notes](docs/releases/v0.1.0-rc.1.md) for more detail.
-
-## Install on Windows
-
-The release artifacts are prepared locally; they will be attached to the GitHub pre-release when publication is approved. Verify downloads against the accompanying `SHA256SUMS.txt`.
-
-- **Installer:** download `AI-Video-Flow-0.1.0-rc.1-windows-x64-setup.exe`, run it, and follow the per-user setup wizard. It adds a Start Menu shortcut; the desktop shortcut is optional. Uninstalling the app does not delete projects.
-- **Portable:** download `AI-Video-Flow-0.1.0-rc.1-windows-x64.zip`, extract it, and run `AIVideoFlow.exe`. Keep the extracted files together.
-
-Both contain FFmpeg/FFprobe for local media work. Their third-party terms are documented in [Third-Party Notices](THIRD_PARTY_NOTICES.md). The legacy user-data location remains `%LOCALAPPDATA%\AI Video Workflow` for compatibility; this is distinct from the installation directory.
-
-## Run from source
-
-Use Windows, Python 3.11 or newer, and FFmpeg/FFprobe on `PATH` for media operations. From the repository root:
+To run from source: Windows, Python 3.11+, FFmpeg/FFprobe on `PATH`, then
 
 ```powershell
 python -m pip install -r requirements.txt
 python -m app.preparation_gui
 ```
 
-The default layout is D; `--layout C` opens the older Preparation layout. To work with a separate project, pass `--data-dir <folder>`. The app does not need Node for ordinary GUI use.
+## Documentation
 
-## Build and test
+[Project Map](docs/PROJECT_MAP.md) is the entry point — how it is arranged, what to change, what to run. Also [Architecture](docs/ARCHITECTURE.md), [Data Model](docs/DATA_MODEL.md), [Testing](docs/TESTING.md), [Releasing](docs/RELEASING.md), [release notes](docs/releases/v0.1.0-rc.1.md), [Contributing](CONTRIBUTING.md) and [Security](SECURITY.md).
 
-The Windows portable and Installer builds are scripted in `scripts/build_windows.ps1` and `scripts/build_windows_installer.ps1`. Build prerequisites, clean-runtime, ZIP, install/uninstall, and checksum gates are in [Releasing](docs/RELEASING.md). Generated `build/`, `dist/`, and `release/` binaries are not committed to the source repository.
+## Development status
 
-```powershell
-$env:QT_QPA_PLATFORM = 'offscreen'
-python -m unittest discover -s tests -q
-```
+V0.1 gets bug, security and release fixes only. **The next major cycle is V0.2**, where architecture, extensibility, provider integration and usability are all expected to move substantially — none of that is implemented today, and it is not described here as a current capability.
 
-See [Testing](docs/TESTING.md) for targeted suites and fixture boundaries. The latest local release-gate evidence is under `evidence/V0.1-Windows-Installer/`; it is not an online-provider test.
+## License
 
-## Contributing and license
-
-Start with [Contributing](CONTRIBUTING.md) and the [Project Map](docs/PROJECT_MAP.md) before changing a truth boundary. Report security concerns through the guidance in [Security](SECURITY.md), not a public issue containing secrets.
-
-The project's own code is licensed under [Apache-2.0](LICENSE). Bundled dependencies have separate licenses and obligations; see [Third-Party Notices](THIRD_PARTY_NOTICES.md). Public release readiness is tracked in the [audit](docs/PUBLIC_RELEASE_AUDIT_V0.1.md).
+AI Video Flow's own code is [Apache-2.0](LICENSE). Bundled third-party components keep their own licenses; see [Third-Party Notices](THIRD_PARTY_NOTICES.md).

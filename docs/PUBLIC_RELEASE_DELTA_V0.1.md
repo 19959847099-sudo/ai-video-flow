@@ -198,5 +198,10 @@ owner confirmed that `19959847099@163.com` may be published with the existing
 history, alongside the non-personal `codex@local` placeholders. Accordingly no
 history rewrite, no author/committer amendment, no rewrite-backup bundle, and no
 `reflog expire` / `gc --prune=now` object cleanup was performed or is to be
-performed for this reason; later commits keep the configured identity. All 26
-commits on `master` therefore retain their original hashes.
+performed for this reason; later commits keep the configured identity. No
+pre-existing commit on `master` changed hash as a result of this decision.
+
+**Workstation-path decision: ACCEPTED (2026-09-27).** The `C:\Users\LENOVO\…` and
+`E:\codex\AIGC…` paths already present in tracked `evidence/` files are likewise
+accepted for publication; they are not scrubbed and no history is rewritten for
+them. Newer documentation added in this round uses repository-relative paths.

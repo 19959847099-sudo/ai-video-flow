@@ -4,6 +4,12 @@ Date: 2026-09-24. Baseline: [`PUBLIC_RELEASE_AUDIT_V0.1.md`](PUBLIC_RELEASE_AUDI
 
 **PUBLIC RELEASE GATE = FAIL · READY TO PUBLISH = NO.** The known GPLv3 static FFmpeg/FFprobe corresponding-source blocker remains. Visual improvements and passing installation smoke cannot waive it.
 
+> **Superseded on 2026-09-27 for the FFmpeg blocker only.** See
+> [FFmpeg corresponding-source round (2026-09-27)](#ffmpeg-corresponding-source-round-2026-09-27)
+> at the end of this file. The Gyan binaries described throughout this 2026-09-24
+> review are no longer shipped and the artifact hashes below are historical. The
+> two manual sign-off items reported here are still open.
+
 ## FFmpeg and distribution strategy
 
 The exact bundled executables remain Gyan.dev `8.1-essentials_build-www.gyan.dev`, `ffmpeg.exe` SHA-256 `1a65d5b0b10d8d9a81d2824a3538046a40ed3607c906b335a166add87613f705` and `ffprobe.exe` SHA-256 `54b944d6095c4588d7548424d7acd5118390a9d4f01b1c92f841547fc9a7429c`. The installed README identifies FFmpeg commit [`9047fa1b08`](https://github.com/FFmpeg/FFmpeg/commit/9047fa1b08), lists the configure line and many external library versions. `ffmpeg -version` confirms GCC 15.2.0/MSYS2, `--enable-gpl --enable-version3 --enable-static`, and x264/x265. Upstream FFmpeg 8.1 was [announced 2026-03-16](https://ffmpeg.org/); the exact Gyan binary's build/publication date was not independently established. See the bundled [provenance record](../third_party/ffmpeg/PROVENANCE.md) for the complete observed flags, dependency inventory and verification boundary.
@@ -48,3 +54,142 @@ No source artifact exists because an adequate corresponding-source set has not b
 4. When a remote is finally created, enable a real private vulnerability-reporting route and update `SECURITY.md` before announcing the project.
 
 Remote creation, push, tag, prerelease, asset upload and Social Preview account configuration remain deliberately unperformed. **BLOCKER = 1 confirmed compliance blocker; REGRESSION = 0 in completed automated gates; PUBLIC RELEASE GATE = FAIL; READY TO PUBLISH = NO.**
+
+---
+
+# FFmpeg corresponding-source round (2026-09-27)
+
+Scope: the single confirmed release blocker from this review — complete
+corresponding source for the bundled GPLv3 static FFmpeg/FFprobe. No product,
+UI, screenshot or demo work. Baseline `master` at `c32438b`.
+
+## Why the previous binaries could not be kept
+
+The Gyan.dev chain was re-tested against primary sources rather than assumed
+stale. [gyan.dev/ffmpeg/builds](https://www.gyan.dev/ffmpeg/builds/) publishes
+download links, per-package `.sha256` files and a link to the upstream FFmpeg
+commit; it publishes **no** build script, recipe, patch set or source bundle, and
+[issues @ github](https://github.com/GyanD/codexffmpeg/issues) is a discussion
+tracker, not a recipe archive. The bundled `README.txt` lists external library
+versions at mixed precision and includes entries with no revision at all
+(`openal-soft latest`). A binary whose build inputs are partly unpinned by
+construction cannot be given a verifiable corresponding-source record, so
+**CURRENT GYAN SOURCE CHAIN = INSUFFICIENT**. That is an evidence finding about
+what is published, not an allegation of vendor noncompliance.
+
+## Options compared
+
+| Option | Provenance quality | Long-term maintenance | UX / product impact | Verdict |
+| --- | --- | --- | --- | --- |
+| Keep Gyan, complete the chain | No recipe, patches or source published; some components unpinned | Would require the vendor to start publishing | None | Cannot close |
+| **BtbN/FFmpeg-Builds pinned release** | Every package pinned to an exact commit in a public version-controlled recipe; immutable per-build tags; vendor `checksums.sha256` | Fetch/manifest script only; no toolchain owned | Binary swap, same static self-contained behaviour | **Adopted** |
+| Self-build a minimal FFmpeg | Best possible: we would own recipe and inputs | Own a Windows cross-compile toolchain and rebuild for every security fix | Estimated, not measured: roughly 15–30 MB binaries and a roughly 15–25 MB source set | Rejected: highest maintenance; CI is `DEFERRED` |
+| Unbundle FFmpeg | No GPL object code conveyed | Low | Breaks install/unzip-and-run; needs a product decision | Rejected: product degradation |
+
+The product needs exactly one non-native encoder, `libx264` (its four call sites:
+`app/production.py:165`, `app/rough_cut.py:157`, `app/preparation/runtime.py:357`,
+`app/preparation/finishing.py:336`), and H.264 output has no LGPL-only path in
+FFmpeg. GPL therefore stays; the answer had to be a conveyable source chain, not
+license avoidance.
+
+## What changed
+
+The package now ships BtbN `ffmpeg-n8.1.3-win64-gpl-8.1.zip` from immutable
+release `autobuild-2026-09-26-13-03`, produced by recipe commit
+`58cc05f33c20e3ead0ce876b72531ab482d0f981` (CI run 36241274776), built from
+FFmpeg tag `n8.1.3` / commit `1041abdc96…`. The vendor package hash
+`d20ef03f…` was recomputed locally and matches the vendor's own published
+`checksums.sha256`.
+
+`third_party/ffmpeg/SOURCE_MANIFEST.json` is generated, not authored: it reads the
+vendor recipe at the pinned commit, resolves the 81 stages that the shipped
+binary's own reported configure line enables, walks their transitive dependency
+graph, and records 117 upstream repositories at exact revisions plus the recipe
+and patch directories. It reports `unclaimed_enable_lib_flags`, which is **empty**
+— every `--enable-lib*` in the binary is attributable to exactly one pinned
+stage — and `conservatively_included_stages` (`pulseaudio`, `x11`), which are
+included although this build disables them, so the manifest over-covers rather
+than under-covers.
+
+`scripts/build_windows.ps1` no longer discovers FFmpeg from `PATH`. It packages
+the staged copy under `.tools/ffmpeg/` and aborts unless
+`tools/ffmpeg_provenance.py verify` reproduces the pinned SHA-256, so a silent
+substitution cannot reach a release. The negative path was exercised: the old
+Gyan executables fail the gate.
+
+## Corresponding source delivery
+
+`python tools/ffmpeg_provenance.py fetch <dir>` downloads each pinned archive
+(HTTP snapshot, or `git archive` at the pinned commit for the four hosts that
+publish none), hash-verifies every file, and writes `FETCH_INDEX.json` and
+`SHA256SUMS.txt`; it is resumable and was run to completion here: **117 of 119
+records fetched, 0 failures**, ~1.00 GB of archives, every one re-verified with
+`sha256sum -c`. The bundle ships those archives plus the manifest, pin, this
+provenance record and `RETRIEVAL.md`, and is archived as
+`AI-Video-Flow-0.1.0-rc.1-ffmpeg-sources.tar` (1,003,499,520 bytes, SHA-256
+`9ab196f73dd610cb7d2ba07f0db41f26579425397873f742c7db85bf692e912e`) and uploaded
+to the same GitHub Release as the two binaries, so object code and source are
+offered from the same place. Nothing is committed to Git history.
+
+The bundle is large relative to the app because a static GPL build links a lot:
+the manifest covers 81 vendor stages / 117 source repositories, and AMD's AMF SDK
+alone contributes ~381 MB of that total. This is the real cost of the chosen
+option; the alternative that would shrink it (owning a minimal self-build) is the
+higher-maintenance path rejected above.
+
+**Residual, not hidden:** `libmp3lame` (SourceForge SVN r6835) and `xvid`
+(svn.xvid.org r2204) are pinned to Subversion revisions for which no HTTP
+revision snapshot was found, and whose official release tarballs are *not*
+equivalent to those revisions. Of the 119 source records this binary resolves to,
+117 are mirrored and hash-verified; these two are delivered with their exact
+repository, revision and `svn export` command recorded in the manifest, in
+`FETCH_INDEX.json` and in a `RETRIEVAL.md` shipped inside the bundle. Both are
+separately licensed (LGPL-2.1-or-later, GPL-2.0-or-later) rather than GPL-3.0.
+Closing this last pair needs a Subversion client at bundle-build time, or a build
+without those two codecs.
+
+## Rebuild, regression and artifacts
+
+Runtime changed, so the full chain was re-run rather than sampled: focused media
+tests with the new executables (`test_rough_cut` 12, `test_chapter_finishing` 10,
+`test_audio` 10, `test_preparation_sound` 9) all pass; **full suite 172/172 OK in
+130.10 s against the packaged binaries**, 0 failures / 0 errors; clean portable
+runtime, ZIP extraction, FFmpeg/FFprobe discovery and source-tree isolation pass;
+Installer install → launch → project reopen → same-version reinstall → uninstall
+preserves project → reinstall reopens project → clean uninstall passes.
+
+| Artifact | Bytes | SHA-256 |
+| --- | ---: | --- |
+| `…-windows-x64-setup.exe` | 145,188,342 | `85aac4dfd425c1ff711b1599487dae150c3a0be68d99d3787b12035a3048ac36` |
+| `…-windows-x64.zip` | 196,880,641 | `1dd25ec9f0de7523c6114873dd58b707c37491fe32700a6ee02b9ea252faaaf2` |
+| `…-ffmpeg-sources.tar` | 1,003,499,520 | `9ab196f73dd610cb7d2ba07f0db41f26579425397873f742c7db85bf692e912e` |
+
+All three recomputed independently with `sha256sum -c` and matched
+`SHA256SUMS.txt`. Two interim rebuilds during this round packaged provenance files
+that were still being edited and are superseded; the final package was byte-compared
+against the repository copies of `THIRD_PARTY_NOTICES.md`, the runtime notice,
+`PROVENANCE.md`, `FFMPEG_PIN.json` and `SOURCE_MANIFEST.json`, and all five matched.
+The ~39 MB installer growth is the price of this option: the BtbN GPL build enables
+far more components than Essentials. No product behaviour changed — the application
+still invokes the same command lines against the same H.264/AAC/MP4 capability set.
+
+`THIRD_PARTY_NOTICES.md`, the packaged runtime notice, `PROVENANCE.md`,
+`RELEASING.md`, `TESTING.md`, `PROJECT_MAP.md` and the RC release notes now match
+the shipped binaries. The previous Gyan hashes survive only as history in the
+evidence index. Project license is unchanged: AI Video Flow code stays Apache-2.0,
+FFmpeg stays GPL-3.0; nothing here required touching the top-level license.
+
+## Gate
+
+- **FFMPEG SOURCE GATE = PASS.** Binary identified and hash-verified against the
+  vendor's own checksums; license state known; build provenance sufficient;
+  external static components enumerated at exact revisions; corresponding source
+  delivery reproducible from a committed generated manifest; documentation
+  updated; runtime and packaging regression green; no known blocker to
+  distribution. The two Subversion components above are the one disclosed
+  limitation of the mirror, not an unknown.
+- **PUBLIC RELEASE TECHNICAL GATE = PASS.** BLOCKER = 0, REGRESSION = 0.
+
+Still outside the technical gate and deliberately not decided here: manual
+Installer/installed-app visual sign-off, the Git author-email publication
+decision, and a real private vulnerability-reporting route once a remote exists.

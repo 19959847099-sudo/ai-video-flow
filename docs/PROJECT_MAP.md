@@ -103,7 +103,7 @@ flowchart TD
 | 改 Assembly UI | `preparation/finishing_gui.py` | `finishing.py` | Production Current | 仅消费 Current | `test_chapter_finishing`, `test_integration_shell`, `test_ui_final` | Medium |
 | 新 Workspace | `integrated_gui.py:ApplicationShell` | `integration.py` route/memory、activity | 新建第二份项目状态 | Workspace 仅视图/交互边界 | `test_integration_shell`, `test_ui_final`, `test_packaging` | High |
 | 改 Router | `integration.py:WorkspaceRouter` | Shell 跳转/Return | 修改领域 Truth | deep link/return/memory 可恢复 | `test_integration_shell`, `test_ui_final`, `test_packaging` | High |
-| 升级 FFmpeg/FFprobe | `resources.py:media_tool` | bundling、probe/render | Candidate/Current 语义 | 媒体失败局部化 | `test_chapter_finishing`, `test_audio`, `test_rough_cut`, `test_packaging` + clean/ZIP smoke | High |
+| 升级 FFmpeg/FFprobe | [`third_party/ffmpeg/FFMPEG_PIN.json`](../third_party/ffmpeg/FFMPEG_PIN.json) + [`tools/ffmpeg_provenance.py`](../tools/ffmpeg_provenance.py) | `resources.py:media_tool`、`build_windows.ps1` 的 `.tools/ffmpeg` 预置目录、probe/render、regenerate `SOURCE_MANIFEST.json`、重取对应源码资产 | Candidate/Current 语义 | 媒体失败局部化 | `test_chapter_finishing`, `test_audio`, `test_rough_cut`, `test_packaging` + clean/ZIP smoke | High |
 | 升级 PySide6 | `requirements.txt` | GUI、PyInstaller hooks | project schema | 视图更新不破坏布局几何 | GUI/Integration 全集 + frozen/clean smoke | High |
 | 改 Packaging / Installer | [`scripts/build_windows_installer.ps1`](../scripts/build_windows_installer.ps1) | `build_windows.ps1`、`packaging/windows/AI-Video-Flow.iss`、smoke/checksum 工具 | app Truth、用户项目目录 | Installer 卸载不删除作品；portable 仍隔离源码 | `test_packaging`, `test_installer_release` + clean/ZIP/install/uninstall/reinstall smoke | High |
 | 新 Settings | `integration.py:AppSettingsStore` | SettingsPage、测试 | `project.json` 除非真为项目字段 | Global Default ≠ Project Truth | `test_integration_shell`, `test_packaging` | Medium |
@@ -130,7 +130,7 @@ AI Agent 大型施工前：读本页 → 选 Change Map 行 → 读专题图 →
 - [Data Model](DATA_MODEL.md)：Truth owner、身份、落盘、schema。
 - [Runtime](RUNTIME.md)：Provider、Job、Creative、Assembly、媒体。
 - [Testing](TESTING.md)：测试层、变更验证、反向核验。
-- [FFmpeg provenance](../third_party/ffmpeg/PROVENANCE.md) 与 [Public Release Delta](PUBLIC_RELEASE_DELTA_V0.1.md)：精确媒体二进制来源、对应源码阻塞和本轮视觉/合规复审；不改变 Product Truth。
+- [FFmpeg provenance](../third_party/ffmpeg/PROVENANCE.md)：随包精确二进制的构建来源、对应源码交付链与可独立复算的验证命令；由 [`SOURCE_MANIFEST.json`](../third_party/ffmpeg/SOURCE_MANIFEST.json) 承载逐组件的仓库与精确 revision。[Public Release Delta](PUBLIC_RELEASE_DELTA_V0.1.md) 记录本轮合规复审结论。均不改变 Product Truth。
 - [Releasing](RELEASING.md)：portable、Installer、卸载/重装烟测、校验和与发布门禁。
 - [RC1 final regression](../evidence/V0.1-Windows-Packaging/final-regression.md)：上一轮 166/166 两次、关键集成 46/46 的发布证据；本地图不重新宣称执行了该轮测试。
 - 长期维护审计及核验附录（本地 `docs/AIGCFlow_长期维护与更新架构深度审计_V0.1*.md`）：用户原有未跟踪参考资料，不属于本次提交；公共导航不依赖它们。

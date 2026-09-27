@@ -1,5 +1,6 @@
 param(
-    [switch]$SkipSmoke
+    [switch]$SkipSmoke,
+    [string]$FFmpegDir = ""
 )
 
 $ErrorActionPreference = "Stop"
@@ -27,13 +28,24 @@ if ($LASTEXITCODE -ne 0 -or $version -notmatch '^\d+\.\d+\.\d+-rc\.\d+$') {
     throw "Unsupported release version: $version"
 }
 
-$ffmpeg = (Get-Command ffmpeg -ErrorAction Stop).Source
-$ffprobe = (Get-Command ffprobe -ErrorAction Stop).Source
-$ffmpegRoot = Split-Path (Split-Path $ffmpeg -Parent) -Parent
-$license = Join-Path $ffmpegRoot "LICENSE"
-$readme = Join-Path $ffmpegRoot "README.txt"
-if (-not (Test-Path -LiteralPath $license) -or -not (Test-Path -LiteralPath $readme)) {
-    throw "FFmpeg distribution license or README is missing."
+# The bundled media tools are pinned by third_party/ffmpeg/FFMPEG_PIN.json and
+# staged in .tools/ffmpeg; PATH discovery is deliberately not used so a release
+# build cannot silently pick up an unpinned FFmpeg.
+if (-not $FFmpegDir) {
+    $FFmpegDir = Join-Path $root ".tools\ffmpeg"
+}
+$FFmpegDir = Assert-BuildPath $FFmpegDir
+$ffmpeg = Join-Path $FFmpegDir "bin\ffmpeg.exe"
+$ffprobe = Join-Path $FFmpegDir "bin\ffprobe.exe"
+$license = Join-Path $FFmpegDir "LICENSE.txt"
+foreach ($required in @($ffmpeg, $ffprobe, $license)) {
+    if (-not (Test-Path -LiteralPath $required)) {
+        throw "Missing pinned FFmpeg input: $required"
+    }
+}
+& $pythonExe "tools/ffmpeg_provenance.py" verify $ffmpeg $ffprobe
+if ($LASTEXITCODE -ne 0) {
+    throw "Staged FFmpeg does not match third_party/ffmpeg/FFMPEG_PIN.json."
 }
 
 $work = Assert-BuildPath (Join-Path $root "build\windows")
@@ -53,7 +65,6 @@ if ($LASTEXITCODE -ne 0) { throw "Version metadata generation failed." }
 $env:AIGCFLOW_FFMPEG = $ffmpeg
 $env:AIGCFLOW_FFPROBE = $ffprobe
 $env:AIGCFLOW_FFMPEG_LICENSE = $license
-$env:AIGCFLOW_FFMPEG_README = $readme
 $env:AIGCFLOW_VERSION_FILE = $versionFile
 
 $pyInstallerArgs = @(

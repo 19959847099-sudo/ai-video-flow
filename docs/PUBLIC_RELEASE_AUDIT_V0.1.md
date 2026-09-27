@@ -30,6 +30,12 @@ The project's own code is prepared under Apache-2.0; [`LICENSE`](../LICENSE) is 
 
 [`THIRD_PARTY_NOTICES.md`](../THIRD_PARTY_NOTICES.md) records exact observed versions, roles, upstream sources and bundled license copies. The Windows build includes project `LICENSE`, notices and ten texts in `_internal/third_party/licenses/`. The exact shipped Qt Virtual Keyboard DLL/plugin was excluded because it is unused and Qt lists the module as GPL-only. Remaining PySide6/Qt 6.10.2 libraries are separate onedir files under LGPL/GPL community terms; Qt Multimedia's dynamically bundled FFmpeg DLLs are distinct from the static command-line executables. OpenTimelineIO's Apache license and NOTICE, Pillow's license/notices, CPython's license, pydantic-core MIT, PyInstaller bootloader exception, and Inno Setup license text were copied or referenced as appropriate. Inno's compiler is a build dependency, while its setup/uninstall runtime is redistributed.
 
+> **Status of this blocker (read first):** superseded on 2026-09-27. The Gyan
+> binaries below are no longer shipped; the bundle was replaced and the
+> corresponding-source chain closed. See
+> [FFmpeg corresponding-source round (2026-09-27)](PUBLIC_RELEASE_DELTA_V0.1.md#ffmpeg-corresponding-source-round-2026-09-27).
+> This baseline page is kept as the audit it was at its date and is not re-run here.
+
 **Publication blocker:** the bundled Gyan FFmpeg/FFprobe 8.1 essentials executables are static GPLv3 builds (`--enable-gpl --enable-version3 --enable-static`, including x264/x265). Their distributor README points to an FFmpeg commit and build configuration, but that alone does not demonstrate accessible, complete corresponding source for the exact binaries and statically linked components, including build scripts and patches as applicable. Before distributing the binaries, obtain and document an adequate corresponding-source package or compliant source-access arrangement for these exact checksums; independently inspect it against the build configuration. Rebuild or change the bundled binaries if necessary, then rerun binary, notice and hash gates. Qt's exact binary/source provenance and remaining module notices should be checked at the same time. Do not interpret this report as a claim of full legal compliance.
 
 ## Product presentation and documentation

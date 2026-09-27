@@ -46,3 +46,58 @@ The formal `third_party/ffmpeg/PROVENANCE.md` was added to the onedir bundle and
 - Portable ZIP: 143,248,001 bytes; SHA-256 `83d09a1d8386c48c44c3c2b6a497119fa1524241ddb1e7a247c288238788d01a`.
 
 `release/v0.1.0-rc.1/SHA256SUMS.txt` lists this pair. Corresponding-source delivery is still unresolved, so **do not publish the binaries**. The Installer wizard's controls were inspected as far as automation allowed, but reliable visual captures of every page were not obtained; interactive presentation review remains open.
+
+## 2026-09-27 FFmpeg replacement rebuild (latest local candidate)
+
+The bundled media tools were replaced: Gyan.dev `8.1-essentials_build` is no longer
+shipped. The package now carries BtbN/FFmpeg-Builds `n8.1.3` `win64-gpl` static
+executables from immutable release `autobuild-2026-09-26-13-03`, verified against
+`third_party/ffmpeg/FFMPEG_PIN.json` before packaging
+(`ffmpeg.exe` `a35880a7…`, `ffprobe.exe` `493c63c3…`). See
+[`third_party/ffmpeg/FFMPEG_PIN.json`](../../third_party/ffmpeg/FFMPEG_PIN.json)
+and the rewritten
+[`third_party/ffmpeg/PROVENANCE.md`](../../third_party/ffmpeg/PROVENANCE.md).
+
+`scripts/build_windows.ps1` no longer discovers FFmpeg from `PATH`; it reads the
+staged pinned copy and aborts on any hash mismatch. The vendor `README.txt` is gone
+because that vendor publishes none — the generated
+`SOURCE_MANIFEST.json` now travels instead.
+
+Gates re-run on this rebuild, all green:
+
+- Focused media with the new executables: `test_rough_cut` 12/12,
+  `test_chapter_finishing` 10/10, `test_audio` 10/10, `test_preparation_sound` 9/9.
+- Full suite against the **packaged** binaries (`AIVIDEO_MEDIA_BIN` pointed at
+  `dist/AIVideoFlow/_internal/runtime/ffmpeg/bin`): **172/172 OK** in 130.10s,
+  0 failures / 0 errors.
+- Clean-environment portable runtime, ZIP extraction, FFmpeg/FFprobe discovery and
+  source-tree isolation: see `portable/clean-environment.json`,
+  `portable/archive-smoke.json`.
+- Installer install → first launch → project reopen → same-version reinstall →
+  uninstall preserves project → reinstall reopens project → clean uninstall:
+  `installer-smoke.json`.
+
+New local artifacts, superseding the 2026-09-24 pair above and two interim rebuilds
+from earlier on 2026-09-27 (installers `4db1d68b…` and `f3bcccb2…`, which packaged
+provenance documents still under edit):
+
+- Installer: 145,188,342 bytes; SHA-256 `85aac4dfd425c1ff711b1599487dae150c3a0be68d99d3787b12035a3048ac36`.
+- Portable ZIP: 196,880,641 bytes; SHA-256 `1dd25ec9f0de7523c6114873dd58b707c37491fe32700a6ee02b9ea252faaaf2`.
+- Corresponding-source asset: 1,003,499,520 bytes; SHA-256 `9ab196f73dd610cb7d2ba07f0db41f26579425397873f742c7db85bf692e912e`.
+
+All three were recomputed independently with `sha256sum -c` against
+`release/v0.1.0-rc.1/SHA256SUMS.txt` and matched. The packaged copies of
+`THIRD_PARTY_NOTICES.md`, `runtime/ffmpeg/THIRD_PARTY_NOTICES.md`,
+`third_party/ffmpeg/PROVENANCE.md`, `FFMPEG_PIN.json` and `SOURCE_MANIFEST.json`
+were byte-compared with the repository copies after this final build and all five
+matched. The vendor `LICENSE.txt` ships under `runtime/ffmpeg/`; the former
+`runtime/ffmpeg/README.txt` is gone because this vendor publishes none. Size grew
+because this build reports a much larger enabled-component set than Essentials.
+
+The FFmpeg corresponding-source gate is now closed: the mirror resolves this
+binary to 119 source records and 117 of them are downloaded and hash-verified
+(`sha256sum -c` clean); `libmp3lame` and `xvid` remain pinned-revision retrieval
+instructions, documented as a residual in
+`third_party/ffmpeg/PROVENANCE.md`. Remaining open items are the manual
+Installer/installed-app visual sign-off and the Git author-email publication
+decision, neither of which is a technical gate.

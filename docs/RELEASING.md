@@ -30,7 +30,7 @@ python -m unittest discover -s tests -q
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts/build_windows_installer.ps1
 ```
 
-脚本运行条件及 FFmpeg 发现方式以脚本和 `app/resources.py:media_tool` 为准，不要假定任意开发机 PATH 都可复现。PyInstaller、PySide6、OpenTimelineIO、Pillow/Pydantic 的版本见 requirements；升级需重跑 GUI/媒体/packaging 及 frozen smoke。Node 是 Harness/DSH 开发集成依赖，不是 portable 应用运行前提。Creative API 为可选外部服务，key 仅来自环境变量；离线 smoke 不测试商业 API。
+脚本运行条件以脚本和 `app/resources.py:media_tool` 为准，不要假定任意开发机 PATH 都可复现。**随包 FFmpeg/FFprobe 不再从构建机 PATH 取得**：`scripts/build_windows.ps1` 只接受按 `third_party/ffmpeg/FFMPEG_PIN.json` 预置在 `.tools/ffmpeg/`（或 `-FFmpegDir` 指定目录）的 `bin/ffmpeg.exe`、`bin/ffprobe.exe` 和 `LICENSE.txt`，并在打包前用 `tools/ffmpeg_provenance.py verify` 比对 SHA-256；不匹配即中止构建。对应源码链与升级步骤见 [FFmpeg provenance](../third_party/ffmpeg/PROVENANCE.md)。PyInstaller、PySide6、OpenTimelineIO、Pillow/Pydantic 的版本见 requirements；升级需重跑 GUI/媒体/packaging 及 frozen smoke。Node 是 Harness/DSH 开发集成依赖，不是 portable 应用运行前提。Creative API 为可选外部服务，key 仅来自环境变量；离线 smoke 不测试商业 API。
 
 ## 烟测与证据
 
@@ -66,6 +66,18 @@ release/v0.1.0-rc.1/
 └─ SHA256SUMS.txt
 ```
 
+随包媒体工具的对应源码是第三个发布资产，不进入上表的构建产物链，由清单按需生成：
+
+```powershell
+python tools/ffmpeg_provenance.py manifest .tools/ffmpeg/bin/ffmpeg.exe
+python tools/ffmpeg_provenance.py fetch   <staging-dir>
+```
+
+`fetch` 写出 `FETCH_INDEX.json`（每个组件的 URL、方式、字节数、SHA-256）与
+`SHA256SUMS.txt`；打包该目录即得
+`AI-Video-Flow-0.1.0-rc.1-ffmpeg-sources.tar`，其 SHA-256 追加进 `SHA256SUMS.txt`
+后与双产物一起上传到同一个 GitHub Release，使二进制与对应源码在同一位置提供。
+
 `tools/installer_smoke.py` 先拒绝覆盖已有同名用户安装，在独立临时目录静默安装；验证开始菜单/可选桌面 `.lnk` 目标、Apps & Features、PE metadata、无源码依赖的首次启动与五个 Workspace/Settings、项目关闭重开、同版重装、卸载保留项目、卸载后重装打开旧项目，最后卸载并检查清理。详见 `evidence/V0.1-Windows-Installer/`；该目录是本轮证据，旧 `evidence/V0.1-Windows-Packaging/` 不被覆盖。
 
-当前构建无代码签名证书，Windows SmartScreen 可能提示；不采用自签名或来路不明 packer。重新构建的双产物包含根目录 `LICENSE`、`THIRD_PARTY_NOTICES.md`、`third_party/licenses/` 和 [FFmpeg 精确二进制 provenance](../third_party/ffmpeg/PROVENANCE.md)。公开发布前须完成 [Public Release Audit](PUBLIC_RELEASE_AUDIT_V0.1.md) 及 [本轮 Delta Review](PUBLIC_RELEASE_DELTA_V0.1.md)：随包静态 GPLv3 FFmpeg/FFprobe 的完整对应源码交付路径尚未证实，因此本地安装门禁通过不等于公开分发许可门禁通过。最终下载文件名、SHA-256 与 Release 草稿见 [v0.1.0-rc.1](releases/v0.1.0-rc.1.md)。
+当前构建无代码签名证书，Windows SmartScreen 可能提示；不采用自签名或来路不明 packer。重新构建的双产物包含根目录 `LICENSE`、`THIRD_PARTY_NOTICES.md`、`third_party/licenses/`、[FFmpeg provenance](../third_party/ffmpeg/PROVENANCE.md) 以及生成的 `FFMPEG_PIN.json` / `SOURCE_MANIFEST.json`。随包 GPLv3 静态 FFmpeg/FFprobe 的对应源码链已按 [provenance 记录](../third_party/ffmpeg/PROVENANCE.md) 建立并可独立复算；仍须复核 [Public Release Audit](PUBLIC_RELEASE_AUDIT_V0.1.md) 与 [Delta Review](PUBLIC_RELEASE_DELTA_V0.1.md) 中列出的人工签收项。最终下载文件名、SHA-256 与 Release 草稿见 [v0.1.0-rc.1](releases/v0.1.0-rc.1.md)。

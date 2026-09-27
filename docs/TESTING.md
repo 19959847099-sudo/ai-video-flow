@@ -53,7 +53,7 @@ python -m unittest discover -s tests -q
 | 新增视频 Provider | `app/preparation/runtime.py` → capability/Job、Production ingest、Assembly 消费 | `test_production_runtime`, `test_production_runtime_gui`, `test_chapter_finishing` |
 | 改 Current marker UI | `app/preparation/production_gui.py` → Selected/Review/Current 展示，不改绑定语义 | `test_preparation_production`, `test_production_runtime_gui`, `test_integration_shell` |
 | 新增 Project 字段 | `app/preparation/workspace.py` → schema/旧项目加载、序列化 | `test_preparation`, `test_integration_shell`, `test_packaging` + 旧项目样本 |
-| 升级 FFmpeg | `app/resources.py`、构建脚本 → 探测/渲染/portable 二进制 | `test_chapter_finishing`, `test_audio`, `test_rough_cut`, `test_packaging` + clean/ZIP smoke |
+| 升级 FFmpeg | `third_party/ffmpeg/FFMPEG_PIN.json` + `tools/ffmpeg_provenance.py` → `scripts/build_windows.ps1` 的 `.tools/ffmpeg` 预置目录、`app/resources.py` 探测/渲染、生成的 `SOURCE_MANIFEST.json` | `test_chapter_finishing`, `test_audio`, `test_rough_cut`, `test_packaging` + `ffmpeg_provenance.py verify`/`manifest` + clean/ZIP smoke |
 | 改 Creative Apply | `app/preparation/creative.py` → scope/stale/Workspace.apply | `test_preparation_creative`, `test_preparation_creative_gui`, `test_preparation` |
 | 改 Asset rename | `app/preparation/workspace.py:scan` → Asset identity、bindings、历史 | `test_asset_rework`, `test_missing_resolution`, `test_preparation` |
 | 新增 export | `app/preparation/finishing.py` → Current-only、OTIO/Output | `test_chapter_finishing`, `test_missing_resolution`, `test_packaging` |

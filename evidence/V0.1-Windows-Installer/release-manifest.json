@@ -4,13 +4,13 @@
   "artifacts": [
     {
       "name": "AI-Video-Flow-0.1.0-rc.1-windows-x64.zip",
-      "bytes": 143248001,
-      "sha256": "83d09a1d8386c48c44c3c2b6a497119fa1524241ddb1e7a247c288238788d01a"
+      "bytes": 196880641,
+      "sha256": "1dd25ec9f0de7523c6114873dd58b707c37491fe32700a6ee02b9ea252faaaf2"
     },
     {
       "name": "AI-Video-Flow-0.1.0-rc.1-windows-x64-setup.exe",
-      "bytes": 106133421,
-      "sha256": "a2b173e6dd92a9910b59b6b79d0ad4d5359c42d5fdda1fc8a01404935186e6a4"
+      "bytes": 145188342,
+      "sha256": "85aac4dfd425c1ff711b1599487dae150c3a0be68d99d3787b12035a3048ac36"
     }
   ]
 }

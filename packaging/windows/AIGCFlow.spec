@@ -8,7 +8,6 @@ root = Path(SPEC).resolve().parents[2]
 ffmpeg = Path(os.environ["AIGCFLOW_FFMPEG"]).resolve()
 ffprobe = Path(os.environ["AIGCFLOW_FFPROBE"]).resolve()
 ffmpeg_license = Path(os.environ["AIGCFLOW_FFMPEG_LICENSE"]).resolve()
-ffmpeg_readme = Path(os.environ["AIGCFLOW_FFMPEG_README"]).resolve()
 version_file = os.environ.get("AIGCFLOW_VERSION_FILE")
 
 otio_datas = collect_data_files("opentimelineio")
@@ -25,7 +24,6 @@ datas = [
     (str(root / "app" / "preparation" / "demo_assets"), "app/preparation/demo_assets"),
     (str(root / "third_party" / "ffmpeg"), "third_party/ffmpeg"),
     (str(ffmpeg_license), "runtime/ffmpeg"),
-    (str(ffmpeg_readme), "runtime/ffmpeg"),
     (str(root / "packaging" / "windows" / "THIRD_PARTY_NOTICES.md"), "runtime/ffmpeg"),
     (str(root / "packaging" / "windows" / "AI-Video-Flow.ico"), "packaging/windows"),
 ] + otio_datas

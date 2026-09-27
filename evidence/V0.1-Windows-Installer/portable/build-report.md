@@ -1,17 +1,17 @@
 # Windows packaging build report
 
 - Version: 0.1.0-rc.1
-- Total: 347.7 MB
+- Total: 469.2 MB
 - Executable: 4.6 MB
 - Qt: 112.8 MB
-- FFmpeg: 96.4 MB
-- FFprobe: 96.2 MB
-- Files: 248
+- FFmpeg: 157.1 MB
+- FFprobe: 156.9 MB
+- Files: 249
 
 ## Largest files
 
-- _internal/runtime/ffmpeg/bin/ffmpeg.exe: 96.4 MB
-- _internal/runtime/ffmpeg/bin/ffprobe.exe: 96.2 MB
+- _internal/runtime/ffmpeg/bin/ffmpeg.exe: 157.1 MB
+- _internal/runtime/ffmpeg/bin/ffprobe.exe: 156.9 MB
 - _internal/PySide6/opengl32sw.dll: 19.7 MB
 - _internal/PySide6/avcodec-61.dll: 13.3 MB
 - _internal/PySide6/Qt6Core.dll: 9.8 MB

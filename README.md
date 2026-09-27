@@ -2,13 +2,17 @@
 
 An open-source AI video production workflow for Windows.
 
-> **Early stage.** `v0.1.0-rc.1` is the first public engineering baseline: real, packaged and tested, but not a polished or production-ready application, and not a substitute for a professional NLE or a mature commercial AI video tool.
+> **Early stage.** `v0.1.0-rc.1` is the first public engineering baseline: real, packaged and tested, but not a polished or production-ready application.
+
+AI generation is one stage in a longer production process.
 
 It keeps the parts of an AI video project that usually drift apart connected — script, shared asset requirements, generated or imported takes, human review, the chosen take for each shot, creative revisions, chapter assembly — in one desktop application.
 
 ![The Production workspace in the current D layout, with two reviewed Candidates and a selected clip](docs/assets/screenshots/production-1600x1000.png)
 
 *From a disposable demo project: one clip was encoded locally from the bundled demo scene image, the other Candidate came from a zero-call fixture. Neither is a commercial model result.*
+
+![Workflow overview: preparation, production, creative revision, assembly and output](docs/assets/workflow-overview.svg)
 
 ## What works today
 
@@ -43,7 +47,7 @@ python -m app.preparation_gui
 
 ## Development status
 
-V0.1 gets bug, security and release fixes only. **The next major cycle is V0.2**, where architecture, extensibility, provider integration and usability are all expected to move substantially — none of that is implemented today, and it is not described here as a current capability.
+Further V0.1 changes are expected to focus on bug, security and release fixes. **The next major cycle is V0.2**, where architecture, extensibility, provider integration and usability are all expected to move substantially — none of that is implemented today, and it is not described here as a current capability.
 
 ## License
 

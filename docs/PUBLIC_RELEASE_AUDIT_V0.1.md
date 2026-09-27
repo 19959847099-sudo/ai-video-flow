@@ -20,7 +20,7 @@ Current tracked inventory was 2,036 paths before this package; 432 PNG, 119 MP4,
 
 - Current tree and reachable history were searched for common OpenAI/GitHub/AWS/Slack-style token signatures and private-key delimiters; no matching secret was found. This is pattern-based detection, not proof that arbitrary secrets cannot exist. There was no reason to rotate a known key or rewrite history.
 - Current tracked text contains older `evidence/` tracebacks with a malformed `E:\codex\AIGC…` path and Installer smoke JSON with a local Windows temporary path and account-folder name. They disclose workstation context, not credentials or customer files. The public homepage, screenshots, release notes and new guidance use repository-relative paths and sanitized fixture data. Historical evidence remains classified as safe but noisy; the user may elect to prune it in a separate, carefully scoped cleanup.
-- Reachable commit metadata includes a personal-domain author email as well as a `.local` address. GitHub will expose commit authorship if this history is pushed. The account owner should decide whether that address is acceptable publicly; changing it would require a deliberate history rewrite and is not done here.
+- Reachable commit metadata includes a personal-domain author email as well as a `.local` address. GitHub will expose commit authorship if this history is pushed. The account owner should decide whether that address is acceptable publicly; changing it would require a deliberate history rewrite and is not done here. **Decided 2026-09-27: accepted.** The owner confirmed publishing the history with that address intact; no rewrite, no author/committer change, no `reflog expire`/`gc --prune` cleanup, and future commits continue under the same configured identity.
 - No remote or tag existed at audit time. Recent commit subjects describe normal feature, packaging and evidence work; no suspicious secret-bearing subject was identified. We did not squash or rewrite genuine development history.
 - `.gitignore` excludes build/release outputs, environments, caches, IDE files, local configuration and logs, while allowing the four public screenshots and docs. The screenshot capture uses a temporary synthetic project and leaves no sample-project compatibility promise.
 
@@ -63,10 +63,12 @@ Both hashes match local `release/v0.1.0-rc.1/SHA256SUMS.txt`. The full regressio
 - [x] License and third-party notice material included in rebuilt Windows packages.
 - [x] Installer/portable smoke and artifact checksums verified.
 - [x] Current/history credential-pattern and large-object checks completed; no known secret or release binary in Git source history.
-- [ ] Complete corresponding-source delivery for the exact static GPLv3 FFmpeg/FFprobe build; recheck Qt provenance/notices.
+- [x] Complete corresponding-source delivery for the exact static GPLv3 FFmpeg/FFprobe build; recheck Qt provenance/notices. — **closed 2026-09-27** by replacing the bundled build and generating its source chain; see [FFmpeg corresponding-source round](PUBLIC_RELEASE_DELTA_V0.1.md#ffmpeg-corresponding-source-round-2026-09-27). The Qt attribution recheck remains a publication-time task.
 - [ ] Human review of the interactive Installer wizard and installed-app presentation.
-- [ ] Decide whether the historical author email is acceptable for a public Git history.
+- [x] Decide whether the historical author email is acceptable for a public Git history. — **ACCEPTED 2026-09-27 by the account owner:** `19959847099@163.com` and `codex@local` stay as they are, and the personal-domain address is knowingly published with the history. No rewrite, no author/committer change and no history cleanup is to be performed on this basis; future commits keep the existing configured identity.
 - [ ] Enable a real private vulnerability-reporting route and update `SECURITY.md` when the GitHub repository is created.
 - [ ] Create GitHub repository, add remote, push source, create/push `v0.1.0-rc.1` tag, create pre-release, upload Installer, portable ZIP and `SHA256SUMS.txt`. These are explicitly out of scope for this local preparation turn.
 
 Until the licensing blocker is resolved, **BLOCKER ≥ 1; PUBLIC RELEASE GATE = FAIL; READY TO PUBLISH = NO**.
+
+> **Position after this baseline (2026-09-27):** the licensing blocker above is closed and the author-email question is resolved as ACCEPTED, so this page's `BLOCKER ≥ 1` no longer reflects the current tree. The current verdict lives in the [2026-09-27 audit round](PUBLIC_RELEASE_DELTA_V0.1.md#ffmpeg-corresponding-source-round-2026-09-27): **technical blockers = 0**, with the Installer/installed-app visual review still open. Do not re-derive release status from this baseline page alone.

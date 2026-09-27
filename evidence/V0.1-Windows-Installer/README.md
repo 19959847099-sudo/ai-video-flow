@@ -98,6 +98,8 @@ The FFmpeg corresponding-source gate is now closed: the mirror resolves this
 binary to 119 source records and 117 of them are downloaded and hash-verified
 (`sha256sum -c` clean); `libmp3lame` and `xvid` remain pinned-revision retrieval
 instructions, documented as a residual in
-`third_party/ffmpeg/PROVENANCE.md`. Remaining open items are the manual
-Installer/installed-app visual sign-off and the Git author-email publication
-decision, neither of which is a technical gate.
+`third_party/ffmpeg/PROVENANCE.md`. The Git author-email question is now **closed
+as accepted** by the account owner: the existing history publishes with
+`19959847099@163.com` intact and no rewrite, author amendment or object cleanup
+was performed. One manual item remains open and is not a technical gate: the
+Installer wizard and installed-app visual sign-off.

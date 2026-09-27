@@ -42,7 +42,7 @@ No source artifact exists because an adequate corresponding-source set has not b
 ## Delta security and regression
 
 - New/changed public text was scanned for common OpenAI/GitHub/AWS token shapes, private-key delimiters and personal drive paths: no hits. The four screenshots embed only DPI metadata; the social preview has no embedded metadata. The fixture project/clip lived in a temporary directory and was removed.
-- Existing historical author-email visibility and older evidence paths are unchanged. Author email public exposure still needs the account owner's decision; no history rewrite was attempted.
+- Existing historical author-email visibility and older evidence paths are unchanged. Author email public exposure still needs the account owner's decision; no history rewrite was attempted. — **Decided 2026-09-27: accepted, no rewrite.** See the round below.
 - New SVG parsed as XML; README relative links/images, Markdown fences and the bundled provenance link passed the final local validation. No release binary, source archive or temporary wizard capture is staged.
 - Focused packaging contract: **7/7 PASS**. Final full suite: **172/172 PASS** in 192.495 seconds. No product runtime, Candidate/Current semantics, workspace layout or actual FFmpeg executable changed.
 
@@ -50,7 +50,7 @@ No source artifact exists because an adequate corresponding-source set has not b
 
 1. **Release blocker:** establish, inspect and distribute complete corresponding source for the exact shipped static GPLv3 FFmpeg/FFprobe binaries, or adopt a pinned alternative with a verified source package; then rebuild/retest/rehash as required. Recheck the final Qt attribution at the same time.
 2. Manual presentation: review Welcome, destination, additional tasks, install and finish pages, then launch the installed app via Start Menu and check title/taskbar/icon/settings for user-visible old branding. The present environment did not provide a reliable visual capture.
-3. Account-owner decision: confirm whether the personal-domain Git author email in reachable history may be public. Do not rewrite history implicitly.
+3. ~~Account-owner decision: confirm whether the personal-domain Git author email in reachable history may be public. Do not rewrite history implicitly.~~ — **closed 2026-09-27: ACCEPTED.** The owner chose to publish the history with `19959847099@163.com` intact; no history rewrite, no author/committer change, no history cleanup. See the round below.
 4. When a remote is finally created, enable a real private vulnerability-reporting route and update `SECURITY.md` before announcing the project.
 
 Remote creation, push, tag, prerelease, asset upload and Social Preview account configuration remain deliberately unperformed. **BLOCKER = 1 confirmed compliance blocker; REGRESSION = 0 in completed automated gates; PUBLIC RELEASE GATE = FAIL; READY TO PUBLISH = NO.**
@@ -190,6 +190,13 @@ FFmpeg stays GPL-3.0; nothing here required touching the top-level license.
   limitation of the mirror, not an unknown.
 - **PUBLIC RELEASE TECHNICAL GATE = PASS.** BLOCKER = 0, REGRESSION = 0.
 
-Still outside the technical gate and deliberately not decided here: manual
-Installer/installed-app visual sign-off, the Git author-email publication
-decision, and a real private vulnerability-reporting route once a remote exists.
+Still outside the technical gate: the manual Installer/installed-app visual
+sign-off, and a real private vulnerability-reporting route once a remote exists.
+
+**Git author-email publication decision: ACCEPTED (2026-09-27).** The account
+owner confirmed that `19959847099@163.com` may be published with the existing
+history, alongside the non-personal `codex@local` placeholders. Accordingly no
+history rewrite, no author/committer amendment, no rewrite-backup bundle, and no
+`reflog expire` / `gc --prune=now` object cleanup was performed or is to be
+performed for this reason; later commits keep the configured identity. All 26
+commits on `master` therefore retain their original hashes.
